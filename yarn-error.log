@@ -1,0 +1,36 @@
+Arguments: 
+  /Users/juanhinojo/.anyenv/envs/nodenv/versions/14.17.4/bin/node /Users/juanhinojo/.anyenv/envs/nodenv/versions/14.17.4/bin/yarn add ethers hardhat @nomiclabs/hardhad-waffle ethereum-waffle chai @nomiclabs/hardhat-ethers web3modal @openzeppelin/contracts ipfs-http-client axios
+
+PATH: 
+  /Users/juanhinojo/.anyenv/envs/nodenv/versions/14.17.4/bin:/Users/juanhinojo/.anyenv/envs/nodenv/libexec:/Users/juanhinojo/.anyenv/envs/nodenv/plugins/nodenv-vars/bin:/Users/juanhinojo/.anyenv/envs/nodenv/plugins/nodenv-default-packages/bin:/Users/juanhinojo/.anyenv/envs/nodenv/plugins/node-build/bin:/Users/juanhinojo/.anyenv/envs/nodenv/shims:/Users/juanhinojo/.anyenv/envs/exenv/shims:/Users/juanhinojo/.anyenv/envs/pyenv/plugins/pyenv-virtualenv/shims:/Users/juanhinojo/.anyenv/envs/pyenv/shims:/Users/juanhinojo/.anyenv/envs/rbenv/shims:/Users/juanhinojo/.anyenv/envs/nodenv/shims:/Users/juanhinojo/.anyenv/envs/exenv/shims:/Users/juanhinojo/.anyenv/envs/pyenv/plugins/pyenv-virtualenv/shims:/Users/juanhinojo/.anyenv/envs/pyenv/shims:/Users/juanhinojo/.anyenv/envs/rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/Apple/usr/bin:/Applications/VMware Fusion.app/Contents/Public:/Users/juanhinojo/.anyenv/envs/pyenv/plugins/pyenv-virtualenv/shims:/usr/local/opt/imagemagick@6/bin:/Users/juanhinojo/.anyenv/envs/rbenv/shims:/Users/juanhinojo/.anyenv/envs/rbenv/bin:/Users/juanhinojo/.anyenv/envs/pyenv/shims:/Users/juanhinojo/.anyenv/envs/pyenv/bin:/Users/juanhinojo/.anyenv/envs/nodenv/shims:/Users/juanhinojo/.anyenv/envs/nodenv/bin:/Users/juanhinojo/.anyenv/envs/exenv/shims:/Users/juanhinojo/.anyenv/envs/exenv/bin:/Users/juanhinojo/.anyenv/envs/erlenv/shims:/Users/juanhinojo/.anyenv/envs/erlenv/bin:/Users/juanhinojo/bin/elasticsearch-6.0.1/bin:/Users/juanhinojo/bin:/Users/juanhinojo/.anyenv/bin
+
+Yarn version: 
+  1.22.11
+
+Node version: 
+  14.17.4
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/@nomiclabs%2fhardhad-waffle: Not found
+      at Request.params.callback [as _callback] (/Users/juanhinojo/.anyenv/envs/nodenv/versions/14.17.4/lib/node_modules/yarn/lib/cli.js:66992:18)
+      at Request.self.callback (/Users/juanhinojo/.anyenv/envs/nodenv/versions/14.17.4/lib/node_modules/yarn/lib/cli.js:140763:22)
+      at Request.emit (events.js:400:28)
+      at Request.<anonymous> (/Users/juanhinojo/.anyenv/envs/nodenv/versions/14.17.4/lib/node_modules/yarn/lib/cli.js:141735:10)
+      at Request.emit (events.js:400:28)
+      at IncomingMessage.<anonymous> (/Users/juanhinojo/.anyenv/envs/nodenv/versions/14.17.4/lib/node_modules/yarn/lib/cli.js:141657:12)
+      at Object.onceWrapper (events.js:519:28)
+      at IncomingMessage.emit (events.js:412:35)
+      at endReadableNT (internal/streams/readable.js:1317:12)
+      at processTicksAndRejections (internal/process/task_queues.js:82:21)
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

@@ -29,3 +29,14 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+node_modules
+.secret
+.env
+coverage
+coverage.json
+typechain
+
+#Hardhat files
+cache
+artifacts
