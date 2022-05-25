@@ -12,6 +12,9 @@ gem "sprockets-rails"
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
 
+gem 'react-rails'
+
+gem 'webpacker'
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
@@ -64,3 +67,5 @@ group :development do
   # gem "spring"
 end
 
+
+gem "tailwindcss-rails", "~> 2.0"
