@@ -1,11 +1,11 @@
 // SDPX-License-Identifier: MIT
-pragma solidity ^0.8.3;
+pragma solidity ^0.8.4;
 
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol"
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol"
-import "@openzeppelin/contracts/utils/Counters.sol"
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import "@openzeppelin/contracts/utils/Counters.sol";
 
-contract NFT is ERC721URIStorage  {
+contract NFT is ERC721URIStorage {
   using Counters for Counters.Counter;
   Counters.Counter private _tokenIds;
 
@@ -16,6 +16,7 @@ contract NFT is ERC721URIStorage  {
 
   constructor(address marketplaceAddress) ERC721("Sportex Tokens", "NFTX") {
     contractAddress = marketplaceAddress;
+    owner = payable(msg.sender);
   }
 
   function createToken(string memory tokenURI, string memory meta) public returns (uint){
@@ -31,5 +32,13 @@ contract NFT is ERC721URIStorage  {
   }
 
   function updateMeta(uint256 tokenId, string memory meta) public payable {
+    require(owner == msg.sender, "Only marketplace owner can update NFT metadata.");
+
+    idToMeta[tokenId] = meta;
+  }
+
+  /* Returns the meta of the NFT */
+  function getNFTmeta(uint256 tokenId) public view returns (string memory) {
+    return idToMeta[tokenId];
   }
 }
