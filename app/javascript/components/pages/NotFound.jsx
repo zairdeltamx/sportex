@@ -1,9 +1,8 @@
 import React from 'react'
 
-
 function NotFound() {
     return (
-        <div>PAGINA NO</div>
+        <div>Page Does not Exists</div>
     )
 }
 

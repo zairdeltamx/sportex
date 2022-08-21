@@ -4,14 +4,14 @@ import { create as ipfsHttpClient} from 'ipfs-http-client'
 import Web3Modal from 'web3modal'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-const client = ipfsHttpClient('https://ipfs.infura.io:5001/api/v0')
+const client = ipfsHttpClient('https://sportex-staging.infura-ipfs.io:5001/api/v0')
 
 import {
     nftaddress, nftmarketaddress
 } from '../config'
 
-import NFT from '../artifacts/contracts/NFT.sol/NFT.json'
-import Market from '../artifacts/contracts/NFTMarket.sol/NFTMarket.json'
+import NFT from '../../artifacts/contracts/NFT.sol/NFT.json'
+import Market from '../../artifacts/contracts/NFTMarketplace.sol/NFTMarketplace.json'
 
 export default function CreateItem() {
     const [fileUrl, setFileUrl] = useState(null)
@@ -27,7 +27,7 @@ export default function CreateItem() {
                 }
             )
             //file saved in the url path below
-            const url = `https://ipfs.infura.io/ipfs/${added.path}`
+            const url = `https://sportex-staging.infura-ipfs.io/ipfs/${added.path}`
             setFileUrl(url)
         }catch(e){
             console.log('Error uploading file: ', e)
@@ -37,7 +37,7 @@ export default function CreateItem() {
     //1. create item (image/video) and upload to ipfs
     async function createItem(){
         const {name, description, price} = formInput; //get the value from the form input
-        
+
         //form validation
         if(!name || !description || !price || !fileUrl) {
             return
@@ -49,16 +49,16 @@ export default function CreateItem() {
 
         try{
             const added = await client.add(data)
-            const url = `https://ipfs.infura.io/ipfs/${added.path}`
+            const url = `https://sportex-staging.infura-ipfs.io/ipfs/${added.path}`
             //pass the url to sav eit on Polygon adter it has been uploaded to IPFS
-            createSale(url)
+            createSale(url, data)
         }catch(error){
             console.log(`Error uploading file: `, error)
         }
     }
 
     //2. List item for sale
-    async function createSale(url){
+    async function createSale(url, meta){
         const web3Modal = new Web3Modal();
         const connection = await web3Modal.connect();
         const provider = new ethers.providers.Web3Provider(connection);
@@ -66,7 +66,7 @@ export default function CreateItem() {
         //sign the transaction
         const signer = provider.getSigner();
         let contract = new ethers.Contract(nftaddress, NFT.abi, signer);
-        let transaction = await contract.createToken(url);
+        let transaction = await contract.createToken(url, meta);
         let tx = await transaction.wait()
 
         //get the tokenId from the transaction that occured above
@@ -78,7 +78,7 @@ export default function CreateItem() {
         let value = event.args[2]
         let tokenId = value.toNumber() //we need to convert it a number
 
-        //get a reference to the price entered in the form 
+        //get a reference to the price entered in the form
         const price = ethers.utils.parseUnits(formInput.price, 'ether')
 
         contract = new ethers.Contract(nftmarketaddress, Market.abi, signer);
@@ -88,19 +88,18 @@ export default function CreateItem() {
         listingPrice = listingPrice.toString()
 
         transaction = await contract.createMarketItem(
-            nftaddress, tokenId, price, {value: listingPrice }
+          nftaddress, tokenId, price, { value: listingPrice }
         )
 
         await transaction.wait()
 
         navigate("/home")
-
     }
 
     return (
         <div className="flex justify-center">
             <div className="w-1/2 flex flex-col pb-12">
-                <input 
+                <input
                     placeholder="Asset Name"
                     className="mt-8 border rounded p-4"
                     onChange={e => updateFormInput({...formInput, name: e.target.value})}
@@ -110,7 +109,7 @@ export default function CreateItem() {
                      className="mt-2 border rounded p-4"
                      onChange={e => updateFormInput({...formInput, description: e.target.value})}
                      />
-                <input 
+                <input
                     placeholder="Asset Price in Eth"
                     className="mt-8 border rounded p-4"
                     type="number"
@@ -124,13 +123,13 @@ export default function CreateItem() {
                     />
                     {
                         fileUrl && (
-                           
+
                             <img
                             src={fileUrl}
                             alt="Picture of the author"
                             className="rounded mt-4"
                             width={350}
-                            height={500} 
+                            height={500}
                             // blurDataURL="data:..." automatically provided
                             // placeholder="blur" // Optional blur-up while loading
                           />

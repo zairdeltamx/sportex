@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <%= stylesheet_link_tag 'tailwind', 'inter-font', 'data-turbo-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <title>Sportex</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!--  Cargo mi componente UbicacionPuntero -->
+    <%= javascript_pack_tag 'AX_NFT_GLOBAL' %>
+
+    <% yield %>
+  </body>
+</html>

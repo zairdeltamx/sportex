@@ -4,23 +4,21 @@ import { useEffect , useState } from "react"
 import axios from "axios"
 import React from 'react'
 
-
 import {
     nftaddress, nftmarketaddress
   } from '../config'
 
-import NFT from '../artifacts/contracts/NFT.sol/NFT.json'
-import Market from '../artifacts/contracts/NFTMarket.sol/NFTMarket.json'
-
+import NFT from '../../artifacts/contracts/NFT.sol/NFT.json'
+import Market from '../../artifacts/contracts/NFTMarketplace.sol/NFTMarketplace.json'
 
 export default function MyAssets() {
     const [nfts, setNfts] = useState([])
     const [loadingState, setLoadingState] = useState('not-loaded')
-  
+
     useEffect(() => {
       loadNFTs()
     }, [])
-  
+
     async function loadNFTs() {
       // const web3Modal = new Web3Modal({
       //   network: "mainnet",
@@ -30,11 +28,11 @@ export default function MyAssets() {
       const connection = await web3Modal.connect()
       const provider = new ethers.providers.Web3Provider(connection)
       const signer = provider.getSigner()
-        
+
       const marketContract = new ethers.Contract(nftmarketaddress, Market.abi, signer)
       const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider)
       const data = await marketContract.fetchMyNFTs()
-      
+
       const items = await Promise.all(data.map(async i => {
         const tokenUri = await tokenContract.tokenURI(i.tokenId)
         const meta = await axios.get(tokenUri)
@@ -49,7 +47,7 @@ export default function MyAssets() {
         return item
       }))
       setNfts(items)
-      setLoadingState('loaded') 
+      setLoadingState('loaded')
     }
     if (loadingState === 'loaded' && !nfts.length) return (<h1 className="py-10 px-20 text-3xl">No assets owned</h1>)
     return (
@@ -59,14 +57,14 @@ export default function MyAssets() {
             {
               nfts.map((nft, i) => (
                 <div key={i} className="border shadow rounded-xl overflow-hidden">
-           
-  
+
+
                   <img
                               src={nft.image}
                               alt="Picture of the author"
                               className="rounded"
                               width={350}
-                              height={500} 
+                              height={500}
                               // blurDataURL="data:..." automatically provided
                               // placeholder="blur" // Optional blur-up while loading
                             />

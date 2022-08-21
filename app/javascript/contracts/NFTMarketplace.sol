@@ -88,6 +88,7 @@ contract NFTMarketplace is ReentrancyGuard {
   }
 
   /* Creates the sale of a marketplace item */
+  /* This is the PURCHASE action on the marketplace
   /* Transfers ownership of the item, as well as funds between parties */
   function createMarketSale(
     address nftContract,

@@ -8,8 +8,8 @@ import {
     nftaddress, nftmarketaddress
 } from '../config'
 
-import NFT from '../artifacts/contracts/NFT.sol/NFT.json'
-import Market from '../artifacts/contracts/NFTMarket.sol/NFTMarket.json'
+import NFT from '../../artifacts/contracts/NFT.sol/NFT.json'
+import Market from '../../artifacts/contracts/NFTMarketplace.sol/NFTMarketplace.json'
 
 export default function CreatorDashboard() {
     const [nfts, setNfts] = useState([])
@@ -28,11 +28,11 @@ export default function CreatorDashboard() {
       const connection = await web3Modal.connect()
       const provider = new ethers.providers.Web3Provider(connection)
       const signer = provider.getSigner()
-        
+
       const marketContract = new ethers.Contract(nftmarketaddress, Market.abi, signer)
       const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider)
-      const data = await marketContract.fetchItemsCreated()
-      
+      const data = await marketContract.fetchItemsListed()
+
       const items = await Promise.all(data.map(async i => {
         const tokenUri = await tokenContract.tokenURI(i.tokenId)
         const meta = await axios.get(tokenUri)
@@ -62,18 +62,18 @@ export default function CreatorDashboard() {
             {
               nfts.map((nft, i) => (
                 <div key={i} className="border shadow rounded-xl overflow-hidden">
-                 
-  
+
+
                           <img
                               src={nft.image}
                               alt="Picture of the author"
                               className="rounded"
                               width={250}
-                              height={300} 
+                              height={300}
                               // blurDataURL="data:..." automatically provided
                               // placeholder="blur" // Optional blur-up while loading
                             />
-  
+
                   <div className="p-4 bg-black">
                     <p className="text-2xl font-bold text-white">Price - {nft.price} Eth</p>
                   </div>
