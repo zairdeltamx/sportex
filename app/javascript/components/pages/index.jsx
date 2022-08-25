@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import Web3Modal from "web3modal"
 import React from 'react'
-import Navbar from "./navbar"
+import Navbar from "../utils/navbar"
 
 import {
   nftaddress, nftmarketaddress
@@ -92,23 +92,23 @@ export default function Home() {
                   // blurDataURL="data:..." automatically provided
                   // placeholder="blur" // Optional blur-up while loading
                 />
-                <div className="p-4">
+              <div className="p-4">
                 <h3 className="text-lg font-semibold">Name:</h3>
                 <p style={{ height: '64px'}} className="text-2xl font-semibold">
                   {nft.name}
                 </p>
                 <div style={{ height: '70px', overflow: 'hidden'}}>
-                  <h3 className="text-lg font-semibold">Descripion:</h3>
+                  <h3 className="text-lg font-semibold">Description::</h3>
                   <p className="text-gray-400">{nft.description}</p>
                 </div>
               </div>
               <div className="p-4 bg-black">
                 <p className="text-2xl mb-4 font-bold text-white">
-                  {nft.price} ETH
+                  {nft.price} PLS
                 </p>
                 <button className="w-full bg-pink-500 text-white font-bold py-2 px-12 rounded"
                 onClick={() => buyNFT(nft)}>Buy NFT</button>
-            </div>
+              </div>
             </div>
           ))
         }
