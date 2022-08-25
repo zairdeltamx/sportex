@@ -1,4 +1,4 @@
-import { ethers } from "ethers"
+import { ethers, providers } from "ethers"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import Web3Modal from "web3modal"
@@ -14,18 +14,30 @@ import Market from '../../artifacts/contracts/NFTMarketplace.sol/NFTMarketplace.
 export default function Home() {
   const [nfts, setNfts] =useState([])
   const [loadingState, setLoadingState] = useState('not-loaded')
+  const [address, setAddress] = useState('')
 
   useEffect(()=>{
     loadNFTs()
   }, [])
   async function loadNFTs(){
+    const web3Modal = new Web3Modal()
+    const connection = await web3Modal.connect()
+
     const provider = new ethers.providers.JsonRpcProvider("https://rpc.v2b.testnet.pulsechain.com");
     const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider);
     const marketContract = new ethers.Contract(nftmarketaddress, Market.abi, provider);
 
+    const ethersProvider = new providers.Web3Provider(connection)
+    const userAddress = await ethersProvider.getSigner().getAddress()
+
+    console.log(userAddress)
+    setAddress(userAddress)
+
     //return an array of unsold market items
     const data = await marketContract.fetchMarketItems();
 
+    console.log(web3Modal.eth)
+    console.log(data)
     const items = await Promise.all(data.map(async i => {
       const tokenUri = await tokenContract.tokenURI(i.tokenId);
       const cleanedTokenUri = tokenUri.replace('ipfs.infura.io', 'sportex-staging.infura-ipfs.io');
@@ -72,12 +84,15 @@ export default function Home() {
   }
 
   if(loadingState === 'loaded' && !nfts.length) return (
-    <h1 className="px-20 py-10 text-3xl">No items in market place</h1>
+   <div className="flex justify-center">
+      <Navbar />
+      <h1 className="px-20 py-10 text-3xl">No items in market place</h1>
+    </div>
   )
 
   return (
    <div className="flex justify-center">
-     <Navbar />
+     <Navbar address={address}/>
      <div className="px-4" style={{ maxWidth: '1600px', marginTop: "15px" }}>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
         {

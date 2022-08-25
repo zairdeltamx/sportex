@@ -30,6 +30,7 @@ export default function MyAssets() {
       // })
       const web3Modal = new Web3Modal()
       const connection = await web3Modal.connect()
+
       const provider = new ethers.providers.Web3Provider(connection)
       const signer = provider.getSigner()
 
@@ -37,7 +38,6 @@ export default function MyAssets() {
       const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider)
       const data = await marketContract.fetchMyNFTs()
 
-      console.log(data)
       const items = await Promise.all(data.map(async i => {
         const tokenUri = await tokenContract.tokenURI(i.tokenId)
         const cleanedTokenUri = tokenUri.replace('ipfs.infura.io', 'sportex-staging.infura-ipfs.io');

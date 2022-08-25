@@ -3,8 +3,16 @@ import { ethers } from 'ethers'
 import { create as ipfsHttpClient} from 'ipfs-http-client'
 import Web3Modal from 'web3modal'
 import React from 'react'
+import Navbar from "../utils/navbar"
 import { useNavigate } from 'react-router-dom'
-const client = ipfsHttpClient('https://sportex-staging.infura-ipfs.io:5001/api/v0')
+const client = ipfsHttpClient({
+  host: 'ipfs.infura.io',
+  port: 5001,
+  protocol: 'https',
+  headers: {
+    authorization:
+    'Basic MkRnRGNzc0pHaGdxbEZKUUYzOHZ3U0RqRHBEOjQ0NGNhMWFjMTAwOWQxODljODU0ZGEyZmNhYmUwZGYy',
+  }})
 
 import {
     nftaddress, nftmarketaddress
@@ -93,11 +101,12 @@ export default function CreateItem() {
 
         await transaction.wait()
 
-        navigate("/home")
+        navigate("/")
     }
 
     return (
         <div className="flex justify-center">
+            <Navbar />
             <div className="w-1/2 flex flex-col pb-12">
                 <input
                     placeholder="Asset Name"
