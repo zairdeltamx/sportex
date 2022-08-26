@@ -1,0 +1,59 @@
+.background-profile{
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    width: 100%;
+    height: 100%;
+    color: white;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 25px;
+    text-align: center;
+    -webkit-box-shadow: 0px 0px 25px -3px rgba(32,32,51,1);
+    -moz-box-shadow: 0px 0px 25px -3px rgba(32,32,51,1);
+    box-shadow: 0px 0px 25px -3px rgba(32,32,51,1);
+    
+}
+.background-profile input{
+    border-radius: 5px;
+    margin: 10px;
+    padding: 5px;
+    background: rgb(82,80,83);
+    background: linear-gradient(80deg, rgba(82,80,83,0.2740283613445378) 0%, rgba(82,80,83,0.3412552521008403) 100%);
+    border: 0;
+    outline: none;
+    border-bottom: 2px goldenrod;
+    -webkit-box-shadow: 0px 0px 25px -3px rgba(32,32,51,1);
+    -moz-box-shadow: 0px 0px 25px -3px rgba(32,32,51,1);
+    box-shadow: 0px 0px 25px -3px rgba(32,32,51,1);
+}
+.background-profile input::placeholder{
+    color: white;
+}
+.background-profile h1{
+    font-family: 'Montserrat', serif;
+    font-weight: bold;
+    color: white;
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+.background-profile img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: aqua;
+
+}
+.form-profile{
+    background-image: url('../img/background-profile.jpg');
+    background-size: 100%;
+    margin-top: 100px;
+    margin: auto;
+    width: 100%;
+    height: 700px;
+   
+}

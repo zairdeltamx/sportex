@@ -4,6 +4,8 @@ import axios from "axios"
 import React from 'react'
 import Web3Modal from "web3modal"
 
+
+import '../css/creator-dashboard.css'
 import {
     nftaddress, nftmarketaddress
 } from '../config'
@@ -53,7 +55,7 @@ export default function CreatorDashboard() {
       setNfts(items)
       setLoadingState('loaded')
     }
-    if (loadingState === 'loaded' && !nfts.length) return (<h1 className="py-10 px-20 text-3xl">No assets created</h1>)
+    if (loadingState === 'loaded' && !nfts.length) return (<h1 className="NoAssets">No assets created</h1>)
     return (
       <div>
         <div className="p-4">

@@ -3,14 +3,18 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import Web3Modal from "web3modal"
 import React from 'react'
-import Navbar from "../utils/navbar"
+import NavbarComponent from "../utils/navbar"
 
+
+import '../css/index.css'
 import {
   nftaddress, nftmarketaddress
 } from '../config'
 
 import NFT from '../../artifacts/contracts/NFT.sol/NFT.json'
 import Market from '../../artifacts/contracts/NFTMarketplace.sol/NFTMarketplace.json'
+import { Banner } from "../components/banner"
+
 export default function Home() {
   const [nfts, setNfts] =useState([])
   const [loadingState, setLoadingState] = useState('not-loaded')
@@ -18,26 +22,22 @@ export default function Home() {
 
   useEffect(()=>{
     loadNFTs()
+   
+
   }, [])
+
   async function loadNFTs(){
-    const web3Modal = new Web3Modal()
-    const connection = await web3Modal.connect()
 
     const provider = new ethers.providers.JsonRpcProvider("https://rpc.v2b.testnet.pulsechain.com");
     const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider);
     const marketContract = new ethers.Contract(nftmarketaddress, Market.abi, provider);
 
-    const ethersProvider = new providers.Web3Provider(connection)
-    const userAddress = await ethersProvider.getSigner().getAddress()
 
-    console.log(userAddress)
-    setAddress(userAddress)
 
     //return an array of unsold market items
     const data = await marketContract.fetchMarketItems();
 
-    console.log(web3Modal.eth)
-    console.log(data)
+   
     const items = await Promise.all(data.map(async i => {
       const tokenUri = await tokenContract.tokenURI(i.tokenId);
       const cleanedTokenUri = tokenUri.replace('ipfs.infura.io', 'sportex-staging.infura-ipfs.io');
@@ -85,45 +85,47 @@ export default function Home() {
 
   if(loadingState === 'loaded' && !nfts.length) return (
    <div className="flex justify-center">
-      <Navbar />
+      <NavbarComponent />
       <h1 className="px-20 py-10 text-3xl">No items in market place</h1>
     </div>
   )
 
   return (
    <div className="flex justify-center">
-     <Navbar address={address}/>
-     <div className="px-4" style={{ maxWidth: '1600px', marginTop: "15px" }}>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
+     <NavbarComponent address={address}/>
+     <Banner/>
+
+    <h1 className="text-styleNFTs" >NFTs:</h1>
+     <div className="content-cards">
+      <div className="conten-nfts">
         {
           nfts.map((nft, i) =>(
-            <div key={i} className="SportexNFT border shadow rounded-xl overflow-hidden" style={{width: "400px"}}>
+            <div key={i}  className="content-card">
+            <div className="card-nft" >
               <img
                   src={nft.image}
                   alt="Picture of the author"
-                  width={500}
-                  height={500}
-                  style={{ objectFit: "cover", width: "300px", height: "350px" }}
                   // blurDataURL="data:..." automatically provided
                   // placeholder="blur" // Optional blur-up while loading
                 />
-              <div className="p-4">
-                <h3 className="text-lg font-semibold">Name:</h3>
-                <p style={{ height: '64px'}} className="text-2xl font-semibold">
+              <div >
+                <p className="name-nft">
                   {nft.name}
                 </p>
-                <div style={{ height: '70px', overflow: 'hidden'}}>
-                  <h3 className="text-lg font-semibold">Description::</h3>
-                  <p className="text-gray-400">{nft.description}</p>
+                <div className="description-nft">
+                  <h3 >Description:</h3>
+                  <p >{nft.description}</p>
                 </div>
               </div>
-              <div className="p-4 bg-black">
-                <p className="text-2xl mb-4 font-bold text-white">
+              <div className="price-nft">
+                <h3 >Current Bid</h3>
+                <p >
                   {nft.price} PLS
                 </p>
-                <button className="w-full bg-pink-500 text-white font-bold py-2 px-12 rounded"
+                <button className=""
                 onClick={() => buyNFT(nft)}>Buy NFT</button>
               </div>
+            </div>
             </div>
           ))
         }

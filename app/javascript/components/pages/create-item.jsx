@@ -3,8 +3,12 @@ import { ethers } from 'ethers'
 import { create as ipfsHttpClient} from 'ipfs-http-client'
 import Web3Modal from 'web3modal'
 import React from 'react'
-import Navbar from "../utils/navbar"
+import NavbarComponent from "../utils/navbar"
 import { useNavigate } from 'react-router-dom'
+
+import imageNftBanner from '../img/NFT.png';
+
+import '../css/create-item.css'
 const client = ipfsHttpClient({
   host: 'ipfs.infura.io',
   port: 5001,
@@ -105,22 +109,30 @@ export default function CreateItem() {
     }
 
     return (
-        <div className="flex justify-center">
-            <Navbar />
-            <div className="w-1/2 flex flex-col pb-12">
+        <div >
+            <NavbarComponent />
+
+        <div className='background-create'>
+
+            <div className="create">
+
+           
+                <div className='form'>
+                <h1 className='text-style'>Complete the data:</h1>
+
                 <input
                     placeholder="Asset Name"
-                    className="mt-8 border rounded p-4"
+                    className=""
                     onChange={e => updateFormInput({...formInput, name: e.target.value})}
                     />
                 <textarea
                      placeholder="Asset description"
-                     className="mt-2 border rounded p-4"
+                     className=""
                      onChange={e => updateFormInput({...formInput, description: e.target.value})}
                      />
                 <input
                     placeholder="Asset Price in Eth"
-                    className="mt-8 border rounded p-4"
+                    className=""
                     type="number"
                     onChange={e => updateFormInput({...formInput, price: e.target.value})}
                     />
@@ -130,24 +142,30 @@ export default function CreateItem() {
                         className="my-4"
                         onChange={onChange}
                     />
-                    {
+                   
+                    <button onClick={createItem}
+                     className=""
+                     >Create NFT</button>
+                </div>
+                
+            <div className="previewNFT">
+          
+            {
                         fileUrl && (
-
+                            <>
+                            <h1 className='text-style'>Preview image:</h1>
                             <img
-                            src={fileUrl}
-                            alt="Picture of the author"
-                            className="rounded mt-4"
-                            width={350}
-                            height={500}
-                            // blurDataURL="data:..." automatically provided
-                            // placeholder="blur" // Optional blur-up while loading
-                          />
+                                    src={fileUrl}
+                                    alt="Picture of the author"
+                                    className="rounded mt-4"
+                                    width={300}
+                                    height={400} /></>
                         )
                     }
-                    <button onClick={createItem}
-                     className="font-bold mt-4 bg-pink-500 text-white rounded p-4 shadow-lg"
-                     >Create NFT</button>
-            </div>
+                    </div>
+                     </div>
+                     </div>
+
         </div>
     )
 }

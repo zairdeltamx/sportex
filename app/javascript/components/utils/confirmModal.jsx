@@ -4,14 +4,36 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 
-function ConfirmModal(props) {
+function ConfirmModal({setDisplayModal,displayModal,onConfirm,nft}) {
   const [askingPrice, setAskingPrice] = useState(0)
-  console.log(props.nft)
+    const [show, setShow] = useState(false);
+    const handleShow = () => setShow(true);
+    const handleClose = () => {setShow(false);setDisplayModal(false)};
 
+  const checkNft = () => {
+    if (displayModal==true) {
+
+      handleShow()
+      console.log(show,"show");
+
+      // setShow(false)
+    }else{
+      return
+    }
+    
+  };
+  useEffect(() => {
+    checkNft()
+    return () => {
+      
+    };
+  }, [displayModal]);
   return (
-    <Modal show={props.nft}>
-      <Modal.Header closeButton>
+    <Modal show={show}>
+      <Modal.Header >
+        
         <Modal.Title>Enter Asking Price for NFT</Modal.Title>
+
       </Modal.Header>
 
       <Modal.Body>
@@ -29,8 +51,10 @@ function ConfirmModal(props) {
       </Modal.Body>
 
       <Modal.Footer>
-        <Button variant="secondary">Close</Button>
-        <Button variant="primary" onClick={() => props.onConfirm(props.nft, askingPrice)} >List for Sale</Button>
+      <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        <Button variant="primary" onClick={() => {onConfirm(nft, askingPrice);handleClose()}} >List for Sale</Button>
       </Modal.Footer>
     </Modal>
   );

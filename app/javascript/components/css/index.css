@@ -1,0 +1,75 @@
+.text-styleNFTs{
+    font-family: 'Montserrat', serif;
+    font-weight: bold;
+    color: white;
+    font-size: 50px;
+    margin-left: 24px;
+}
+.content-card{
+    width: 280px;
+    height: 610px;
+    background-color: #3a3a4c;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 20px;
+}
+.card-nft{
+    color: white;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.card-nft img{
+    border-radius: 10px;
+
+width: 100%;
+ height: 340px;
+
+}
+.name-nft{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+}
+.price-nft{
+    margin-top: 10px;
+}
+.price-nft button{
+    background-color: #4D4BE3;
+    border-radius: 80px;
+    width: 100px;
+    margin-top: 10px;
+    padding: 5px;
+    height: 100%;
+}
+.price-nft h3{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 100;
+    font-size: 15px;
+}
+.price-nft p{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+}
+.description-nft h3{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 100;
+    font-size: 15px;
+}
+.description-nft p{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+}
+.content-cards{
+    margin: auto;
+    width: 90%;
+    height: 100%;
+
+}
+.conten-nfts{
+    display: flex;
+    flex-wrap: wrap;
+}
