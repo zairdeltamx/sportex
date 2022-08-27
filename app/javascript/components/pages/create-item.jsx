@@ -27,7 +27,7 @@ import Market from '../../artifacts/contracts/NFTMarketplace.sol/NFTMarketplace.
 
 export default function CreateItem() {
     const [fileUrl, setFileUrl] = useState(null)
-    const [formInput, updateFormInput] = useState({price: '', name: '', description:''})
+    const [formInput, updateFormInput] = useState({price: '', name: '', description:'', meta_json: ''})
     const navigate = useNavigate()
     async function onChange(e) {
         const file = e.target.files[0]
@@ -48,7 +48,7 @@ export default function CreateItem() {
 
     //1. create item (image/video) and upload to ipfs
     async function createItem(){
-        const {name, description, price} = formInput; //get the value from the form input
+        const {name, description, price, meta_json} = formInput; //get the value from the form input
 
         //form validation
         if(!name || !description || !price || !fileUrl) {
@@ -63,7 +63,7 @@ export default function CreateItem() {
             const added = await client.add(data)
             const url = `https://sportex-staging.infura-ipfs.io/ipfs/${added.path}`
             //pass the url to sav eit on Polygon adter it has been uploaded to IPFS
-            createSale(url, data)
+            createSale(url, meta_json)
         }catch(error){
             console.log(`Error uploading file: `, error)
         }
@@ -78,6 +78,7 @@ export default function CreateItem() {
         //sign the transaction
         const signer = provider.getSigner();
         let contract = new ethers.Contract(nftaddress, NFT.abi, signer);
+        console.log(meta)
         let transaction = await contract.createToken(url, meta);
         let tx = await transaction.wait()
 
@@ -130,8 +131,13 @@ export default function CreateItem() {
                      className=""
                      onChange={e => updateFormInput({...formInput, description: e.target.value})}
                      />
+                <textarea
+                     placeholder="Meta data"
+                     className=""
+                     onChange={e => updateFormInput({...formInput, meta_json: e.target.value})}
+                     />
                 <input
-                    placeholder="Asset Price in Eth"
+                    placeholder="Asset Price in PLS"
                     className=""
                     type="number"
                     onChange={e => updateFormInput({...formInput, price: e.target.value})}

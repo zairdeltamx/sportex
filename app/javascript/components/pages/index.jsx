@@ -22,7 +22,7 @@ export default function Home() {
 
   useEffect(()=>{
     loadNFTs()
-   
+
 
   }, [])
 
@@ -32,12 +32,9 @@ export default function Home() {
     const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider);
     const marketContract = new ethers.Contract(nftmarketaddress, Market.abi, provider);
 
-
-
     //return an array of unsold market items
     const data = await marketContract.fetchMarketItems();
 
-   
     const items = await Promise.all(data.map(async i => {
       const tokenUri = await tokenContract.tokenURI(i.tokenId);
       const cleanedTokenUri = tokenUri.replace('ipfs.infura.io', 'sportex-staging.infura-ipfs.io');
