@@ -116,7 +116,7 @@ export default function CreateItem() {
 
             <div className="create">
 
-           
+
                 <div className='form'>
                 <h1 className='text-style'>Complete the data:</h1>
 
@@ -142,14 +142,14 @@ export default function CreateItem() {
                         className="my-4"
                         onChange={onChange}
                     />
-                   
+
                     <button onClick={createItem}
                      className=""
                      >Create NFT</button>
                 </div>
-                
+
             <div className="previewNFT">
-          
+
             {
                         fileUrl && (
                             <>

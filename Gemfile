@@ -14,6 +14,8 @@ gem "pg", "~> 1.1"
 
 gem 'react-rails'
 
+gem 'config'
+
 gem 'webpacker'
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
@@ -33,6 +35,14 @@ gem "jbuilder"
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4.0"
 
+# API
+gem 'grape'
+gem 'grape-swagger'
+gem 'grape-middleware-logger'
+gem 'grape-active_model_serializers'
+gem 'grape-swagger-rails', github: 'ruby-grape/grape-swagger-rails'
+gem 'active_model_serializers', '~> 0.9.3'
+gem 'hashie-forbidden_attributes'
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
