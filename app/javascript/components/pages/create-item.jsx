@@ -131,17 +131,18 @@ export default function CreateItem() {
                      className=""
                      onChange={e => updateFormInput({...formInput, description: e.target.value})}
                      />
-                <textarea
-                     placeholder="Meta data"
-                     className=""
-                     onChange={e => updateFormInput({...formInput, meta_json: e.target.value})}
-                     />
                 <input
                     placeholder="Asset Price in PLS"
                     className=""
                     type="number"
                     onChange={e => updateFormInput({...formInput, price: e.target.value})}
                     />
+                <hr />
+                <textarea
+                     placeholder="Meta data"
+                     className=""
+                     onChange={e => updateFormInput({...formInput, meta_json: e.target.value})}
+                     />
                     <input
                         type="file"
                         name="Asset"
@@ -158,14 +159,15 @@ export default function CreateItem() {
 
             {
                         fileUrl && (
-                            <>
+                          <div>
                             <h1 className='text-style'>Preview image:</h1>
                             <img
                                     src={fileUrl}
                                     alt="Picture of the author"
                                     className="rounded mt-4"
                                     width={300}
-                                    height={400} /></>
+                                    height={400} />
+                          </div>
                         )
                     }
                     </div>
