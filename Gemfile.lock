@@ -139,6 +139,7 @@ GEM
       rbsecp256k1 (~> 5.1)
       scrypt (~> 3.0)
     execjs (2.8.1)
+    ffi (1.15.5)
     ffi (1.15.5-x64-mingw-ucrt)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
@@ -205,9 +206,12 @@ GEM
       net-protocol
       timeout
     nio4r (2.5.8)
+    nokogiri (1.13.8-arm64-darwin)
+      racc (~> 1.4)
     nokogiri (1.13.8-x64-mingw-ucrt)
       racc (~> 1.4)
     openssl (3.0.0)
+    pg (1.4.3)
     pg (1.4.3-x64-mingw-ucrt)
     pkg-config (1.4.9)
     pry (0.14.1)
@@ -332,6 +336,7 @@ GEM
     zeitwerk (2.6.0)
 
 PLATFORMS
+  arm64-darwin-21
   x64-mingw-ucrt
 
 DEPENDENCIES
