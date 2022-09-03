@@ -13,3 +13,12 @@ npx hardhat node
 node scripts/sample-script.js
 npx hardhat help
 ```
+#Steps to prepare app
+gem install bundler
+bundle install
+rails db:setup
+rails db:migrate
+
+
+#Install all dependencies with the yarn package manager
+yarn install
