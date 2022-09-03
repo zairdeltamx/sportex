@@ -1,0 +1,45 @@
+.formCreteItem{
+    display: grid;
+    width: 100%;
+    grid-template-columns: 2;
+    grid-template-rows: repeat(4,1fr);
+    grid-template-areas: 
+    "n1 n5"
+    "n2 n5"
+    "n3 n5"
+    "n4 n5";
+    gap:20px
+}
+.itemCreate:nth-child(1){
+grid-area: n1;
+}
+.itemCreate:nth-child(2){
+    grid-area: n2;
+
+}
+.itemCreate:nth-child(3){
+    grid-area: n3;
+
+}
+.itemCreate:nth-child(4){
+    grid-area: n4;
+
+}
+.itemCreate:nth-child(5){
+    grid-area: n5;
+}
+@media screen and (max-width: 800px) { 
+    .formCreteItem{
+        display: grid;
+        width: 100%;
+        grid-template-columns: 1;
+        grid-template-rows: repeat(5,1fr);
+        grid-template-areas: 
+        "n1 "
+        "n2 "
+        "n3 "
+        "n4 "
+        "n5";
+        gap:20px
+    }
+  }

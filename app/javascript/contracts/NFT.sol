@@ -29,7 +29,6 @@ contract NFT is ERC721URIStorage {
     _setTokenURI(newItemId, tokenURI);
     idToMeta[newItemId] = meta;
     setApprovalForAll(contractAddress, true);
-
     return newItemId;
   }
 
@@ -39,7 +38,7 @@ contract NFT is ERC721URIStorage {
   }
 
   function updateMeta(uint256 tokenId, string memory meta) public payable {
-    require(owner == msg.sender, "Only marketplace owner can update NFT metadata.");
+        require(owner == msg.sender, "Only marketplace owner can update NFT metadata.");
 
     idToMeta[tokenId] = meta;
   }
