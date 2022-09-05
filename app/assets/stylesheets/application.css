@@ -15,11 +15,11 @@ body {
   display: inline-block;
   width: 400px;
   height: 800px;
+}
 
-  img {
-    height: 350px;
-    width: 300px;
-    object-fit: fill;
-  }
+.SportexNFT  img {
+  height: 350px;
+  width: 300px;
+  object-fit: fill;
 }
 
