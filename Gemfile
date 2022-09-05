@@ -9,9 +9,6 @@ gem "rails", "~> 7.0.3"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
-gem 'tzinfo-data'
-
-
 gem 'react-rails'
 
 gem 'config'
@@ -36,7 +33,6 @@ gem "jbuilder"
 gem "redis", "~> 4.0"
 
 gem "eth"
-
 
 gem 'active_interaction'
 
@@ -89,3 +85,5 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
+
+gem "bootstrap", "~> 5.2"

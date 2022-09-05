@@ -1,6 +1,5 @@
 import React from "react";
 import { Routes, Route, Navigate, BrowserRouter } from "react-router-dom";
-import NotFound from "./pages/NotFound.jsx";
 import Index from "./pages/index/index.jsx";
 import Myassets from "./pages/myassets/my-assets.jsx";
 import CreateItem from "./pages/create-item/create-item.jsx";
