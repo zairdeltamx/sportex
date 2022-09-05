@@ -19,7 +19,7 @@ import {
   Paragraph,
   Title
 } from "../../components/CustomStyledComponents";
-import styled from "./index.module.css"
+
 export default function Home() {
   const [nfts, setNfts] = useState([]);
   const [loadingState, setLoadingState] = useState("not-loaded");
@@ -117,8 +117,8 @@ console.log(data,"INDEX");
             <div key={i}>
             <ContentNFT>
             <CardNft>
-              
-           
+
+
                   <ImgNft
                     src={nft.image}
                     alt="Picture of the author"

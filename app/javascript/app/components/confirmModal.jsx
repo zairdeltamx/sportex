@@ -20,20 +20,18 @@ function ConfirmModal({setDisplayModal,displayModal,onConfirm,nft}) {
     }else{
       return
     }
-    
+
   };
   useEffect(() => {
     checkNft()
     return () => {
-      
+
     };
   }, [displayModal]);
   return (
     <Modal show={show}>
       <Modal.Header >
-        
         <Modal.Title>Enter Asking Price for NFT</Modal.Title>
-
       </Modal.Header>
 
       <Modal.Body>
