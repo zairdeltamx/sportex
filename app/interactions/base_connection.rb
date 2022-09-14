@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'eth'
 
 class BaseConnection < ActiveInteraction::Base
-  ABI_STRING = File.read(Rails.root.join('spec', 'fixtures') + 'nft_marketplace.json')
+  ABI_STRING = File.read("#{Rails.root.join('spec', 'fixtures')}nft_marketplace.json")
 
   def eth_client
     @client ||= Eth::Client.create 'https://rpc.v2b.testnet.pulsechain.com'

@@ -1,28 +1,23 @@
-import { ethers } from "ethers";
-import Web3Modal from "web3modal";
-import { Fragment, useEffect, useState } from "react";
 import axios from "axios";
-import React from "react";
+import { ethers } from "ethers";
+import React, { Fragment, useEffect, useState } from "react";
+import Web3Modal from "web3modal";
 import ConfirmModal from "../../components/confirmModal";
 
-
-import { nftaddress, nftmarketaddress } from "../../config";
 import NFT from "../../../artifacts/contracts/NFT.sol/NFT.json";
 import Market from "../../../artifacts/contracts/NFTMarketplace.sol/NFTMarketplace.json";
+import { nftaddress, nftmarketaddress } from "../../config";
 
 import {
   Button,
-  Flex,
-  Title,
-  Paragraph,
   CardNft,
   ContentNFT,
-  ImgNft,
+  Flex,
   GridNFTs,
+  ImgNft,
+  Paragraph,
+  Title,
 } from "../../components/CustomStyledComponents";
-import styled from "./my-assets.module.css";
-import CreatorDashboard from "../creator-dashboard/creator-dashboard";
-
 
 export default function MyAssets() {
   const [nfts, setNfts] = useState([]);
@@ -34,8 +29,6 @@ export default function MyAssets() {
     loadNFTs();
   }, []);
 
-
-  
   async function loadNFTs() {
     // const web3Modal = new Web3Modal({
     //   network: "mainnet",
@@ -55,7 +48,7 @@ export default function MyAssets() {
     const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider);
     const data = await marketContract.fetchMyNFTs();
 
-      console.log(data,"MYASSETS");
+    console.log(data, "MYASSETS");
     const items = await Promise.all(
       data.map(async (i) => {
         const tokenUri = await tokenContract.tokenURI(i.tokenId);
@@ -101,9 +94,8 @@ export default function MyAssets() {
     console.log(typeof (priceFormatted, "tipo"));
 
     listingPrice = listingPrice.toString();
-    console.log("contract", contract);
-    console.log("nft", nft.tokenId);
-    console.log("askingPrice", priceFormatted);
+    console.log(nft.tokenId, "token");
+    console.log(nftaddress, "addres");
     //set the
     //make the sale
     const transaction = await contract.resellToken(
@@ -165,23 +157,13 @@ export default function MyAssets() {
                     >
                       Sell NFT
                     </Button>
-                    <Button
-                      className=""
-                      onClick={() => {
-                        updateNft(nft.tokenId)
-                      }}
-                    >
-                      Update NFT
-                    </Button>
                   </div>
                 </CardNft>
               </ContentNFT>
             </div>
           ))}
-          </GridNFTs>
+        </GridNFTs>
       </Flex>
-<hr /><hr />
-      <CreatorDashboard></CreatorDashboard>
     </Fragment>
   );
 }

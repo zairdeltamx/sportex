@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.1.2"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.0.3"
+gem "rails", "~> 7.0"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
@@ -13,7 +13,16 @@ gem 'react-rails'
 
 gem 'config'
 
-gem 'webpacker'
+gem 'devise'
+
+gem 'rubocop', require: false
+gem 'rubocop-rails', require: false
+
+# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
+gem "turbolinks", "~> 5"
+
+# Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
+gem "webpacker", "~> 5.0"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
@@ -26,13 +35,17 @@ gem "turbo-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 
-# Build JSON APIs with ease [https://github.com/rails/jbuilder]
-gem "jbuilder"
+# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem "jbuilder", "~> 2.7"
 
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4.0"
 
-gem "eth"
+# Use Active Model has_secure_password
+gem "bcrypt", "~> 3.1"
+
+# Use Ruby-Eth for signature recovery
+gem "eth", "~> 0.5"
 
 gem 'active_interaction'
 
@@ -53,13 +66,13 @@ gem 'hashie-forbidden_attributes'
 # gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
+gem 'tzinfo-data', '~> 1.2022', '>= 1.2022.3'
 
 # Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", require: false
+gem "bootsnap", "~> 1.4", require: false
 
 # Use Sass to process CSS
-gem "sassc-rails"
+gem "sass-rails", "~> 6"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -72,6 +85,12 @@ end
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
+  # We may be able to remove this when a future version of bundler comes out.
+  # See https://github.com/bundler/bundler/issues/6929#issuecomment-459151506 and
+  # https://github.com/bundler/bundler/pull/6963 for more information.
+  gem "irb", require: false
 end
 
 group :development do
@@ -79,11 +98,19 @@ group :development do
   gem "web-console"
 
   gem 'rspec-rails'
-  # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
-  # gem "rack-mini-profiler"
 
-  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  # gem "spring"
+  # Display performance information such as SQL time and flame graphs for each request in your browser.
+  # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/master/README.md
+  gem "rack-mini-profiler", "~> 2.0"
+  gem "listen", "~> 3.3"
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem "spring"
 end
-
+group :test do
+  # Adds support for Capybara system testing and selenium driver
+  gem "capybara", "~> 3.26"
+  gem "selenium-webdriver"
+  # Easy installation and use of web drivers to run system tests with browsers
+  gem "webdrivers"
+end
 gem "bootstrap", "~> 5.2"

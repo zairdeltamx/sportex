@@ -1,0 +1,33 @@
+<div class="container text-white">
+  <div class="row vh-100 justify-content-center align-items-center">
+    <div class="col-auto bg-dark p-5">
+
+      <h1>Sportex</h1>
+      <p>
+        <% if !logged_in? %>
+          <%= form_tag new_user_session_path, class: "new_session" do %>
+            <%= text_field_tag :eth_message, "", readonly: true, class: "eth_message" %> <br />
+            <%= text_field_tag :eth_address, "", readonly: true, class: "eth_address" %> <br />
+            <%= text_field_tag :eth_signature, "", readonly: true, class: "eth_signature" %> <br />
+          <% end %>
+          <%= image_tag("MetaMask.png",:width=>"150px", :alt => "rss feed") %>
+          <br/>
+          <button class="eth_connect btn btn-outline-success">Log-in with Metamask</button>
+          <br /><br />... or
+          <%= link_to "sign up", new_user_registration_path %>
+          instead? or
+          <%= link_to "go back", root_path %>?
+        <% else %>
+          Hello
+          <code><%= current_user.eth_address %></code>!
+          Do you wish to
+          <%= link_to "log out", destroy_user_session_path, method: :destroy %>
+          or
+          <%= link_to "go back", root_path %>?
+        <% end %>
+      </p>
+
+      <%= javascript_pack_tag "sessions_new" %>
+    </div>
+  </div>
+</div>

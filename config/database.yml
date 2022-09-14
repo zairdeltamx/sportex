@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: sportex_development
+  database: sportex_development_p
   host: localhost
   port: 5432
   username: postgres

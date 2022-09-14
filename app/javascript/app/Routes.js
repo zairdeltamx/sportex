@@ -1,24 +1,26 @@
 import React from "react";
-import { Routes, Route, Navigate, BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import NavbarComponent from "./components/navbar.jsx";
+import { useAddress } from "./hooks/useAddress.js";
+import CreateItem from "./pages/create-item/create-item.jsx";
 import Index from "./pages/index/index.jsx";
 import Myassets from "./pages/myassets/my-assets.jsx";
-import CreateItem from "./pages/create-item/create-item.jsx";
-import CreatorDash from "./pages/creator-dashboard/creator-dashboard.jsx";
 import { Profile } from "./pages/profile/Profile.jsx";
-import NavbarComponent from "./components/navbar.jsx";
 
 function App() {
+  const { isAutorized } = useAddress();
   return (
     <BrowserRouter>
-      <NavbarComponent/>
+      <NavbarComponent />
       <Routes>
-        <Route path="/" element={<Index></Index>} />
+        <Route path="home" element={<Index></Index>} />
         <Route index element={<Index></Index>} />
-        <Route path="createitem" element={<CreateItem></CreateItem>} />
+        {isAutorized === true ? (
+          <Route path="createitem" element={<CreateItem></CreateItem>} />
+        ) : null}
         <Route path="myassets" element={<Myassets></Myassets>} />
         <Route path="profile" element={<Profile></Profile>} />
-        <Route path="creatordashboard" element={<CreatorDash></CreatorDash>} />
-        <Route path="*" element={<Navigate replace to="/" />} />
+        <Route path="*" element={<Navigate replace to="/home" />} />
       </Routes>
     </BrowserRouter>
   );

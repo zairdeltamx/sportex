@@ -1,0 +1,51 @@
+require: rubocop-rails
+AllCops:
+  Exclude:
+    - 'lib/tasks/ci.rake'
+    - 'lib/tasks/auto_annotate_models.rake'
+    - 'spec/rails_helper.rb'
+    - 'spec/spec_helper.rb'
+    - 'db/seeds.rb'
+    - 'db/schema.rb'
+    - 'db/migrate/**/*'
+    - 'config/**/*'
+    - 'bin/**/*'
+    - 'Gemfile'
+    - 'Guardfile'
+    - 'vendor/**/*'
+    - 'tmp/**/*'
+    - 'spec/support/**/*'
+    - 'spec/fixtures/**/*'
+    - 'node_modules/**/*'
+Style/EmptyMethod:
+  Enabled: false
+Style/PercentLiteralDelimiters:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Metrics/LineLength:
+  Max: 100
+Style/CollectionMethods:
+  Enabled: false
+Style/Lambda:
+  Enabled: false
+Metrics/AbcSize:
+  Enabled: false
+Metrics/CyclomaticComplexity:
+  Enabled: false
+Metrics/MethodLength:
+  Enabled: true
+  Max: 40
+Metrics/ClassLength:
+  Enabled: true
+  Max: 250
+Style/WordArray:
+  Enabled: false
+Metrics/PerceivedComplexity:
+  Enabled: false
+Rails/LexicallyScopedActionFilter:
+  Exclude:
+    - 'app/controllers/users/**/*'
+Rails/SkipsModelValidations:
+  Exclude:
+    - 'spec/models/**/*'

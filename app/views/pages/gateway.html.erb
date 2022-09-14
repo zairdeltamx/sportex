@@ -1,0 +1,21 @@
+<div class="container text-white">
+  <div class="row vh-100 justify-content-center align-items-center">
+    <div class="col-auto bg-dark p-5">
+      <h1>Welcome to sportex!!</h1>
+
+      <p>
+        <% if !logged_in? %>
+          Hello, do you wish to
+          <%= link_to "sign up", new_user_registration_path %>
+          or
+          <%= link_to "log in", new_user_session_path %>?
+        <% else %>
+          Hello <%= current_user.username %>
+        <code><%= current_user.eth_address %></code>;
+        welcome! Do you wish to
+        <%= link_to "log out", destroy_user_session_path, method: :destroy %>?
+      <% end %>
+      </p>
+    </div>
+  </div>
+</div>

@@ -27,7 +27,9 @@ import {
   Flex,
   Title,
 } from "../../components/CustomStyledComponents";
+
 import styled from './create-item.module.css';
+
 export default function CreateItem() {
   const [fileUrl, setFileUrl] = useState(null);
   const [formInput, updateFormInput] = useState({

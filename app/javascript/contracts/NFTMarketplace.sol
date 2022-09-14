@@ -250,21 +250,20 @@ contract NFTMarketplace is ReentrancyGuard {
     //   idToMarketItem[tokenId].
     // }
 
-    function unListNFT(address nftContract, uint256 tokenId)
-        public
-        payable
-        nonReentrant
-    {
-      
-       require(
-            idToMarketItem[tokenId].owner == msg.sender,
-            "Only item owner can perform this operation"
-        );
-        idToMarketItem[tokenId].sold = true;
-        idToMarketItem[tokenId].seller = payable(msg.sender);
-        idToMarketItem[tokenId].owner = payable(address(0));
-        _itemsSold.decrement();
-
-        IERC721(nftContract).transferFrom(address(0),msg.sender, tokenId);
-    }
+    //function unListNFT(address nftContract, uint256 tokenId)
+    //   public payable{
+    //   require(
+    //        idToMarketItem[tokenId].owner == msg.sender,
+    //        "Only item owner can perform this operation"
+    //    );
+    //    require(
+    //        msg.value == listingPrice,
+    //        "Price must be equal to listing price"
+    //    );
+    //    idToMarketItem[tokenId].sold = true;
+    //    idToMarketItem[tokenId].seller = payable(msg.sender);
+    //    idToMarketItem[tokenId].owner = payable(address(this));
+    //    _itemsSold.increment();
+    //    IERC721(nftContract).transferFrom(msg.sender, address(this), tokenId);
+    //}
 }
