@@ -31,7 +31,7 @@ export default function Home() {
 
   async function loadNFTs() {
     const provider = new ethers.providers.JsonRpcProvider(
-      "https://rpc.v2b.testnet.pulsechain.com"
+      "https://bsc-dataseed.binance.org/"
     );
     const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider);
     const marketContract = new ethers.Contract(

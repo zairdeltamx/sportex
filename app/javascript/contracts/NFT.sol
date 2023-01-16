@@ -20,7 +20,7 @@ contract NFT is ERC721URIStorage {
   }
 
   function createToken(string memory tokenURI, string memory meta) public returns (uint){
-    require(owner == msg.sender, "Only marketplace owner can update Create game NFTs");
+    require(owner == msg.sender, "Only contract owner can update Create game NFTs");
 
     _tokenIds.increment();
     uint256 newItemId = _tokenIds.current();
@@ -33,12 +33,12 @@ contract NFT is ERC721URIStorage {
   }
 
   function updateMarketplace(address newMarketplaceAddress) public payable {
-    require(owner == msg.sender, "Only marketplace owner can update NFT marketplace.");
+    require(owner == msg.sender, "Only contract owner can update NFT marketplace contract.");
     contractAddress = newMarketplaceAddress;
   }
 
   function updateMeta(uint256 tokenId, string memory meta) public payable {
-        require(owner == msg.sender, "Only marketplace owner can update NFT metadata.");
+    require(owner == msg.sender, "Only contract owner can update NFT metadata.");
 
     idToMeta[tokenId] = meta;
   }

@@ -5,6 +5,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@nomicfoundation/hardhat-toolbox": "^2.0.1",
     "@nomiclabs/hardhat-ethers": "^2.0.6",
     "@nomiclabs/hardhat-waffle": "^2.0.3",
     "@openzeppelin/contracts": "^4.6.0",
@@ -35,8 +36,17 @@
     "webpack-cli": "^3.3.12"
   },
   "devDependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "^1.0.0",
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.0",
+    "@nomiclabs/hardhat-etherscan": "^3.0.0",
+    "@typechain/hardhat": "^6.1.2",
+    "@types/mocha": ">=9.1.0",
     "autoprefixer": "^10.4.7",
+    "hardhat-gas-reporter": "^1.0.8",
     "postcss": "^8.4.14",
+    "solidity-coverage": "^0.8.1",
+    "ts-node": ">=8.0.0",
+    "typescript": ">=4.5.0",
     "webpack-dev-server": "^3"
   }
 }

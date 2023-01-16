@@ -56,7 +56,7 @@ contract NFTMarketplace is ReentrancyGuard {
         return listingPrice;
     }
 
-    function createMarketItem(
+    function listMarketItem(
         address nftContract,
         uint256 tokenId,
         uint256 price
@@ -100,7 +100,7 @@ contract NFTMarketplace is ReentrancyGuard {
     /* Creates the sale of a marketplace item */
     /* This is the PURCHASE action on the marketplace
   /* Transfers ownership of the item, as well as funds between parties */
-    function createMarketSale(address nftContract, uint256 tokenId)
+    function purchaseItem(address nftContract, uint256 tokenId)
         public
         payable
         nonReentrant
@@ -246,24 +246,35 @@ contract NFTMarketplace is ReentrancyGuard {
         IERC721(nftContract).transferFrom(msg.sender, address(this), tokenId);
     }
 
-    // function modifyNFT(address nftContract, uint256 tokenId, uint256 price) public payable {
-    //   idToMarketItem[tokenId].
-    // }
+    function delistNFT(address nftContract, uint256 tokenId)
+       public
+       payable
+       nonReentrant
+       {
+       require(
+            idToMarketItem[tokenId].owner == msg.sender,
+            "Only item owner can perform this operation"
+        );
+        idToMarketItem[tokenId].sold = true;
+        idToMarketItem[tokenId].seller = payable(msg.sender);
+        idToMarketItem[tokenId].owner = payable(msg.sender);
+        _itemsSold.increment();
+        IERC721(nftContract).transferFrom(address(this), msg.sender, tokenId);
+    }
 
-    //function unListNFT(address nftContract, uint256 tokenId)
-    //   public payable{
-    //   require(
-    //        idToMarketItem[tokenId].owner == msg.sender,
-    //        "Only item owner can perform this operation"
-    //    );
-    //    require(
-    //        msg.value == listingPrice,
-    //        "Price must be equal to listing price"
-    //    );
-    //    idToMarketItem[tokenId].sold = true;
-    //    idToMarketItem[tokenId].seller = payable(msg.sender);
-    //    idToMarketItem[tokenId].owner = payable(address(this));
-    //    _itemsSold.increment();
-    //    IERC721(nftContract).transferFrom(msg.sender, address(this), tokenId);
-    //}
+    function changePrice(uint256 tokenId, uint256 price)
+        public
+        payable
+        nonReentrant
+    {
+        require(
+            idToMarketItem[tokenId].owner == msg.sender,
+            "Only item owner can perform this operation"
+        );
+        require(
+            msg.value == listingPrice,
+            "Price must be equal to listing price"
+        );
+        idToMarketItem[tokenId].price = price;
+    }
 }
