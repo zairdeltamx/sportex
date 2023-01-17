@@ -88,7 +88,7 @@ export default function Home() {
     const price = ethers.utils.parseUnits(nft.price.toString(), "ether");
 
     //make the sale
-    const transaction = await contract.createMarketSale(
+    const transaction = await contract.purchaseItem(
       nftaddress,
       nft.tokenId,
       {
@@ -99,7 +99,7 @@ export default function Home() {
 
     loadNFTs();
   }
-  async function unList(nft) {
+  async function deListNFT(nft) {
     const web3Modal = new Web3Modal();
     const connection = await web3Modal.connect();
     const provider = new ethers.providers.Web3Provider(connection);
@@ -112,7 +112,7 @@ export default function Home() {
     listingPrice = listingPrice.toString();
     console.log(nftaddress, "NFTADDRESS");
     console.log(nft, "TOKENID");
-    const transaction = await contract.unListNFT(nftaddress, nft.tokenId, {
+    const transaction = await contract.delistNFT(nftaddress, nft.tokenId, {
       value: listingPrice,
     });
     console.log("aqui");

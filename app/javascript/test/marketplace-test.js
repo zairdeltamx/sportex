@@ -26,12 +26,17 @@ describe("NFTMarket", function () {
     await market.listMarketItem(nftContractAddres, 1, auctionPrice, { value: listingPrice })
     await market.listMarketItem(nftContractAddres, 2, auctionPrice, { value: listingPrice})
 
+    const items2 = await market.fetchMarketItems()
+
+    console.log(items2)
+    expect(items2.length).to.equal(2)
+
     const [_, buyerAddress] = await ethers.getSigners()
 
     await market.connect(buyerAddress).purchaseItem(nftContractAddres, 1, { value: auctionPrice })
 
     const items = await market.fetchMarketItems()
 
-    console.log('items ', items)
+    expect(items.length).to.equal(1)
   });
 })
