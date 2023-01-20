@@ -1,5 +1,2 @@
-# frozen_string_literal: true
-
-class ApiController < ActionController::API
-  # inherits ::API instead of ::Base
+class ApiController < ApplicationController
 end

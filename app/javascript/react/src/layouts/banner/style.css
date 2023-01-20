@@ -1,0 +1,55 @@
+.containerBanner {
+  height: 600px;
+  background: -webkit-linear-gradient(to right,
+      hsla(240, 28%, 19%, 0.588),
+      hsla(245, 39%, 28%, 0.595),
+      hsla(246, 57%, 10%, 0.608)),
+    url(../../img/soccer.jpg);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right,
+      hsla(240, 28%, 19%, 0.588),
+      hsla(245, 39%, 28%, 0.595),
+      hsla(246, 57%, 10%, 0.608)),
+    url(../../img/soccer.jpg);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.waveBanner {
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.itemsBanner {
+  width: 100%;
+  height: 430px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.imgNFT {
+  animation-name: floating;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  margin-top: 5px;
+}
+
+@keyframes floating {
+  0% {
+    transform: translate(0, 0px);
+  }
+
+  50% {
+    transform: translate(0, 15px);
+  }
+
+  100% {
+    transform: translate(0, -0px);
+  }
+}

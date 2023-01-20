@@ -1,0 +1,41 @@
+.formProfile {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 20px;
+}
+
+.containerProfile {
+	width: 90%;
+	border-radius: 3px;
+	padding: 15px;
+	background: #e3f0ff;
+	height: 100%;
+	margin-top: 40px;
+	margin-bottom: 40px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@media (max-width: 800px) {
+	.formProfile {
+		grid-template-columns: 1fr;
+	}
+}
+
+.contentImgProfile {
+	width: 200px;
+	height: 200px;
+	background-size: cover;
+	overflow: hidden;
+	border-radius: 50%;
+	border: 1px solid black;
+}
+
+.avatarContainer {
+	gap: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin-bottom: 20px;
+}

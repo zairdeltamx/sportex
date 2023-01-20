@@ -1,5 +1,6 @@
 //= link_tree ../images
-//= link_tree ../../javascript .js
-//= link_tree ../../../vendor/javascript .js
-//= link grape_swagger_rails/application.css
-//= link grape_swagger_rails/application.js
+//= link sesions.css
+//= link registration.css
+//= link application.css
+//= link application.js
+

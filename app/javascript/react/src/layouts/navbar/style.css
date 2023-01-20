@@ -1,0 +1,10 @@
+.logo {
+  font-size: 40px;
+}
+
+#links :hover {
+  color: #d8a31a;
+}
+.links :hover {
+  color: #d8a31a;
+}

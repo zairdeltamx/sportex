@@ -1,3 +1,5 @@
+<%= stylesheet_link_tag "registration.css", media: "all", 'data-turbolinks-track': "reload" %>
+
 <div class="container text-white">
   <div class="row vh-100 justify-content-center align-items-center">
     <div class="col-auto bg-dark p-5">
@@ -10,15 +12,18 @@
               <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
               <%= form.text_field :username %> <br />
             </div>
-            <%= form.text_field :eth_address, readonly: true, class: "eth_address" %> <br />
+           <%= form.text_field :eth_address, readonly: true, class: "eth_address", hidden: true %>
           <% end %>
-          <%= image_tag("MetaMask.png",:width=>"150px", :alt => "rss feed") %>
+          <%= image_tag("MetaMask.png", :width => "150px", :alt => "rss feed") %>
           <br/>
           <button class="eth_connect btn btn-outline-success">Sign-up with Metamask</button>
+           <div class="linkMetamask">
+            <a target="_blank" href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en">Click to install metamask</a>
+          </div>
           <br /><br />... or
-          <%= link_to "log in", new_user_session_path %>
+          <%= link_to "log in", new_user_session_path, data: { turbolinks: "reload" } %>
           instead? or
-          <%= link_to "go back", root_path %>?
+          <%= link_to "go back", root_path, data: { turbolinks: "reload" } %>?
         <% else %>
           Hello
           <code><%= current_user.eth_address %></code>!
@@ -29,7 +34,9 @@
         <% end %>
       </p>
 
-      <%= javascript_pack_tag "users_new" %>
+<%= content_tag(:div, "", data: {
+                            controller: "users",
+                          }) %>
     </div>
   </div>
 </div>

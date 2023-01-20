@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module Sportex
   module V1
     class BaseApi < Grape::API

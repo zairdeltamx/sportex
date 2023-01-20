@@ -1,29 +1,24 @@
-# Basic Sample Hardhat Project
+# README
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-Try running some of the following tasks:
+Things you may want to cover:
 
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-node scripts/sample-script.js
-npx hardhat help
-```
-# Steps to prepare app
+* Ruby version
 
-```shell
-gem install bundler
-bundle install
-rails db:setup
-rails db:migrate
-```
+* System dependencies
 
-#Install all dependencies with the yarn package manager
+* Configuration
 
-```shell
-yarn install
-```
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
