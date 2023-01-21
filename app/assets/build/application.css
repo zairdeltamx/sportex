@@ -35,8 +35,8 @@
 /* app/javascript/react/src/layouts/banner/style.css */
 .containerBanner {
   height: 600px;
-  background: -webkit-linear-gradient(to right, hsla(240, 28%, 19%, 0.588), hsla(245, 39%, 28%, 0.595), hsla(246, 57%, 10%, 0.608)), url(/assets/soccer-IRFPYEEH.jpg);
-  background: linear-gradient(to right, hsla(240, 28%, 19%, 0.588), hsla(245, 39%, 28%, 0.595), hsla(246, 57%, 10%, 0.608)), url(/assets/soccer-IRFPYEEH.jpg);
+  background: -webkit-linear-gradient(to right, hsla(240, 28%, 19%, 0.588), hsla(245, 39%, 28%, 0.595), hsla(246, 57%, 10%, 0.608)), url(/assets/soccer-IRFPYEEH.digested.jpg);
+  background: linear-gradient(to right, hsla(240, 28%, 19%, 0.588), hsla(245, 39%, 28%, 0.595), hsla(246, 57%, 10%, 0.608)), url(/assets/soccer-IRFPYEEH.digested.jpg);
   background-size: cover;
   background-attachment: fixed;
   position: relative;
