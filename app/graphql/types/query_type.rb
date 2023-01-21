@@ -11,18 +11,30 @@ module Types
     end
 
     field :getAllNfts, Types::NftType.collection_type(metadata_type: MyMetadataType),
-      description: "Get all nfts" do
+          description: 'Get all nfts filtered by name, price, defense, attack and power' do
       argument :page, Integer, required: false
       argument :limit, Integer, required: false
+      argument :name, String, required: false
+      argument :price, Integer, required: false
+      argument :defense, Integer, required: false
+      argument :attack, Integer, required: false
+      argument :power, Integer, required: false
     end
-    ##
-    # `getAllNfts` returns a paginated list of all NFTs
-    def getAllNfts(limit: nil, page: nil)
-      Nft.paginate(page: page, per_page: limit)
+
+    def getAllNfts(limit: nil, page: nil, name: nil, price: nil, defense: nil, attack: nil, power: nil)
+      nfts = Nft.all
+
+      nfts = nfts.where('name like ?', "%#{name}%") if name.present?
+      nfts = nfts.where(price: price) if price.present?
+      nfts = nfts.where(defense: defense) if defense.present?
+      nfts = nfts.where(attack: attack) if attack.present?
+      nfts = nfts.where(power: power) if power.present?
+
+      nfts.paginate(page: page, per_page: limit)
     end
 
     field :getOneNft, Types::NftType, null: false,
-                                  description: "Get one Nft by id" do
+                                      description: 'Get one Nft by id' do
       argument :id, ID, required: true
     end
     ##

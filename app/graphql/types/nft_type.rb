@@ -9,6 +9,9 @@ module Types
     field :owner, String
     field :image, String
     field :name, String
+    field :attack, String
+    field :power, String
+    field :defense, String
     field :description, String
     field :meta, GraphQL::Types::JSON
     # field :meta_json, GraphQL::Types::JSON
