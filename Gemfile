@@ -79,7 +79,6 @@ group :test do
   gem 'webdrivers'
 end
 
-gem 'react-rails'
 gem 'config'
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
