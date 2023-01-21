@@ -4,6 +4,7 @@ pragma solidity ^0.8.4;
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+
 import "hardhat/console.sol";
 
 contract NFTMarketplace is ReentrancyGuard {
@@ -36,11 +37,6 @@ contract NFTMarketplace is ReentrancyGuard {
         uint256 price,
         bool sold
     );
-    event MarketItemCanceled(
-        address nftContract,
-        uint256 indexed tokenId,
-        address seller
-    );
 
     constructor() {
         owner = payable(msg.sender);
@@ -60,7 +56,7 @@ contract NFTMarketplace is ReentrancyGuard {
         return listingPrice;
     }
 
-    function createMarketItem(
+    function listMarketItem(
         address nftContract,
         uint256 tokenId,
         uint256 price
@@ -104,7 +100,7 @@ contract NFTMarketplace is ReentrancyGuard {
     /* Creates the sale of a marketplace item */
     /* This is the PURCHASE action on the marketplace
   /* Transfers ownership of the item, as well as funds between parties */
-    function createMarketSale(address nftContract, uint256 tokenId)
+    function purchaseItem(address nftContract, uint256 tokenId)
         public
         payable
         nonReentrant
@@ -250,30 +246,35 @@ contract NFTMarketplace is ReentrancyGuard {
         IERC721(nftContract).transferFrom(msg.sender, address(this), tokenId);
     }
 
-    // function modifyNFT(address nftContract, uint256 tokenId, uint256 price) public payable {
-    //   idToMarketItem[tokenId].
-    // }
-
-    function unListNFT(address nftContract, uint256 tokenId) public payable {}
-
-    function cancelMarketItem(address nftContract, uint256 tokenId) public {
-        require(
-            idToMarketItem[tokenId].seller == msg.sender,
-            "Only the seller can cancel the sale of the NFT"
+    function delistNFT(address nftContract, uint256 tokenId)
+       public
+       payable
+       nonReentrant
+       {
+       require(
+            idToMarketItem[tokenId].owner == msg.sender,
+            "Only item owner can perform this operation"
         );
-        require(
-            !idToMarketItem[tokenId].sold,
-            "The NFT has already been sold and cannot be canceled"
-        );
-
-        idToMarketItem[tokenId].sold = false;
-        idToMarketItem[tokenId].seller = payable(address(0));
+        idToMarketItem[tokenId].sold = true;
+        idToMarketItem[tokenId].seller = payable(msg.sender);
         idToMarketItem[tokenId].owner = payable(msg.sender);
-
+        _itemsSold.increment();
         IERC721(nftContract).transferFrom(address(this), msg.sender, tokenId);
+    }
 
-        _tokensCanceled.increment();
-
-        emit MarketItemCanceled(nftContract, tokenId, msg.sender);
+    function changePrice(uint256 tokenId, uint256 price)
+        public
+        payable
+        nonReentrant
+    {
+        require(
+            idToMarketItem[tokenId].owner == msg.sender,
+            "Only item owner can perform this operation"
+        );
+        require(
+            msg.value == listingPrice,
+            "Price must be equal to listing price"
+        );
+        idToMarketItem[tokenId].price = price;
     }
 }

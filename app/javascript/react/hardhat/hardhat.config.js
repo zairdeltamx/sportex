@@ -15,6 +15,11 @@ module.exports = {
 				'0x072d9a2e9174b80ac8902cf9b999756de57f42931f2923de3984ccb45473be77',
 			],
 		},
+		binance_smart_chain: {
+			url: "https://bsc-dataseed.binance.org/",
+			chainId: 56,
+			accounts: ['0x072d9a2e9174b80ac8902cf9b999756de57f42931f2923de3984ccb45473be77',]
+		},
 	},
 	solidity: '0.8.4',
 };

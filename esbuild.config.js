@@ -6,6 +6,7 @@ require("esbuild").build(
         bundle: true,
         plugins: [
         ],
+        publicPath: "/assets",
         loader: { ".js": 'jsx', '.png': 'file', '.jpg': 'file' },
         watch: false,
 

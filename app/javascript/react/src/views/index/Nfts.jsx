@@ -57,26 +57,26 @@ export const Nfts = ({ nfts }) => {
 		await transaction.wait();
 		deleteNft(nft.id);
 	}
-	async function unList(nft) {
+	async function deListNFT(nft) {
 		const web3Modal = new Web3Modal();
 		const connection = await web3Modal.connect();
 		const provider = new ethers.providers.Web3Provider(connection);
+
+		//sign the transaction
 		const signer = provider.getSigner();
+		const contract = new ethers.Contract(nftmarketaddress, Market.abi, signer);
+		let listingPrice = await contract.getListingPrice();
 
-		const marketContract = new ethers.Contract(
-			nftmarketaddress,
-			Market.abi,
-			signer
-		);
+		listingPrice = listingPrice.toString();
+		console.log(nftaddress, "NFTADDRESS");
+		console.log(nft, "TOKENID");
+		const transaction = await contract.delistNFT(nftaddress, nft.tokenId, {
+			value: listingPrice,
+		});
+		console.log("aqui");
+		await transaction.wait();
 
-		try {
-			const tx = await marketContract.cancelMarketItem(nftaddress, nft.tokenId);
-			await tx.wait();
-			console.log('NFT cancelado exitosamente');
-			// actualizar el estado de la aplicación para reflejar que el NFT ha sido cancelado
-		} catch (error) {
-			console.error(error);
-		}
+		loadNFTs();
 	}
 
 	return (
@@ -114,7 +114,7 @@ export const Nfts = ({ nfts }) => {
 									Buy NFT
 								</Button>
 								{isAutorized ? (
-									<Button className='' onClick={() => unList(nft)}>
+									<Button className='' onClick={() => deListNFT(nft)}>
 										Unlist
 									</Button>
 								) : null}

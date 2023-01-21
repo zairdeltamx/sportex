@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-// import NftImage from '../../img/NFT.png';
+import NftImage from '../../img/imagenft.png';
 
 import './style.css';
 import { Paragraph, Title } from '../../components/elements/Elements';
@@ -15,7 +15,7 @@ export const Banner = () => {
 				<img
 					id="image_png"
 					className='imgNFT'
-					src='https://imgur.com/M86Ekiy.png'
+					src={NftImage}
 					width={120}
 					height={120}
 					alt=''
