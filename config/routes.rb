@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   if Rails.env.development?
-    mount GraphiQL::Rails::Engine, at: '/api/v1/graphiql', graphql_path: '/api/v1/graphql'
+    mount GraphiQL::Rails::Engine, at: '/api/v1/graphiql', graphql_path: '/graphql'
   end
-  post '/api/v1/graphql', to: 'graphql#execute'
+  post '/graphql', to: 'graphql#execute'
   root 'dashboard#index'
 
   # authentication logic routes

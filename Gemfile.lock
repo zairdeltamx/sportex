@@ -88,7 +88,7 @@ GEM
     bcrypt (3.1.18)
     bindex (0.8.1)
     blueprinter (0.25.3)
-    bootsnap (1.15.0)
+    bootsnap (1.16.0)
       msgpack (~> 1.2)
     bootstrap (5.2.3)
       autoprefixer-rails (>= 9.1.0)
@@ -170,7 +170,6 @@ GEM
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
-    foreman (0.87.2)
     globalid (1.1.0)
       activesupport (>= 5.0)
     grape (1.7.0)
@@ -407,7 +406,6 @@ DEPENDENCIES
   debug
   devise (~> 4.2)
   eth (~> 0.5)
-  foreman (~> 0.87.2)
   grape
   grape-active_model_serializers
   grape-middleware-logger
