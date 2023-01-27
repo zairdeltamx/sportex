@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_04_163054) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_27_211903) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -49,13 +49,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_04_163054) do
     t.string "owner"
     t.string "image"
     t.string "name"
-    t.float "attack"
-    t.float "defense"
-    t.float "strength"
     t.string "description"
     t.json "meta"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "attack"
+    t.float "defense"
+    t.float "strength"
   end
 
   create_table "users", force: :cascade do |t|
