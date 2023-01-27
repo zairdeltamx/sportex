@@ -14,7 +14,7 @@ import { GET_NFT } from "../../querys/ALL_QUERYS";
 
 export const ControlNfts = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [limitPerPage, setLimitPerPage] = useState(1);
+  const [limitPerPage, setLimitPerPage] = useState(10);
   const [name, setName] = useState("");
   const [orderBy, setOrderBy] = useState("");
   const [order, setOrder] = useState("");

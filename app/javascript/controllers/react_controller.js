@@ -15,8 +15,7 @@ export default class extends Controller {
     const client = new ApolloClient({
       cache: new InMemoryCache(),
 
-      // uri: getApiUrl("graphql"),
-      uri: 'https://sportex.herokuapp.com/graphql',
+      uri: getApiUrl("graphql"),
       // uri: 'http://localhost:3000/graphql',
     });
     console.log("NUEVOSSSSSSSSSSS");
