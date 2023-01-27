@@ -165,6 +165,7 @@ GEM
       rbsecp256k1 (~> 5.1)
       scrypt (~> 3.0)
     execjs (2.8.1)
+    ffi (1.15.5)
     ffi (1.15.5-x64-mingw-ucrt)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
@@ -248,9 +249,12 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.14.0-x64-mingw-ucrt)
       racc (~> 1.4)
+    nokogiri (1.14.0-x86_64-linux)
+      racc (~> 1.4)
     oj (3.13.23)
     openssl (3.1.0)
     orm_adapter (0.5.0)
+    pg (1.4.5)
     pg (1.4.5-x64-mingw-ucrt)
     pkg-config (1.5.1)
     popper_js (2.11.6)
@@ -349,6 +353,7 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     sqlite3 (1.6.0-x64-mingw-ucrt)
+    sqlite3 (1.6.0-x86_64-linux)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
     thor (1.2.1)
@@ -387,6 +392,7 @@ GEM
 
 PLATFORMS
   x64-mingw-ucrt
+  x86_64-linux
 
 DEPENDENCIES
   active_interaction
