@@ -5,7 +5,7 @@ class Nft < ApplicationRecord
   validates :owner, presence: true
   validates :image, presence: true
   validates :name, presence: true
-  validates :power, presence: true
+  validates :strength, presence: true
   validates :defense, presence: true
   validates :attack, presence: true
   validates :description, presence: true

@@ -8,7 +8,7 @@ require("esbuild").build(
         ],
         publicPath: "assets",
         assetNames: "[name]-[hash].digested.[ext]",
-        loader: { ".js": 'jsx', '.png': 'file', '.jpg': 'file' },
+        loader: { ".js": 'jsx', '.png': 'dataurl', '.jpg': 'dataurl' },
         watch: false,
 
     })

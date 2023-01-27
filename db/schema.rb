@@ -43,12 +43,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_04_163054) do
   end
 
   create_table "nfts", force: :cascade do |t|
-    t.string "price"
+    t.float "price"
     t.integer "tokenId"
     t.string "seller"
     t.string "owner"
     t.string "image"
     t.string "name"
+    t.float "attack"
+    t.float "defense"
+    t.float "strength"
     t.string "description"
     t.json "meta"
     t.datetime "created_at", null: false

@@ -3,15 +3,15 @@
 module Types
   class NftType < Types::BaseObject
     field :id, ID, null: false
-    field :price, String
+    field :price, Float
     field :tokenId, Integer
     field :seller, String
     field :owner, String
     field :image, String
     field :name, String
-    field :attack, String
-    field :power, String
-    field :defense, String
+    field :attack, Float
+    field :strength, Float
+    field :defense, Float
     field :description, String
     field :meta, GraphQL::Types::JSON
     # field :meta_json, GraphQL::Types::JSON

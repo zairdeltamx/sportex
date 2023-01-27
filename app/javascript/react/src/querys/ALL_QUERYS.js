@@ -1,21 +1,35 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
-export const GET_NFTS = gql`
-	query getNft($pageSearch: Int!) {
-		getAllNfts(page: $pageSearch, limit: 10) {
-			collection {
-				id
-				name
-				price
-				meta
-				tokenId
-				description
-				image
-			}
-			metadata {
-				totalPages
-				limitValue
-			}
-		}
-	}
+export const GET_NFT = gql`
+  query getAllNfts(
+    $page: Int
+    $limit: Int
+    $name: String
+    $orderBy: String
+    $order: String
+  ) {
+    getAllNfts(
+      page: $page
+      limit: $limit
+      name: $name
+      orderBy: $orderBy
+      order: $order
+    ) {
+      collection {
+        id
+        name
+        price
+        defense
+        attack
+        image
+        description
+        tokenId
+        strength
+      }
+      metadata {
+        totalPages
+        totalCount
+      }
+    }
+  }
 `;

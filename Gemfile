@@ -120,3 +120,5 @@ gem 'graphiql-rails', group: :development
 
 gem 'graphql-pagination', '~> 2.0'
 gem 'devise', '~> 4.2'
+
+gem "foreman", "~> 0.87.2"

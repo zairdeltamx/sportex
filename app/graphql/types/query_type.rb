@@ -11,24 +11,21 @@ module Types
     end
 
     field :getAllNfts, Types::NftType.collection_type(metadata_type: MyMetadataType),
-          description: 'Get all nfts filtered by name, price, defense, attack and power' do
+      description: 'Obtener todos los NFT filtrados por nombre, precio, defensa, ataque y poder' do
       argument :page, Integer, required: false
       argument :limit, Integer, required: false
       argument :name, String, required: false
-      argument :price, Integer, required: false
-      argument :defense, Integer, required: false
-      argument :attack, Integer, required: false
-      argument :power, Integer, required: false
+      argument :orderBy, String, required: false
+      argument :order, String, required: false
     end
 
-    def getAllNfts(limit: nil, page: nil, name: nil, price: nil, defense: nil, attack: nil, power: nil)
+    def getAllNfts(limit: nil, page: nil, name: nil, orderBy: nil, order: nil)
       nfts = Nft.all
-
-      nfts = nfts.where('name like ?', "%#{name}%") if name.present?
-      nfts = nfts.where(price: price) if price.present?
-      nfts = nfts.where(defense: defense) if defense.present?
-      nfts = nfts.where(attack: attack) if attack.present?
-      nfts = nfts.where(power: power) if power.present?
+      nfts = nfts.where('LOWER(name) like ?', "%#{name.downcase}%") if name.present?
+      if orderBy.present? && ['ASC', 'DESC'].include?(order)
+        puts 'NO ENTRA'
+        nfts = nfts.order("#{orderBy} #{order}")
+      end
 
       nfts.paginate(page: page, per_page: limit)
     end

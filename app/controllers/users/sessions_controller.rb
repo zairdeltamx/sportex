@@ -75,7 +75,7 @@ module Users
         else
 
           # user not found in database
-          redirect_to signup_path, alert: 'No such user exists, try to sign up!'
+          redirect_to new_user_registration_path, alert: 'No such user exists, try to sign up!'
         end
       end
     end
