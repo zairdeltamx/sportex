@@ -9,7 +9,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@hotwired/stimulus": "^3.2.1",
-    "@hotwired/turbo-rails": "^7.2.4",
+    "@hotwired/turbo-rails": "^7.3.0",
     "@mui/material": "^5.10.5",
     "@nomiclabs/hardhat-ethers": "^2.0.6",
     "@nomiclabs/hardhat-waffle": "^2.0.3",
@@ -50,6 +50,6 @@
   },
   "scripts": {
     "build": "node ./esbuild.config.js",
-    "dev":"foreman start -f Procfile.dev"
+    "dev": "foreman start -f Procfile.dev"
   }
 }
