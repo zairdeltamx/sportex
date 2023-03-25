@@ -65,7 +65,7 @@ export const NftItem = ({ nft }) => {
         </div>
         <hr />
         <div className="containerPriceCard">
-          <p>Current Bid</p>
+          <p>Current Price</p>
           <p>{nft.price}</p>
         </div>
         <ButtonBuyNft nft={nft}></ButtonBuyNft>
