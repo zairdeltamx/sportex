@@ -11,7 +11,7 @@ import "./style.css";
 const NavbarComponent = () => {
   function logout() {
     console.log("ENTRA");
-    fetch("http://localhost:3000/users/sign_out", {
+    fetch("/users/sign_out", {
       // fetch("https://sportex-staging.herokuapp.com/users/sign_out", {
       method: "GET",
     })
