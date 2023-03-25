@@ -7,13 +7,15 @@
 default: &default
   adapter: postgresql
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: localhost
+  port: 5432
+  username: root
+  password: root
   timeout: 5000
 
 development:
   <<: *default
-  database: sportex_development
-  host: localhost
-  port: 5432
+  database: sportex_development_p
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -21,8 +23,6 @@ development:
 test:
   <<: *default
   database: sportex_test
-  host: localhost
-  port: 5432
 
 production:
   <<: *default
@@ -31,4 +31,3 @@ production:
   # username: sportex<%= ENV["PGUSER"] %>
   # password: <%= ENV["PGPASSWORD"] %>
   # port: <%= ENV["PGPORT"] %>
-

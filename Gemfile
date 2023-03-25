@@ -15,6 +15,7 @@ gem 'sqlite3', '~> 1.4'
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 5.0'
 
+
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
 gem 'jsbundling-rails'
 
@@ -49,6 +50,8 @@ gem 'sassc-rails'
 # gem "image_processing", "~> 1.2"
 
 group :development, :test do
+  gem "rails_live_reload"
+
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[ mri mingw x64_mingw ]
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -120,3 +123,7 @@ gem 'graphiql-rails', group: :development
 
 gem 'graphql-pagination', '~> 2.0'
 gem 'devise', '~> 4.2'
+
+gem 'rails_12factor', group: :production
+
+gem "foreman", "~> 0.87.2"

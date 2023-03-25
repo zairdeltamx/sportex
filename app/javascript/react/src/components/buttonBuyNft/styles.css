@@ -1,0 +1,9 @@
+.buttonBuyNft {
+  background-color: #003399;
+  border-radius: 10px;
+  border: none;
+  font-family: "Roboto", sans-serif;
+  padding: 5px;
+  color: white;
+  width: 100%;
+}

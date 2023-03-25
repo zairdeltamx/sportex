@@ -1,40 +1,40 @@
 <%= stylesheet_link_tag "sesions.css", media: "all", 'data-turbolinks-track': "reload" %>
-<div class="container text-white">
-  <div class="row vh-100 justify-content-center align-items-center">
-    <div class="col-auto bg-dark p-5">
 
-      <h1>Sportex</h1>
-      <p>
+<h1 id="mi-h1">TEXTOO</h1>
+
+<div class="backgroundLogin">
+
+<div class="container">
+    <div class="containerSignIn">
+        <p class="title">SPORTEX</p>
         <% if !logged_in? %>
           <%= form_tag new_user_session_path, class: "new_session" do %>
-            <%= text_field_tag :eth_message, "", readonly: true, class: "eth_message", hidden: true %> <br />
-            <%= text_field_tag :eth_address, "", readonly: true, class: "eth_address", hidden: true %> <br />
-            <%= text_field_tag :eth_signature, "", readonly: true, class: "eth_signature", hidden: true %> <br />
+            <%= text_field_tag :eth_message, "", readonly: true, class: "eth_message", hidden: true %>
+
+<%= text_field_tag :eth_address, "", readonly: true, class: "eth_address", hidden: true %>
+
+<%= text_field_tag :eth_signature, "", readonly: true, class: "eth_signature", hidden: true %>
+
+
           <% end %>
-          <%= image_tag("MetaMask.png", :width => "150px", :alt => "rss feed") %>
           <br/>
-          <button class="eth_connect btn btn-outline-success">Log-in with Metamask</button>
-          
+          <button class="ButtonEthConnect ">
+            <%= image_tag("symbolMetamask.png", :width => "40px", :alt => "rss feed") %>
+            Login with Metamask</button>
+  
           <div class="linkMetamask">
             <a target="_blank" href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en">Click to install metamask</a>
           </div>
-          <br /><br />... or
-          <%= link_to "sign up", new_user_registration_path, data: { turbolinks: "reload" } %>
-          instead? or
-          <%= link_to "go back", root_path, data: { turbolinks: "reload" } %>?
-        <% else %>
-          Hello
-          <code><%= current_user.eth_address %></code>!
-          Do you wish to
-          <%= link_to "log out", destroy_user_session_path, method: :destroy %>
-          or
-          <%= link_to "go back", root_path %>?
+          <br /><br />
+          <div class="otherOptions">
+       <p>OR</p>
+<button  onclick="location.href='<%= new_user_registration_path %>'" data-turbolinks="reload">Sign up</button>
+          </div>
         <% end %>
-      </p>
+    </div>
+</div>
+  </div> 
+    
 <%= content_tag(:div, "", data: {
                             controller: "sessions",
                           }) %>
-
-    </div>
-  </div>
-</div>

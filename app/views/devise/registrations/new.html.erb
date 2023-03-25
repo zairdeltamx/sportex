@@ -1,42 +1,41 @@
 <%= stylesheet_link_tag "registration.css", media: "all", 'data-turbolinks-track': "reload" %>
+<div class="backgroundLogin">
+<div class="container">
+  <div class="containerForm">
+<h1 class="title">SPORTEX</h1>
 
-<div class="container text-white">
-  <div class="row vh-100 justify-content-center align-items-center">
-    <div class="col-auto bg-dark p-5">
-      <h1>Sign-Up</h1>
-
-      <p>
         <% if !logged_in? %>
+        <div class="formRegister">
+
           <%= form_for @user, url: user_registration_path do |form| %>
-            <div class="input-group mb-3">
-              <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
-              <%= form.text_field :username %> <br />
-            </div>
+            <p>Create your username</p>
+              <%= form.text_field :username, placeholder: "Username" %>
+            <p>Chose a user name of at least 5 characters</p>
            <%= form.text_field :eth_address, readonly: true, class: "eth_address", hidden: true %>
           <% end %>
-          <%= image_tag("MetaMask.png", :width => "150px", :alt => "rss feed") %>
-          <br/>
-          <button class="eth_connect btn btn-outline-success">Sign-up with Metamask</button>
+
+
+          <button class="ButtonEthConnect">
+                    <%= image_tag("symbolMetamask.png", :width => "40px",:alt => "rss feed") %>
+
+          Sign-up with Metamask</button>
+        </div>
+          <br /><br />
+          <div class="otherOptions">
            <div class="linkMetamask">
             <a target="_blank" href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en">Click to install metamask</a>
           </div>
-          <br /><br />... or
-          <%= link_to "log in", new_user_session_path, data: { turbolinks: "reload" } %>
-          instead? or
-          <%= link_to "go back", root_path, data: { turbolinks: "reload" } %>?
-        <% else %>
-          Hello
-          <code><%= current_user.eth_address %></code>!
-          Do you wish to
-          <%= link_to "log out", destroy_user_session_path, method: :destroy %>
-          or
-          <%= link_to "go back", root_path %>?
+
+          <p>Already using Sportex?</p>
+          <%= link_to "Sign in with Metamask", new_user_session_path, data: { turbolinks: "reload" } %>
+          </div>
         <% end %>
-      </p>
+  </div>
+</div>
+</div>
+
 
 <%= content_tag(:div, "", data: {
                             controller: "users",
                           }) %>
-    </div>
-  </div>
-</div>
+

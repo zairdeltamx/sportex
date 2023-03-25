@@ -1,0 +1,12 @@
+.containerIndex {
+  width: 80%;
+
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+.contentIndex {
+  width: 100%;
+  background-color: #f7f9ff;
+  height: 1930px;
+}

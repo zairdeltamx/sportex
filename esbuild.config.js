@@ -1,18 +1,25 @@
+const cssModulesPlugin = require("esbuild-css-modules-plugin");
+const svgrPlugin = require("esbuild-plugin-svgr");
+const rails = require("esbuild-rails");
 
-require("esbuild").build(
-    {
-        entryPoints: ["app/javascript/application.js"],
-        outfile: "app/assets/build/application.js",
-        bundle: true,
-        plugins: [
-        ],
-        publicPath: "assets",
-        assetNames: "[name]-[hash].digested.[ext]",
-        loader: { ".js": 'jsx', '.png': 'dataurl', '.jpg': 'dataurl' },
-        watch: false,
+require("esbuild")
+  .build({
+    entryPoints: ["app/javascript/application.js"],
+    outfile: "app/assets/build/application.js",
+    bundle: true,
+    plugins: [cssModulesPlugin(), svgrPlugin()],
+    publicPath: "assets",
+    assetNames: "[name]-[hash].digested.[ext]",
+    loader: {
+      ".js": "jsx",
+      ".ts": "tsx",
+      ".png": "file",
+      ".jpg": "file",
+      ".css": "css",
+      ".svg": "dataurl"
+    },
 
-    })
-    .then(() => console.log("⚡ Done"))
-    .catch(() => process.exit(1));
-
-
+    watch: true,
+  })
+  .then(() => console.log("⚡ Doneeeee"))
+  .catch(() => process.exit(1));

@@ -79,5 +79,13 @@ module Users
         end
       end
     end
+
+    def destroy
+      sign_out(current_user)
+      # forget_me!(current_user)
+      cookies.delete(:_sportex_session, httponly: true)
+
+      redirect_to root_path
+    end
   end
 end

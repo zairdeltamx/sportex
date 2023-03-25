@@ -11,19 +11,39 @@ module Types
     end
 
     field :getAllNfts, Types::NftType.collection_type(metadata_type: MyMetadataType),
-      description: 'Obtener todos los NFT filtrados por nombre, precio, defensa, ataque y poder' do
+          description: 'Obtener todos los NFT filtrados por nombre, precio, defensa, ataque, poder y equipo' do
       argument :page, Integer, required: false
       argument :limit, Integer, required: false
       argument :name, String, required: false
+      argument :teamName, String, required: false
+      argument :attack, Integer, required: false
+      argument :defense, Integer, required: false
+      argument :strength, Integer, required: false
       argument :orderBy, String, required: false
       argument :order, String, required: false
     end
 
-    def getAllNfts(limit: nil, page: nil, name: nil, orderBy: nil, order: nil)
+    def getAllNfts(limit: nil, page: nil, name: nil, teamName: nil, attack: nil, defense: nil, strength: nil, orderBy: nil, order: nil)
       nfts = Nft.all
+
+      # Filtrar por nombre
       nfts = nfts.where('LOWER(name) like ?', "%#{name.downcase}%") if name.present?
+
+      # Filtrar por equipo
+      nfts = nfts.where('LOWER("teamName") like ?', "%#{teamName.downcase}%") if teamName.present?
+
+      # Filtrar por ataque, defensa o poder
+      # if attack.present?
+      #   nfts = nfts.where(attack: attack)
+      # end
+      # elsif defense.present?
+      #   nfts = nfts.where(defense: defense)
+      # elsif strength.present?
+      #   nfts = nfts.where(strength: strength)
+      # end
+
+      # Ordenar los resultados
       if orderBy.present? && ['ASC', 'DESC'].include?(order)
-        puts 'NO ENTRA'
         nfts = nfts.order("#{orderBy} #{order}")
       end
 
@@ -34,12 +54,10 @@ module Types
                                       description: 'Get one Nft by id' do
       argument :id, ID, required: true
     end
-    ##
-    # `getOneNft` is a function that takes an id as an argument and returns a JSON object of the NFT
-    # with that id
+
     def getOneNft(id:)
-      nft = Nft.find(id)
-      NftBlueprint.render_as_json(nft)
+      nft = Nft.find_by(id: id)
+      nft
     end
   end
 end

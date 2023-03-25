@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   end
   post '/api/v1/graphql', to: 'graphql#execute'
   root 'dashboard#index'
+  # routes react
+  get '/myassets', to: 'dashboard#index'
+  get '/nftdetail/:id', to: 'dashboard#index'
+  get '/createitem', to: 'dashboard#index'
+  get '/profile', to: 'dashboard#index'
 
   # authentication logic routes
   devise_for :users, controllers: {
@@ -16,11 +21,12 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :users
-      get 'findUser/:address', to: 'users#find_user'
+      get 'findUser/:metamaskAddress', to: 'users#find_user'
       put 'updateUsername/:address', to: 'users#update_username'
       put 'updateAvatar/:id', to: 'users#update_image'
       put 'updateEmail/:address', to: 'users#updateEmai'
     end
   end
+
   mount Sportex::V1::Api, at: '/', as: :api_root
 end

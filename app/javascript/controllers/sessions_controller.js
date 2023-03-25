@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus";
 // Connects to data-controller="sessions"
 export default class extends Controller {
   connect() {
-    const buttonEthConnect = document.querySelector("button.eth_connect");
+    const buttonEthConnect = document.querySelector(".ButtonEthConnect");
     const formInputEthMessage = document.querySelector("input.eth_message");
     const formInputEthAddress = document.querySelector("input.eth_address");
     const formInputEthSignature = document.querySelector("input.eth_signature");
@@ -18,7 +18,6 @@ export default class extends Controller {
     const nativeCurrencyBinance = { name: "BNB", decimals: 18, symbol: "BNB" };
     const blockExplorerUrlsBinance = ["https://bscscan.com/"];
     const rpcUrlsBinance = ["https://bsc-dataseed.binance.org/"];
-
     async function checkCurrentChainId() {
       try {
         const currentChain = await ethereum.request({ method: "eth_chainId" });
@@ -71,7 +70,10 @@ export default class extends Controller {
           const accounts = await requestAccounts();
           const etherbase = accounts[0];
           const nonce = await getUuidByAccount(etherbase);
-          console.log(nonce, "NONCE");
+          if (nonce === null) {
+            alert("NO ESTAS REGISTRADO");
+            return;
+          }
           if (nonce) {
             const customTitle = "Ethereum on Rails";
             const requestTime = new Date().getTime();

@@ -5,8 +5,8 @@ class UserSerializer < ActiveModel::Serializer
 
   def avatar_url
     if object.avatar.attached?
-      rails_blob_url(object.avatar, host: 'https://sportex-staging.herokuapp.com')
-      # rails_blob_url(object.avatar, host: 'http://localhost:3000')
+      # rails_blob_url(object.avatar, host: 'https://sportex.herokuapp.com')
+      rails_blob_url(object.avatar, host: 'http://localhost:3000')
     else
       'Not Found'
     end

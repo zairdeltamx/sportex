@@ -1,0 +1,61 @@
+.containerSorter {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 10px;
+}
+
+.search-input {
+  width: 40%;
+  position: relative;
+}
+.buttons {
+  display: flex;
+  justify-content: end;
+  gap: 20px;
+  width: 60%;
+}
+.buttons select {
+  border: none;
+  text-align: center;
+  color: #6032c7;
+  padding: 8px 40px;
+  font-family: "GeneralSans-Semibold", sans-serif;
+}
+.buttons button {
+  padding: 8px 40px;
+  border: none;
+  gap: 10px;
+  color: white;
+  background: #003399;
+  border-radius: 10px;
+
+  font-family: "GeneralSans-Semibold", sans-serif;
+}
+.search-input input {
+  width: 100%;
+  padding: 10px;
+  padding-left: 2rem;
+  background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.2),
+      rgba(255, 255, 255, 0.2)
+    ),
+    #e7eeff;
+  /* Core/Border/Opaque Light (opacity-10)
+
+Use as low-emphasis border of elements in UI on dark and light surfaces - opacity-10
+*/
+  border: 2px solid rgba(28, 28, 33, 0.1);
+  border-radius: 4px;
+}
+
+.search-input input::placeholder {
+  color: #6032c7;
+}
+
+.search-input svg {
+  position: absolute;
+  left: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+}

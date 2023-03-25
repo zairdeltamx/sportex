@@ -33,13 +33,13 @@ module Api
       end
 
       def find_user
-        if params[:address].blank?
+        if params[:metamaskAddress].blank?
           render json: {
                    data: 'Address is required',
                  }, status: 400
           return
         end
-        user = User.find_by(eth_address: params[:address])
+        user = User.find_by(eth_address: params[:metamaskAddress])
         if user
           render json: user, status: 200
         else

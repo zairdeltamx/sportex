@@ -4,7 +4,7 @@ import { Controller } from "@hotwired/stimulus";
 export default class extends Controller {
   connect() {
     // The button to connect to an Ethereum wallet
-    const buttonEthConnect = document.querySelector("button.eth_connect");
+    const buttonEthConnect = document.querySelector(".ButtonEthConnect");
 
     // The read-only eth address field, we process that automatically
     const formInputEthAddress = document.querySelector(".eth_address");

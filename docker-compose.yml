@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+
+  # web:
+  #   build: .
+  #   volumes:
+  #     - .:/usr/src/sportex
+  #     - node_modules:/usr/src/sportex/node_modules
+  #   ports:
+  #     - 3000:3000
+
+  postgres:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      DATABASE_HOST: 127.0.0.1
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: root
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "adming@admin.com"
+      PGADMIN_DEFAULT_PASSWORD: "admin"
+    ports:
+      - "80:80"
+    depends_on:
+      - postgres
+
+volumes:
+  node_modules:
+    driver: local

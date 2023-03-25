@@ -24,11 +24,13 @@
     "chai": "^4.3.6",
     "channels": "^0.0.4",
     "esbuild": "^0.16.17",
+    "esbuild-rails": "^1.0.3",
     "ethereum-waffle": "^3.4.4",
     "ethers": "^5.7.0",
     "graphql": "^16.6.0",
     "hardhat": "^2.10.2",
     "ipfs-http-client": "^56.0.3",
+    "lozad": "^1.16.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
@@ -38,18 +40,24 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.3.0",
     "react_ujs": "^2.6.2",
+    "remount": "^1.0.0",
+    "stimulus-use": "^0.52.0",
     "styled-components": "^5.3.5",
     "sweetalert2": "^11.6.16",
     "turbolinks": "^5.2.0",
     "web3": "^1.8.1",
-    "web3modal": "^1.9.7"
+    "web3modal": "^1.9.7",
+    "yarn": "^1.22.19"
   },
   "devDependencies": {
+  
     "autoprefixer": "^10.4.7",
+    "esbuild-css-modules-plugin": "^2.7.1",
+    "esbuild-plugin-svgr": "^1.0.1",
     "postcss": "^8.4.14"
+  
   },
   "scripts": {
-    "build": "node ./esbuild.config.js",
-    "dev": "foreman start -f Procfile.dev"
+    "build": "node ./esbuild.config.js"
   }
 }

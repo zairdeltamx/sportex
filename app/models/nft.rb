@@ -1,6 +1,7 @@
 class Nft < ApplicationRecord
   validates :price, presence: false
   validates :tokenId, presence: false
+  attribute :teamName, :string, default: 'default value'
   validates :seller, presence: false
   validates :owner, presence: true
   validates :image, presence: true

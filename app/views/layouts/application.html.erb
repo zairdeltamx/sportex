@@ -13,11 +13,13 @@
         crossorigin="anonymous"
         />
       <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= stylesheet_link_tag "application", rel_options: { preload: true, as: "style" }, "data-turbo-track": "reload" %>
+<%= stylesheet_link_tag "main", rel_options: { preload: true, as: "style" }, "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+
   </head>
 
-  <body style="background:#0f1b2f">
+  <body>
     <%= yield %>
   </body>
 </html>

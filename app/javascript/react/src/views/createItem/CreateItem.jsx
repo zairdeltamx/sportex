@@ -28,6 +28,7 @@ export default function CreateItem() {
     name: "",
     description: "",
     meta: "",
+    teamName: "",
   });
   const navigate = useNavigate();
   async function onChange(e) {
@@ -53,14 +54,16 @@ export default function CreateItem() {
     if (!name || !description || !price || !fileUrl || !meta) {
       return;
     }
-	let parseJson = JSON.parse(meta);
-	console.log(parseJson);
-	parseJson.cardBasicInfo.price = price;
-	parseJson.name = name;
-	parseJson.soccerPlayerInfo.playerName = name;
-	parseJson.soccerPlayerInfo.playerStats.find(stat => stat.hasOwnProperty('image')).image = fileUrl;
-	console.log(parseJson);
-	
+    let parseJson = JSON.parse(meta);
+    console.log(parseJson);
+    parseJson.cardBasicInfo.price = price;
+    parseJson.name = name;
+    parseJson.soccerPlayerInfo.playerName = name;
+    parseJson.soccerPlayerInfo.playerStats.find((stat) =>
+      stat.hasOwnProperty("image")
+    ).image = fileUrl;
+    console.log(parseJson);
+
     const data = JSON.stringify({
       name,
       description,

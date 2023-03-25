@@ -1,41 +1,111 @@
-.formProfile {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 20px;
-}
-
 .containerProfile {
-	width: 90%;
-	border-radius: 3px;
-	padding: 15px;
-	background: #e3f0ff;
-	height: 100%;
-	margin-top: 40px;
-	margin-bottom: 40px;
-	margin-left: auto;
-	margin-right: auto;
+  width: 100%;
+  height: 100vh;
+  background-color: #f7f9ff;
+  position: relative;
+  display: flex;
+  justify-content: start;
+  /* padding-left: 40px; */
+}
+.profile {
+  padding: 10px;
+  width: 40%;
+  left: 100px;
+  top: -150px;
+  height: 600px;
+  /* background-color: chartreuse; */
+  position: absolute;
 }
 
-@media (max-width: 800px) {
-	.formProfile {
-		grid-template-columns: 1fr;
-	}
+.profile h1 {
+  color: #4c4b58;
+  font-family: "GeneralSans-Semibold", sans-serif;
+  font-size: 40px;
+}
+.profileInformation {
+  margin-top: 30px;
+  color: #303030;
+  display: flex;
+  justify-content: space-between;
+}
+.profileInformation svg path {
+  fill: red;
+  /* background-color: #0062cc; */
+}
+.profileInformation p {
+  font-size: 20px;
+  font-family: "GeneralSans-Semibold", sans-serif;
+}
+.optionEdit {
+  cursor: pointer;
+}
+.formProfile {
+  display: flex;
+  /* background-color: #0062cc; */
+  width: auto;
+  /* background-color: blueviolet; */
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-direction: column;
+}
+.avatarProfile {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: aqua;
+}
+.avatarProfile img {
+  width: 100%;
+  height: 100%;
+}
+#myFileInput {
+  display: none;
 }
 
-.contentImgProfile {
-	width: 200px;
-	height: 200px;
-	background-size: cover;
-	overflow: hidden;
-	border-radius: 50%;
-	border: 1px solid black;
+.labelAvatar {
+  font-family: "Roboto", sans-serif;
+  margin-top: 20px;
+  cursor: pointer;
+  text-decoration: underline;
+  color: #003399;
 }
 
-.avatarContainer {
-	gap: 20px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	margin-bottom: 20px;
+.labelAvatar:hover {
+  background-color: #0062cc;
+}
+.inputName {
+  /* Aplica una sombra tenue en la parte inferior de un elemento */
+  box-shadow: 0px 3px 4px -4px rgba(0, 0, 0, 0.25);
+
+  /* -webkit-box-shadow: 0px 5px 5px -1px rgba(158, 158, 158, 0.64);
+  -moz-box-shadow: 0px 5px 5px -1px rgba(158, 158, 158, 0.64); */
+}
+.inputName input {
+  background-color: #f7f9ff;
+  border: none;
+}
+.inputEmail input {
+  background-color: #f7f9ff;
+  /* margin-top: 20px; */
+  border: none;
+}
+.inputEmail {
+  margin-top: 15px;
+}
+.inputName input {
+  /* margin-top: 20px; */
+  border: none;
+}
+.inputEmail,
+.inputName {
+  background-color: #f7f9ff;
+  display: flex;
+  justify-content: space-between;
+}
+.inputsContainer {
+  width: 380px;
+  font-family: "GeneralSans-Semibold", sans-serif;
+  color: #303030;
 }
