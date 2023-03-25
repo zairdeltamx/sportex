@@ -18,7 +18,7 @@ module Sportex
           requires :price, type: String
           requires :tokenId, type: Integer
           requires :seller, type: String
-          requires :teamName, type: String
+          optional :teamName, type: String
           requires :owner, type: String
           requires :image, type: String
           requires :name, type: String
@@ -32,11 +32,11 @@ module Sportex
         post do
           nft = Nft.find_by(tokenId: params[:tokenId])
           if nft
-            if nft.teamName == params[:teamName] && nft.price == params[:price] && nft.attack == params[:attack] && nft.defense == params[:defense] && nft.strength == params[:strength] && nft.seller == params[:seller] && nft.owner == params[:owner] && nft.image == params[:image] && nft.name == params[:name] && nft.description == params[:description] && nft.meta == params[:meta]
+            if nft.price == params[:price] && nft.attack == params[:attack] && nft.defense == params[:defense] && nft.strength == params[:strength] && nft.seller == params[:seller] && nft.owner == params[:owner] && nft.image == params[:image] && nft.name == params[:name] && nft.description == params[:description] && nft.meta == params[:meta]
               # If there are no changes, do nothing
             else
               # If there are changes, update the NFT
-              if nft.update({ teamName: params[:teamName], price: params[:price], seller: params[:seller], owner: params[:owner], image: params[:image], attack: params[:attack], defense: params[:defense], strength: params[:strength], name: params[:name], description: params[:description], meta: params[:meta] })
+              if nft.update({ price: params[:price], seller: params[:seller], owner: params[:owner], image: params[:image], attack: params[:attack], defense: params[:defense], strength: params[:strength], name: params[:name], description: params[:description], meta: params[:meta] })
                 render json: { message: 'NFT updated' }, status: 201
               else
                 render json: { message: 'NFT not updated' }, status: 422
@@ -44,7 +44,7 @@ module Sportex
             end
           else
             # If the NFT does not exist, create it
-            nft = Nft.new({ teamName: params[:teamName], price: params[:price], tokenId: params[:tokenId], seller: params[:seller], owner: params[:owner], image: params[:image], attack: params[:attack], defense: params[:defense], strength: params[:strength], name: params[:name], description: params[:description], meta: params[:meta] })
+            nft = Nft.new({ price: params[:price], tokenId: params[:tokenId], seller: params[:seller], owner: params[:owner], image: params[:image], attack: params[:attack], defense: params[:defense], strength: params[:strength], name: params[:name], description: params[:description], meta: params[:meta] })
             if nft.save
               render json: { message: 'NFT created' }, status: 201
             else

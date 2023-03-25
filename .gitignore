@@ -45,3 +45,4 @@
 /node_modules
 /public/packs
 /public/assets
+app/javascript/react/hardhat/.secret

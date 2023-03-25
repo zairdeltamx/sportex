@@ -50,12 +50,12 @@
     "yarn": "^1.22.19"
   },
   "devDependencies": {
-  
+
     "autoprefixer": "^10.4.7",
     "esbuild-css-modules-plugin": "^2.7.1",
     "esbuild-plugin-svgr": "^1.0.1",
     "postcss": "^8.4.14"
-  
+
   },
   "scripts": {
     "build": "node ./esbuild.config.js"
