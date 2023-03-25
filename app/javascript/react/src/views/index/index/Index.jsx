@@ -22,7 +22,7 @@ export default function Index() {
     getNFTs({
       variables: {
         page: currentPage,
-        limit: 1,
+        limit: 25,
         name,
         orderBy,
         order,
