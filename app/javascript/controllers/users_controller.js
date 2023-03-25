@@ -15,16 +15,17 @@ export default class extends Controller {
 
     // Get the form for submission later
     const form = document.querySelector("form.new_user");
-    const chainNameBinance = "Binance Smart Chain";
-    const chainIdBinance = "0x38";
-    const nativeCurrencyBinance = { name: "BNB", decimals: 18, symbol: "BNB" };
-    const blockExplorerUrlsBinance = ["https://bscscan.com/"];
-    const rpcUrlsBinance = ["https://bsc-dataseed.binance.org/"];
+    const chainName = "Pulsechain Testnet";
+    const chainId = "0x38";
+    const nativeCurrency = { name: "tPulse", decimals: 18, symbol: "tPLS" };
+    const blockExplorerUrls = ["https://scan.v3.testnet.pulsechain.com"];
+    const rpcUrls = ["https://rpc.v3.testnet.pulsechain.com/"];
 
     async function checkCurrentChainId() {
       try {
         const currentChain = await ethereum.request({ method: "eth_chainId" });
-        if (currentChain !== chainIdBinance) {
+        console.log("checkCurrentChainId", currentChain);
+        if (currentChain !== chainId) {
           return true;
         }
         return false;
@@ -40,11 +41,11 @@ export default class extends Controller {
             method: "wallet_addEthereumChain",
             params: [
               {
-                chainName: chainNameBinance,
-                chainId: chainIdBinance,
-                nativeCurrency: nativeCurrencyBinance,
-                rpcUrls: rpcUrlsBinance,
-                blockExplorerUrls: blockExplorerUrlsBinance,
+                chainName,
+                chainId,
+                nativeCurrency,
+                rpcUrls,
+                blockExplorerUrls
               },
             ],
           });
