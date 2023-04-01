@@ -252,7 +252,7 @@ contract NFTMarketplace is ReentrancyGuard {
        nonReentrant
        {
        require(
-            idToMarketItem[tokenId].owner == msg.sender,
+            idToMarketItem[tokenId].seller == msg.sender,
             "Only item owner can perform this operation"
         );
         idToMarketItem[tokenId].sold = true;
