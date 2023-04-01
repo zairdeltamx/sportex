@@ -13,7 +13,9 @@ import { deleteNft } from "../../../services/nft";
 import ActionCable from "actioncable";
 
 export default function Index() {
-  const cable = ActionCable.createConsumer("ws://localhost:3000/cable");
+  const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
+  const host = window.location.host;
+  const cable = ActionCable.createConsumer(`${protocol}//${host}/cable`);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);

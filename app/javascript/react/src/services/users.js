@@ -15,13 +15,12 @@ export function logout() {
   fetch("/users/sign_out", {
     // fetch("https://sportex-staging.herokuapp.com/users/sign_out", {
     method: "GET",
-  })
-    .then(() => {
+  }).then(() => {
       window.location.href = "/";
-    })
-    .catch((errs) => {
-      console.log(errs);
-    });
+  })
+  .catch((errs) => {
+    console.log(errs);
+  });
 }
 export const updateUser = ({ address, email, username }) => {
   const apiUrl = getApiUrl(`updateUser/${address}`);
