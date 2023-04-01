@@ -38,7 +38,8 @@
 }
 .parent h1 {
   font-size: 30px;
-  font-family: "GeneralSans-Semibold", sans-serif;
+  font-family: "GeneralSans", sans-serif;
+  font-weight: 600;
 }
 .parent ul {
   padding: 16px;
@@ -47,7 +48,8 @@
   padding-bottom: 10px;
 }
 .parent p {
-  font-family: "GeneralSans-Medium", sans-serif;
+  font-family: "GeneralSans", sans-serif;
+  font-weight: 500;
 }
 .div2 {
   grid-area: 1 / 3 / 2 / 5;

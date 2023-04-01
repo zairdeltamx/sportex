@@ -1,14 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { PaginationInput } from "../../../components";
+import { Pagination } from "../../../components";
 
 import { Banner } from "../../../layouts/banner/banner";
-import { ListNfts } from "../listNfts/ListNfts";
+import { ListNfts } from "../../../components/ListNfts";
 import { SorterNfts } from "../sorterNfts/SorterNfts";
 import { useLazyQuery } from "@apollo/client";
 import { GET_NFTS } from "../../../querys/getAllNfts";
-import { Wave } from "../../../components/wave/Wave";
+import { Wave } from "../../../components/Wave";
 import "./styles.css";
+import buyNFT from "../../../helpers/buyNft";
+import { deleteNft } from "../../../services/nft";
+import ActionCable from "actioncable";
+
 export default function Index() {
+  const cable = ActionCable.createConsumer("ws://localhost:3000/cable");
+
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [name, setName] = useState("");
@@ -17,12 +23,34 @@ export default function Index() {
   const [teamName, setTeamName] = useState("");
   const [nfts, setNfts] = useState([]);
   const [getNFTs, { data, loading, error }] = useLazyQuery(GET_NFTS);
+
+  useEffect(() => {
+    const channel = cable.subscriptions.create("NftChannel", {
+      room: "13",
+      received: (data) => {
+        console.log(data, "DAATASDS");
+        handleSubmit();
+      },
+    });
+    const channel1 = cable.subscriptions.create("NftChannel", {
+      room: "13",
+      received: (data) => {
+        console.log(data, "DAATASDS");
+        handleSubmit();
+      },
+    });
+
+    return () => {
+      channel.unsubscribe();
+    };
+  }, []);
+
   const handleSubmit = () => {
     console.log("ENTRA");
     getNFTs({
       variables: {
         page: currentPage,
-        limit: 25,
+        limit: 10,
         name,
         orderBy,
         order,
@@ -34,7 +62,7 @@ export default function Index() {
 
   useEffect(() => {
     handleSubmit();
-  }, [currentPage]);
+  }, [currentPage, name]);
 
   useEffect(() => {
     if (data) {
@@ -47,9 +75,8 @@ export default function Index() {
     <div>
       <Banner />
       <Wave />
-      {/* <h1 style={{ textAlign: "center" }}>NFTS MARKETPLACE</h1> */}
-      <div className="contentIndex">
-        <div className="containerIndex">
+      <div className="containerIndex">
+        <div className="contentIndex">
           <h1>Explore players</h1>
           <br />
           <br />
@@ -68,11 +95,11 @@ export default function Index() {
           />
 
           {!nfts ? <h1>CARGANDO BRO</h1> : <ListNfts nfts={nfts} />}
-          <PaginationInput
+          <Pagination
             totalPages={totalPages}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
-          ></PaginationInput>
+          ></Pagination>
         </div>
       </div>
     </div>

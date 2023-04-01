@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { ConfirmUpdate } from "../../components";
 import { Button, Title } from "../../components/elements/Elements";
 import { updateAvatar } from "../../services/users";
-import "./styles.css";
 
 export const AvatarProfile = ({ data, fetchUser }) => {
   const [file, setFile] = useState(null);

@@ -1,0 +1,26 @@
+body {
+  background-color: #001b4b;
+}
+
+// UI Setting
+
+// Loyouts
+@import "./layouts/banner";
+@import "./layouts/fotter";
+// Components
+@import "./components/sorterNfts";
+@import "./components/buttonBuyNft";
+@import "./components/buttonResellNft";
+@import "./components/wave";
+@import "./components/nftItem";
+@import "./components/pagination";
+@import "./components/listNfts";
+@import "./components/ModalMetamaskInstall";
+@import "./components/loaderBlock";
+
+
+// Views
+
+@import "./views/profile";
+@import "./views/createItem";
+@import "./views/myassets";

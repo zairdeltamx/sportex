@@ -1,204 +1,209 @@
 /* app/javascript/react/src/layouts/navbar/style.css */
-.logo {
-  font-size: 40px;
+.navbar {
+  background-color: #00091a;
+  position: fixed;
+  color: white;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
 }
-#links :hover {
-  color: #d8a31a;
+.navbar__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
-.links :hover {
-  color: #d8a31a;
+.navbar__logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000;
+  text-decoration: none;
+}
+.navbar__menu {
+  display: flex;
+  align-items: center;
+}
+.navbar__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+}
+.navbar__item {
+  margin-left: 1rem;
+}
+.navbar__link {
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+}
+.navbar__toggle {
+  width: 30px;
+  height: 20px;
+  position: relative;
+  cursor: pointer;
+  display: none;
+}
+.navbar__icon {
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: #000;
+  border-radius: 3px;
+  transition: all 0.3s ease-in-out;
+}
+.navbar__icon:before {
+  top: -8px;
+}
+.navbar__icon:after {
+  top: 8px;
+}
+@media only screen and (max-width: 768px) {
+  .navbar__menu {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    transform: translateX(-100%);
+    transition: all 0.3s ease-in-out;
+  }
+  .navbar__menu.active {
+    transform: translateX(0%);
+  }
+  .navbar__toggle {
+    display: block;
+  }
+  .navbar__list {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .navbar__item {
+    margin: 1rem 0;
+  }
+  .navbar__toggle:before,
+  .navbar__toggle:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #000;
+    transition: transform 0.3s ease-in-out;
+  }
+  .navbar__toggle:before {
+    top: 0;
+  }
+  .navbar__toggle:after {
+    bottom: 0;
+  }
+  .navbar__toggle.active:before {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .navbar__toggle.active:after {
+    transform: translateY(-8px) rotate(-45deg);
+  }
 }
 .TEST {
   color: red;
 }
 
-/* app/javascript/react/src/views/createItem/styles.css */
-.formCreteItem {
-  display: grid;
-  width: 100%;
-  grid-template-columns: 1fr;
-  gap: 20px;
-}
-.containerCreateItem {
-  padding: 10px;
-  background-color: #e3f0ff;
-  margin-top: 50px;
+/* app/javascript/react/src/views/index/index/styles.css */
+.contentIndex {
+  width: 80%;
+  overflow: hidden;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 40px;
-  width: 50%;
-  border-radius: 3px;
-}
-@media only screen and (max-width: 800px) {
-  .containerCreateItem {
-    width: 90%;
-  }
-}
-
-/* app/javascript/react/src/components/loading/style.css */
-.containerLoading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.loader {
-  --path: #343c52;
-  --dot: #5628ee;
-  --duration: 3s;
-  width: 44px;
-  height: 44px;
-  position: relative;
-}
-.loader:before {
-  content: "";
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  position: absolute;
   display: block;
-  background: var(--dot);
-  top: 37px;
-  left: 19px;
-  transform: translate(-18px, -18px);
-  animation: dotRect var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
 }
-.loader svg {
-  display: block;
+.containerIndex {
+  padding: 40px;
   width: 100%;
+  background-color: #f7f9ff;
   height: 100%;
 }
-.loader svg rect,
-.loader svg polygon,
-.loader svg circle {
-  fill: none;
-  stroke: var(--path);
-  stroke-width: 10px;
-  stroke-linejoin: round;
-  stroke-linecap: round;
-}
-.loader svg polygon {
-  stroke-dasharray: 145 76 145 76;
-  stroke-dashoffset: 0;
-  animation: pathTriangle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
-}
-.loader svg rect {
-  stroke-dasharray: 192 64 192 64;
-  stroke-dashoffset: 0;
-  animation: pathRect 3s cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
-}
-.loader svg circle {
-  stroke-dasharray: 150 50 150 50;
-  stroke-dashoffset: 75;
-  animation: pathCircle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
-}
-.loader.triangle {
-  width: 48px;
-}
-.loader.triangle:before {
-  left: 21px;
-  transform: translate(-10px, -18px);
-  animation: dotTriangle var(--duration) cubic-bezier(0.785, 0.135, 0.15, 0.86) infinite;
-}
-@keyframes pathTriangle {
-  33% {
-    stroke-dashoffset: 74;
-  }
-  66% {
-    stroke-dashoffset: 147;
-  }
-  100% {
-    stroke-dashoffset: 221;
-  }
-}
-@keyframes dotTriangle {
-  33% {
-    transform: translate(0, 0);
-  }
-  66% {
-    transform: translate(10px, -18px);
-  }
-  100% {
-    transform: translate(-10px, -18px);
-  }
-}
-@keyframes pathRect {
-  25% {
-    stroke-dashoffset: 64;
-  }
-  50% {
-    stroke-dashoffset: 128;
-  }
-  75% {
-    stroke-dashoffset: 192;
-  }
-  100% {
-    stroke-dashoffset: 256;
-  }
-}
-@keyframes dotRect {
-  25% {
-    transform: translate(0, 0);
-  }
-  50% {
-    transform: translate(18px, -18px);
-  }
-  75% {
-    transform: translate(0, -36px);
-  }
-  100% {
-    transform: translate(-18px, -18px);
-  }
-}
-@keyframes pathCircle {
-  25% {
-    stroke-dashoffset: 125;
-  }
-  50% {
-    stroke-dashoffset: 175;
-  }
-  75% {
-    stroke-dashoffset: 225;
-  }
-  100% {
-    stroke-dashoffset: 275;
-  }
-}
-.loader {
-  display: inline-block;
-  margin: 0 16px;
-}
 
-/* app/javascript/react/src/components/pagination/styles.css */
-.containerPagination {
-  margin-top: 50px;
-  display: flex;
+/* app/javascript/react/src/views/nftInfo/styles.css */
+.parent {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  gap: 20px;
+  width: 80%;
+  margin-top: 100px;
+  height: 900px;
   margin-left: auto;
   margin-right: auto;
-  width: 70%;
-  justify-content: space-between;
-  align-items: center;
+  color: white;
 }
-.containerPagination button {
-  background: #e7eeff;
-  border-radius: 8px;
-  padding: 5px 15px;
-  border: 0;
-  font-family: "GeneralSans-Semibold", sans-serif;
-  font-size: 20px;
+.div1 {
+  grid-area: 1 / 1 / 4 / 3;
+  background: linear-gradient(180deg, rgba(0, 51, 153, 0.5) 0%, rgba(51, 119, 254, 0.5) 100%);
+  border-radius: 20px;
 }
-.containerPagination span {
-  font-family: "GeneralSans-Semibold", sans-serif;
-  font-size: 25px;
+.parent .div2,
+.div3,
+.div4,
+.div5 {
+  background: linear-gradient(169.44deg, rgba(58, 129, 191, 0.08) 1.85%, rgba(65, 48, 90, 0.08) 98.72%);
+  box-shadow: 0px 8px 84px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(36px);
+  border-radius: 20px;
+  padding: 20px;
 }
-.containerPagination span,
-button {
-  color: #303030;
+.parent h1 {
+  font-size: 30px;
+  font-family: "GeneralSans", sans-serif;
+  font-weight: 600;
+}
+.parent ul {
+  padding: 16px;
+}
+.parent ul li {
+  padding-bottom: 10px;
+}
+.parent p {
+  font-family: "GeneralSans", sans-serif;
+  font-weight: 500;
+}
+.div2 {
+  grid-area: 1 / 3 / 2 / 5;
+}
+.div3 {
+  grid-area: 2 / 3 / 4 / 5;
+}
+.div4 {
+  grid-area: 4 / 1 / 6 / 3;
+}
+.div5 {
+  grid-area: 4 / 3 / 6 / 5;
 }
 
-/* app/javascript/react/src/layouts/banner/styles.css */
+/* app/javascript/react/src/styles/styles.scss */
+body {
+  background-color: #001b4b;
+}
 .banner {
   display: flex;
   height: 830px;
+  margin-top: 80px;
   position: relative;
   width: 100%;
   overflow: hidden;
@@ -217,21 +222,23 @@ button {
   flex-direction: column;
   color: white;
 }
-.contentTextBanner h1 {
-  font-family: "Grifter", sans-serif;
-  font-size: 70px;
-}
 .contentTextBanner p {
-  font-family: "GeneralSans-Medium", sans-serif;
+  font-family: "GeneralSans", sans-serif;
+  font-weight: 500;
   font-size: 20px;
 }
 .contentTextBanner button {
   padding: 10px;
   border-radius: 10px;
   border: none;
-  font-family: "GeneralSans-Semibold", sans-serif;
+  font-family: "GeneralSans", sans-serif;
+  font-weight: 600;
   background: #86fc73;
   letter-spacing: 0.8px;
+}
+.contentTextBanner h1 {
+  font-family: "Grifter", sans-serif;
+  font-size: 70px;
 }
 .secondHalfBanner {
   display: flex;
@@ -243,24 +250,24 @@ button {
 .banner .imgSvgNft {
   position: absolute;
   z-index: -1;
-  top: -15%;
+  top: -25%;
   bottom: 0;
   right: 0;
-  left: 44%;
+  left: 38%;
   margin: auto;
   width: auto;
   height: auto;
 }
 .containerBlur {
   background-color: aliceblue;
-  width: 580px;
-  height: 497px;
+  width: 550px;
+  height: 467px;
   background: linear-gradient(169.44deg, rgba(58, 129, 191, 0.08) 1.85%, rgba(65, 48, 90, 0.08) 98.72%);
   box-shadow: 0px 8px 84px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(36px);
   border-radius: 35.0246px;
 }
-.texts {
+.texts_container_blur {
   width: 20%;
   position: absolute;
   display: flex;
@@ -270,15 +277,15 @@ button {
   flex-direction: column;
   justify-content: center;
 }
-.text {
+.text_blur {
   text-align: center;
 }
-.text h1 {
+.text_blur h1 {
   color: rgba(242, 242, 242, 0.5);
-  font-size: 50px;
+  font-size: 40px;
   margin: 0;
 }
-.text p {
+.text_blur p {
   color: white;
   font-size: 15px;
 }
@@ -287,48 +294,60 @@ button {
   height: 100%;
   position: relative;
 }
-.imgBanner {
+.imgBannerNft {
   position: absolute;
   top: -15%;
-  left: 20%;
+  width: 500px;
+  height: 500px;
+  left: 25%;
 }
 @media only screen and (max-width: 1000px) {
+  .banner {
+    height: 660px;
+  }
   .banner .imgSvgNft {
     width: 600px;
+    left: 45%;
+    top: -5%;
   }
   .contentTextBanner {
     width: 364px;
     height: 347px;
   }
-  .contentTextBanner h1 {
-    font-size: 48px;
-  }
   .contentTextBanner p {
     font-size: 16px;
+  }
+  .contentTextBanner h1 {
+    font-size: 48px;
   }
   .secondHalfBanner {
     justify-content: center;
   }
-  .text h1 {
+  .text_blur h1 {
     font-size: 20px;
   }
-  .text p {
+  .text_blur p {
     font-size: 12px;
   }
   .containerBlur {
     width: 370px;
-    height: 410px;
+    height: 340px;
   }
-  .imgBanner {
-    left: 5%;
-    width: 440px;
-    height: 440px;
+  .imgBannerNft {
+    left: 14%;
+    width: 390px;
+    height: 390px;
   }
 }
 @media only screen and (max-width: 700px) {
   .banner {
     flex-direction: column;
-    height: 800px;
+    height: 900px;
+  }
+  .banner .imgSvgNft {
+    width: 600px;
+    left: 5%;
+    top: 35%;
   }
   .firstHalfBanner {
     width: 100%;
@@ -354,8 +373,201 @@ button {
     height: 322px;
   }
 }
-
-/* app/javascript/react/src/components/buttonBuyNft/styles.css */
+.container_footer {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #001B4B;
+}
+.container_footer .container_all_content_footer {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container_footer .container_all_content_footer .container_icons_footer {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container_footer .container_all_content_footer .container_icons_footer .content_icons_footer {
+  display: flex;
+  gap: 15px;
+}
+.container_footer .container_all_content_footer .container_icons_footer .icon_footer {
+  width: 30px;
+  height: 30px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container_footer .container_all_content_footer .container_icons_footer .icon_footer svg {
+  margin: 0 auto;
+}
+.container_footer .container_content_footer {
+  width: 50%;
+  justify-content: center;
+  gap: 0px 60px;
+  display: flex;
+  color: white;
+}
+.container_footer .footer_column {
+  display: flex;
+  flex-direction: column;
+}
+.container_footer .footer_column h1 {
+  font-size: 20px;
+}
+.container_footer .footer_column p {
+  font-size: 14px;
+}
+@media only screen and (max-width: 1000px) {
+  .container_footer {
+    height: 100%;
+  }
+  .container_footer .container_all_content_footer {
+    width: 60%;
+    flex-direction: column;
+    padding: 50px 0px;
+  }
+  .container_footer .container_all_content_footer .container_icons_footer {
+    width: 100%;
+    justify-content: start;
+  }
+  .container_footer .container_all_content_footer .container_content_footer {
+    margin-top: 50px;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .container_footer .container_all_content_footer {
+    width: 90%;
+  }
+  .container_footer .container_all_content_footer .container_icons_footer {
+    justify-content: start;
+  }
+  .container_footer .container_all_content_footer .container_content_footer {
+    align-items: start;
+    justify-content: start;
+    flex-direction: column;
+  }
+}
+.containerSorter {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 10px;
+}
+.containerSorter .container_search_input {
+  width: 30%;
+}
+.containerSorter .container_search_input .search-input {
+  position: relative;
+  height: 50px;
+  width: 100%;
+}
+.containerSorter .container_search_input .search-input input {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  padding-left: 2rem;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #e7eeff;
+  border: 2px solid rgba(28, 28, 33, 0.1);
+  border-radius: 4px;
+}
+.containerSorter .container_search_input .search-input input::placeholder {
+  color: #6032c7;
+}
+.containerSorter .container_search_input .search-input svg {
+  position: absolute;
+  left: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.containerSorter .container_buttons_and_toggle {
+  width: 70%;
+}
+.containerSorter .container_buttons_and_toggle .toggle_sorter {
+  display: none;
+}
+.containerSorter .container_buttons_and_toggle .toggle_sorter svg {
+  width: 40px;
+  height: 40px;
+}
+.containerSorter .container_buttons_and_toggle .buttons {
+  display: flex;
+  justify-content: end;
+  gap: 20px;
+}
+.containerSorter .container_buttons_and_toggle .buttons select {
+  width: 110px;
+  border: none;
+  text-align: center;
+  color: #6032c7;
+  padding: 5px 10px;
+  font-size: 15px;
+  font-family: "GeneralSans", sans-serif;
+  font-weight: 600;
+}
+.containerSorter .container_buttons_and_toggle .buttons .button_filter {
+  padding: 8px 40px;
+  border: none;
+  gap: 10px;
+  color: white;
+  background: #003399;
+  border-radius: 10px;
+  font-family: "GeneralSans", sans-serif;
+  font-weight: 600;
+}
+.containerSorter .container_buttons_and_toggle .buttons .button_cancel {
+  display: none;
+}
+@media only screen and (max-width: 1000px) {
+  .containerSorter .container_search_input {
+    width: 90%;
+  }
+  .containerSorter .container_buttons_and_toggle {
+    position: relative;
+    width: 10%;
+  }
+  .containerSorter .container_buttons_and_toggle .toggle_sorter {
+    display: flex;
+    justify-content: end;
+  }
+  .containerSorter .container_buttons_and_toggle .toggle_sorter svg {
+    display: block;
+  }
+  .containerSorter .container_buttons_and_toggle .buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+    background-color: #f2f2f2;
+    position: absolute;
+    left: -250px;
+    top: 50px;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+    z-index: 1;
+  }
+  .containerSorter .container_buttons_and_toggle .buttons select,
+  .containerSorter .container_buttons_and_toggle .buttons button {
+    width: 80%;
+  }
+  .containerSorter .container_buttons_and_toggle .buttons .button_cancel {
+    display: block;
+  }
+  .containerSorter .container_buttons_and_toggle .buttons.active {
+    opacity: 1;
+  }
+}
 .buttonBuyNft {
   background-color: #003399;
   border-radius: 10px;
@@ -365,16 +577,38 @@ button {
   color: white;
   width: 100%;
 }
-
-/* app/javascript/react/src/views/index/nftItem/styles.css */
-.containerCard {
+.container_wave {
+  width: 100%;
+  overflow: hidden;
+  height: 100px;
+  background-color: #001b4b;
+  background-image: url(assets/wavePc-A4Q3HALM.digested.png.png);
+  background-size: cover;
+  position: relative;
+  bottom: -2px;
+  z-index: -1;
+}
+@media only screen and (max-width: 1000px) {
+  .container_wave {
+    background-image: url(assets/wave_ipad-UV6QX6XK.digested.png.png);
+    height: 130px;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .container_wave {
+    background-image: url(assets/waveMobile-UJYWPVG6.digested.png.png);
+    height: 150px;
+  }
+}
+.container_card {
   height: 400px;
   border: 4px solid #6032c7;
   padding: 10px;
+  margin: 0 auto;
   border-radius: 28px;
   width: 280px;
 }
-.containerImageCard {
+.container_card .container_image_card {
   border-radius: 20px;
   overflow: hidden;
   background-color: #99bcff;
@@ -382,7 +616,7 @@ button {
   width: 100%;
   height: 70%;
 }
-.containerImageCard img {
+.container_card .container_image_card img {
   position: absolute;
   width: 300px;
   height: 300px;
@@ -390,135 +624,410 @@ button {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.containerName {
+.container_card .container_name_card {
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
-.containerPriceCard {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-.containerPriceCard p {
-  margin: 0;
-}
-.containerName p,
-h1 {
-  margin: 0;
-}
-.containerName h1 {
+.container_card .container_name_card h1 {
   font-size: 20px;
 }
-hr {
+.container_card .container_name_card p,
+.container_card .container_name_card h1 {
+  margin: 0;
+}
+.container_card hr {
   margin-top: 5px;
   margin-bottom: 5px;
 }
-
-/* app/javascript/react/src/views/index/listNfts/styles.css */
-.listNfts {
+.container_card .container_price_card {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.container_card .container_price_card p {
+  margin: 0;
+}
+.container_card .buttons_nft_item {
+  display: flex;
+  gap: 10px;
+}
+.container_card .buttons_nft_item button {
+  width: 100%;
+}
+.container_pagination {
+  margin-top: 50px;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  justify-content: space-between;
+  align-items: center;
+}
+.container_pagination button {
+  background: #e7eeff;
+  border-radius: 8px;
+  padding: 5px 15px;
+  border: 0;
+  font-family: "GeneralSans", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+}
+.container_pagination span {
+  font-weight: 600;
+  font-family: "GeneralSans", sans-serif;
+  font-size: 25px;
+}
+.container_pagination span,
+.container_pagination button {
+  color: #303030;
+}
+.list_nfts {
   margin-top: 50px;
   display: grid;
   gap: 20px;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 }
-
-/* app/javascript/react/src/views/index/sorterNfts/styles.css */
-.containerSorter {
-  display: flex;
-  justify-content: space-evenly;
-  gap: 10px;
+.container_modal_metamask_install {
+  width: 660px;
+  padding: 20px;
+  height: 412px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 20px;
 }
-.search-input {
-  width: 40%;
-  position: relative;
-}
-.buttons {
+.container_modal_metamask_install .close_modal_metamask {
   display: flex;
   justify-content: end;
-  gap: 20px;
-  width: 60%;
 }
-.buttons select {
-  border: none;
-  text-align: center;
-  color: #6032c7;
-  padding: 8px 40px;
-  font-family: "GeneralSans-Semibold", sans-serif;
+.container_modal_metamask_install .content_modal {
+  width: 100%;
+  height: 100%;
+  gap: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-.buttons button {
-  padding: 8px 40px;
-  border: none;
-  gap: 10px;
-  color: white;
-  background: #003399;
+.container_modal_metamask_install .content_modal button {
+  background-color: #003399;
   border-radius: 10px;
-  font-family: "GeneralSans-Semibold", sans-serif;
+  border: none;
+  padding: 10px 30px;
+  color: white;
 }
-.search-input input {
-  width: 100%;
-  padding: 10px;
-  padding-left: 2rem;
-  background: linear-gradient(0deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), #e7eeff;
-  border: 2px solid rgba(28, 28, 33, 0.1);
-  border-radius: 4px;
+.container_modal_metamask_install.activeModal {
+  display: none;
 }
-.search-input input::placeholder {
-  color: #6032c7;
-}
-.search-input svg {
+.socket {
+  width: 200px;
+  height: 200px;
   position: absolute;
-  left: 0.5rem;
+  left: 50%;
+  margin-left: -100px;
   top: 50%;
-  transform: translateY(-50%);
+  margin-top: -100px;
 }
-
-/* app/javascript/react/src/components/wave/styles.css */
-.containerWave {
-  width: 100%;
-  overflow: hidden;
-  height: auto;
-  background-color: #001b4b;
+.hex-brick {
+  background: #000000;
+  width: 30px;
+  height: 17px;
+  position: absolute;
+  top: 5px;
+  animation-name: fade00;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  -webkit-animation-name: fade00;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
 }
-.containerWave svg {
-  min-width: 1000px;
-  width: 100%;
-  bottom: -1px;
+.h2 {
+  transform: rotate(60deg);
+  -webkit-transform: rotate(60deg);
 }
-
-/* app/javascript/react/src/views/index/index/styles.css */
-.containerIndex {
-  width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
+.h3 {
+  transform: rotate(-60deg);
+  -webkit-transform: rotate(-60deg);
 }
-.contentIndex {
-  width: 100%;
-  background-color: #f7f9ff;
-  height: 1930px;
+.gel {
+  height: 30px;
+  width: 30px;
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
-
-/* app/javascript/react/src/views/profile/styles.css */
+.center-gel {
+  margin-left: -15px;
+  margin-top: -15px;
+  animation-name: pulse00;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  -webkit-animation-name: pulse00;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+}
+.c1 {
+  margin-left: -47px;
+  margin-top: -15px;
+}
+.c2 {
+  margin-left: -31px;
+  margin-top: -43px;
+}
+.c3 {
+  margin-left: 1px;
+  margin-top: -43px;
+}
+.c4 {
+  margin-left: 17px;
+  margin-top: -15px;
+}
+.c5 {
+  margin-left: -31px;
+  margin-top: 13px;
+}
+.c6 {
+  margin-left: 1px;
+  margin-top: 13px;
+}
+.c7 {
+  margin-left: -63px;
+  margin-top: -43px;
+}
+.c8 {
+  margin-left: 33px;
+  margin-top: -43px;
+}
+.c9 {
+  margin-left: -15px;
+  margin-top: 41px;
+}
+.c10 {
+  margin-left: -63px;
+  margin-top: 13px;
+}
+.c11 {
+  margin-left: 33px;
+  margin-top: 13px;
+}
+.c12 {
+  margin-left: -15px;
+  margin-top: -71px;
+}
+.c13 {
+  margin-left: -47px;
+  margin-top: -71px;
+}
+.c14 {
+  margin-left: 17px;
+  margin-top: -71px;
+}
+.c15 {
+  margin-left: -47px;
+  margin-top: 41px;
+}
+.c16 {
+  margin-left: 17px;
+  margin-top: 41px;
+}
+.c17 {
+  margin-left: -79px;
+  margin-top: -15px;
+}
+.c18 {
+  margin-left: 49px;
+  margin-top: -15px;
+}
+.c19 {
+  margin-left: -63px;
+  margin-top: -99px;
+}
+.c20 {
+  margin-left: 33px;
+  margin-top: -99px;
+}
+.c21 {
+  margin-left: 1px;
+  margin-top: -99px;
+}
+.c22 {
+  margin-left: -31px;
+  margin-top: -99px;
+}
+.c23 {
+  margin-left: -63px;
+  margin-top: 69px;
+}
+.c24 {
+  margin-left: 33px;
+  margin-top: 69px;
+}
+.c25 {
+  margin-left: 1px;
+  margin-top: 69px;
+}
+.c26 {
+  margin-left: -31px;
+  margin-top: 69px;
+}
+.c27 {
+  margin-left: -79px;
+  margin-top: -15px;
+}
+.c28 {
+  margin-left: -95px;
+  margin-top: -43px;
+}
+.c29 {
+  margin-left: -95px;
+  margin-top: 13px;
+}
+.c30 {
+  margin-left: 49px;
+  margin-top: 41px;
+}
+.c31 {
+  margin-left: -79px;
+  margin-top: -71px;
+}
+.c32 {
+  margin-left: -111px;
+  margin-top: -15px;
+}
+.c33 {
+  margin-left: 65px;
+  margin-top: -43px;
+}
+.c34 {
+  margin-left: 65px;
+  margin-top: 13px;
+}
+.c35 {
+  margin-left: -79px;
+  margin-top: 41px;
+}
+.c36 {
+  margin-left: 49px;
+  margin-top: -71px;
+}
+.c37 {
+  margin-left: 81px;
+  margin-top: -15px;
+}
+.r1 {
+  animation-name: pulse00;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-delay: 0.2s;
+  -webkit-animation-name: pulse00;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-delay: 0.2s;
+}
+.r2 {
+  animation-name: pulse00;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-delay: 0.4s;
+  -webkit-animation-name: pulse00;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-delay: 0.4s;
+}
+.r3 {
+  animation-name: pulse00;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-delay: 0.6s;
+  -webkit-animation-name: pulse00;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-delay: 0.6s;
+}
+.r1 > .hex-brick {
+  animation-name: fade00;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-delay: 0.2s;
+  -webkit-animation-name: fade00;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-delay: 0.2s;
+}
+.r2 > .hex-brick {
+  animation-name: fade00;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-delay: 0.4s;
+  -webkit-animation-name: fade00;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-delay: 0.4s;
+}
+.r3 > .hex-brick {
+  animation-name: fade00;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-delay: 0.6s;
+  -webkit-animation-name: fade00;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-delay: 0.6s;
+}
+@keyframes pulse00 {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(0.01);
+    transform: scale(0.01);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@keyframes fade00 {
+  0% {
+    background: #252525;
+  }
+  50% {
+    background: #000000;
+  }
+  100% {
+    background: #353535;
+  }
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9998;
+}
 .containerProfile {
   width: 100%;
   height: 100vh;
   background-color: #f7f9ff;
-  position: relative;
-  display: flex;
-  justify-content: start;
+  padding: 0px 50px;
 }
 .profile {
   padding: 10px;
   width: 40%;
-  left: 100px;
-  top: -150px;
   height: 600px;
-  position: absolute;
 }
 .profile h1 {
   color: #4c4b58;
-  font-family: "GeneralSans-Semibold", sans-serif;
+  font-family: "GeneralSans", sans-serif;
+  font-weight: 600;
   font-size: 40px;
 }
 .profileInformation {
@@ -532,13 +1041,15 @@ hr {
 }
 .profileInformation p {
   font-size: 20px;
-  font-family: "GeneralSans-Semibold", sans-serif;
+  font-family: "GeneralSans", sans-serif;
+  font-weight: 600;
 }
 .optionEdit {
   cursor: pointer;
 }
 .formProfile {
   display: flex;
+  margin-top: 20px;
   width: auto;
   overflow: hidden;
   justify-content: center;
@@ -594,64 +1105,82 @@ hr {
 }
 .inputsContainer {
   width: 380px;
-  font-family: "GeneralSans-Semibold", sans-serif;
+  font-family: "GeneralSans", sans-serif;
+  font-weight: 600;
   color: #303030;
 }
-
-/* app/javascript/react/src/views/nftInfo/styles.css */
-.parent {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-  gap: 20px;
-  width: 80%;
-  margin-top: 100px;
-  height: 900px;
-  margin-left: auto;
-  margin-right: auto;
+.buttonsEdit {
+  margin-top: 40px;
+  display: flex;
+  gap: 10px;
+  justify-content: end;
+}
+.buttonsEdit button {
+  padding: 10px 30px;
+  font-family: "GeneralSans", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 10px;
+  border: none;
+}
+.buttonsEdit .saveChanges {
+  background-color: #003399;
   color: white;
 }
-.div1 {
-  grid-area: 1 / 1 / 4 / 3;
-  background: linear-gradient(180deg, rgba(0, 51, 153, 0.5) 0%, rgba(51, 119, 254, 0.5) 100%);
-  border-radius: 20px;
+.buttonsEdit .cancel {
+  background-color: transparent;
+  color: #47465c;
 }
-.parent .div2,
-.div3,
-.div4,
-.div5 {
-  background: linear-gradient(169.44deg, rgba(58, 129, 191, 0.08) 1.85%, rgba(65, 48, 90, 0.08) 98.72%);
-  box-shadow: 0px 8px 84px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(36px);
-  border-radius: 20px;
-  padding: 20px;
+@media only screen and (max-width: 1000px) {
+  .profile {
+    width: 100%;
+  }
 }
-.parent h1 {
-  font-size: 30px;
-  font-family: "GeneralSans-Semibold", sans-serif;
+.container_createitem {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.parent ul {
-  padding: 16px;
+.container_createitem .container_form_createitem {
+  width: 100%;
+  background-color: white;
+  width: 600px;
+  height: 1000px;
+  display: flex;
+  margin-top: 100px;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px;
 }
-.parent ul li {
-  padding-bottom: 10px;
+.container_createitem .container_form_createitem .input_wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 15px;
 }
-.parent p {
-  font-family: "GeneralSans-Medium", sans-serif;
+.container_createitem .container_form_createitem .input_wrapper input,
+.container_createitem .container_form_createitem .input_wrapper textarea {
+  width: 100%;
+  background: #fafafa;
+  border: 1px solid #d1d5db;
+  padding: 9px 13px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
 }
-.div2 {
-  grid-area: 1 / 3 / 2 / 5;
+.content_my_assets {
+  width: 80%;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
-.div3 {
-  grid-area: 2 / 3 / 4 / 5;
-}
-.div4 {
-  grid-area: 4 / 1 / 6 / 3;
-}
-.div5 {
-  grid-area: 4 / 3 / 6 / 5;
+.container_my_assets {
+  width: 100%;
+  background-color: #f7f9ff;
+  height: 1930px;
 }
 
 /* app/javascript/controllers/styles.css */

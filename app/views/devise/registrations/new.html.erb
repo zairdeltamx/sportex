@@ -1,41 +1,33 @@
 <%= stylesheet_link_tag "registration.css", media: "all", 'data-turbolinks-track': "reload" %>
-<div class="backgroundLogin">
-<div class="container">
-  <div class="containerForm">
-<h1 class="title">SPORTEX</h1>
-
-        <% if !logged_in? %>
-        <div class="formRegister">
-
+<div class="background_login">
+  <div class="container_sign_up">
+    <div class="container_content_sign_up">
+      <h1 class="title">SPORTEX</h1>
+      <% if !logged_in? %>
+        <div class="form_sign_up">
           <%= form_for @user, url: user_registration_path do |form| %>
             <p>Create your username</p>
-              <%= form.text_field :username, placeholder: "Username" %>
+            <%= form.text_field :username, placeholder: "Username" %>
             <p>Chose a user name of at least 5 characters</p>
-           <%= form.text_field :eth_address, readonly: true, class: "eth_address", hidden: true %>
+            <%= form.text_field :eth_address, readonly: true, class: "eth_address", hidden: true %>
           <% end %>
-
-
           <button class="ButtonEthConnect">
-                    <%= image_tag("symbolMetamask.png", :width => "40px",:alt => "rss feed") %>
-
-          Sign-up with Metamask</button>
+            <%= image_tag("symbolMetamask.png", :width => "40px", :alt => "rss feed") %>
+            Sign-up with Metamask</button>
         </div>
-          <br /><br />
-          <div class="otherOptions">
-           <div class="linkMetamask">
+        <br />
+        <br />
+        <div class="other_options_sign_up">
+          <div class="linkMetamask">
             <a target="_blank" href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en">Click to install metamask</a>
           </div>
-
           <p>Already using Sportex?</p>
           <%= link_to "Sign in with Metamask", new_user_session_path, data: { turbolinks: "reload" } %>
-          </div>
-        <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
-</div>
-
-
 <%= content_tag(:div, "", data: {
                             controller: "users",
                           }) %>
-

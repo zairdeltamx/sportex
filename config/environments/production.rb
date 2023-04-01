@@ -11,6 +11,7 @@ Rails.application.configure do
   # and those relying on copy on write to perform better.
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
+  config.action_cable.allowed_request_origins = ['https://sportex-staging.herokuapp.com']
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local = false
@@ -71,7 +72,9 @@ Rails.application.configure do
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
-  config.serve_static_assets = true
+  
+  # config.serve_static_assets = true
+
   # Don't log any deprecations.
   config.active_support.report_deprecations = false
 

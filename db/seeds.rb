@@ -1,62 +1,65 @@
 Nft.create!({
   price: '36',
-  tokenId: 1,
+  tokenId: 10,
   seller: 'dasdss',
   owner: 'dlsajldjlads',
-  image: 'http:image',
-  name: 'Ronaldo',
+  image: "https://sportex-staging.infura-ipfs.io/ipfs/QmRER9cv5UrDfEg73ypstzMj1CzquXDwVGbeJnZJ6sFn73",
+  name: 'Canaldo',
   description: 'RANDOM',
   meta: {
     name: 'Si',
   },
   attack: '87',
-  power: '21',
+  strength: '21',
   defense: '66',
+  teamName:'Mexico'
 })
 
 Nft.create!({
-  price: '100',
-  tokenId: 2,
+  price: '37',
+  tokenId: 11,
   seller: 'dasdss',
   owner: 'dlsajldjlads',
-  image: 'http:image',
-  name: 'MeSsi',
+  image: "https://sportex-staging.infura-ipfs.io/ipfs/QmRER9cv5UrDfEg73ypstzMj1CzquXDwVGbeJnZJ6sFn73",
+  name: 'Ponaldo',
   description: 'RANDOM',
   meta: {
     name: 'Si',
   },
-  attack: '12',
-  power: '10',
-  defense: '55',
+  attack: '87',
+  strength: '21',
+  defense: '66',
+  teamName:'Italia'
 })
 Nft.create!({
-  price: '12',
-  tokenId: 3,
+  price: '38',
+  tokenId: 13,
   seller: 'dasdss',
   owner: 'dlsajldjlads',
-  image: 'http:image',
-  name: 'pele',
+  image: "https://sportex-staging.infura-ipfs.io/ipfs/QmRER9cv5UrDfEg73ypstzMj1CzquXDwVGbeJnZJ6sFn73",
+  name: 'Ponaldo',
   description: 'RANDOM',
   meta: {
     name: 'Si',
   },
-  attack: '100',
-  power: '100',
-  defense: '100',
+  attack: '87',
+  strength: '21',
+  defense: '66',
+  teamName:'Italia'
 })
-
 Nft.create!({
-  price: '33',
-  tokenId: 4,
+  price: '39',
+  tokenId: 12,
   seller: 'dasdss',
   owner: 'dlsajldjlads',
-  image: 'http:image',
-  name: 'herrera',
+  image: "https://sportex-staging.infura-ipfs.io/ipfs/QmRER9cv5UrDfEg73ypstzMj1CzquXDwVGbeJnZJ6sFn73",
+  name: 'Ponaldo',
   description: 'RANDOM',
   meta: {
     name: 'Si',
   },
-  attack: '42',
-  power: '972',
-  defense: '823',
+  attack: '87',
+  strength: '21',
+  defense: '66',
+  teamName:'Italia'
 })

@@ -1,28 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { Loading } from "../../components";
-import { Title } from "../../components/elements/Elements";
-import { Wave } from "../../components/wave/Wave";
+import { Wave } from "../../components/Wave";
 import { getUser } from "../../services/users";
-import { AvatarProfile } from "./AvatarProfile";
-import { FormProfile } from "./FormProfile";
 import imgAvatar from "../../img/nftBanner.png";
-import "./styles.css";
 import PencelIcon from "../../img/pencelIcon.svg";
+import { updateUser } from "../../services/users";
 export default function Profile() {
   // console.log("ADDREESS",address);
-  const [data, setData] = useState(null);
-  const [initialForm, setInitialForm] = useState({});
+  const [form, setForm] = useState(null)
+  useState
   const [isVisible, setIsVisible] = useState(false);
   const [isDisabled, setisDisabled] = useState(true);
   const fetchUser = async () => {
     const user = await getUser({
       addressMetamask: "0x66ee7a3985d5342baae1b7d0ff1bc9fa7ee9182e",
     });
-    setInitialForm({
+    setForm({
       username: user.username,
-      email: user.email,
+      email: user.email !== null ? user.email : 'No tienes email'
     });
-    setData(user);
+    console.log(form, "FORM");
   };
   useEffect(() => {
     fetchUser();
@@ -32,8 +28,11 @@ export default function Profile() {
     setisDisabled(false);
     setIsVisible(true);
   };
-  return data ? (
-    <div>
+  if (!form) {
+    return (<h1>LOADING..</h1>)
+  }
+  return (
+    <div style={{ marginTop: '80px' }}>
       <Wave />
       <div className="containerProfile">
         <div className="profile">
@@ -56,6 +55,8 @@ export default function Profile() {
               <div className="inputName">
                 <label htmlFor="Username">Username</label>
                 <input
+                  onChange={(ev) => setForm({ ...form, username: ev.target.value })}
+                  value={form?.username}
                   disabled={isDisabled}
                   type="text"
                   name=""
@@ -64,16 +65,19 @@ export default function Profile() {
               </div>
               <div className="inputEmail">
                 <label htmlFor="Email">Email</label>
-                <input disabled={isDisabled} type="email" name="" id="Email" />
+                <input onChange={(ev) => setForm({ ...form, email: ev.target.value })}
+                  value={form?.email} disabled={isDisabled} type="email" name="" id="Email" />
               </div>
             </div>
           </div>
-          <button>Cancelar</button>
-          <button>Save changes</button>
+          {isVisible && (
+            <div className="buttonsEdit">
+              <button className="cancel">Cancel</button>
+              <button onClick={() => updateUser({ email: form.email, username: form.username, address: '0x66ee7a3985d5342baae1b7d0ff1bc9fa7ee9182e' })} className="saveChanges">Save changes</button>
+            </div>
+          )}
         </div>
       </div>
     </div>
-  ) : (
-    <Loading></Loading>
-  );
+  )
 }

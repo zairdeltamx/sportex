@@ -1,14 +1,17 @@
 .linkMetamask a {
   color: brown;
 }
-.container {
+
+.container_sign_up {
   display: flex;
+  padding: 50px;
   width: 100%;
   height: 100%;
   justify-content: center;
   align-items: center;
 }
-.containerForm {
+
+.container_content_sign_up {
   display: flex;
   flex-direction: column;
   width: 450px;
@@ -17,64 +20,95 @@
   padding: 70px 40px;
   border-radius: 12px;
 }
-.containerForm .title {
+
+.container_content_sign_up .title {
   color: black;
   margin: 0 auto;
 }
-.formRegister {
+
+.form_sign_up {
   /* gap: 60px; */
   margin-top: 30px;
   display: flex;
   flex-direction: column;
-  width: 376px;
+  width: 100%;
   height: 297.98px;
 }
-.formRegister button {
+
+.form_sign_up button {
   margin-top: 20px;
   padding: 6px;
 
   padding: 10px;
   border-radius: 10px;
   border: 1px solid #1e1e1e;
-  font-family: "GeneralSans-Semibold", sans-serif;
+  font-family: "GeneralSans", sans-serif;
+  font-weight: 600;
 }
-.formRegister button:hover {
+
+.form_sign_up button:hover {
   background-color: #a4a1af;
   border: 1px solid #727084;
 }
-.formRegister input {
+
+.form_sign_up input {
   border: 1px solid #d1d5db;
   width: 100%;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
   border-radius: 10px;
   padding: 10px;
 }
-.formRegister p:first-of-type {
+
+.form_sign_up p:first-of-type {
   color: black;
-  font-family: "GeneralSans-Semibold", sans-serif;
+  font-family: "GeneralSans", sans-serif;
   font-weight: 600;
   font-size: 20px;
   margin-bottom: 0;
 }
+
 form {
   /* background-color: #d1d5db; */
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
-.formRegister p:nth-of-type(2) {
+
+.form_sign_up p:nth-of-type(2) {
   line-height: 18px;
   color: #727084;
-  font-family: "GeneralSans-Medium", sans-serif;
+  font-family: "GeneralSans", sans-serif;
   font-weight: 500;
   font-size: 12px;
 }
-.otherOptions {
+
+.other_options_sign_up {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.otherOptions a {
+
+.other_options_sign_up a {
   text-decoration: none;
+}
+
+
+@media only screen and (max-width: 1000px) {
+  .container_sign_up{
+    width: 90%;
+  }
+  .form_sign_up p:first-of-type {
+    font-size: 15px;
+  }
+  .container_content_sign_up {
+ 
+    width: 350px;
+    height: 680px;
+   
+  }
+  .other_options_sign_up{
+    font-size: 15px;
+  }
+  
 }

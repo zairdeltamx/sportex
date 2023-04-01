@@ -1,6 +1,5 @@
 import { create as ipfsHttpClient } from "ipfs-http-client";
 import React, { Fragment, useEffect, useState } from "react";
-import "./styles.css";
 import { ethers } from "ethers";
 import { useNavigate } from "react-router-dom";
 import Web3Modal from "web3modal";
@@ -8,9 +7,8 @@ import Web3Modal from "web3modal";
 import NFT from "../../../hardhat/artifacts/contracts/NFT.sol/NFT.json";
 import Market from "../../../hardhat/artifacts/contracts/NFTMarketplace.sol/NFTMarketplace.json";
 import { nftaddress, nftmarketaddress } from "../../config";
-
+import Polaroid from "../../img/polaroid.svg";
 import { Button, Title } from "../../components/elements/Elements";
-import { FormCreateNfts } from "./FormCreateNfts";
 const client = ipfsHttpClient({
   host: "ipfs.infura.io",
   port: 5001,
@@ -121,24 +119,103 @@ export default function CreateItem() {
   }
 
   return (
-    <Fragment>
-      <div className="containerCreateItem">
-        <div></div>
-        <Title black>Create NFT</Title>
-        <br />
-        <br />
-        <FormCreateNfts
-          formInput={formInput}
-          fileUrl={fileUrl}
-          onChange={onChange}
-          updateFormInput={updateFormInput}
-        ></FormCreateNfts>
-        <br />
-        <br />
-        <Button onClick={createItem} className="">
-          Create NFT
-        </Button>
+    <div>
+      <div className="container_createitem">
+        <div className="container_form_createitem">
+          <div>
+            {fileUrl ? (
+              <div>
+                <img
+                  src={fileUrl}
+                  alt="Picture of the author"
+                  className="rounded mt-4"
+                  width={200}
+                  height={200}
+                />
+              </div>
+            ) : (
+              <Polaroid />
+            )}
+          </div>
+          <div>
+            <input
+              id="myFileInput"
+              required={true}
+              type="file"
+              name="Asset"
+              onChange={onChange}
+            />
+
+            <label className="labelAvatar" htmlFor="myFileInput">
+              Upload image
+            </label>
+          </div>
+          <div className="input_wrapper">
+            <label htmlFor="name">Name*</label>
+            <input
+              autoComplete="off"
+              placeholder="Name...."
+              id="name"
+              type="text"
+              onChange={(e) =>
+                updateFormInput({ ...formInput, name: e.target.value })
+              }
+            />
+          </div>
+          <div className="input_wrapper">
+            <label htmlFor="description">Description*</label>
+            <input
+              autoComplete="off"
+              placeholder="Description...."
+              id="description"
+              type="text"
+              onChange={(e) =>
+                updateFormInput({ ...formInput, description: e.target.value })
+              }
+            />
+          </div>
+          <div className="input_wrapper">
+            <label htmlFor="teamName">Team Name*</label>
+            <input
+              autoComplete="off"
+              placeholder="Team name...."
+              id="teamName"
+              type="text"
+              onChange={(e) =>
+                updateFormInput({ ...formInput, teamName: e.target.value })
+              }
+            />
+          </div>
+
+          <div className="input_wrapper">
+            <label htmlFor="price">Price*</label>
+            <input
+              autoComplete="off"
+              placeholder="2...."
+              id="price"
+              type="number"
+              onChange={(e) =>
+                updateFormInput({ ...formInput, price: e.target.value })
+              }
+            />
+          </div>
+          <div className="input_wrapper">
+            <label htmlFor="meta">Meta_json*</label>
+            <textarea
+              autoComplete="off"
+              placeholder="{Meta_json....,Meta_json...}"
+              id="meta"
+              type="text"
+              onChange={(e) =>
+                updateFormInput({ ...formInput, meta: e.target.value })
+              }
+            />
+          </div>
+          <button onClick={createItem} className="">
+            Create NFT
+          </button>
+        </div>
       </div>
-    </Fragment>
+    </div>
   );
 }

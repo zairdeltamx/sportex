@@ -1,25 +1,15 @@
 import { ethers } from "ethers";
 import React, { Fragment, useEffect, useState } from "react";
 import Web3Modal from "web3modal";
-import { Loading } from "../../components/index";
 
 import NFT from "../../../hardhat/artifacts/contracts/NFT.sol/NFT.json";
 import Market from "../../../hardhat/artifacts/contracts/NFTMarketplace.sol/NFTMarketplace.json";
 import { nftaddress, nftmarketaddress } from "../../config";
+import { ListNfts } from "../../components/ListNfts";
 
-import {
-  Button,
-  CardNft,
-  ContentNFT,
-  AppContainer,
-  GridNFTs,
-  ImgNft,
-  Paragraph,
-  Title,
-  TextNFT,
-} from "../../components/elements/Elements";
 import { ModalResell } from "./ModalResell";
 import axios from "axios";
+import { Wave } from "../../components/Wave";
 
 export default function MyAssets() {
   const isAutorized = true
@@ -112,57 +102,22 @@ export default function MyAssets() {
   }
 
   if (loadingState && !nfts.length) {
-    return <Loading></Loading>;
+    return <h1>Loading...</h1>;
   }
 
   return (
-    <div>
-      <AppContainer w="90%" textCenter>
-        <Title>NFTs:</Title>
-        <GridNFTs>
-          {nfts.map((nft, i) => (
-            <div key={i}>
-              <ContentNFT>
-                <CardNft>
-                  <ImgNft
-                    src={nft.image}
-                    alt="Picture of the author"
-                    // blurDataURL="data:..." automatically provided
-                    // placeholder="blur" // Optional blur-up while loading
-                  />
-                  <TextNFT>
-                    <Title weight="500" size="20px">
-                      {nft.name}
-                    </Title>
-                    <Paragraph>Description:</Paragraph>
-                    <Title weight="500" size="20px">
-                      {nft.description}
-                    </Title>
-                    <Paragraph>Purchase price:</Paragraph>
-                    <Title primary size="20px">
-                      {nft.price} PLS
-                    </Title>
-                    <ModalResell
+    <div style={{ marginTop: '80px' }}>
+      <Wave />
+      <div className="container_my_assets">
+        <div className="content_my_assets">
+          <h1>My assets</h1>
+          <ListNfts nfts={nfts} />
+          {/* <ModalResell
                       onConfirm={resellToken}
                       nft={nft}
-                    ></ModalResell>
-                    {isAutorized === true ? (
-                      <Button
-                        className=""
-                        onClick={() => {
-                          updateNft(nft.tokenId);
-                        }}
-                      >
-                        Update NFT
-                      </Button>
-                    ) : null}
-                  </TextNFT>
-                </CardNft>
-              </ContentNFT>
-            </div>
-          ))}
-        </GridNFTs>
-      </AppContainer>
+                    ></ModalResell> */}
+        </div>
+      </div>
     </div>
   );
 }

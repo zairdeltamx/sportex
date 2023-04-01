@@ -1,12 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
 
-.backgroundLogin {
+.background_login {
   background-color: #00091a;
-  height: 100vh;
-  overflow: scroll;
+  height: 120vh;
+  overflow: hidden;
 }
 @font-face {
-  font-family: "GeneralSans-Medium";
+  font-family: "GeneralSans";
   src: url("./fonts/generalSans/GeneralSans-Medium.woff2") format("woff2"),
     url("./fonts/generalSans/GeneralSans-Medium.woff") format("woff"),
     url("./fonts/generalSans/GeneralSans-Medium.ttf") format("truetype");
@@ -15,7 +15,7 @@
   font-style: normal;
 }
 @font-face {
-  font-family: "GeneralSans-Semibold";
+  font-family: "GeneralSans";
   src: url("./fonts/generalSans/GeneralSans-Semibold.woff2") format("woff2"),
     url("./fonts/generalSans/GeneralSans-Semibold.woff") format("woff"),
     url("./fonts/generalSans/GeneralSans-Semibold.ttf") format("truetype");

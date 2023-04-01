@@ -28,6 +28,7 @@ export const GET_NFTS = gql`
         description
         tokenId
         strength
+        meta
       }
       metadata {
         totalPages

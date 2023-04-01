@@ -1,7 +1,6 @@
 import React from "react";
 import imgBanner from "../../img/nftBanner.png";
 import Nft from "../../img/NFT.svg";
-import "./styles.css";
 export const Banner = () => {
   return (
     <div>
@@ -22,23 +21,23 @@ export const Banner = () => {
         </div>
         <div className="secondHalfBanner">
           <div className="containerBlur">
-            <div className="texts">
+            <div className="texts_container_blur">
               <div>
-                <div className="text">
+                <div className="text_blur">
                   <h1>98+</h1>
                   <p>Players</p>
                 </div>
-                <div className="text">
+                <div className="text_blur">
                   <h1>12k+</h1>
                   <p>NFTs</p>
                 </div>
-                <div className="text">
+                <div className="text_blur">
                   <h1>15K+</h1>
                   <p>Artists</p>
                 </div>
               </div>
             </div>
-            <img className="imgBanner" src={imgBanner} alt="" />
+            <img className="imgBannerNft" src={imgBanner} alt="" />
           </div>
         </div>
       </div>

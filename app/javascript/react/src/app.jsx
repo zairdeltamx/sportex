@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Index from "./routes/index";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { getApiUrl } from "./config";
-
+import "./styles/styles.scss";
 export default function App() {
   const [number, setNumber] = useState(1);
 

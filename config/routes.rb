@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount ActionCable.server => '/cable'
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   if Rails.env.development?
     mount GraphiQL::Rails::Engine, at: '/api/v1/graphiql', graphql_path: '/api/v1/graphql'
@@ -22,9 +24,9 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users
       get 'findUser/:metamaskAddress', to: 'users#find_user'
-      put 'updateUsername/:address', to: 'users#update_username'
+      get 'verifyNonce/:id', to: 'users#validate_nonce'
+      put 'updateUser/:address', to: 'users#update_user'
       put 'updateAvatar/:id', to: 'users#update_image'
-      put 'updateEmail/:address', to: 'users#updateEmai'
     end
   end
 

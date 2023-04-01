@@ -16,7 +16,7 @@ export default class extends Controller {
     // Get the form for submission later
     const form = document.querySelector("form.new_user");
     const chainName = "Pulsechain Testnet";
-    const chainId = "0x38";
+    const chainId = "0x3ae";
     const nativeCurrency = { name: "tPulse", decimals: 18, symbol: "tPLS" };
     const blockExplorerUrls = ["https://scan.v3.testnet.pulsechain.com"];
     const rpcUrls = ["https://rpc.v3.testnet.pulsechain.com/"];

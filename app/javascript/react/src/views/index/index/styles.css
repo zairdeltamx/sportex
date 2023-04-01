@@ -1,12 +1,13 @@
-.containerIndex {
+.contentIndex {
   width: 80%;
-
+  overflow: hidden;
   margin-left: auto;
   margin-right: auto;
   display: block;
 }
-.contentIndex {
+.containerIndex {
+  padding: 40px;
   width: 100%;
   background-color: #f7f9ff;
-  height: 1930px;
+  height: 100%;
 }

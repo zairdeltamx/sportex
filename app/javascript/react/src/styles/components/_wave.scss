@@ -1,0 +1,23 @@
+.container_wave {
+    width: 100%;
+    overflow: hidden;
+    height: 100px;
+    background-color: #001b4b;
+    background-image: url('../img/waves/wavePc.png');
+    background-size: cover;
+    position: relative;
+    bottom: -2px;
+    z-index: -1;
+
+    @media only screen and (max-width: 1000px) {
+        background-image: url('../img/waves/wave_ipad.png');
+        height: 130px;
+
+    }
+
+    @media only screen and (max-width: 700px) {
+        background-image: url('../img/waves/waveMobile.png');
+        height: 150px;
+
+    }
+}
