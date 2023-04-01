@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/Users/juanhinojo/Development/axdao/sportex/app/javascript/react/hardhat/contracts/NFT.sol": {
-      "lastModificationDate": 1677706588913,
-      "contentHash": "ebe21ba179fb038bfcb2ddd0d4799089",
+      "lastModificationDate": 1680382602613,
+      "contentHash": "695e0679c9f5cd73282939482f1b4fdb",
       "sourceName": "contracts/NFT.sol",
       "solcConfig": {
         "version": "0.8.4",
@@ -479,8 +479,8 @@
       ]
     },
     "/Users/juanhinojo/Development/axdao/sportex/app/javascript/react/hardhat/contracts/NFTMarketplace.sol": {
-      "lastModificationDate": 1677706588913,
-      "contentHash": "bcacb88dcf84edb5dbeb0ab9a00fd58d",
+      "lastModificationDate": 1680390196383,
+      "contentHash": "26fa7786669320cf8c40cfaebcea26e3",
       "sourceName": "contracts/NFTMarketplace.sol",
       "solcConfig": {
         "version": "0.8.4",

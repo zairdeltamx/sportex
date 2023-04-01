@@ -2,8 +2,7 @@ import { ethers } from "ethers";
 import Web3Modal from "web3modal";
 import Market from "../../hardhat/artifacts/contracts/NFTMarketplace.sol/NFTMarketplace.json";
 import { nftaddress, nftmarketaddress } from "../config";
-import { deleteNft } from "../services/nft";
-import { notification } from "../components/alerts/notifications";
+
 export default async function buyNFT(nft:any) {
   const web3Modal = new Web3Modal();
   const connection = await web3Modal.connect();

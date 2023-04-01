@@ -10,16 +10,17 @@ import { nftaddress, nftmarketaddress } from "../config";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { notification } from "./alerts/notifications";
-import { deleteNft } from "../services/nft";
+import { markAsSold } from "../services/nft";
 import { ButtonResellNft } from "./ButtonResellNft";
 export const NftItem = ({ nft }) => {
   const location = useLocation()
   console.log(location, "LOCATION");
   const isAutorized = true;
+
   async function handleBuyNft(nft) {
     try {
       await buyNFT(nft);
-      await deleteNft({ id: nft.id });
+      await markAsSold({ id: nft.id });
       notification.showSuccess({
         title: "Successful purchase",
         message: "Your NFT will be found in the My Assets section",
@@ -32,6 +33,7 @@ export const NftItem = ({ nft }) => {
       });
     }
   }
+
   async function deListNFT(nft) {
     const web3Modal = new Web3Modal();
     const connection = await web3Modal.connect();
@@ -74,7 +76,7 @@ export const NftItem = ({ nft }) => {
             location.pathname === '/myassets' ?
               <ButtonResellNft></ButtonResellNft> : ''
           }
-          <ButtonBuyNft nft={nft}></ButtonBuyNft>
+          <ButtonBuyNft nft={handleBuyNft}></ButtonBuyNft>
         </div>
       </div>
     </div>

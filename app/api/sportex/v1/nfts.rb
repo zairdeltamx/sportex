@@ -13,6 +13,7 @@ module Sportex
           )
         end
       end
+
       resource :nfts do
         desc 'Return list of NFTs'
         get do
@@ -20,11 +21,7 @@ module Sportex
           nfts = Nft.all
           present nfts
         end
-      end
-      # end
-      # this function saves all nfts
-      resources :saveNfts do
-        desc 'Save NFTs'
+
         params do
           requires :price, type: String
           requires :tokenId, type: Integer
@@ -37,12 +34,14 @@ module Sportex
           requires :attack, type: Float
           requires :strength, type: Float
           requires :description, type: String
+          requires :sold, type: Boolean
           requires :meta, type: JSON
-          # requires :meta_json, type: JSON
         end
         post do
           nft = Nft.find_by(tokenId: params[:tokenId])
           if nft
+            nft.update status: params[:sold] ? 'sold' : 'available'
+
             if nft.teamName == params[:teamName] && nft.price == params[:price] && nft.attack == params[:attack] && nft.defense == params[:defense] && nft.strength == params[:strength] && nft.seller == params[:seller] && nft.owner == params[:owner] && nft.image == params[:image] && nft.name == params[:name] && nft.description == params[:description] && nft.meta == params[:meta]
               # If there are no changes, do nothing
             else
@@ -63,25 +62,21 @@ module Sportex
             end
           end
         end
-      end
 
-      resource :delete_nft do
-        desc 'Remove one nft for id'
-        params do
-          requires :id, type: Integer
-        end
+        route_param :id do
+          delete do
+            @nft = Nft.find(params[:id])
 
-        delete ':id' do
-          @nft = Nft.find(params[:id])
-          if @nft.destroy
-            notify_all_users_nft_destroy()
-            render json: {
-              message: 'NFT deleted',
-            }, status: :no_content
-          else
-            render json: {
-              message: 'NFT not deleted',
-            }, status: :unprocessable_entity
+            if @nft.update status: 'sold'
+              notify_all_users_nft_destroy()
+              render json: {
+                message: 'NFT deleted',
+              }, status: :no_content
+            else
+              render json: {
+                message: 'NFT not deleted',
+              }, status: :unprocessable_entity
+            end
           end
         end
       end

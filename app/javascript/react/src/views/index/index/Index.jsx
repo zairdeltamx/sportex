@@ -8,8 +8,6 @@ import { useLazyQuery } from "@apollo/client";
 import { GET_NFTS } from "../../../querys/getAllNfts";
 import { Wave } from "../../../components/Wave";
 import "./styles.css";
-import buyNFT from "../../../helpers/buyNft";
-import { deleteNft } from "../../../services/nft";
 import ActionCable from "actioncable";
 
 export default function Index() {
