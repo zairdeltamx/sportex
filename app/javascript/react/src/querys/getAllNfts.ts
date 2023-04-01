@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 export const GET_NFTS = gql`
-  query getAllNfts(
+  query nfts(
     $page: Int
     $limit: Int
     $name: String
@@ -9,7 +9,7 @@ export const GET_NFTS = gql`
     $order: String
     $teamName: String
   ) {
-    getAllNfts(
+    nfts(
       page: $page
       teamName: $teamName
       limit: $limit

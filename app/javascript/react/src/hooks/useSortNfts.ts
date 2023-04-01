@@ -1,6 +1,6 @@
 import { useLazyQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
-import { GET_NFTS } from "../querys/ALL_QUERYS";
+import { GET_NFTS } from "../querys/getAllNfts";
 
 export const useSortNfts = () => {
   const [sortBy, setSortBy] = useState("name");
@@ -15,7 +15,7 @@ export const useSortNfts = () => {
 
   useEffect(() => {
     if (data) {
-      setTotalPages(data.getAllNfts.metadata.totalPages);
+      setTotalPages(data.nfts.metadata.totalPages);
     }
   }, [data]);
   const handleSortBy = (event) => {

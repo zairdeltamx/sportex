@@ -69,8 +69,8 @@ export default function Index() {
   useEffect(() => {
     if (data) {
       console.log("ENTRA2");
-      setNfts(data.getAllNfts.collection);
-      setTotalPages(data.getAllNfts.metadata.totalPages);
+      setNfts(data.nfts.collection);
+      setTotalPages(data.nfts.metadata.totalPages);
     }
   }, [data]);
   return (
@@ -96,7 +96,7 @@ export default function Index() {
             setTeamName={setTeamName}
           />
 
-          {!nfts ? <h1>CARGANDO BRO</h1> : <ListNfts nfts={nfts} />}
+          {!nfts ? <h1>CARGANDO</h1> : <ListNfts nfts={nfts} />}
           <Pagination
             totalPages={totalPages}
             currentPage={currentPage}

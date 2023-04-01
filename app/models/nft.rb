@@ -1,4 +1,7 @@
 class Nft < ApplicationRecord
+  extend Enumerize
+  enumerize :status, in: %i[available sold], scope: true, default: :available
+
   validates :price, presence: false
   validates :tokenId, presence: false
   attribute :teamName, :string, default: 'default value'
@@ -12,4 +15,15 @@ class Nft < ApplicationRecord
   validates :description, presence: true
   validates :meta, presence: true
   # validates :meta_json, presence: true
+  #
+  def self.ransackable_attributes(_auth_object)
+    %w(
+      price
+      name
+      teamName
+      attack
+      defense
+      strength
+    )
+  end
 end

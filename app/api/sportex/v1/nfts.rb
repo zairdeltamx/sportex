@@ -65,23 +65,6 @@ module Sportex
         end
       end
 
-      # end
-      # this function removes all nfts from the database
-      resources :deleteNfts do
-        desc 'Remove all nfts'
-        get do
-          if Nft.delete_all
-            render response: {
-              status: 'SUCCESS',
-            }, status: :ok
-          else
-            render response: {
-              status: 'ERROR',
-            }, status: :unprocessable_entity
-          end
-        end
-      end
-
       resource :delete_nft do
         desc 'Remove one nft for id'
         params do
