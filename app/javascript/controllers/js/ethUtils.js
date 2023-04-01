@@ -6,9 +6,8 @@ import { showLoader } from "./loader.js";
 export async function currentChainIsValid() {
     try {
         const currentChain = await ethereum.request({ method: "eth_chainId" });
-        console.log("checkCurrentChainId", currentChain);
-        if (currentChain !== chainId) {
-            return true;
+        if (currentChain === chainId) {
+          return true;
         }
         await switchChain()
         return false;
@@ -18,23 +17,31 @@ export async function currentChainIsValid() {
 }
 
 export async function switchChain() {
-    try {
-        await ethereum.request({
-            method: "wallet_addEthereumChain",
-            params: [
-                {
-                    chainName,
-                    chainId,
-                    nativeCurrency,
-                    rpcUrls,
-                    blockExplorerUrls
-                },
-            ],
-        });
-
-    } catch (error) {
-        console.log(error);
-    }
+      // check if chain exists
+      ethereum.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{ chainId }],
+      }).then(() => {
+        console.log('chain switched');
+      }).catch((error) => {
+        // chain doesn't exist, prompt user to add it
+        if (error.code === 4902) {
+          ethereum.request({
+            method: 'wallet_addEthereumChain',
+            params: [{
+              chainName,
+              chainId,
+              nativeCurrency,
+              rpcUrls,
+              blockExplorerUrls,
+            }],
+          }).then(() => {
+            // chain added and user has switched to it
+          });
+        } else {
+          // other error, handle accordingly
+        }
+      });
 }
 
 export function metamaskIsInstalled() {

@@ -17,8 +17,7 @@ export function logout() {
     method: "GET",
   })
     .then(() => {
-
-      // window.location.href = "/users/sign_in";
+      window.location.href = "/";
     })
     .catch((errs) => {
       console.log(errs);

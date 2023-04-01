@@ -33,7 +33,7 @@ function NavbarComponent() {
           </ul>
         </div>
         <div className={`navbar__toggle ${isOpen ? 'active' : ''}`} onClick={toggleNav}>
-          
+
         </div>
       </div>
     </nav>

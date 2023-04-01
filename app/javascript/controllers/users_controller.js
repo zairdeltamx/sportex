@@ -1,4 +1,6 @@
 import { Controller } from "@hotwired/stimulus";
+import { chainId, chainName, nativeCurrency, rpcUrls, blockExplorerUrls } from "./js/ethConfig";
+import { currentChainIsValid } from "./js/ethUtils";
 
 // Connects to data-controller="users"
 export default class extends Controller {
@@ -15,28 +17,11 @@ export default class extends Controller {
 
     // Get the form for submission later
     const form = document.querySelector("form.new_user");
-    const chainName = "Pulsechain Testnet";
-    const chainId = "0x3ae";
-    const nativeCurrency = { name: "tPulse", decimals: 18, symbol: "tPLS" };
-    const blockExplorerUrls = ["https://scan.v3.testnet.pulsechain.com"];
-    const rpcUrls = ["https://rpc.v3.testnet.pulsechain.com/"];
 
-    async function checkCurrentChainId() {
-      try {
-        const currentChain = await ethereum.request({ method: "eth_chainId" });
-        console.log("checkCurrentChainId", currentChain);
-        if (currentChain !== chainId) {
-          return true;
-        }
-        return false;
-      } catch (error) {
-        console.log(error);
-      }
-    }
     async function switchChain() {
       try {
-        console.log(await checkCurrentChainId());
-        if (await checkCurrentChainId()) {
+        console.log(await currentChainIsValid());
+        if (await currentChainIsValid()) {
           await ethereum.request({
             method: "wallet_addEthereumChain",
             params: [
@@ -65,7 +50,7 @@ export default class extends Controller {
       // Check if Ethereum context is available
       if (checkMetamask()) {
         await switchChain();
-        if (await checkCurrentChainId()) return;
+        if (await currentChainIsValid()) return;
 
         // Add event listener to the button
         buttonEthConnect.addEventListener("click", async () => {
