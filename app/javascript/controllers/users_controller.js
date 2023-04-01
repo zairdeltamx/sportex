@@ -1,5 +1,4 @@
 import { Controller } from "@hotwired/stimulus";
-import { chainId, chainName, nativeCurrency, rpcUrls, blockExplorerUrls } from "./js/ethConfig";
 import { currentChainIsValid } from "./js/ethUtils";
 
 // Connects to data-controller="users"
@@ -20,21 +19,7 @@ export default class extends Controller {
 
     async function switchChain() {
       try {
-        console.log(await currentChainIsValid());
-        if (await currentChainIsValid()) {
-          await ethereum.request({
-            method: "wallet_addEthereumChain",
-            params: [
-              {
-                chainName,
-                chainId,
-                nativeCurrency,
-                rpcUrls,
-                blockExplorerUrls
-              },
-            ],
-          });
-        }
+        await currentChainIsValid();
       } catch (error) {
         console.log(error);
       }
@@ -50,7 +35,6 @@ export default class extends Controller {
       // Check if Ethereum context is available
       if (checkMetamask()) {
         await switchChain();
-        if (await currentChainIsValid()) return;
 
         // Add event listener to the button
         buttonEthConnect.addEventListener("click", async () => {
