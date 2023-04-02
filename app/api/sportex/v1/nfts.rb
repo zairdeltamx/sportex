@@ -26,7 +26,7 @@ module Sportex
           requires :price, type: String
           requires :tokenId, type: Integer
           requires :seller, type: String
-          requires :teamName, type: String
+          optional :teamName, type: String
           requires :owner, type: String
           requires :image, type: String
           requires :name, type: String

@@ -1,17 +1,16 @@
 {
-  "name": "Messi",
+  "name": "Chiellini",
   "cardBasicInfo":
   {
-    "owner":"0x552820268831298c5d4CFAC7F9c1c9C7d4E0fb77",
-    "price":100000.0,
-    "isOnSale":false,
     "cardSport":0,
     "cardType":1,
-    "level":1},
+    "level":1
+  },
     "soccerPlayerInfo":
     {
       "playerCategory":1,
       "playerName":"Messi",
+      "teamName": "Barcelona",
       "playerStats":
       [
         {
@@ -25,9 +24,6 @@
         {
           "statName":"attack",
           "value":92.0
-        },
-        {
-          "image" : "url"
         }
       ]
     },
