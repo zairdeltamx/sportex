@@ -27,7 +27,7 @@ module Queries
 
       field :nft, Types::NftType, null: false,
                                         description: 'Get one Nft by id' do
-        argument :id, ID, required: true
+        argument :id, Integer, required: true
       end
     end
 
