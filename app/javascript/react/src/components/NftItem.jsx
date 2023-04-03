@@ -76,7 +76,7 @@ export const NftItem = ({ nft }) => {
             location.pathname === '/myassets' ?
               <ButtonResellNft></ButtonResellNft> : ''
           }
-          <ButtonBuyNft nft={handleBuyNft}></ButtonBuyNft>
+          <ButtonBuyNft nft={nft} handleBuy={handleBuyNft}></ButtonBuyNft>
         </div>
       </div>
     </div>

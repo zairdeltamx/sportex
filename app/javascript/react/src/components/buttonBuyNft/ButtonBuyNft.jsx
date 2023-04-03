@@ -1,9 +1,9 @@
 import React from "react";
 import buyNFT from "../../helpers/buyNft";
-export const ButtonBuyNft = ({ nft }) => {
+export const ButtonBuyNft = ({ nft, handleBuy }) => {
   return (
 
-    <button className="buttonBuyNft" onClick={() => buyNFT(nft)}>
+    <button className="buttonBuyNft" onClick={() => handleBuy(nft)}>
       BUY IT
     </button>
 
