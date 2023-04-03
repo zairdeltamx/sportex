@@ -32,7 +32,7 @@ module Queries
     end
 
     def nfts(limit: nil, page: nil, name: nil, teamName: nil, attack: nil, defense: nil, strength: nil, orderBy: nil, order: nil)
-      search_params = {name_cont: 'messi'}
+      search_params = {}
       search_params[:name_cont] = name.downcase if name.present?
       search_params[:teamName_cont] = teamName.downcase if teamName.present?
       search_params[:s] = "#{orderBy} #{order}" if orderBy.present? && ['ASC', 'DESC'].include?(order)

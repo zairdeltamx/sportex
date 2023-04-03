@@ -50,7 +50,7 @@ export default function Index() {
     getNFTs({
       variables: {
         page: currentPage,
-        limit: 10,
+        limit: 25,
         name,
         orderBy,
         order,
