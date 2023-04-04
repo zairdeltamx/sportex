@@ -24,6 +24,9 @@
         {
           "statName":"attack",
           "value":92.0
+        },
+        {
+          "image" : "url"
         }
       ]
     },
