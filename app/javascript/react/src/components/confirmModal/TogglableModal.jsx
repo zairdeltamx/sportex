@@ -9,11 +9,10 @@ export const TogglableModal = ({
 	buttonLabel,
 	onConfirm,
 }) => {
-	console.log(params, 'PARAMS');
 	const [visible, setVisible] = useState(false);
 	return (
-		<Fragment>
-			<Button onClick={() => setVisible(true)}>{buttonLabel}</Button>
+		<div style={{ width: '100%' }}>
+			<button onClick={() => setVisible(true)}>{buttonLabel}</button>
 			<Modal show={visible}>
 				<Modal.Header>
 					<Modal.Title>{title}</Modal.Title>
@@ -32,6 +31,6 @@ export const TogglableModal = ({
 					</Button>
 				</Modal.Footer>
 			</Modal>
-		</Fragment>
+		</div>
 	);
 };

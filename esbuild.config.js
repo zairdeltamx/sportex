@@ -18,7 +18,7 @@ require("esbuild")
       ".jpg": "file",
       ".css": "css",
       ".svg": "dataurl"
-    },
+    }
   })
   .then(() => console.log("⚡ Doneeeee"))
   .catch(() => process.exit(1));

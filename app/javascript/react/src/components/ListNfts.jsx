@@ -5,11 +5,12 @@ export const ListNfts = ({ nfts }) => {
   return (
     <div className="list_nfts">
       {nfts.map((nft) => (
-        <div key={nft.id}>
+        <div key={nft.tokenId}>
           <NftItem nft={nft} />
 
         </div>
       ))}
+
     </div>
   );
 };

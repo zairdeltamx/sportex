@@ -1,24 +1,27 @@
-// En el archivo App.jsx
-import React, { useState } from "react";
-import Index from "./routes/index";
+import React, { useContext } from "react";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { getApiUrl } from "./config";
+import { MetamaskProvider } from "./useContext/MetamaskContext";
+import Index from "./routes/index";
 import "./styles/styles.scss";
+import { LoadingProvider } from "./useContext/LoaderContext";
 export default function App() {
-  const [number, setNumber] = useState(1);
-
-  console.log(number);
 
   const client = new ApolloClient({
     cache: new InMemoryCache(),
     uri: getApiUrl("graphql"),
   });
 
+
   return (
-    <React.StrictMode>
-      <ApolloProvider client={client}>
-        <Index style={{ backgroundColor: "#001b4b" }}></Index>
-      </ApolloProvider>
-    </React.StrictMode>
+    <MetamaskProvider>
+      <LoadingProvider>
+
+        <ApolloProvider client={client}>
+
+          <Index style={{ backgroundColor: "#001b4b" }} />
+        </ApolloProvider>
+      </LoadingProvider >
+    </MetamaskProvider>
   );
 }

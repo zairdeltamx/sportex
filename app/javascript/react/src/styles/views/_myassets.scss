@@ -9,5 +9,12 @@
 .container_my_assets {
     width: 100%;
     background-color: #f7f9ff;
-    height: 1930px;
+    height: 100%;
+    padding: 50px;
+}
+
+@media only screen and (max-width: 1000px) {
+    .container_my_assets {
+        padding: 50px 0;
+    }
 }

@@ -20,7 +20,6 @@ export const ConfirmUpdate = ({ callback, parameters, fetch }) => {
 		.then(async result => {
 			if (result.isConfirmed) {
 				const { status } = await callback(parameters ? parameters : null);
-				console.log(status, "ESTA");
 				if (status === 200 || status === 202) {
 					swalWithBootstrapButtons.fire(
 						'Updated!',

@@ -21,7 +21,6 @@ export const SorterNfts = ({
 
   const toggleSort = () => {
     setActive(!active)
-    console.log('entra:' + active);
   }
   return (
     <div>

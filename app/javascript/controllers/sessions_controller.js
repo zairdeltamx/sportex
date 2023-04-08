@@ -2,7 +2,6 @@ import { Controller } from "@hotwired/stimulus";
 import { showModal } from "./js/modal";
 import { metamaskIsInstalled, currentChainIsValid, requestAccounts, personalSign, getUuidByAccount } from "./js/ethUtils";
 import { notification } from "../react/src/components/alerts/notifications";
-
 // Connects to data-controller="sessions"
 export default class extends Controller {
   connect() {
@@ -21,13 +20,20 @@ export default class extends Controller {
     connectToEthereum();
     async function connectToEthereum() {
       if (metamaskIsInstalled()) {
-
-        if (!currentChainIsValid()) return;
+        if (await currentChainIsValid()) return;
 
         // console.log(checkMetamask());
         buttonEthConnect.addEventListener("click", async () => {
           // buttonEthConnect.disabled = true;
-          const accounts = await requestAccounts();
+          let accounts
+          try {
+            accounts = await requestAccounts();
+            // hacer algo con accounts
+          } catch (error) {
+            notification.showWarningWithButton({ title: "Error", message: "Ya tienes una solicitud en curso, revisa tu bandeja de MetaMask" })
+            throw error; // aquí se propaga la excepción
+
+          }
           const etherbase = accounts[0];
           const nonce = await getUuidByAccount(etherbase);
           if (!nonce) {
@@ -39,12 +45,18 @@ export default class extends Controller {
           const requestTime = new Date().getTime();
           const message = customTitle + "," + requestTime + "," + nonce;
 
+          let signature
+          try {
+            signature = await personalSign(etherbase, message);
+          } catch (error) {
+            notification.showWarningWithButton({ title: "Error", message: "Ah ocurrido un error al obtener tu firma personal en metamask" })
+            throw error; // aquí se propaga la excepción
 
-          const signature = await personalSign(etherbase, message);
-          if (!signature || !message) {
-            alert("OCURRIO UN ERROR PORFAVOR VUELVA A INTENTARLO");
-            return
           }
+          // if (!signature || !message) {
+          //   notification.showWarningWithButton()
+          //   return
+          // }
           formInputEthMessage.value = message;
           formInputEthAddress.value = etherbase;
           formInputEthSignature.value = signature;
@@ -59,6 +71,8 @@ export default class extends Controller {
         buttonEthConnect.innerHTML = "No Ethereum Context Available";
         buttonEthConnect.disabled = true;
       }
+
+
     }
 
   }

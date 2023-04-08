@@ -8,6 +8,7 @@ import { useLazyQuery } from "@apollo/client";
 import { GET_NFTS } from "../../../querys/getAllNfts";
 import { Wave } from "../../../components/Wave";
 import "./styles.css";
+import { Loader } from "../../../components/Loader";
 import ActionCable from "actioncable";
 
 export default function Index() {
@@ -28,17 +29,10 @@ export default function Index() {
     const channel = cable.subscriptions.create("NftChannel", {
       room: "13",
       received: (data) => {
-        console.log(data, "DAATASDS");
         handleSubmit();
       },
     });
-    const channel1 = cable.subscriptions.create("NftChannel", {
-      room: "13",
-      received: (data) => {
-        console.log(data, "DAATASDS");
-        handleSubmit();
-      },
-    });
+
 
     return () => {
       channel.unsubscribe();
@@ -46,11 +40,10 @@ export default function Index() {
   }, []);
 
   const handleSubmit = () => {
-    console.log("ENTRA");
     getNFTs({
       variables: {
         page: currentPage,
-        limit: 25,
+        limit: 10,
         name,
         orderBy,
         order,
@@ -66,7 +59,6 @@ export default function Index() {
 
   useEffect(() => {
     if (data) {
-      console.log("ENTRA2");
       setNfts(data.nfts.collection);
       setTotalPages(data.nfts.metadata.totalPages);
     }
@@ -94,7 +86,7 @@ export default function Index() {
             setTeamName={setTeamName}
           />
 
-          {!nfts ? <h1>CARGANDO</h1> : <ListNfts nfts={nfts} />}
+          {loading ? <Loader /> : nfts.length === 0 ? <h1 style={{ textAlign: 'center', paddingTop: '20px' }}>Not found NFTs</h1> : <ListNfts nfts={nfts} />}
           <Pagination
             totalPages={totalPages}
             currentPage={currentPage}

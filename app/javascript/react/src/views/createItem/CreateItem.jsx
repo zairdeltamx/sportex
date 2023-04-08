@@ -1,14 +1,10 @@
 import { create as ipfsHttpClient } from "ipfs-http-client";
-import React, { Fragment, useEffect, useState } from "react";
-import { ethers } from "ethers";
-import { useNavigate } from "react-router-dom";
-import Web3Modal from "web3modal";
-
-import NFT from "../../../hardhat/artifacts/contracts/NFT.sol/NFT.json";
-import Market from "../../../hardhat/artifacts/contracts/NFTMarketplace.sol/NFTMarketplace.json";
-import { nftaddress, nftmarketaddress } from "../../config";
+import React, { useState } from "react";
 import Polaroid from "../../img/polaroid.svg";
-import { Button, Title } from "../../components/elements/Elements";
+import { Loader } from "../../components/Loader";
+import { createItem } from "../../helpers/createNft";
+import { useLoadingContext } from "../../useContext/LoaderContext";
+import { notification } from "../../components/alerts/notifications";
 const client = ipfsHttpClient({
   host: "ipfs.infura.io",
   port: 5001,
@@ -21,15 +17,34 @@ const client = ipfsHttpClient({
 
 export default function CreateItem() {
   const [fileUrl, setFileUrl] = useState(null);
+  const [loadingImage, setLoadingImage] = useState(false)
+  const { transactionIsLoading, setTransactionIsLoading } = useLoadingContext()
   const [formInput, updateFormInput] = useState({
     price: "",
     name: "",
     description: "",
-    meta: "",
     teamName: "",
+    meta: "",
   });
-  const navigate = useNavigate();
+  const handleCreateItem = async () => {
+    setTransactionIsLoading(true)
+    createItem({
+      description: formInput.description, price: formInput.price, fileUrl: fileUrl, meta: formInput.meta, name: formInput.name, teamName: formInput
+        .teamName
+    }).then(() => {
+      notification.showSuccess({ title: 'Success', message: 'The item has been created successfully' })
+
+    }).catch(() => {
+      notification.showErrorWithButton({ title: 'Error', message: 'There was an error creating the item' })
+    })
+      .finally(() => {
+        setTransactionIsLoading(false)
+      })
+  }
+
+
   async function onChange(e) {
+    setLoadingImage(true)
     const file = e.target.files[0];
     try {
       //try uploading the file
@@ -39,103 +54,35 @@ export default function CreateItem() {
       //file saved in the url path below
       const url = `https://sportex-staging.infura-ipfs.io/ipfs/${added.path}`;
       setFileUrl(url);
+      setLoadingImage(false)
     } catch (e) {
       console.log("Error uploading file: ", e);
     }
   }
 
-  //1. create item (image/video) and upload to ipfs
-  async function createItem() {
-    const { name, description, price, meta } = formInput; //get the value from the form input
-
-    //form validation
-    if (!name || !description || !price || !fileUrl || !meta) {
-      return;
-    }
-    let parseJson = JSON.parse(meta);
-    console.log(parseJson);
-    parseJson.cardBasicInfo.price = price;
-    parseJson.name = name;
-    parseJson.soccerPlayerInfo.playerName = name;
-    parseJson.soccerPlayerInfo.playerStats.find((stat) =>
-      stat.hasOwnProperty("image")
-    ).image = fileUrl;
-    console.log(parseJson);
-
-    const data = JSON.stringify({
-      name,
-      description,
-      image: fileUrl,
-      metaJson: parseJson,
-    });
-
-    try {
-      const added = await client.add(data);
-      const url = `https://sportex-staging.infura-ipfs.io/ipfs/${added.path}`;
-      //pass the url to sav eit on Polygon adter it has been uploaded to IPFS
-      createSale(url, data);
-    } catch (error) {
-      console.log(`Error uploading file: `, error);
-    }
-  }
-
-  //2. List item for sale
-  async function createSale(url, meta) {
-    const web3Modal = new Web3Modal();
-    const connection = await web3Modal.connect();
-    const provider = new ethers.providers.Web3Provider(connection);
-
-    //sign the transaction
-    const signer = provider.getSigner();
-    let contract = new ethers.Contract(nftaddress, NFT.abi, signer);
-    let transaction = await contract.createToken(url, meta);
-    let tx = await transaction.wait();
-    console.log(tx, "TX");
-    //get the tokenId from the transaction that occured above
-    //there events array that is returned, the first item from that event
-    //is the event, third item is the token id.
-    console.log("Transaction: ", tx);
-    console.log("Transaction events: ", tx.events[0]);
-    let event = tx.events[0];
-    let value = event.args[2];
-    let tokenId = value.toNumber(); //we need to convert it a number
-
-    //get a reference to the price entered in the form
-    const price = ethers.utils.parseUnits(formInput.price, "ether");
-
-    contract = new ethers.Contract(nftmarketaddress, Market.abi, signer);
-
-    //get the listing price
-    let listingPrice = await contract.getListingPrice();
-    listingPrice = listingPrice.toString();
-
-    transaction = await contract.listMarketItem(nftaddress, tokenId, price, {
-      value: listingPrice,
-    });
-
-    await transaction.wait();
-
-    navigate("/");
-  }
 
   return (
     <div>
       <div className="container_createitem">
         <div className="container_form_createitem">
           <div>
-            {fileUrl ? (
-              <div>
-                <img
-                  src={fileUrl}
-                  alt="Picture of the author"
-                  className="rounded mt-4"
-                  width={200}
-                  height={200}
-                />
-              </div>
-            ) : (
-              <Polaroid />
-            )}
+            {
+              !loadingImage ? (
+                <div>
+                  {
+                    !fileUrl ?
+                      <Polaroid /> : <img
+                        src={fileUrl}
+                        alt="Picture of the author"
+                        className="rounded mt-4"
+                        width={200}
+                        height={200}
+                      />
+                  }
+                </div>
+              ) : (
+                <Loader />
+              )}
           </div>
           <div>
             <input
@@ -211,7 +158,7 @@ export default function CreateItem() {
               }
             />
           </div>
-          <button onClick={createItem} className="">
+          <button onClick={async () => handleCreateItem()} className="">
             Create NFT
           </button>
         </div>

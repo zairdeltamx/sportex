@@ -82,6 +82,14 @@
 
             .button_cancel {
                 display: none;
+                padding: 8px 40px;
+                border: none;
+                gap: 10px;
+                color: black;
+                background: #f3f3f3;
+                border-radius: 10px;
+                font-family: "GeneralSans", sans-serif;
+                font-weight: 600;
             }
         }
     }
@@ -117,7 +125,7 @@
                 height: 300px;
                 background-color: #f2f2f2;
                 position: absolute;
-                left: -250px;
+                left: -265px;
                 top: 50px;
                 opacity: 0;
                 transition: all 0.5s ease-in-out;

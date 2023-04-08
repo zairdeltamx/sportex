@@ -1,8 +1,10 @@
 <%= stylesheet_link_tag "registration.css", media: "all", 'data-turbolinks-track': "reload" %>
 <div class="background_login">
+  <div id="modalInstallMetamask"></div>
+  <div id="loader"></div>
   <div class="container_sign_up">
     <div class="container_content_sign_up">
-      <h1 class="title">SPORTEX</h1>
+      <%= image_tag("sportexLogoLogin.svg", :width => "100px", :alt => "rss feed") %>
       <% if !logged_in? %>
         <div class="form_sign_up">
           <%= form_for @user, url: user_registration_path do |form| %>

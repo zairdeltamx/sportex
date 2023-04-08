@@ -6,18 +6,29 @@ Rails.application.routes.draw do
     mount GraphiQL::Rails::Engine, at: '/api/v1/graphiql', graphql_path: '/api/v1/graphql'
   end
   post '/api/v1/graphql', to: 'graphql#execute'
-  root 'dashboard#index'
   # routes react
   get '/myassets', to: 'dashboard#index'
   get '/nftdetail/:id', to: 'dashboard#index'
   get '/createitem', to: 'dashboard#index'
   get '/profile', to: 'dashboard#index'
+  get '/dashboard', to: 'dashboard#index', as: :dashboard
 
   # authentication logic routes
   devise_for :users, controllers: {
-                       registrations: 'users/registrations',
-                       sessions: 'users/sessions',
-                     }
+    registrations: 'users/registrations',
+    sessions: 'users/sessions',
+  }
+
+  devise_scope :user do
+    unauthenticated :user do
+      root 'landing#index', as: :landing_page
+    end
+
+    authenticated :user do
+      root 'dashboard#index'
+    end
+  end
+
   # Defines the root path route ("/")
   # root "articles#index"
   namespace :api do

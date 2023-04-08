@@ -11,6 +11,7 @@ body {
 @import "./components/sorterNfts";
 @import "./components/buttonBuyNft";
 @import "./components/buttonResellNft";
+@import "./components/loader";
 @import "./components/wave";
 @import "./components/nftItem";
 @import "./components/pagination";
@@ -22,5 +23,6 @@ body {
 // Views
 
 @import "./views/profile";
+@import "./views/nftinfo";
 @import "./views/createItem";
 @import "./views/myassets";

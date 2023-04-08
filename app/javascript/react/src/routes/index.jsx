@@ -6,16 +6,26 @@ import NavbarComponent from "../layouts/navbar/NavbarComponent";
 import CreateItem from "../views/createItem/CreateItem";
 import Index from "../views/index/index/Index";
 import MyAssets from "../views/myAssets/MyAssets";
-import Profile from "../views/profile/Profile";
+import Profile from "../views/Profile";
 import NftInfo from "../views/nftInfo/NftInfo";
 import Footer from "../layouts/Footer";
+import { useMetamask } from "../useContext/MetamaskContext";
+import { LoaderBlock } from "../components/LoaderBlock";
+import { useLoadingContext } from "../useContext/LoaderContext";
 
 export default function App() {
   useEffect(() => {
   }, []);
-  const isAutorized = true
+
+  const { isAllowed } = useMetamask()
+  const { transactionIsLoading } = useLoadingContext()
+
   return (
     <div>
+      {
+        transactionIsLoading ?
+          <LoaderBlock /> : ''
+      }
 
       <BrowserRouter>
         <NavbarComponent />
@@ -23,7 +33,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Index></Index>} />
           <Route index element={<Index></Index>} />
-          {isAutorized ? (
+          {isAllowed ? (
             <Route path="createitem" element={<CreateItem></CreateItem>} />
           ) : null}
           <Route path="myassets" element={<MyAssets></MyAssets>} />

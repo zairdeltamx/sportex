@@ -9,7 +9,6 @@ function useForm(initialState:any) {
 			[event.target.name]: event.target.value,
 		});
 	};
-	console.log(formData, 'FORM');
 	return { form: formData, handleChange };
 }
 export default useForm;

@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLazyQuery } from "@apollo/client";
 import { GET_NFT } from "../../querys/getOneNft";
 import { useParams } from "react-router-dom";
-import buyNFT from "../../helpers/buyNft";
-import "./styles.css";
+import { ButtonBuyNft } from "../../components/buttonBuyNft/ButtonBuyNft";
 const NftInfo = () => {
   const [nft, setNft] = useState(null);
   const [getNft, { data, loading }] = useLazyQuery(GET_NFT);
@@ -12,38 +11,40 @@ const NftInfo = () => {
   useEffect(() => {
     getNft({
       variables: {
-        id: 1,
+        id: id,
       },
     });
   }, []);
 
   useEffect(() => {
     if (data) {
-      //   console.log(data, "DATA");
       setNft(data.getOneNft);
-      console.log(data, "NFT");
     }
   }, [data]);
 
   if (nft === null || loading === true) return <p>Loading...</p>;
-  console.log("NO PASAAA");
   return (
-    <div className="parent">
-      <div className="div1">
-        <img src={nft.image} alt="" />
-      </div>
-      <div className="div2">
-        <div>
-          <h1>{nft.name}</h1>
-          <p>{nft.description}</p>
+
+    <div className="container_nft_info">
+      <div className="content_nft_info">
+        <div className="grid_item image_nft">
+          <img src={nft.image} alt="" />
+
         </div>
-        <div>
-          <h1>Sale</h1>
-          <p>{nft.price}</p>
+
+        <div className="grid_item name_sale">
+          <div>
+
+            <h1>{nft.name}</h1>
+            <p>{nft.description}</p>
+          </div>
+          <div>
+
+            <h1>Sale</h1>
+            <p>{nft.price}</p>
+          </div>
         </div>
-      </div>
-      <div className="div3">
-        <div>
+        <div className="grid_item nft_info">
           <h1>NFT information</h1>
           <ul>
             <li>Seller: {nft.seller}</li>
@@ -54,14 +55,42 @@ const NftInfo = () => {
             <li>Is Transferable: Yes</li>
           </ul>
         </div>
+        <div className="grid_item create_nft">
+          <h1>Create NFT</h1>
+          <div className="table_nft_info">
+            <div className="table_nft_row">
+              <div className="table_nft_header">Característica</div>
+              <div className="table_nft_header">Valor</div>
+            </div>
+            <div className="table_nft_row attack">
+              <div className="table_nft_cell">Attack</div>
+              <div className="table_nft_cell value">{nft.attack}</div>
+            </div>
+            <div className="table_nft_row defense">
+              <div className="table_nft_cell">Defense</div>
+              <div className="table_nft_cell value">{nft.defense}</div>
+            </div>
+            <div className="table_nft_row strength">
+              <div className="table_nft_cell">Strength</div>
+              <div className="table_nft_cell value">{nft.strength}</div>
+            </div>
+            <div className="table_nft_row teamName">
+              <div className="table_nft_cell">Team name</div>
+              <div className="table_nft_cell value">{nft.teamName}</div>
+            </div>
+          </div>
+          <div className="button_buy_nft_info">
+
+            <ButtonBuyNft nft={nft} />
+          </div>
+        </div>
+        <div className="grid_item offers">
+          <h1>Offers</h1>
+          <h1>sda</h1>
+
+        </div>
       </div>
-      <div className="div4">
-        <h1>Create NFT</h1>
-        <button>Buy NFT</button>
-      </div>
-      <div className="div5">
-        <h1>Offers</h1>
-      </div>
+
     </div>
   );
 };

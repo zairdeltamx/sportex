@@ -4,7 +4,7 @@
   <div id="loader"></div>
   <div class="container_sign_in">
     <div class="content_sign_in">
-      <p class="title">SPORTEX</p>
+      <%= image_tag("sportexLogoLogin.svg", :width => "100px", :alt => "rss feed",class: "imageSportex") %>
       <% if !logged_in? %>
         <%= form_tag new_user_session_path, class: "new_session" do %>
           <%= text_field_tag :eth_message, "", readonly: true, class: "eth_message", hidden: true %>

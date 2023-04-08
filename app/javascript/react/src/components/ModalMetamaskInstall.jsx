@@ -11,7 +11,7 @@ export const ModalMetamaskInstall = () => {
                 <MetamaskLogo />
                 <h1>You need to login with MetaMask</h1>
                 <p>It seems you don't have MetaMask installed</p>
-                <button><a href="">Install MetaMask</a></button>
+                <button><a target="_blank" href="https://metamask.io/download/">Install MetaMask</a></button>
             </div>
         </div>
     );

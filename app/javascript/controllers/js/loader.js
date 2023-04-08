@@ -1,6 +1,5 @@
 export const showLoader = (active) => {
     var div = document.getElementById("loader");
-    console.log("ENTRA LOADER");
     // Verificar si se debe agregar o eliminar el modal-component
     if (active) {
         // Crear el modal-component y agregarlo al div

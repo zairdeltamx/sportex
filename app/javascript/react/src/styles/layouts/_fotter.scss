@@ -1,4 +1,5 @@
 .container_footer {
+    // margin-top: 100px;
     width: 100%;
     height: 300px;
     display: flex;
@@ -49,6 +50,8 @@
     }
 
     .footer_column {
+        font-family: 'GeneralSans', sans-serif;
+        font-weight: 500;
         display: flex;
         flex-direction: column;
 
@@ -65,7 +68,20 @@
 
     .footer_column_2 {}
 
-    .footer_column_3 {}
+    .footer_column_3 {
+
+        button {
+            background-color: #003399;
+            border-radius: 10px;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            color: white;
+            font-family: "GeneralSans", sans-serif;
+            font-weight: 600;
+
+        }
+    }
 }
 
 @media only screen and (max-width: 1000px) {

@@ -15,3 +15,5 @@ application.register("sessions", SessionsController)
 
 import UsersController from "./users_controller"
 application.register("users", UsersController)
+import LandingController from "./landing_controller"
+application.register("landing", LandingController)

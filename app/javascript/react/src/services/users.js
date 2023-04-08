@@ -1,5 +1,6 @@
 import axios from "axios";
 import { getApiUrl } from "../config";
+import { notification } from "../components/alerts/notifications";
 
 export const getUser = async ({ addressMetamask }) => {
   const apiUrl = getApiUrl(`findUser/${addressMetamask}`);
@@ -15,12 +16,14 @@ export function logout() {
   fetch("/users/sign_out", {
     // fetch("https://sportex-staging.herokuapp.com/users/sign_out", {
     method: "GET",
-  }).then(() => {
-      window.location.href = "/";
   })
-  .catch((errs) => {
-    console.log(errs);
-  });
+    .then(() => {
+
+      window.location.href = "/users/sign_in";
+    })
+    .catch((errs) => {
+      console.log(errs);
+    });
 }
 export const updateUser = ({ address, email, username }) => {
   const apiUrl = getApiUrl(`updateUser/${address}`);
@@ -38,7 +41,15 @@ export const updateUser = ({ address, email, username }) => {
     .then((res) => res)
     .catch((err) => {
       console.log(err.message);
-    });
+    }).then((res) => {
+      console.log(res, "RESPONSE");
+      if (res.status === 200) {
+        notification.showSuccess({ title: 'Success', message: "Your information has been updated" })
+        return
+      }
+      notification.showWarning({ title: 'Error', message: "An error has occurred, please try again" })
+    }
+    );
 };
 
 

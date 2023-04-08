@@ -24,6 +24,7 @@ export const GET_NFTS = gql`
         defense
         attack
         teamName
+        owner
         image
         description
         tokenId

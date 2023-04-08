@@ -1,10 +1,12 @@
 import axios from "axios";
 import { getApiUrl } from "../config";
 
-export const markAsSold = async ({ id }) => {
+
+
+export const deleteNft = async ({ id }) => {
   console.log(id,"ID");
   console.log(typeof id);
 
-  const apiUrl = getApiUrl(`nfts/${id}`);
+  const apiUrl = getApiUrl(`delete_nft/${id}`);
   await axios.delete(apiUrl);
 };
