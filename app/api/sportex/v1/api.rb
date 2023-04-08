@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Sportex
   module V1
     class Api < Grape::API
@@ -37,11 +39,17 @@ module Sportex
         error!(message, 500)
       end
 
-      # mount Sportex::V1::UnauthenticatedApi
       mount Sportex::V1::AuthenticatedApi
 
-      add_swagger_documentation api_version: 'v1', mount_path: '/api-docs',
-                                hide_format: true, info: { title: 'Sportex API v1.0', description: 'Mobile API for Sportex Fitness Planner' }
+      add_swagger_documentation(
+        api_version: 'v1',
+        mount_path: '/api-docs',
+        hide_format: true,
+        info: {
+          title: 'Sportex API v1.0',
+          description: 'Mobile API for Sportex Fitness Planner'
+        }
+      )
     end
   end
 end

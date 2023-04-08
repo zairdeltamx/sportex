@@ -10,7 +10,6 @@ module Queries
       end
     end
 
-
     included do
       field :nfts, Types::NftType.collection_type(metadata_type: MetadataTypeNft),
             description: 'Obtener todos los NFT filtrados por nombre, precio, defensa, ataque, poder y equipo' do
@@ -26,27 +25,28 @@ module Queries
       end
 
       field :nft, Types::NftType, null: false,
-                                        description: 'Get one Nft by id' do
+                                  description: 'Get one Nft by id' do
         argument :id, Integer, required: true
       end
     end
 
-    def nfts(limit: nil, page: nil, name: nil, teamName: nil, attack: nil, defense: nil, strength: nil, orderBy: nil, order: nil)
+    def nfts(limit: nil, page: nil, name: nil, teamName: nil, attack: nil, defense: nil,
+             strength: nil, orderBy: nil, order: nil)
       search_params = {}
       search_params[:name_cont] = name.downcase if name.present?
       search_params[:teamName_cont] = teamName.downcase if teamName.present?
-      search_params[:s] = "#{orderBy} #{order}" if orderBy.present? && ['ASC', 'DESC'].include?(order)
+      search_params[:s] = "#{orderBy} #{order}" if orderBy.present? && ['ASC',
+                                                                        'DESC'].include?(order)
 
       # Use Ransack to search for Nfts and paginate the results
       nfts = Nft.with_status(:available)
-        .ransack(search_params)
-        .result
-        .paginate(page: page, per_page: limit)
+                .ransack(search_params)
+                .result
+                .paginate(page:, per_page: limit)
     end
 
     def nft(id:)
-      nft = Nft.find_by(id: id)
-      nft
+      Nft.find_by(id:)
     end
   end
 end

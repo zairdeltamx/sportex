@@ -1,0 +1,53 @@
+{
+  "name": "Sportex",
+  "description": "Sportex",
+  "website": "https://sportex.com",
+  "repository": "git@github.com:Woow-Technologies/sportex.git",
+  "logo": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Ruby_on_Rails_logo.svg",
+  "scripts": {
+    "test-setup": "bundle exec rake assets:precompile",
+    "test":  "echo $DATABASE_URL; bundle exec rake ci:build:commit",
+    "postdeploy": "bundle exec rake db:migrate"
+  },
+  "addons": [
+    "heroku-postgresql",
+    "heroku-redis",
+    "memcachedcloud:30"
+  ],
+  "environments": {
+    "test": {
+      "formation": {
+        "test": {
+          "quantity": 1,
+          "size": "standard-2x"
+        }
+      },
+      "env": {
+        "NODE_OPTIONS": {
+          "description": "Node options",
+          "value": "--max_old_space_size=2560"
+        },
+        "GIT_DISCOVERY_ACROSS_FILESYSTEMS": {
+          "description": "Git Discovery Across Filesystems",
+          "value": "1"
+        },
+        "RAILS_ENV": {
+          "description": "The environment to run the tests in",
+          "value": "test"
+        },
+        "DATABASE_CLEANER_ALLOW_REMOTE_DATABASE_URL": {
+          "description": "The number of processes to run.",
+          "value": true
+        }
+      },
+      "addons": [
+        "heroku-redis:in-dyno",
+        "heroku-postgresql"
+      ],
+      "buildpacks": [
+        { "url": "heroku/nodejs" },
+        { "url": "heroku/ruby" }
+      ]
+    }
+  }
+}

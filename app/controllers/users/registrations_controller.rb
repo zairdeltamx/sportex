@@ -12,15 +12,12 @@ module Users
         if @user.eth_address
           address = Eth::Address.new @user.eth_address
 
-          if address.valid?
-            if @user.save
-              redirect_to new_user_session_path, notice: 'Successfully created an account, you may now log in.'
-            else
-              redirect_to new_user_session_path, alert: 'Account already exists! Try to log in instead!'
-            end
+          if address.valid? && @user.save
+            redirect_to new_user_session_path,
+                        notice: 'Successfully created an account, you may now log in.'
           else
-            flash.now[:alert] = 'Invalid Ethereum address!'
-            render :new
+            redirect_to new_user_session_path,
+                        alert: 'Account already exists! Try to log in instead!'
           end
         else
 

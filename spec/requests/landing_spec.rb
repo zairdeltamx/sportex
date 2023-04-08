@@ -1,11 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Landings", type: :request do
-  describe "GET /landingpage" do
-    it "returns http success" do
-      get "/landing/landingpage"
-      expect(response).to have_http_status(:success)
+describe 'Landings', type: :request do
+  describe 'GET /' do
+    it 'returns http success' do
+      get '/'
+      expect(last_response.status).to eq 200
     end
   end
-
 end

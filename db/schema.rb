@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_01_222208) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_07_050220) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -43,7 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_01_222208) do
   end
 
   create_table "nfts", force: :cascade do |t|
-    t.float "price"
+    t.string "price"
     t.integer "tokenId"
     t.string "seller"
     t.string "owner"
@@ -67,7 +67,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_01_222208) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email"
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["eth_address"], name: "index_users_on_eth_address", unique: true
+    t.index ["eth_nonce"], name: "index_users_on_eth_nonce", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

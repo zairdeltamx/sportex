@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Sportex
   module V1
     class BaseApi < Grape::API
@@ -9,6 +11,7 @@ module Sportex
           use Grape::Middleware::Logger
 
           helpers Sportex::V1::Helpers::AuthenticationHelper
+          helpers Sportex::V1::Helpers::ApplicationHelper
           helpers Sportex::V1::Helpers::SharedParams
         end
       end

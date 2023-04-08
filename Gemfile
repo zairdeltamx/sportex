@@ -5,9 +5,41 @@ ruby '3.1.2'
 
 gem 'enumerize'
 
+gem 'active_interaction'
+
 gem 'annotate'
 
 gem 'ransack'
+
+gem 'rubocop'
+
+gem 'rubocop-rails'
+
+gem 'rubycritic'
+
+gem 'yard'
+
+gem 'simplecov'
+
+gem 'sidekiq'
+
+gem 'rspec-its'
+
+gem 'rspec-rails'
+
+gem 'rspec-mocks'
+
+gem 'rspec-retry'
+
+gem 'brakeman'
+
+gem 'factory_bot_rails'
+
+gem 'database_cleaner'
+
+gem 'rollbar'
+
+gem 'rack-test'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.4'
@@ -84,6 +116,7 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
+  gem 'shoulda-matchers'
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end

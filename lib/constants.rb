@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Constants
   HTTP_STATUS_OK = 200
   HTTP_STATUS_CREATED = 201

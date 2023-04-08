@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  validates :eth_address, presence: true, uniqueness: true
-  validates :eth_nonce, presence: true, uniqueness: true
-  validates :username, presence: true, uniqueness: true, length: { minimum: 5, message: 'must have at least 3 characters' }
+  validates :eth_address, :eth_nonce, :username, presence: true, uniqueness: true
+  validates :username, presence: true, uniqueness: true,
+                       length: { minimum: 5 }
   validates :email, presence: false, uniqueness: false
 
   has_one_attached :avatar
@@ -13,9 +13,9 @@ class User < ApplicationRecord
   private
 
   def avatar_content_type
-    if avatar.attached? && !avatar.content_type.in?(%w[image/jpg image/jpeg image/png])
-      errors.add(:avatar, 'debe ser una imagen JPG, JPEG o PNG')
-    end
+    return unless avatar.attached? && !avatar.content_type.in?(%w[image/jpg image/jpeg image/png])
+
+    errors.add(:avatar, 'debe ser una imagen JPG, JPEG o PNG')
   end
 
   # Include default devise modules. Others available are:
