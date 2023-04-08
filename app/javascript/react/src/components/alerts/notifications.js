@@ -6,7 +6,7 @@ export const notification = {
       icon: 'success',
       title: title,
       text: message,
-      footer: footer ?? '<span>Sportex</span>'
+      footer: footer ?? '<span>Sportx</span>'
     })
   },
   showErrorWithButton: ({ title, message, footer }) => {
@@ -14,7 +14,7 @@ export const notification = {
       icon: 'error',
       title: title,
       text: message,
-      footer: footer ?? '<span>Sportex</span>'
+      footer: footer ?? '<span>Sportx</span>'
     })
   },
   showWarningWithButton: ({ title, message, footer }) => {
@@ -22,7 +22,7 @@ export const notification = {
       icon: 'warning',
       title: title,
       text: message,
-      footer: footer ?? '<span>Sportex</span>'
+      footer: footer ?? '<span>Sportx</span>'
     })
   },
   showSuccess: ({ title, message }) => {

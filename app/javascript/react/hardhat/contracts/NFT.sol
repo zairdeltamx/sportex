@@ -14,7 +14,7 @@ contract NFT is ERC721URIStorage {
   address contractAddress;
   mapping(uint256 => string) private idToMeta;
 
-  constructor(address marketplaceAddress) ERC721("Sportex Tokens", "NFTX") {
+  constructor(address marketplaceAddress) ERC721("Sportx Tokens", "NFTX") {
     contractAddress = marketplaceAddress;
     owner = payable(msg.sender);
   }

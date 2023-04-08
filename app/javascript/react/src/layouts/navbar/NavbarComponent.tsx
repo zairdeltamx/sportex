@@ -38,7 +38,7 @@ function NavbarComponent() {
             <li className="navbar__item">
               <Link to='/' onClick={logout} className="navbar__link">Logout</Link>
             </li>
-            <button className='Button_play_sportex_navbar'>Play in Sportex</button>
+            <button className='Button_play_sportex_navbar'>Play in Sportx</button>
           </ul>
         </div>
         <div className={`navbar__toggle ${isOpen ? 'active' : ''}`} onClick={toggleNav}>
