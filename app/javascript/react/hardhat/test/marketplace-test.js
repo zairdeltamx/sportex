@@ -28,12 +28,8 @@ describe("NFTMarket", function () {
     await nft.createToken("https://axtrading.io/1", "{test:one}");
     await nft.createToken("https://axtrading.io/2", "{test:two}");
 
-    await market.listMarketItem(nftContractAddres, 1, auctionPrice, {
-      value: listingPrice,
-    });
-    await market.listMarketItem(nftContractAddres, 2, auctionPrice, {
-      value: listingPrice,
-    });
+    await market.listMarketItem(nftContractAddres, 1, auctionPrice);
+    await market.listMarketItem(nftContractAddres, 2, auctionPrice);
 
     const [_, buyerAddress] = await ethers.getSigners();
 

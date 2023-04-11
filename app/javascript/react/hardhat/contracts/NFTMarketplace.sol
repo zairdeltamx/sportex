@@ -66,10 +66,6 @@ contract NFTMarketplace is ReentrancyGuard {
             "Only marketplace owner can create new NFT market association"
         );
         require(price > 0, "Price must be at least 1 wei");
-        require(
-            msg.value == listingPrice,
-            "Price must be equal to listing price"
-        );
 
         _itemIds.increment();
         uint256 itemId = _itemIds.current();
@@ -124,7 +120,9 @@ contract NFTMarketplace is ReentrancyGuard {
 
         IERC721(nftContract).transferFrom(address(this), msg.sender, tokenId);
 
-        payable(owner).transfer(listingPrice);
+        if(address(this).balance > (listingPrice + msg.value)) {
+          payable(owner).transfer(listingPrice);
+        }
         payable(seller).transfer(msg.value);
     }
 
@@ -243,7 +241,11 @@ contract NFTMarketplace is ReentrancyGuard {
         address nftContract,
         uint256 tokenId,
         uint256 price
-    ) public payable {
+    )
+    public
+    payable
+    nonReentrant
+    {
         require(
             idToMarketItem[tokenId].owner == msg.sender,
             "Only item owner can perform this operation"
@@ -277,18 +279,28 @@ contract NFTMarketplace is ReentrancyGuard {
         IERC721(nftContract).transferFrom(address(this), msg.sender, tokenId);
     }
 
+    function deleteNFT(uint256 tokenId)
+      public
+      nonReentrant
+    {
+        require(
+            owner == msg.sender,
+            "Only marketplace owner can perform this operation"
+        );
+        if (idToMarketItem[tokenId].sold == true) {
+            _itemsSold.decrement();
+        }
+        delete idToMarketItem[tokenId];
+        _itemIds.decrement();
+    }
+
     function changePrice(uint256 tokenId, uint256 price)
         public
-        payable
         nonReentrant
     {
         require(
-            idToMarketItem[tokenId].owner == msg.sender,
+            idToMarketItem[tokenId].seller == msg.sender,
             "Only item owner can perform this operation"
-        );
-        require(
-            msg.value == listingPrice,
-            "Price must be equal to listing price"
         );
         idToMarketItem[tokenId].price = price;
     }
