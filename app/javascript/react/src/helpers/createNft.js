@@ -42,13 +42,13 @@ export async function createItem({ name, description, price, fileUrl, meta, team
   const added = await client.add(data);
   const url = `https://sportex-staging.infura-ipfs.io/ipfs/${added.path}`;
   //pass the url to sav eit on Polygon adter it has been uploaded to IPFS
-  await createSale(url, data);
+  await createSale(url, data, price);
   console.log(`Error uploading file: `, error);
 
 }
 
 //2. List item for sale
-async function createSale(url, meta) {
+async function createSale(url, meta, price) {
   const web3Modal = new Web3Modal();
   const connection = await web3Modal.connect();
   const provider = new ethers.providers.Web3Provider(connection);
