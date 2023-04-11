@@ -3,8 +3,8 @@
 //export const nftmarketaddress = "0xcB2788f8D46C1f6f2C22D3A6b455D2E62EFcC69a";
 
 //Pulsechain
-export const nftaddress = '0x61630b9bce5adbddcad395d6b52a411efa175d5b';
-export const nftmarketaddress = '0xb2fbdc348a774fc9686cb45d3768e5b7b694558c';
+export const nftaddress = '0x35c5ab3c3f41a9e84cbd3161207085617b7c6f67';
+export const nftmarketaddress = '0x0cea1d6185d501e5bce74a4bb45ea3b171f52c3b';
 // export const getApiUrl = path => `http://localhost:3000/v1/${path}`;
 
 export const getApiUrl = (path) => `/api/v1/${path}`;

@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/Users/juanhinojo/Development/axdao/sportex/app/javascript/react/hardhat/contracts/NFT.sol": {
-      "lastModificationDate": 1680382602613,
-      "contentHash": "695e0679c9f5cd73282939482f1b4fdb",
+      "lastModificationDate": 1680987349367,
+      "contentHash": "26cf2458a62af9bf955eb95fb4a9a74b",
       "sourceName": "contracts/NFT.sol",
       "solcConfig": {
         "version": "0.8.4",

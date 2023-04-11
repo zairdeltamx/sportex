@@ -67,6 +67,7 @@ async function createSale(url, meta, nftPrice) {
   let event = tx.events[0];
   let value = event.args[2];
   let tokenId = value.toNumber(); //we need to convert it a number
+  console.log("Token ID: ", tokenId);
 
   //get a reference to the price entered in the form
   const price = ethers.utils.parseUnits(nftPrice, "ether");
