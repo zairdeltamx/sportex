@@ -48,7 +48,7 @@ export async function createItem({ name, description, price, fileUrl, meta, team
 }
 
 //2. List item for sale
-async function createSale(url, meta, price) {
+async function createSale(url, meta, nftPrice) {
   const web3Modal = new Web3Modal();
   const connection = await web3Modal.connect();
   const provider = new ethers.providers.Web3Provider(connection);
@@ -69,7 +69,7 @@ async function createSale(url, meta, price) {
   let tokenId = value.toNumber(); //we need to convert it a number
 
   //get a reference to the price entered in the form
-  const price = ethers.utils.parseUnits(price, "ether");
+  const price = ethers.utils.parseUnits(nftPrice, "ether");
 
   contract = new ethers.Contract(nftmarketaddress, Market.abi, signer);
 
