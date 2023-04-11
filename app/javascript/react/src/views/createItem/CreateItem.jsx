@@ -34,7 +34,8 @@ export default function CreateItem() {
     }).then(() => {
       notification.showSuccess({ title: 'Success', message: 'The item has been created successfully' })
 
-    }).catch(() => {
+    }).catch((e) => {
+      console.log(e)
       notification.showErrorWithButton({ title: 'Error', message: 'There was an error creating the item' })
     })
       .finally(() => {
