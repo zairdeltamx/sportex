@@ -69,7 +69,7 @@ async function createSale(url, meta) {
   let tokenId = value.toNumber(); //we need to convert it a number
 
   //get a reference to the price entered in the form
-  const price = ethers.utils.parseUnits(formInput.price, "ether");
+  const price = ethers.utils.parseUnits(price, "ether");
 
   contract = new ethers.Contract(nftmarketaddress, Market.abi, signer);
 
