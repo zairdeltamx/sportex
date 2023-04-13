@@ -22,7 +22,7 @@ describe("NFTMarket", function () {
     let listingPrice = await market.getListingPrice();
     listingPrice = listingPrice.toString();
 
-    const auctionPrice = ethers.utils.parseUnits("5", "ether");
+    const auctionPrice = ethers.utils.parseUnits("100", "ether");
 
     // Should allow to list a new token
     await nft.createToken("https://axtrading.io/1", "{test:one}");
@@ -31,7 +31,7 @@ describe("NFTMarket", function () {
     await market.listMarketItem(nftContractAddres, 1, auctionPrice);
     await market.listMarketItem(nftContractAddres, 2, auctionPrice);
 
-    const [_, buyerAddress] = await ethers.getSigners();
+    const [owner, buyerAddress, secondBuyer] = await ethers.getSigners();
 
     const beforePurchasedItems = await market.fetchMarketItems();
 
@@ -53,9 +53,7 @@ describe("NFTMarket", function () {
 
     await market
       .connect(buyerAddress)
-      .resellToken(nftContractAddres, 1, newPrice, {
-        value: listingPrice,
-      });
+      .resellToken(nftContractAddres, 1, newPrice);
 
     const resellItems = await market.fetchMarketItems();
 
@@ -68,9 +66,7 @@ describe("NFTMarket", function () {
     await expect(
       market
         .connect(buyerAddress)
-        .resellToken(fakenftContractAddres, 1, newPrice, {
-          value: listingPrice,
-        })
+        .resellToken(fakenftContractAddres, 1, newPrice)
     ).to.be.revertedWith("Only item owner can perform this operation");
 
     const newResellItems = await market.fetchMarketItems();
@@ -95,5 +91,49 @@ describe("NFTMarket", function () {
     const updatedItems = await market.fetchMarketItems();
 
     expect(updatedItems.length).to.equal(1);
+
+    // should transfer the listing Fee to the owner to the user
+    const nftPrice = ethers.utils.parseUnits("100", "ether");
+    const feePercentage = ethers.utils.parseUnits("3", "ether");
+
+    await nft.connect(buyerAddress).approve(marketAddress, 1);
+
+    const previousBalanceOfOwner = await ethers.provider.getBalance(owner.address);
+    const previousBalanceOfBuyer = await ethers.provider.getBalance(buyerAddress.address);
+    const previousBalanceOfSecond = await ethers.provider.getBalance(secondBuyer.address);
+
+    console.log("owner balance before resell", ethers.utils.formatEther(previousBalanceOfOwner).toString());
+    console.log("buyer balance before resell", ethers.utils.formatEther(previousBalanceOfBuyer).toString());
+    console.log("second buyer balance before resell", ethers.utils.formatEther(previousBalanceOfSecond).toString());
+
+    await market
+      .connect(buyerAddress)
+      .resellToken(nftContractAddres, 1, nftPrice);
+
+    await market
+      .connect(secondBuyer)
+      .purchaseItem(nftContractAddres, 1, { value: nftPrice });
+
+    const balanceOfOwner = await ethers.provider.getBalance(owner.address);
+    const balanceOfBuyer = await ethers.provider.getBalance(buyerAddress.address);
+    const balanceOfSecond = await ethers.provider.getBalance(secondBuyer.address);
+
+    const buyerGasUsed = previousBalanceOfBuyer.sub(balanceOfBuyer).add(nftPrice.sub(feePercentage));
+    const secondBuyerGasUsed = previousBalanceOfSecond.sub(balanceOfSecond).sub(nftPrice);
+
+    console.log('-----')
+
+    console.log('buyer gas used', ethers.utils.formatEther(buyerGasUsed).toString());
+    console.log('second buyer gas used', ethers.utils.formatEther(secondBuyerGasUsed).toString());
+
+    console.log('-----')
+
+    expect(balanceOfOwner).to.equal(previousBalanceOfOwner.add(feePercentage));
+    expect(balanceOfBuyer).to.equal(previousBalanceOfBuyer.add(nftPrice.sub(feePercentage)).sub(buyerGasUsed));
+    expect(balanceOfSecond).to.equal(previousBalanceOfSecond.sub(nftPrice).sub(secondBuyerGasUsed));
+
+    console.log("owner balance after resell", ethers.utils.formatEther(await ethers.provider.getBalance(owner.address)).toString());
+    console.log("buyer balance after resell", ethers.utils.formatEther(await ethers.provider.getBalance(buyerAddress.address)).toString());
+    console.log("second buyer balance after resell", ethers.utils.formatEther(await ethers.provider.getBalance(secondBuyer.address)).toString());
   });
 });

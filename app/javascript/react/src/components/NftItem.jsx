@@ -70,11 +70,7 @@ export const NftItem = ({ nft }) => {
       notification.showSuccess({ title: 'Success', message: 'The NFT has been published correctly' })
     } catch (error) {
       notification.showSuccess({ title: 'Error', message: 'Failed to resell NFT, please try again' })
-
     }
-
-
-
   }
 
   return (

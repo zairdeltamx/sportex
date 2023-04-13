@@ -4,16 +4,18 @@ pragma solidity ^0.8.4;
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
 import "hardhat/console.sol";
 
 contract NFTMarketplace is ReentrancyGuard {
     using Counters for Counters.Counter;
+    using SafeMath for uint256;
     Counters.Counter private _itemIds;
     Counters.Counter private _itemsSold;
     Counters.Counter private _tokensCanceled;
 
-    uint256 listingPrice = 0.025 ether;
+    uint256 listingPrice = 3;
     address payable owner;
 
     mapping(uint256 => MarketItem) private idToMarketItem;
@@ -120,10 +122,11 @@ contract NFTMarketplace is ReentrancyGuard {
 
         IERC721(nftContract).transferFrom(address(this), msg.sender, tokenId);
 
-        if(address(this).balance > (listingPrice + msg.value)) {
-          payable(owner).transfer(listingPrice);
-        }
-        payable(seller).transfer(msg.value);
+        uint256 ownerFee = price.mul(listingPrice).div(100); // Calculate the 2% fee for the owner
+        uint256 sellerAmount = price.sub(ownerFee); // Calculate the amount for the seller after deducting the owner's fee
+
+        payable(owner).transfer(ownerFee);
+        payable(seller).transfer(sellerAmount);
     }
 
     /* Returns all unsold market items */
@@ -249,10 +252,6 @@ contract NFTMarketplace is ReentrancyGuard {
         require(
             idToMarketItem[tokenId].owner == msg.sender,
             "Only item owner can perform this operation"
-        );
-        require(
-            msg.value == listingPrice,
-            "Price must be equal to listing price"
         );
         idToMarketItem[tokenId].sold = false;
         idToMarketItem[tokenId].price = price;

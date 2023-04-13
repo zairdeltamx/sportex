@@ -7,6 +7,6 @@ export const deleteNft = async ({ id }) => {
   console.log(id,"ID");
   console.log(typeof id);
 
-  const apiUrl = getApiUrl(`delete_nft/${id}`);
+  const apiUrl = getApiUrl(`nfts/${id}`);
   await axios.delete(apiUrl);
 };
