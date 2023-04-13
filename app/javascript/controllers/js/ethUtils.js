@@ -6,7 +6,7 @@ import { showLoader } from "./loader.js";
 export async function currentChainIsValid() {
     try {
         const currentChain = await ethereum.request({ method: "eth_chainId" });
-        if (currentChain !== chainId) {
+        if (currentChain === chainId) {
             return true;
         }
         await switchChain()
@@ -18,6 +18,14 @@ export async function currentChainIsValid() {
 
 export async function switchChain() {
     try {
+
+      await ethereum.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{ chainId }],
+      });
+
+    } catch (error) {
+      if (error.code === 4902) {
         await ethereum.request({
             method: "wallet_addEthereumChain",
             params: [
@@ -30,9 +38,8 @@ export async function switchChain() {
                 },
             ],
         });
-
-    } catch (error) {
-        console.log(error);
+      }
+      console.log(error);
     }
 }
 

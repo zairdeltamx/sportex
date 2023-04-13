@@ -16,11 +16,10 @@ export default class extends Controller {
     installMetamaskLink.hidden = true;
     formInputEthSignature.hidden = true;
 
-
     connectToEthereum();
     async function connectToEthereum() {
       if (metamaskIsInstalled()) {
-        if (await currentChainIsValid()) return;
+        if (!await currentChainIsValid()) return;
 
         // console.log(checkMetamask());
         buttonEthConnect.addEventListener("click", async () => {
@@ -71,9 +70,6 @@ export default class extends Controller {
         buttonEthConnect.innerHTML = "No Ethereum Context Available";
         buttonEthConnect.disabled = true;
       }
-
-
     }
-
   }
 }
