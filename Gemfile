@@ -5,9 +5,9 @@ ruby '3.1.2'
 
 gem 'enumerize'
 
-gem 'has_secure_token'
-
 gem 'faker'
+
+gem 'rspec-rails'
 
 gem 'annotate'
 
@@ -105,7 +105,6 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'web-console'
-  gem 'rspec-rails'
   gem 'spring'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]

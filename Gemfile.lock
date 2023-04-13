@@ -234,8 +234,6 @@ GEM
     graphql (2.0.19)
     graphql-pagination (2.1.1)
       graphql (~> 2.0)
-    has_secure_token (1.0.0)
-      activerecord (>= 3.0)
     hashie (5.0.0)
     hashie-forbidden_attributes (0.1.1)
       hashie (>= 3.0)
@@ -559,7 +557,6 @@ DEPENDENCIES
   graphiql-rails
   graphql
   graphql-pagination (~> 2.0)
-  has_secure_token
   hashie-forbidden_attributes
   httparty
   importmap-rails

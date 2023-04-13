@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  devise :database_authenticatable, :registerable, :rememberable, :validatable
+
   validates :eth_address, :eth_nonce, :username, presence: true, uniqueness: true
   validates :username, presence: true, uniqueness: true,
                        length: { minimum: 5 }
@@ -18,13 +20,6 @@ class User < ApplicationRecord
 
     errors.add(:avatar, 'debe ser una imagen JPG, JPEG o PNG')
   end
-
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-
-  # devise :database_authenticatable, :registerable,
-  #        :recoverable, :rememberable, :validatable
-  devise :database_authenticatable, :registerable, :rememberable, :validatable
 
   def encrypted_password
     false
