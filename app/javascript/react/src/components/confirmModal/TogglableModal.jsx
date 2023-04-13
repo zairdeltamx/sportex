@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import { Button } from '../elements/Elements';
 
@@ -25,6 +25,7 @@ export const TogglableModal = ({
 					<Button
 						variant='primary'
 						onClick={() => {
+              setVisible(false);
 							onConfirm(params ? params : null);
 						}}>
 						Confirm

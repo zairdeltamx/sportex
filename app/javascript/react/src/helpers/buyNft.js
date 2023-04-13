@@ -4,6 +4,7 @@ import Market from "../../hardhat/artifacts/contracts/NFTMarketplace.sol/NFTMark
 import { nftaddress, nftmarketaddress } from "../config";
 import { deleteNft } from "../services/nft";
 import { notification } from "../components/alerts/notifications";
+
 export default async function buyNFT(nft) {
   const web3Modal = new Web3Modal();
   const connection = await web3Modal.connect();

@@ -24,6 +24,7 @@ export const GET_NFTS = gql`
         defense
         attack
         teamName
+        seller
         owner
         image
         description

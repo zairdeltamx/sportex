@@ -8,19 +8,21 @@ import { CODE_INSUFFICIENT_GAS } from "../../../../controllers/js/ethConfig";
 import { useLoadingContext } from "../../useContext/LoaderContext";
 
 export const ButtonBuyNft = ({ nft }) => {
-  const { transactionIsLoading, setTransactionIsLoading } = useLoadingContext()
+  const { setTransactionIsLoading } = useLoadingContext()
 
   async function handleBuyNft(nft) {
     try {
       setTransactionIsLoading(true)
       await buyNFT(nft);
       await deleteNft({ id: nft.id });
+      setTransactionIsLoading(false)
 
       notification.showSuccess({
         title: "Successful purchase",
         message: "Your NFT will be found in the My Assets section",
       });
     } catch (error) {
+      setTransactionIsLoading(false)
       if (error.code === CODE_INSUFFICIENT_GAS) {
 
         notification.showWarning({
