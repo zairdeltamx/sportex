@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   if Rails.env.development?
     mount GraphiQL::Rails::Engine, at: '/api/v1/graphiql', graphql_path: '/api/v1/graphql'
   end
+  mount GrapeSwaggerRails::Engine, at: '/api-docs'
   post '/api/v1/graphql', to: 'graphql#execute'
   # routes react
   get '/myassets', to: 'dashboard#index'

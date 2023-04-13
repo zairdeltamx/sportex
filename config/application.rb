@@ -21,5 +21,6 @@ module Sportex
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    Settings.to_hash.each_pair { |key, value| ENV["#{key.to_s.upcase}"] = value.to_s }
   end
 end

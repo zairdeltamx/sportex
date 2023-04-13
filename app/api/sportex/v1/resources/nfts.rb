@@ -21,6 +21,7 @@ module Sportex
           params do
             use :nft_params
           end
+          desc 'Create a new NFT', hidden: true
           post do
             nft = Nft.find_or_initialize_by(tokenId: params[:tokenId])
 
@@ -34,6 +35,7 @@ module Sportex
           end
 
           route_param :id do
+            desc 'Delete a NFT', hidden: true
             delete do
               @nft = Nft.find(params[:id])
 

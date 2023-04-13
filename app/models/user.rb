@@ -6,6 +6,7 @@ class User < ApplicationRecord
                        length: { minimum: 5 }
   validates :email, presence: false, uniqueness: false
 
+  has_secure_token
   has_one_attached :avatar
 
   validate :avatar_content_type

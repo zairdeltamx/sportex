@@ -6,7 +6,6 @@ module Sportex
       version 'v1', using: :path
       prefix :api
       format :json
-      formatter :json, Grape::Formatter::ActiveModelSerializers
       use Grape::Middleware::Logger
 
       before do
@@ -40,6 +39,7 @@ module Sportex
       end
 
       mount Sportex::V1::AuthenticatedApi
+      mount Sportex::V1::UnauthenticatedApi
 
       add_swagger_documentation(
         api_version: 'v1',

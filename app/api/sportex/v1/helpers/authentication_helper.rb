@@ -7,7 +7,7 @@ module Sportex
         def current_user
           return unless env
 
-          @current_user ||= 'User'
+          @current_user ||= User.find_by(token: env['HTTP_AUTHORIZATION'])
         end
 
         def authenticate!

@@ -2,11 +2,11 @@
 
 module Sportex
   module V1
-    class AuthenticatedApi < Grape::API
+    class AuthenticatedApi < BaseApi
       before { authenticate! }
 
-      mount Sportex::V1::Resources::Cards
-      mount Sportex::V1::Resources::Nfts
+      mount Sportex::V1::Resources::Marketplace
+      mount Sportex::V1::Resources::AuthenticatedNfts
     end
   end
 end

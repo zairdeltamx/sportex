@@ -5,7 +5,9 @@ ruby '3.1.2'
 
 gem 'enumerize'
 
-gem 'active_interaction'
+gem 'has_secure_token'
+
+gem 'faker'
 
 gem 'annotate'
 
@@ -25,9 +27,9 @@ gem 'sidekiq'
 
 gem 'rspec-its'
 
-gem 'rspec-rails'
-
 gem 'rspec-mocks'
+
+gem 'httparty'
 
 gem 'rspec-retry'
 

@@ -2,3 +2,5 @@
 //= link_tree ../stylesheets
 //= link_tree ../build
 //= link_tree ../builds
+//= link grape_swagger_rails/application.css
+//= link grape_swagger_rails/application.js

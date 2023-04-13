@@ -7,7 +7,6 @@ module Sportex
         super
         subclass.instance_eval do
           format :json
-          formatter :json, Grape::Formatter::ActiveModelSerializers
           use Grape::Middleware::Logger
 
           helpers Sportex::V1::Helpers::AuthenticationHelper
