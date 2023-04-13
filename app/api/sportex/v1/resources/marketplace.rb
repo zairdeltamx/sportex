@@ -7,9 +7,9 @@ module Sportex
         desc 'Get all marketplace items'
         # fetch a URL and return the response body
         get :marketplace do
-          response = HTTParty.get("#{ENV.fetch('SPORTEX_API_URL',
-                                               nil)}/marketplace").parsed_response
-          response
+          HTTParty.get(
+            "#{ENV.fetch('SPORTEX_API_URL', nil)}/marketplace"
+          ).parsed_response
         end
       end
     end

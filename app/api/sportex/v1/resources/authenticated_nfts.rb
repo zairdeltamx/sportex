@@ -5,7 +5,9 @@ module Sportex
     module Resources
       class AuthenticatedNfts < BaseApi
         get :current_user do
-          HTTParty.get("#{ENV.fetch('SPORTEX_API_URL', nil)}/find_by/#{current_user.eth_address}")
+          HTTParty.get(
+            "#{ENV.fetch('SPORTEX_API_URL', nil)}/find_by/#{current_user.eth_address}"
+          ).parsed_response
         end
       end
     end
