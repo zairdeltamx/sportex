@@ -61,8 +61,7 @@ export const NftItem = ({ nft }) => {
       const transaction = await contract.resellToken(
         nftaddress,
         nft.tokenId,
-        priceFormatted,
-        { value: listingPrice }
+        priceFormatted
       );
 
       await transaction.wait();

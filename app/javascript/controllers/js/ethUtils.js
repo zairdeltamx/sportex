@@ -1,5 +1,4 @@
 // ethUtils.js
-import { notification } from "../../react/src/components/alerts/notifications.js";
 import { chainId, chainName, nativeCurrency, rpcUrls, blockExplorerUrls } from "./ethConfig.js";
 import { showLoader } from "./loader.js";
 
