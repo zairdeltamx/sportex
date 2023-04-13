@@ -78,7 +78,9 @@ async function createSale(url, meta, nftPrice) {
   let listingPrice = await contract.getListingPrice();
   listingPrice = listingPrice.toString();
 
-  transaction = await contract.listMarketItem(nftaddress, tokenId, price);
+  transaction = await contract.listMarketItem(nftaddress, tokenId, price, {
+    value: listingPrice
+  });
 
   await transaction.wait();
   const navigate = useNavigate();
