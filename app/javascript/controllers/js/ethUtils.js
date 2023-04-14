@@ -1,5 +1,6 @@
 // ethUtils.js
 import { chainId, chainName, nativeCurrency, rpcUrls, blockExplorerUrls } from "./ethConfig.js";
+import detectEthereumProvider from '@metamask/detect-provider';
 import { showLoader } from "./loader.js";
 
 export async function currentChainIsValid() {
@@ -42,13 +43,11 @@ export async function switchChain() {
     }
 }
 
-export function metamaskIsInstalled() {
-    if (typeof window.ethereum !== 'undefined') {
-        if (ethereum.isMetaMask && !ethereum.isBraveWallet) {
-            return true
-        } else if (ethereum.isBraveWallet) {
-            return false
-        }
+export async function metamaskIsInstalled() {
+    const provider = await detectEthereumProvider();
+
+    if (provider) {
+      return true
     } else {
         return false
     }

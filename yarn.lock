@@ -1021,6 +1021,11 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
+"@metamask/detect-provider@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@metamask/detect-provider/-/detect-provider-2.0.0.tgz#4bc2795e5e6f7d8b84b2e845058d2f222c99917d"
+  integrity sha512-sFpN+TX13E9fdBDh9lvQeZdJn4qYoRb/6QF2oZZK/Pn559IhCFacPMU1rMuqyXoFQF3JSJfii2l98B87QDPeCQ==
+
 "@metamask/eth-sig-util@^4.0.0":
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/@metamask/eth-sig-util/-/eth-sig-util-4.0.1.tgz#3ad61f6ea9ad73ba5b19db780d40d9aae5157088"
@@ -10391,7 +10396,7 @@ web3@1.2.11:
     web3-shh "1.2.11"
     web3-utils "1.2.11"
 
-web3@^1.8.1:
+web3@^1.9.0:
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/web3/-/web3-1.9.0.tgz#4fde5d134f8ee11355ed5bfa1bb41f8bc58e23f3"
   integrity sha512-E9IvVy/d2ozfQQsCiV+zh/LmlZGv9fQxI0UedDVjm87yOKf4AYbBNEn1iWtHveiGzAk2CEMZMUzAZzaQNSSYog==
