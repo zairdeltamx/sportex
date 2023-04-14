@@ -1,6 +1,6 @@
 // ethUtils.js
 import { chainId, chainName, nativeCurrency, rpcUrls, blockExplorerUrls } from "./ethConfig.js";
-import { Web3 } from "web3";
+import Web3 from "web3";
 import detectEthereumProvider from '@metamask/detect-provider';
 import { showLoader } from "./loader.js";
 
@@ -33,7 +33,6 @@ export async function switchChain() {
       });
     } catch (error) {
       alert(error)
-
       const provider = await detectEthereumProvider();
       const web3 = new Web3('https://rpc.v3.testnet.pulsechain.com/');
 
