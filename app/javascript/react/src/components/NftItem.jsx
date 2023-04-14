@@ -83,7 +83,7 @@ export const NftItem = ({ nft }) => {
       </div>
       <div className="buttons_nft_item">
         {
-          location.pathname === '/myassets' && isAllowed ?
+          location.pathname === '/myassets' ?
             <TogglableModal
               onConfirm={resellToken}
               params={{ nft: nft, askingPrice: askingPrice }}
@@ -116,7 +116,7 @@ export const NftItem = ({ nft }) => {
                   autoFocus
                 />
               </form>
-            </ TogglableModal> : <ButtonBuyNft nft={nft} />
+            </ TogglableModal> : (location.pathname == '/myassets' ? '' : <ButtonBuyNft nft={nft} />)
         }
       </div>
 
