@@ -43,7 +43,6 @@ export async function createItem({ name, description, price, fileUrl, meta, team
   const url = `https://sportex-staging.infura-ipfs.io/ipfs/${added.path}`;
   //pass the url to sav eit on Polygon adter it has been uploaded to IPFS
   await createSale(url, data, price);
-  console.log(`Error uploading file: `, error);
 
 }
 
@@ -83,7 +82,6 @@ async function createSale(url, meta, nftPrice) {
   });
 
   await transaction.wait();
-  const navigate = useNavigate();
+  window.location.replace("/");
 
-  navigate("/");
 }

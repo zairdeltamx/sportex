@@ -533,6 +533,9 @@ body {
   .containerSorter .container_buttons_and_toggle .toggle_sorter svg {
     display: block;
   }
+  .containerSorter .container_buttons_and_toggle .container_buttons {
+    display: none;
+  }
   .containerSorter .container_buttons_and_toggle .buttons {
     display: flex;
     flex-direction: column;
@@ -540,11 +543,10 @@ body {
     align-items: center;
     width: 300px;
     height: 300px;
-    background-color: #f2f2f2;
+    background-color: #564848;
     position: absolute;
     left: -265px;
     top: 50px;
-    opacity: 0;
     transition: all 0.5s ease-in-out;
     z-index: 1;
   }
@@ -555,8 +557,8 @@ body {
   .containerSorter .container_buttons_and_toggle .buttons .button_cancel {
     display: block;
   }
-  .containerSorter .container_buttons_and_toggle .buttons.active {
-    opacity: 1;
+  .containerSorter .container_buttons_and_toggle .container_buttons.active {
+    display: block;
   }
 }
 #container {
@@ -1015,6 +1017,12 @@ body {
   font-weight: 600;
   color: #303030;
 }
+.inputsContainer .copy_button {
+  color: red;
+  font-size: 15px;
+  cursor: pointer;
+  text-decoration: underline;
+}
 .buttonsEdit {
   margin-top: 40px;
   display: flex;
@@ -1114,9 +1122,13 @@ body {
 }
 .image_nft {
   display: flex;
+  position: relative;
   justify-content: center;
   align-items: center;
   grid-area: image_nft;
+}
+.image_nft img {
+  position: absolute;
 }
 .create_nft {
   grid-area: create_nft;
@@ -1137,11 +1149,14 @@ body {
 @media only screen and (max-width: 700px) {
   .content_nft_info {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-areas: "image_nft" "image_nft" "name_sale" "nft_info" "create_nft" "offers";
+    grid-template-rows: 600px 1fr 1fr 1fr 1fr;
+    grid-template-areas: "image_nft" "name_sale" "nft_info" "create_nft" "offers";
   }
   .image_nft {
     overflow: hidden;
+  }
+  .image_nft img {
+    width: 100%;
   }
 }
 .container_createitem {

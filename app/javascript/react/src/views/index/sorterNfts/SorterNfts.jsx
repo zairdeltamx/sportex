@@ -42,32 +42,35 @@ export const SorterNfts = ({
           <div className="toggle_sorter">
             <ToggleButton onClick={toggleSort} />
           </div>
-          <div className={`buttons ${active ? "active" : ""}`}>
-            <select value={orderBy} onChange={(e) => setOrderBy(e.target.value)}>
-              <option value="">Category</option>
-              <option value="price">Price</option>
-              <option value="defense">Defense</option>
-              <option value="attack">Attack</option>
-              <option value="strength">strength</option>
-            </select>
+          <div className={`container_buttons ${active ? "active" : ""}`}>
 
-            <select value={order} onChange={(e) => setOrder(e.target.value)}>
-              <option value="">Order</option>
-              <option value="ASC">Ascendente</option>
-              <option value="DESC">Descendente</option>
-            </select>
+            <div className='buttons'>
+              <select value={orderBy} onChange={(e) => setOrderBy(e.target.value)}>
+                <option value="">Category</option>
+                <option value="price">Price</option>
+                <option value="defense">Defense</option>
+                <option value="attack">Attack</option>
+                <option value="strength">strength</option>
+              </select>
 
-            <select value={teamName} onChange={(e) => setTeamName(e.target.value)}>
-              <option value="">Team</option>
-              <option value="mexico">Mexico</option>
-              <option value="italia">Italia</option>
-            </select>
-            <button className="button_cancel" onClick={() => setActive(false)}>Cancelar</button>
-            <button className="button_filter" onClick={filter}>FILTER</button>
+              <select value={order} onChange={(e) => setOrder(e.target.value)}>
+                <option value="">Order</option>
+                <option value="ASC">Ascendente</option>
+                <option value="DESC">Descendente</option>
+              </select>
+
+              <select value={teamName} onChange={(e) => setTeamName(e.target.value)}>
+                <option value="">Team</option>
+                <option value="mexico">Mexico</option>
+                <option value="italia">Italia</option>
+              </select>
+              <button className="button_cancel" onClick={() => setActive(false)}>Cancelar</button>
+              <button className="button_filter" onClick={filter}>FILTER</button>
+            </div>
           </div>
+
+
         </div>
-
-
       </div >
     </div >
   );

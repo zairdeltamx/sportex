@@ -55,14 +55,15 @@ export const updateUser = ({ address, email, username }) => {
 
 export const updateAvatar = ({ id, avatar }) => {
   const apiUrl = getApiUrl(`updateAvatar/${id}`);
+  console.log("fasdasasd");
   return axios
     .put(apiUrl, avatar, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
     })
-    .then((res) => res)
+    .then((res) => notification.showSuccess({ title: "Success", message: "image updated successfully" }))
     .catch((err) => {
-      console.log(err);
+      notification.showError({ title: "Error", message: "An error occurred while updating the avatar" })
     });
 };

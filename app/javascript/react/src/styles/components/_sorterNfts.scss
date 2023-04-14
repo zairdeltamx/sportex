@@ -115,6 +115,9 @@
                 }
             }
 
+            .container_buttons {
+                display: none;
+            }
 
             .buttons {
                 display: flex;
@@ -123,11 +126,10 @@
                 align-items: center;
                 width: 300px;
                 height: 300px;
-                background-color: #f2f2f2;
+                background-color: #564848;
                 position: absolute;
                 left: -265px;
                 top: 50px;
-                opacity: 0;
                 transition: all 0.5s ease-in-out;
                 z-index: 1;
                 // transform: translateX(-25%);
@@ -142,8 +144,9 @@
                 }
             }
 
-            .buttons.active {
-                opacity: 1;
+            .container_buttons.active {
+                display: block;
+
             }
 
 

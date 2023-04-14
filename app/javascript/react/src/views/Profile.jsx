@@ -1,17 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Wave } from "../components/Wave";
 import { getUser, updateAvatar } from "../services/users";
 import PencelIcon from "../img/pencelIcon.svg";
 import { updateUser } from "../services/users";
 import { useMetamask } from "../useContext/MetamaskContext";
+import { useLazyQuery } from "@apollo/client";
+import { GET_USER } from "../querys/getUser";
+import ClipboardJS from "clipboard";
+import { notification } from "../components/alerts/notifications";
 
 export default function Profile() {
-
   const [form, setForm] = useState(null)
+  const [get_user, { data, loading, error }] = useLazyQuery(GET_USER);
 
   const [isVisible, setIsVisible] = useState(false);
   const [isDisabled, setisDisabled] = useState(true);
   const { addressMetamask } = useMetamask();
+
 
   const handleAvatarUpdate = async (file) => {
     const formData = new FormData();
@@ -27,25 +32,36 @@ export default function Profile() {
     const emailRegex = /^\S+@\S+\.\S+$/;
     return emailRegex.test(email);
   };
+  const textoRef = useRef(null);
 
-  const fetchUser = async () => {
-    if (!addressMetamask) {
-      return;
-    }
-
-    const user = await getUser({ addressMetamask });
-    setForm({
-      id: user.id,
-      username: user.username,
-      email: user.email !== null ? user.email : 'No tienes email',
-      avatar: user.avatar_url
-    });
-  };
 
   useEffect(() => {
+    const clipboard = new ClipboardJS('.copy_button', {
+      text: () => textoRef.current.innerText
+    });
+    clipboard.on("success", () => {
+      notification.showSuccess({ title: "Copied", message: "¡Copied token!" })
+    });
+    return () => {
+      clipboard.destroy();
+    };
+  }, [])
+
+  useEffect(() => {
+
     if (addressMetamask) {
-      fetchUser();
+      get_user().then((user) => {
+        console.log(user, "iser");
+        setForm({
+          id: user.data.currentUser.id,
+          username: user.data.currentUser.username,
+          email: user.data.currentUser.email !== null ? user.data.currentUser.email : 'No tienes email',
+          avatar: user.data.currentUser.avatarUrl,
+          token: user.data.currentUser.token
+        });
+      });
     }
+
   }, [addressMetamask]);
 
 
@@ -56,7 +72,7 @@ export default function Profile() {
   };
 
   if (!form) {
-    return (<h1>LOADING..</h1>)
+    return (<p style={{ marginTop: '90px', color: 'white' }}>LOADING..</p>)
   }
   return (
     <div style={{ marginTop: '80px' }}>
@@ -108,6 +124,11 @@ export default function Profile() {
                   <span className="error">Invalid email address</span>
                 )}
               </div>
+              <label>Token</label>
+              <br />
+              <span style={{ wordBreak: 'break-all' }} ref={textoRef}>{form.token ?? 'No tienes token'}</span>{'   '}
+              <br />
+              <span className="copy_button" data-clipboard-text="Copiado!" >Copy token</span>
             </div>
           </div>
           {isVisible && (

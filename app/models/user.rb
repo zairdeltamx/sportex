@@ -6,7 +6,6 @@ class User < ApplicationRecord
   validates :eth_address, :eth_nonce, :username, presence: true, uniqueness: true
   validates :username, presence: true, uniqueness: true,
                        length: { minimum: 5 }
-  validates :email, presence: false, uniqueness: false
 
   has_one_attached :avatar
   has_secure_token

@@ -29,14 +29,14 @@ export default class extends Controller {
             accounts = await requestAccounts();
             // hacer algo con accounts
           } catch (error) {
-            notification.showWarningWithButton({ title: "Error", message: "Ya tienes una solicitud en curso, revisa tu bandeja de MetaMask" })
+            notification.showWarningWithButton({ title: "Error", message: "You already have a request in progress, check your MetaMask inbox" })
             throw error; // aquí se propaga la excepción
 
           }
           const etherbase = accounts[0];
           const nonce = await getUuidByAccount(etherbase);
           if (!nonce) {
-            notification.showWarningWithButton({ title: 'User no exist', message: 'Tu usuario no esta registrado porfavor registrate' })
+            notification.showWarningWithButton({ title: 'User no exist', message: 'Your user is not registered please register' })
             return;
           }
 
@@ -48,7 +48,7 @@ export default class extends Controller {
           try {
             signature = await personalSign(etherbase, message);
           } catch (error) {
-            notification.showWarningWithButton({ title: "Error", message: "Ah ocurrido un error al obtener tu firma personal en metamask" })
+            notification.showWarningWithButton({ title: "Error", message: "An error occurred while obtaining your personal signature in metamask" })
             throw error; // aquí se propaga la excepción
 
           }

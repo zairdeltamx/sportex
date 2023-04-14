@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import NavbarComponent from "../layouts/navbar/NavbarComponent";
-
-
 import CreateItem from "../views/createItem/CreateItem";
 import Index from "../views/index/index/Index";
 import MyAssets from "../views/myAssets/MyAssets";

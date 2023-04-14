@@ -6,23 +6,25 @@ import { ButtonBuyNft } from "../../components/buttonBuyNft/ButtonBuyNft";
 const NftInfo = () => {
   const [nft, setNft] = useState(null);
   const [getNft, { data, loading }] = useLazyQuery(GET_NFT);
-
   const { id } = useParams();
+  console.log(typeof id, "ID");
   useEffect(() => {
     getNft({
       variables: {
-        id: id,
+        id: Number(id),
       },
     });
   }, []);
 
   useEffect(() => {
     if (data) {
-      setNft(data.getOneNft);
+      setNft(data.nft);
+      console.log(data.nft, "DATA");
+      console.log(nft, "NFT");
     }
   }, [data]);
 
-  if (nft === null || loading === true) return <p>Loading...</p>;
+  if (nft === null || loading === true) return <p style={{ marginTop: '90px', color: 'white' }}>Loading...</p>;
   return (
 
     <div className="container_nft_info">
