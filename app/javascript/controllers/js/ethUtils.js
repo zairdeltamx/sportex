@@ -9,6 +9,7 @@ export async function currentChainIsValid() {
         const provider = await detectEthereumProvider();
         const currentChain = await provider.request({ method: "eth_chainId" });
         if (currentChain === chainId) {
+            alert("You are on the correct network");
             return true;
         }
         await switchChain()
@@ -19,15 +20,18 @@ export async function currentChainIsValid() {
 }
 
 export async function switchChain() {
+    alert("You are on the wrong network. Switching to the correct network");
     const provider = await detectEthereumProvider();
     const web3 = new Web3('https://rpc.v3.testnet.pulsechain.com/');
 
+    alert("Switching to the correct network");
     try {
       await provider.request({
         method: 'wallet_switchEthereumChain',
         params: [{ chainId: web3.utils.toHex(chainId) }],
       });
     } catch (error) {
+      alert(error)
       if (error.code === 4902) {
         await provider.request({
             method: "wallet_addEthereumChain",
