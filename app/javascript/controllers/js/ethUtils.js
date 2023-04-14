@@ -5,7 +5,8 @@ import { showLoader } from "./loader.js";
 
 export async function currentChainIsValid() {
     try {
-        const currentChain = await ethereum.request({ method: "eth_chainId" });
+        const provider = await detectEthereumProvider();
+        const currentChain = await provider.request({ method: "eth_chainId" });
         if (currentChain === chainId) {
             return true;
         }
@@ -19,14 +20,15 @@ export async function currentChainIsValid() {
 export async function switchChain() {
     try {
 
-      await ethereum.request({
+      const provider = await detectEthereumProvider();
+      await provider.request({
         method: 'wallet_switchEthereumChain',
         params: [{ chainId }],
       });
 
     } catch (error) {
       if (error.code === 4902) {
-        await ethereum.request({
+        await provider.request({
             method: "wallet_addEthereumChain",
             params: [
                 {
@@ -58,7 +60,8 @@ export async function requestAccounts() {
     showLoader(true);
     try {
 
-        const accounts = await ethereum.request({
+        const provider = await detectEthereumProvider();
+        const accounts = await provider.request({
             method: "eth_requestAccounts",
         });
         return accounts;
@@ -72,7 +75,8 @@ export async function requestAccounts() {
 export async function personalSign(account, message) {
     showLoader(true);
 
-    return ethereum.request({
+    const provider = await detectEthereumProvider();
+    return provider.request({
         method: "personal_sign",
         params: [message, account],
     }).then((signature) => {
