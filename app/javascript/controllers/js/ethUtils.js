@@ -32,7 +32,7 @@ export async function switchChain() {
         params: [{ chainId: web3.utils.toHex(chainId) }],
       });
     } catch (error) {
-      alert(error)
+      alert(error.message)
       const provider = await detectEthereumProvider();
       const web3 = new Web3('https://rpc.v3.testnet.pulsechain.com/');
 
