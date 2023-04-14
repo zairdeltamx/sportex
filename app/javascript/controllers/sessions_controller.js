@@ -22,6 +22,10 @@ export default class extends Controller {
       if (metamaskIsInstalled()) {
         alert("metamaskIsInstalled");
 
+        if(buttonEthConnect) {
+          alert("there is a button");
+        }
+
         // console.log(checkMetamask());
         buttonEthConnect.addEventListener("click", async () => {
           alert("buttonEthConnect");
