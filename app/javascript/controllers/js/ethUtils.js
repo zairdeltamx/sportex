@@ -18,14 +18,13 @@ export async function currentChainIsValid() {
 }
 
 export async function switchChain() {
-    try {
+    const provider = await detectEthereumProvider();
 
-      const provider = await detectEthereumProvider();
+    try {
       await provider.request({
         method: 'wallet_switchEthereumChain',
         params: [{ chainId }],
       });
-
     } catch (error) {
       if (error.code === 4902) {
         await provider.request({
