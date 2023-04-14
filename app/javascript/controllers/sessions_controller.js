@@ -19,11 +19,12 @@ export default class extends Controller {
     connectToEthereum();
     async function connectToEthereum() {
       if (metamaskIsInstalled()) {
-        if (!await currentChainIsValid()) return;
 
         // console.log(checkMetamask());
         buttonEthConnect.addEventListener("click", async () => {
           // buttonEthConnect.disabled = true;
+          if (!await currentChainIsValid()) return;
+
           let accounts
           try {
             accounts = await requestAccounts();
