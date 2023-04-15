@@ -1,7 +1,7 @@
 const cssModulesPlugin = require("esbuild-css-modules-plugin");
 const svgrPlugin = require("esbuild-plugin-svgr");
 const rails = require("esbuild-rails");
-const { sassPlugin } = require('esbuild-sass-plugin');
+const { sassPlugin } = require("esbuild-sass-plugin");
 
 require("esbuild")
   .build({
@@ -17,7 +17,7 @@ require("esbuild")
       ".png": "file",
       ".jpg": "file",
       ".css": "css",
-      ".svg": "dataurl"
+      ".svg": "dataurl",
     },
     // watch: true,
   })

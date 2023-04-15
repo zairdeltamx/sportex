@@ -33,7 +33,6 @@ export default function Index() {
       },
     });
 
-
     return () => {
       channel.unsubscribe();
     };
@@ -60,6 +59,7 @@ export default function Index() {
   useEffect(() => {
     if (data) {
       setNfts(data.nfts.collection);
+      console.log(data.nfts);
       setTotalPages(data.nfts.metadata.totalPages);
     }
   }, [data]);
@@ -86,7 +86,15 @@ export default function Index() {
             setTeamName={setTeamName}
           />
 
-          {loading ? <Loader /> : nfts.length === 0 ? <h1 style={{ textAlign: 'center', paddingTop: '20px' }}>Not found NFTs</h1> : <ListNfts nfts={nfts} />}
+          {loading ? (
+            <Loader />
+          ) : nfts.length === 0 ? (
+            <h1 style={{ textAlign: "center", paddingTop: "20px" }}>
+              Not found NFTs
+            </h1>
+          ) : (
+            <ListNfts nfts={nfts} />
+          )}
           <Pagination
             totalPages={totalPages}
             currentPage={currentPage}

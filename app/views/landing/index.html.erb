@@ -51,10 +51,15 @@
       <p>Create teams with the best players and enter a battle to achieve greatnessk</p>
     </div>
     <div class="container_video_landing">
-      <video width="320" height="240" controls>
-        <source src="/videos/videoSportx.mp4" type="video/mp4">
-        Tu navegador no soporta el elemento video.
-      </video>
+      <%= image_tag("landing/playIcon.svg", :alt => "rss feed",:class =>'open_modal') %>
+      <div class="video_modal_landing">
+        <div class="video_player_landing">
+          <video class="video_landing_control" controls>
+            <source src="/videos/videoSportx.mp4" type="video/mp4">
+            Tu navegador no soporta el elemento video.
+          </video>
+        </div>
+      </div>
     </div>
   </div>
 </div>

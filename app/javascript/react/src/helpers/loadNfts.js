@@ -7,63 +7,63 @@ import { nftaddress, nftmarketaddress } from "../config";
 import axios from "axios";
 
 function useNFTs() {
-    const [nfts, setNfts] = useState([]);
-    const [loadingState, setLoadingState] = useState(true);
+  const [nfts, setNfts] = useState([]);
+  const [loadingState, setLoadingState] = useState(true);
 
-    useEffect(() => {
-        loadNFTs();
-    }, []);
+  useEffect(() => {
+    loadNFTs();
+  }, []);
 
-    async function loadNFTs() {
-        const web3Modal = new Web3Modal({
-            network: "bsc",
-            cacheProvider: true,
-        });
+  async function loadNFTs() {
+    const web3Modal = new Web3Modal({
+      network: "bsc",
+      cacheProvider: true,
+    });
 
-        const connection = await web3Modal.connect();
-        const provider = new ethers.providers.Web3Provider(connection);
-        const signer = provider.getSigner();
+    const connection = await web3Modal.connect();
+    const provider = new ethers.providers.Web3Provider(connection);
+    const signer = provider.getSigner();
 
-        const marketContract = new ethers.Contract(
-            nftmarketaddress,
-            Market.abi,
-            signer
+    const marketContract = new ethers.Contract(
+      nftmarketaddress,
+      Market.abi,
+      signer
+    );
+    const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider);
+    const data = await marketContract.fetchMyNFTs();
+    const items = await Promise.all(
+      data.map(async (i) => {
+        const tokenUri = await tokenContract.tokenURI(i.tokenId);
+        const cleanedTokenUri = tokenUri.replace(
+          "ipfs.infura.io",
+          "sportex-staging.infura-ipfs.io"
         );
-        const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider);
-        const data = await marketContract.fetchMyNFTs();
 
-        const items = await Promise.all(
-            data.map(async (i) => {
-                const tokenUri = await tokenContract.tokenURI(i.tokenId);
-                const cleanedTokenUri = tokenUri.replace(
-                    "ipfs.infura.io",
-                    "sportex-staging.infura-ipfs.io"
-                );
-
-                const meta = await axios.get(cleanedTokenUri);
-                const price = ethers.utils.formatUnits(i.price.toString(), "ether");
-                const cleanedImage = meta.data.image.replace(
-                    "ipfs.infura.io",
-                    "sportex-staging.infura-ipfs.io"
-                );
-
-                const item = {
-                    price,
-                    tokenId: i.tokenId.toNumber(),
-                    seller: i.seller,
-                    name: meta.data.name,
-                    description: meta.data.description,
-                    owner: i.owner,
-                    image: cleanedImage,
-                };
-                return item;
-            })
+        const meta = await axios.get(cleanedTokenUri);
+        const price = ethers.utils.formatUnits(i.price.toString(), "ether");
+        const cleanedImage = meta.data.image.replace(
+          "ipfs.infura.io",
+          "sportex-staging.infura-ipfs.io"
         );
-        setNfts(items);
-        setLoadingState(false);
-    }
 
-    return [nfts, loadingState];
+        const item = {
+          price,
+          tokenId: i.tokenId.toNumber(),
+          seller: i.seller,
+          name: meta.data.name,
+          description: meta.data.description,
+          owner: i.owner,
+          image: cleanedImage,
+          sold: i.sold,
+        };
+        return item;
+      })
+    );
+    setNfts(items);
+    setLoadingState(false);
+  }
+
+  return [nfts, loadingState];
 }
 
 export default useNFTs;
