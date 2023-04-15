@@ -6,7 +6,7 @@ module Queries
 
     class MetadataTypeNft < GraphqlPagination::CollectionMetadataType
       def total_count
-        object.total_entries
+        object.total_count
       end
     end
 
