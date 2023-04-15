@@ -250,6 +250,14 @@ contract NFTMarketplace is ReentrancyGuard {
     nonReentrant
     {
         require(
+          tokenId > 0 && tokenId <= _itemIds.current(),
+          "Token ID invalid"
+        );
+        require(
+          price > 0,
+          "Price must be at least 1 wei"
+        );
+        require(
             idToMarketItem[tokenId].owner == msg.sender,
             "Only item owner can perform this operation"
         );
@@ -300,6 +308,10 @@ contract NFTMarketplace is ReentrancyGuard {
         require(
             idToMarketItem[tokenId].seller == msg.sender,
             "Only item owner can perform this operation"
+        );
+        require(
+          price > 0,
+          "Price must be at least 1 wei"
         );
         idToMarketItem[tokenId].price = price;
     }
