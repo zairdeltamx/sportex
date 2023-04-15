@@ -72,14 +72,7 @@ async function createSale(url, meta, nftPrice) {
   const price = ethers.utils.parseUnits(nftPrice, "ether");
 
   contract = new ethers.Contract(nftmarketaddress, Market.abi, signer);
-
-  //get the listing price
-  let listingPrice = await contract.getListingPrice();
-  listingPrice = listingPrice.toString();
-
-  transaction = await contract.listMarketItem(nftaddress, tokenId, price, {
-    value: listingPrice
-  });
+  transaction = await contract.listMarketItem(nftaddress, tokenId, price);
 
   await transaction.wait();
   window.location.replace("/");
