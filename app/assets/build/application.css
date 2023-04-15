@@ -213,7 +213,7 @@ body {
 }
 .secondHalfBanner {
   display: flex;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
   width: 50%;
   padding: 15px;
@@ -230,6 +230,7 @@ body {
   height: auto;
 }
 .containerBlur {
+  position: relative;
   background-color: aliceblue;
   width: 550px;
   height: 467px;
@@ -1041,6 +1042,9 @@ body {
 .buttonsEdit .saveChanges {
   background-color: #003399;
   color: white;
+}
+.buttonsEdit .saveChanges:disabled {
+  background-color: #303030;
 }
 .buttonsEdit .cancel {
   background-color: transparent;

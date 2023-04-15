@@ -154,6 +154,10 @@
     color: white;
   }
 
+  .saveChanges:disabled {
+    background-color: #303030;
+  }
+
   .cancel {
     background-color: transparent;
     color: #47465c;

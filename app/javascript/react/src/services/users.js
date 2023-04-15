@@ -18,7 +18,6 @@ export function logout() {
     method: "GET",
   })
     .then(() => {
-
       window.location.href = "/users/sign_in";
     })
     .catch((errs) => {
@@ -40,20 +39,25 @@ export const updateUser = ({ address, email, username }) => {
     .put(apiUrl, requestData)
     .then((res) => res)
     .catch((err) => {
-      console.log(err.message);
-    }).then((res) => {
+      console.log(err, "erro");
+    })
+    .then((res) => {
       console.log(res, "RESPONSE");
       if (res.status === 200) {
-        notification.showSuccess({ title: 'Success', message: "Your information has been updated" })
-        return
+        notification.showSuccess({
+          title: "Success",
+          message: "Your information has been updated",
+        });
+        return;
       }
-      notification.showWarning({ title: 'Error', message: "An error has occurred, please try again" })
-    }
-    );
+      notification.showWarning({
+        title: "Error",
+        message: "An error has occurred, please try again",
+      });
+    });
 };
 
-
-export const updateAvatar = ({ id, avatar }) => {
+export const updateAvatar = async ({ id, avatar, getUser }) => {
   const apiUrl = getApiUrl(`updateAvatar/${id}`);
   console.log("fasdasasd");
   return axios
@@ -62,8 +66,17 @@ export const updateAvatar = ({ id, avatar }) => {
         "Content-Type": "multipart/form-data",
       },
     })
-    .then((res) => notification.showSuccess({ title: "Success", message: "image updated successfully" }))
+    .then(async (res) => {
+      notification.showSuccess({
+        title: "Success",
+        message: "image updated successfully",
+      });
+      await getUser();
+    })
     .catch((err) => {
-      notification.showError({ title: "Error", message: "An error occurred while updating the avatar" })
+      notification.showError({
+        title: "Error",
+        message: "An error occurred while updating the avatar",
+      });
     });
 };
