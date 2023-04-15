@@ -80,7 +80,11 @@ export const NftItem = ({ nft }) => {
         signer
       );
 
-      const transaction = await contract.deleteNFT(0);
+      const transaction = await contract.resellToken(
+        nftaddress,
+        nft.tokenId,
+        priceFormatted
+      );
 
       await transaction.wait();
       notification.showSuccess({
