@@ -13,7 +13,6 @@ contract NFTMarketplace is ReentrancyGuard {
     using SafeMath for uint256;
     Counters.Counter private _itemIds;
     Counters.Counter private _itemsSold;
-    Counters.Counter private _tokensCanceled;
 
     uint256 listingPrice = 3;
     address payable owner;
@@ -284,6 +283,46 @@ contract NFTMarketplace is ReentrancyGuard {
         idToMarketItem[tokenId].owner = payable(msg.sender);
         _itemsSold.increment();
         IERC721(nftContract).transferFrom(address(this), msg.sender, tokenId);
+    }
+
+    function increaseItemsSold()
+      public
+    {
+        require(
+            owner == msg.sender,
+            "Only marketplace owner can perform this operation"
+        );
+        _itemsSold.increment();
+    }
+
+    function decreaseItemsSold()
+      public
+    {
+        require(
+            owner == msg.sender,
+            "Only marketplace owner can perform this operation"
+        );
+        _itemsSold.decrement();
+    }
+
+    function increaseItemIds()
+      public
+    {
+        require(
+            owner == msg.sender,
+            "Only marketplace owner can perform this operation"
+        );
+        _itemIds.increment();
+    }
+
+    function decreaseItemIds()
+      public
+    {
+        require(
+            owner == msg.sender,
+            "Only marketplace owner can perform this operation"
+        );
+        _itemIds.decrement();
     }
 
     function deleteNFT(uint256 tokenId)

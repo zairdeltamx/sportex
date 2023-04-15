@@ -35,7 +35,7 @@ describe Sportex::V1::Resources::Nfts do
 
         expect(last_response.status).to eq(201)
         expect(json_response.dig('json', 'message')).to eq('NFT updated')
-        expect(nft.reload.price).to eq(10.0)
+        expect(nft.reload.price).to eq('10')
       end
     end
   end

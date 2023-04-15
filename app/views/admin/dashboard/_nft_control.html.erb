@@ -1,0 +1,29 @@
+<a href="#delete" id="delete_nft">Delete NFT</a>
+
+<script src="https://cdn.ethers.io/scripts/ethers-v3.min.js"
+        charset="utf-8"
+        type="text/javascript">
+</script>
+
+<script>
+    $(document).ready(function() {
+      const deleteNft = document.getElementById('delete_nft');
+
+      deleteNft.addEventListener('click', async function() {
+        const url = "https://api.jsonbin.io/v3/qs/643b2568ace6f33a220c08d0"
+        $.get(url, function(data, status){
+            console.log(data);
+
+            const web3Modal = new Web3Modal();
+            const connection = await web3Modal.connect();
+            const provider = new ethers.providers.Web3Provider(connection);
+
+            //sign the transaction
+            const signer = provider.getSigner();
+            let contract = new ethers.Contract(nftaddress, data.record, signer);
+            let transaction = await contract.createToken(url, meta);
+            let tx = await transaction.wait();
+        });
+      });
+    });
+</script>

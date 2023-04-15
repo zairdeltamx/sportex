@@ -43,6 +43,9 @@ gem 'rollbar'
 
 gem 'rack-test'
 
+gem 'activeadmin'
+gem 'active_skin'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.4'
 
@@ -150,8 +153,6 @@ gem 'hashie-forbidden_attributes'
 
 gem 'graphql'
 gem 'rack-cors'
-gem 'will_paginate', '~> 3.3'
-gem 'kaminari-activerecord'
 
 group :production do
   # Use postgresql as the database for Active Record
