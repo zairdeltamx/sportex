@@ -25,6 +25,7 @@ export async function createItem({ name, description, price, fileUrl, meta, team
   let parseJson = JSON.parse(meta);
   parseJson.cardBasicInfo.price = price;
   parseJson.name = name;
+  parseJson.description = description;
   parseJson.soccerPlayerInfo.teamName = teamName;
   parseJson.soccerPlayerInfo.image = fileUrl;
   parseJson.soccerPlayerInfo.playerName = name;
@@ -40,15 +41,14 @@ export async function createItem({ name, description, price, fileUrl, meta, team
     metaJson: parseJson,
   });
 
-
   const added = await client.add(data);
   const url = `https://sportex-staging.infura-ipfs.io/ipfs/${added.path}`;
   //pass the url to sav eit on Polygon adter it has been uploaded to IPFS
-  await createSale(url, data, price, parseJson);
+  await createSale(url, price, parseJson);
 }
 
 //2. List item for sale
-async function createSale(url, meta, nftPrice, metaJson) {
+async function createSale(url, nftPrice, metaJson) {
   const web3Modal = new Web3Modal();
   const connection = await web3Modal.connect();
   const provider = new ethers.providers.Web3Provider(connection);
