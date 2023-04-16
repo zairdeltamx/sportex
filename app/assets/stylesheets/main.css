@@ -31,3 +31,9 @@
   font-family: "Grifter";
   src: url("./fonts/grifterBold/grifterbold.otf") format("truetype");
 }
+
+
+.flash-message-content {
+  display: none;
+}
+

@@ -8,7 +8,7 @@ import { LoadingProvider } from "./useContext/LoaderContext";
 
 export default function App() {
   const tokenElement = document.querySelector('[name=csrf-token]');
-  console.log(tokenElement, "TOKEN");
+
   const client = new ApolloClient({
     cache: new InMemoryCache(),
     uri: getApiUrl("graphql"),

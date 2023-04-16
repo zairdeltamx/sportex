@@ -23,19 +23,21 @@ export default class extends Controller {
     async function connectToEthereum() {
       // Check if Ethereum context is available
       if (metamaskIsInstalled()) {
-        if (!await currentChainIsValid()) return;
+        await currentChainIsValid()
 
         // Add event listener to the button
         buttonEthConnect.addEventListener("click", async () => {
           // Disable the button
           // buttonEthConnect.disabled = true;
 
+          await currentChainIsValid();
+
           let accounts
           try {
             accounts = await requestAccounts();
             // hacer algo con accounts
           } catch (error) {
-            notification.showWarningWithButton({ title: "Error", message: "Ya tienes una solicitud en curso, revisa tu bandeja de MetaMask" })
+            notification.showWarningWithButton({ title: "Error", message: "Please connect to the correct network." })
             throw error; // aquí se propaga la excepción
 
           }

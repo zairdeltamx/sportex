@@ -19,13 +19,15 @@ export default class extends Controller {
     connectToEthereum();
     async function connectToEthereum() {
       if (metamaskIsInstalled()) {
+        await currentChainIsValid();
 
         // console.log(checkMetamask());
+
         buttonEthConnect.addEventListener("click", async () => {
           // buttonEthConnect.disabled = true;
-          if (!await currentChainIsValid()) return;
 
           await currentChainIsValid();
+
           let accounts
           try {
             accounts = await requestAccounts();
@@ -42,7 +44,7 @@ export default class extends Controller {
             return;
           }
 
-          const customTitle = "Ethereum on Rails";
+          const customTitle = "SportXSync";
           const requestTime = new Date().getTime();
           const message = customTitle + "," + requestTime + "," + nonce;
 

@@ -5,9 +5,9 @@ module Users
     # POST /resource
     def create
       @user = User.new(user_params)
+      @user.eth_nonce = SecureRandom.uuid
 
-      if @user&.username.present?
-        @user.eth_nonce = SecureRandom.uuid
+      if @user.valid?
 
         if @user.eth_address
           address = Eth::Address.new @user.eth_address
@@ -26,7 +26,7 @@ module Users
         end
       else
 
-        flash.now[:alert] = 'Please choose a name (length > 0)!'
+        flash.now[:alert] = @user.errors.full_messages.join(', ')
         render :new
       end
     end
