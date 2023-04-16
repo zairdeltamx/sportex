@@ -25,6 +25,7 @@ export async function createItem({ name, description, price, fileUrl, meta, team
   let parseJson = JSON.parse(meta);
   parseJson.cardBasicInfo.price = price;
   parseJson.name = name;
+  parseJson.soccerPlayerInfo.teamName = teamName;
   parseJson.soccerPlayerInfo.playerName = name;
   parseJson.soccerPlayerInfo.playerStats.find((stat) =>
     stat.hasOwnProperty("image")
