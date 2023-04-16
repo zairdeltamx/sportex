@@ -17,7 +17,7 @@ module Sportex
           requires :defense, type: Float
           requires :attack, type: Float
           requires :strength, type: Float
-          requires :description, type: String
+          optional :description, type: String
           optional :sold, type: Boolean
           requires :meta, type: String
         end
