@@ -24,21 +24,20 @@ function NavbarComponent() {
         <div className={`navbar__menu ${isOpen ? 'active' : ''}`}>
           <ul className="navbar__list">
             <li className="navbar__item">
-              <Link to="/myassets" className="navbar__link">My assets</Link>
+              <Link to="/myassets" className="navbar__link" onClick={toggleNav}>My assets</Link>
             </li>
             { isAllowed ?  <li className="navbar__item">
-              <Link to="/createitem" className="navbar__link">Create item</Link>
+              <Link to="/createitem" className="navbar__link" onClick={toggleNav}>Create item</Link>
             </li> :''
 
 
             }
             <li className="navbar__item">
-              <Link to="/profile" className="navbar__link">Profile</Link>
+              <Link to="/profile" className="navbar__link" onClick={toggleNav}>Profile</Link>
             </li>
             <li className="navbar__item">
               <Link to='/' onClick={logout} className="navbar__link">Logout</Link>
             </li>
-            <button className='Button_play_sportex_navbar'>Play in Sportx</button>
           </ul>
         </div>
         <div className={`navbar__toggle ${isOpen ? 'active' : ''}`} onClick={toggleNav}>
