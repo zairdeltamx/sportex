@@ -1,5 +1,5 @@
 {
-  "name": "Chiellini",
+  "name": "Buffon",
   "cardBasicInfo":
   {
     "cardSport":0,
@@ -9,8 +9,9 @@
     "soccerPlayerInfo":
     {
       "playerCategory":1,
-      "playerName":"Messi",
-      "teamName": "Barcelona",
+      "playerName":"Buffon",
+      "teamName": "Italy",
+      "image": "https://sportex-staging.infura-ipfs.io/ipfs/QmPrmqMJRaZgAVQxphH66eyK7d5jBT7HTLwNoHQky8P1Lk",
       "playerStats":
       [
         {

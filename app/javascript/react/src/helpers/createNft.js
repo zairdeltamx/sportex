@@ -26,6 +26,7 @@ export async function createItem({ name, description, price, fileUrl, meta, team
   parseJson.cardBasicInfo.price = price;
   parseJson.name = name;
   parseJson.soccerPlayerInfo.teamName = teamName;
+  parseJson.soccerPlayerInfo.image = fileUrl;
   parseJson.soccerPlayerInfo.playerName = name;
   parseJson.soccerPlayerInfo.playerStats.find((stat) =>
     stat.hasOwnProperty("image")
@@ -43,20 +44,20 @@ export async function createItem({ name, description, price, fileUrl, meta, team
   const added = await client.add(data);
   const url = `https://sportex-staging.infura-ipfs.io/ipfs/${added.path}`;
   //pass the url to sav eit on Polygon adter it has been uploaded to IPFS
-  await createSale(url, data, price);
-
+  await createSale(url, data, price, parseJson);
 }
 
 //2. List item for sale
-async function createSale(url, meta, nftPrice) {
+async function createSale(url, meta, nftPrice, metaJson) {
   const web3Modal = new Web3Modal();
   const connection = await web3Modal.connect();
   const provider = new ethers.providers.Web3Provider(connection);
 
+  const stringJson = JSON.stringify(metaJson);
   //sign the transaction
   const signer = provider.getSigner();
   let contract = new ethers.Contract(nftaddress, NFT.abi, signer);
-  let transaction = await contract.createToken(url, meta);
+  let transaction = await contract.createToken(url, stringJson);
   let tx = await transaction.wait();
   console.log(tx, "TX");
   //get the tokenId from the transaction that occured above
