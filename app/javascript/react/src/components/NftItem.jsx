@@ -6,7 +6,6 @@ import { ButtonDelistNft } from "./buttonDelistNft/ButtonDelistNft";
 import { ethers } from "ethers";
 import Web3Modal from "web3modal";
 import Market from "../../hardhat/artifacts/contracts/NFTMarketplace.sol/NFTMarketplace.json";
-import NFT from "../../hardhat/artifacts/contracts/NFT.sol/NFT.json";
 import { nftaddress, nftmarketaddress } from "../config";
 
 import { useLocation } from "react-router-dom";
@@ -28,9 +27,11 @@ export const NftItem = ({ nft }) => {
   const { addressMetamask } = useMetamask();
   const location = useLocation();
   const { setTransactionIsLoading } = useLoadingContext();
+
   useEffect(() => {
     setTransactionIsLoading(true);
     setLoading(true);
+
     async function handleAllowance() {
       const requestAllowance = await allowance({
         setTransactionIsLoading,
@@ -44,7 +45,6 @@ export const NftItem = ({ nft }) => {
   }, []);
 
   async function changePriceProxy({ nft, price }) {
-    console.log("changePriceProxy");
     try {
       setTransactionIsLoading(true);
       await changePrice(nft, price);
@@ -91,6 +91,7 @@ export const NftItem = ({ nft }) => {
         title: "Success",
         message: "The NFT will publish for sale in a few minutes",
       });
+      window.location.replace("/");
     } catch (error) {
       notification.showSuccess({
         title: "Error",
@@ -167,13 +168,16 @@ export const NftItem = ({ nft }) => {
       }
     }
   };
+
+  console.log(nft, "NFT");
+
   return (
     <div className="container_card">
       {loading && <Loader />}
       {!loading && (
         <Fragment>
           <div className="container_image_card">
-            <Link to={`nftdetail/${nft.id}`}>
+            <Link to={`/nftdetail/${nft.id || nft.tokenId}`}>
               <img src={nft.image} alt="" />
             </Link>
           </div>
@@ -184,7 +188,7 @@ export const NftItem = ({ nft }) => {
           <hr />
           <div className="container_price_card">
             <p>Current Price</p>
-            <p>{nft.price}</p>
+            <p>{nft.price} PLS</p>
           </div>
           <div className="buttons_nft_item">{renderButtons()}</div>
         </Fragment>

@@ -63,6 +63,7 @@ export default function Index() {
       setTotalPages(data.nfts.metadata.totalPages);
     }
   }, [data]);
+
   return (
     <div>
       <Banner />

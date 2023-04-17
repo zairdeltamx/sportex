@@ -78,5 +78,4 @@ async function createSale(url, nftPrice, metaJson) {
 
   await transaction.wait();
   window.location.replace("/");
-
 }
