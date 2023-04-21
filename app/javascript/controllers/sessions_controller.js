@@ -29,7 +29,6 @@ export default class extends Controller {
 
         buttonEthConnect.addEventListener("click", async () => {
           // buttonEthConnect.disabled = true;
-          if (!(await currentChainIsValid())) return;
 
           await currentChainIsValid();
           let accounts;
