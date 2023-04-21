@@ -16,6 +16,7 @@ contract NFTMarketplace is ReentrancyGuard {
 
     uint256 listingPrice = 3;
     address payable owner;
+    bool presaleEnabled = false;
 
     mapping(uint256 => MarketItem) private idToMarketItem;
 
@@ -27,6 +28,7 @@ contract NFTMarketplace is ReentrancyGuard {
         address payable owner;
         uint256 price;
         bool sold;
+        bool presale;
     }
 
     event MarketItemCreated(
@@ -36,11 +38,20 @@ contract NFTMarketplace is ReentrancyGuard {
         address seller,
         address owner,
         uint256 price,
-        bool sold
+        bool sold,
+        bool presale
     );
 
     constructor() {
         owner = payable(msg.sender);
+    }
+
+    function setPresaleEnabled(bool _presaleEnabled) public {
+        require(
+            owner == msg.sender,
+            "Only marketplace owner can update listing price."
+        );
+        presaleEnabled = _presaleEnabled;
     }
 
     /* Updates the listing price of the contract */
@@ -55,6 +66,45 @@ contract NFTMarketplace is ReentrancyGuard {
     /* Returns the listing price of the contract */
     function getListingPrice() public view returns (uint256) {
         return listingPrice;
+    }
+
+    function listMarketItemToOwner(
+        address nftContract,
+        address nftOwner,
+        uint256 tokenId
+    ) public payable nonReentrant {
+        require(
+            owner == msg.sender,
+            "Only marketplace owner can create new NFT market association"
+        );
+
+        _itemsSold.increment();
+        _itemIds.increment();
+        uint256 itemId = _itemIds.current();
+
+        idToMarketItem[tokenId] = MarketItem(
+            itemId,
+            nftContract,
+            tokenId,
+            payable(nftOwner),
+            payable(nftOwner),
+            1,
+            true,
+            presaleEnabled
+        );
+
+        IERC721(nftContract).transferFrom(msg.sender, nftOwner, tokenId);
+
+        emit MarketItemCreated(
+            itemId,
+            nftContract,
+            tokenId,
+            payable(nftOwner),
+            payable(nftOwner),
+            1,
+            true,
+            presaleEnabled
+        );
     }
 
     function listMarketItem(
@@ -78,7 +128,8 @@ contract NFTMarketplace is ReentrancyGuard {
             payable(msg.sender),
             payable(address(this)),
             price,
-            false
+            false,
+            presaleEnabled
         );
 
         IERC721(nftContract).transferFrom(msg.sender, address(this), tokenId);
@@ -90,14 +141,15 @@ contract NFTMarketplace is ReentrancyGuard {
             msg.sender,
             address(this),
             price,
-            false
+            false,
+            presaleEnabled
         );
     }
 
     /* Creates the sale of a marketplace item */
     /* This is the PURCHASE action on the marketplace
   /* Transfers ownership of the item, as well as funds between parties */
-    function purchaseItem(address nftContract, uint256 tokenId)
+    function purchaseItem(uint256 tokenId)
         public
         payable
         nonReentrant
@@ -119,7 +171,9 @@ contract NFTMarketplace is ReentrancyGuard {
 
         _itemsSold.increment();
 
-        IERC721(nftContract).transferFrom(address(this), msg.sender, tokenId);
+        IERC721(
+          idToMarketItem[tokenId].nftContract
+        ).transferFrom(address(this), msg.sender, tokenId);
 
         uint256 ownerFee = price.mul(listingPrice).div(100); // Calculate the 2% fee for the owner
         uint256 sellerAmount = price.sub(ownerFee); // Calculate the amount for the seller after deducting the owner's fee
@@ -240,7 +294,6 @@ contract NFTMarketplace is ReentrancyGuard {
 
     /* allows someone to resell a token they have purchased */
     function resellToken(
-        address nftContract,
         uint256 tokenId,
         uint256 price
     )
@@ -266,10 +319,30 @@ contract NFTMarketplace is ReentrancyGuard {
         idToMarketItem[tokenId].owner = payable(address(this));
         _itemsSold.decrement();
 
-        IERC721(nftContract).transferFrom(msg.sender, address(this), tokenId);
+        IERC721(
+          idToMarketItem[tokenId].nftContract
+        ).transferFrom(msg.sender, address(this), tokenId);
     }
 
-    function delistNFT(address nftContract, uint256 tokenId)
+    function transferTo(address toAddress, uint256 tokenId)
+      public
+      payable
+      nonReentrant
+    {
+        require(
+            idToMarketItem[tokenId].owner == msg.sender,
+            "Only item owner can perform this operation"
+        );
+        idToMarketItem[tokenId].owner = payable(toAddress);
+
+        IERC721(idToMarketItem[tokenId].nftContract).transferFrom(
+          address(msg.sender),
+          toAddress,
+          tokenId
+        );
+    }
+
+    function delistNFT(uint256 tokenId)
        public
        payable
        nonReentrant
@@ -282,7 +355,10 @@ contract NFTMarketplace is ReentrancyGuard {
         idToMarketItem[tokenId].seller = payable(msg.sender);
         idToMarketItem[tokenId].owner = payable(msg.sender);
         _itemsSold.increment();
-        IERC721(nftContract).transferFrom(address(this), msg.sender, tokenId);
+
+        IERC721(
+          idToMarketItem[tokenId].nftContract
+        ).transferFrom(address(this), msg.sender, tokenId);
     }
 
     function increaseItemsSold()
@@ -322,21 +398,6 @@ contract NFTMarketplace is ReentrancyGuard {
             owner == msg.sender,
             "Only marketplace owner can perform this operation"
         );
-        _itemIds.decrement();
-    }
-
-    function deleteNFT(uint256 tokenId)
-      public
-      nonReentrant
-    {
-        require(
-            owner == msg.sender,
-            "Only marketplace owner can perform this operation"
-        );
-        if (idToMarketItem[tokenId].sold == true) {
-            _itemsSold.decrement();
-        }
-        delete idToMarketItem[tokenId];
         _itemIds.decrement();
     }
 

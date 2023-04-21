@@ -17,7 +17,6 @@ describe("NFTMarket", function () {
     const FakeNFTContract = await ethers.getContractFactory("NFT");
     const fakeNft = await FakeNFTContract.deploy(marketAddress);
     await fakeNft.deployed();
-    const fakenftContractAddres = fakeNft.address;
 
     let listingPrice = await market.getListingPrice();
     listingPrice = listingPrice.toString();
@@ -40,7 +39,7 @@ describe("NFTMarket", function () {
     // Should allow to make a purchase
     await market
       .connect(buyerAddress)
-      .purchaseItem(nftContractAddres, 1, { value: auctionPrice });
+      .purchaseItem(1, { value: auctionPrice });
 
     const items = await market.fetchMarketItems();
 
@@ -53,7 +52,7 @@ describe("NFTMarket", function () {
 
     await market
       .connect(buyerAddress)
-      .resellToken(nftContractAddres, 1, newPrice);
+      .resellToken(1, newPrice);
 
     const resellItems = await market.fetchMarketItems();
 
@@ -61,17 +60,6 @@ describe("NFTMarket", function () {
 
     expect(resellItems.length).to.equal(2);
     expect(resellItems[0].price).to.equal(newPrice);
-
-    // Should not allow to list a token from another contract
-    await expect(
-      market
-        .connect(buyerAddress)
-        .resellToken(fakenftContractAddres, 1, newPrice)
-    ).to.be.revertedWith("Only item owner can perform this operation");
-
-    const newResellItems = await market.fetchMarketItems();
-
-    expect(newResellItems.length).to.equal(2);
 
     // allows to change price of a token
     await market
@@ -86,7 +74,7 @@ describe("NFTMarket", function () {
     // allows to deList a token from the market
     await market
       .connect(buyerAddress)
-      .delistNFT(nftContractAddres, 1);
+      .delistNFT(1);
 
     const updatedItems = await market.fetchMarketItems();
 
@@ -108,11 +96,11 @@ describe("NFTMarket", function () {
 
     await market
       .connect(buyerAddress)
-      .resellToken(nftContractAddres, 1, nftPrice);
+      .resellToken(1, nftPrice);
 
     await market
       .connect(secondBuyer)
-      .purchaseItem(nftContractAddres, 1, { value: nftPrice });
+      .purchaseItem(1, { value: nftPrice });
 
     const balanceOfOwner = await ethers.provider.getBalance(owner.address);
     const balanceOfBuyer = await ethers.provider.getBalance(buyerAddress.address);
@@ -135,5 +123,13 @@ describe("NFTMarket", function () {
     console.log("owner balance after resell", ethers.utils.formatEther(await ethers.provider.getBalance(owner.address)).toString());
     console.log("buyer balance after resell", ethers.utils.formatEther(await ethers.provider.getBalance(buyerAddress.address)).toString());
     console.log("second buyer balance after resell", ethers.utils.formatEther(await ethers.provider.getBalance(secondBuyer.address)).toString());
+
+    // should allow to list a token to another owner
+    await nft.createToken("https://axtrading.io/3", "{test:one}");
+    await market.listMarketItemToOwner(nftContractAddres, buyerAddress.address, 3);
+
+    const allmarket = await market.fetchAllMarketItems();
+    const lastAddedItem = allmarket[allmarket.length - 1];
+    expect(lastAddedItem.owner).to.equal(buyerAddress.address);
   });
 });

@@ -479,8 +479,8 @@
       ]
     },
     "/Users/juanhinojo/Development/axdao/sportex/app/javascript/react/hardhat/contracts/NFTMarketplace.sol": {
-      "lastModificationDate": 1681601746056,
-      "contentHash": "23629994bdeee6a74bc9995db5326675",
+      "lastModificationDate": 1681873049724,
+      "contentHash": "4f45b90d11025a720eacfec9d6badf7a",
       "sourceName": "contracts/NFTMarketplace.sol",
       "solcConfig": {
         "version": "0.8.4",
