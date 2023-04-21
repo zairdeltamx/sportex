@@ -1,10 +1,34 @@
-import React from "react";
-// import wavePc from "../../img/wavePc.png";
+import React, { useState, useEffect } from "react";
+import wavePc from "../img/waves/wavePc.png";
+import wavePad from "../img/waves/wave_ipad.png";
+import waveMovil from "../img/waves/waveMobile.png";
+
 export const Wave = () => {
+  const [wave, setWave] = useState(null);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1000) {
+        setWave(wavePc);
+      } else if (window.innerWidth >= 800) {
+        setWave(wavePad);
+      } else {
+        setWave(waveMovil);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div className="container_wave">
-      {/* <img width='100%' height='100%' src={wavePc} alt="" srcset="" /> */}
+      <div className="container_image_wave">
+        <img width="100%" height="100%" src={wave} alt="" />
+      </div>
     </div>
   );
 };

@@ -20,6 +20,7 @@ class Nft < ApplicationRecord
             :meta, presence: true
 
   attribute :teamName, :string, default: 'default value'
+  has_one_attached :presale_image
 
   def presale_image_url
     presale_image.attached? ? url_for(presale_image) : nil

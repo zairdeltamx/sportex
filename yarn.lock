@@ -4231,6 +4231,11 @@ esbuild-css-modules-plugin@^2.7.1:
     postcss-modules "^6.0.0"
     tmp "^0.2.1"
 
+esbuild-plugin-lit@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/esbuild-plugin-lit/-/esbuild-plugin-lit-0.1.1.tgz#42a6e53f97ba3a54e49ba3da8d4d613cd87c0dae"
+  integrity sha512-PVbMHoBSw+J644GWvvmvvhMnEerm18+PGQHG6bfUgyMhoRaQEBeJkT+ZYsTxZjavcx9M0lcLadKvrMcHSc7Cpg==
+
 esbuild-plugin-svgr@^1.0.1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/esbuild-plugin-svgr/-/esbuild-plugin-svgr-1.1.0.tgz#f53d89268499799ea340624a3acd5c2f5c60c9b1"

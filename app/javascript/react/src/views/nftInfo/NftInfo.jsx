@@ -6,15 +6,21 @@ import { ButtonBuyNft } from "../../components/buttonBuyNft/ButtonBuyNft";
 const NftInfo = () => {
   const [nft, setNft] = useState(null);
   const [getNft, { data, loading }] = useLazyQuery(GET_NFT);
-  const { id } = useParams();
-  console.log(typeof id, "ID");
+  const { tokenId } = useParams();
   useEffect(() => {
-    getNft({
-      variables: {
-        id: Number(id),
-      },
-    });
-  }, []);
+    if (tokenId) {
+      console.log(
+        tokenId,
+        "ESTE ES TOKEN y este su tipo",
+        typeof Number(tokenId)
+      );
+      getNft({
+        variables: {
+          tokenId: Number(tokenId),
+        },
+      });
+    }
+  }, [tokenId]);
 
   useEffect(() => {
     if (data) {
@@ -24,34 +30,35 @@ const NftInfo = () => {
     }
   }, [data]);
 
-  if (nft === null || loading === true) return <p style={{ marginTop: '90px', color: 'white' }}>Loading...</p>;
-  return (
+  if (loading === true)
+    return <p style={{ marginTop: "90px", color: "white" }}>Loading...</p>;
 
+  if (!data || !nft) {
+    return <p style={{ marginTop: "90px", color: "white" }}>Not found...</p>;
+  }
+  return (
     <div className="container_nft_info">
       <div className="content_nft_info">
         <div className="grid_item image_nft">
-          <img src={nft.image} alt="" />
-
+          <img src={nft?.image} alt="" />
         </div>
 
         <div className="grid_item name_sale">
           <div>
-
-            <h1>{nft.name}</h1>
-            <p>{nft.description}</p>
+            <h1>{nft?.name}</h1>
+            <p>{nft?.description}</p>
           </div>
           <div>
-
             <h1>Sale</h1>
-            <p>{nft.price}</p>
+            <p>{nft?.price}</p>
           </div>
         </div>
         <div className="grid_item nft_info">
           <h1>NFT information</h1>
           <ul>
-            <li>Seller: {nft.seller}</li>
-            <li>Creator: {nft.owner}</li>
-            <li>Token ID: {nft.tokenId}</li>
+            <li>Seller: {nft?.seller}</li>
+            <li>Creator: {nft?.owner}</li>
+            <li>Token ID: {nft?.tokenId}</li>
             <li>Total copies of this NFT: 1</li>
             <li>Amount remaining: 1</li>
             <li>Is Transferable: Yes</li>
@@ -66,33 +73,30 @@ const NftInfo = () => {
             </div>
             <div className="table_nft_row attack">
               <div className="table_nft_cell">Attack</div>
-              <div className="table_nft_cell value">{nft.attack}</div>
+              <div className="table_nft_cell value">{nft?.attack}</div>
             </div>
             <div className="table_nft_row defense">
               <div className="table_nft_cell">Defense</div>
-              <div className="table_nft_cell value">{nft.defense}</div>
+              <div className="table_nft_cell value">{nft?.defense}</div>
             </div>
             <div className="table_nft_row strength">
               <div className="table_nft_cell">Strength</div>
-              <div className="table_nft_cell value">{nft.strength}</div>
+              <div className="table_nft_cell value">{nft?.strength}</div>
             </div>
             <div className="table_nft_row teamName">
               <div className="table_nft_cell">Team name</div>
-              <div className="table_nft_cell value">{nft.teamName}</div>
+              <div className="table_nft_cell value">{nft?.teamName}</div>
             </div>
           </div>
           <div className="button_buy_nft_info">
-
             <ButtonBuyNft nft={nft} />
           </div>
         </div>
         <div className="grid_item offers">
           <h1>Offers</h1>
           <h1>sda</h1>
-
         </div>
       </div>
-
     </div>
   );
 };

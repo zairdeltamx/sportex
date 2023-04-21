@@ -1,5 +1,11 @@
 import { Controller } from "@hotwired/stimulus";
-import { metamaskIsInstalled, currentChainIsValid, requestAccounts, personalSign, getUuidByAccount } from "./js/ethUtils";
+import {
+  metamaskIsInstalled,
+  currentChainIsValid,
+  requestAccounts,
+  personalSign,
+  getUuidByAccount,
+} from "./js/ethUtils";
 import { notification } from "../react/src/components/alerts/notifications";
 import { showModal } from "./js/modal";
 
@@ -22,24 +28,25 @@ export default class extends Controller {
     connectToEthereum();
     async function connectToEthereum() {
       // Check if Ethereum context is available
-      if (metamaskIsInstalled()) {
-        await currentChainIsValid()
+      if (await metamaskIsInstalled()) {
+        if (!(await currentChainIsValid())) return;
 
         // Add event listener to the button
         buttonEthConnect.addEventListener("click", async () => {
           // Disable the button
           // buttonEthConnect.disabled = true;
 
-          await currentChainIsValid();
-
-          let accounts
+          let accounts;
           try {
             accounts = await requestAccounts();
             // hacer algo con accounts
           } catch (error) {
-            notification.showWarningWithButton({ title: "Error", message: "Please connect to the correct network." })
+            notification.showWarningWithButton({
+              title: "Error",
+              message:
+                "Ya tienes una solicitud en curso, revisa tu bandeja de MetaMask",
+            });
             throw error; // aquí se propaga la excepción
-
           }
           const etherbase = accounts[0];
 
@@ -50,7 +57,7 @@ export default class extends Controller {
       } else {
         // Show the install Metamask link
         installMetamaskLink.hidden = false;
-        showModal(true)
+        showModal(true);
 
         // Disable the button and change its text
         buttonEthConnect.innerHTML = "No Ethereum Context Available";

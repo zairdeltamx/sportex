@@ -26,8 +26,11 @@ module Queries
 
       field :nft, Types::NftType, null: false,
                                   description: 'Get one Nft by id' do
-        argument :id, Integer, required: true
+        argument :tokenId, Integer, required: true
       end
+
+      field :teams, [String], null: false,
+                              description: 'Obtener todos los equipos únicos de NFTs disponibles'
     end
 
     def nfts(limit: nil, page: nil, name: nil, teamName: nil, attack: nil, defense: nil,
@@ -46,8 +49,12 @@ module Queries
                 .per(limit)
     end
 
-    def nft(id:)
-      Nft.find_by(id:)
+    def nft(tokenId:)
+      Nft.find_by(tokenId: tokenId)
+    end
+
+    def teams
+      Nft.pluck(:teamName).uniq
     end
   end
 end

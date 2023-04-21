@@ -169,7 +169,7 @@ export const NftItem = ({ nft }) => {
     }
   };
 
-  console.log(nft, "NFT");
+  console.log(nft, "NFTITEM");
 
   return (
     <div className="container_card">
@@ -177,7 +177,7 @@ export const NftItem = ({ nft }) => {
       {!loading && (
         <Fragment>
           <div className="container_image_card">
-            <Link to={`/nftdetail/${nft.id || nft.tokenId}`}>
+            <Link to={`/nftdetail/${nft.tokenId}`}>
               <img src={nft.image} alt="" />
             </Link>
           </div>

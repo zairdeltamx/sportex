@@ -1,10 +1,13 @@
 import { create as ipfsHttpClient } from "ipfs-http-client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Polaroid from "../../img/polaroid.svg";
 import { Loader } from "../../components/Loader";
 import { createItem } from "../../helpers/createNft";
 import { useLoadingContext } from "../../useContext/LoaderContext";
 import { notification } from "../../components/alerts/notifications";
+import { GET_TEAMS } from "../../querys/getTeams";
+import { useLazyQuery } from "@apollo/client";
+import { useGetTeams } from "../../hooks/useGetTeams";
 const client = ipfsHttpClient({
   host: "ipfs.infura.io",
   port: 5001,
@@ -17,8 +20,8 @@ const client = ipfsHttpClient({
 
 export default function CreateItem() {
   const [fileUrl, setFileUrl] = useState(null);
-  const [loadingImage, setLoadingImage] = useState(false)
-  const { transactionIsLoading, setTransactionIsLoading } = useLoadingContext()
+  const [loadingImage, setLoadingImage] = useState(false);
+  const { transactionIsLoading, setTransactionIsLoading } = useLoadingContext();
   const [formInput, updateFormInput] = useState({
     price: "",
     name: "",
@@ -26,26 +29,38 @@ export default function CreateItem() {
     teamName: "",
     meta: "",
   });
+  const { teams } = useGetTeams();
+
   const handleCreateItem = async () => {
-    setTransactionIsLoading(true)
+    setTransactionIsLoading(true);
     createItem({
-      description: formInput.description, price: formInput.price, fileUrl: fileUrl, meta: formInput.meta, name: formInput.name, teamName: formInput
-        .teamName
-    }).then(() => {
-      notification.showSuccess({ title: 'Success', message: 'The item has been created successfully' })
-
-    }).catch((e) => {
-      console.log(e)
-      notification.showErrorWithButton({ title: 'Error', message: 'There was an error creating the item' })
+      description: formInput.description,
+      price: formInput.price,
+      fileUrl: fileUrl,
+      meta: formInput.meta,
+      name: formInput.name,
+      teamName: formInput.teamName,
     })
-      .finally(() => {
-        setTransactionIsLoading(false)
+      .then(() => {
+        notification.showSuccess({
+          title: "Success",
+          message: "The item has been created successfully",
+        });
       })
-  }
-
+      .catch((e) => {
+        console.log(e);
+        notification.showErrorWithButton({
+          title: "Error",
+          message: "There was an error creating the item",
+        });
+      })
+      .finally(() => {
+        setTransactionIsLoading(false);
+      });
+  };
 
   async function onChange(e) {
-    setLoadingImage(true)
+    setLoadingImage(true);
     const file = e.target.files[0];
     try {
       //try uploading the file
@@ -55,35 +70,34 @@ export default function CreateItem() {
       //file saved in the url path below
       const url = `https://sportex-staging.infura-ipfs.io/ipfs/${added.path}`;
       setFileUrl(url);
-      setLoadingImage(false)
+      setLoadingImage(false);
     } catch (e) {
       console.log("Error uploading file: ", e);
     }
   }
-
 
   return (
     <div>
       <div className="container_createitem">
         <div className="container_form_createitem">
           <div>
-            {
-              !loadingImage ? (
-                <div>
-                  {
-                    !fileUrl ?
-                      <Polaroid /> : <img
-                        src={fileUrl}
-                        alt="Picture of the author"
-                        className="rounded mt-4"
-                        width={200}
-                        height={200}
-                      />
-                  }
-                </div>
-              ) : (
-                <Loader />
-              )}
+            {!loadingImage ? (
+              <div>
+                {!fileUrl ? (
+                  <Polaroid />
+                ) : (
+                  <img
+                    src={fileUrl}
+                    alt="Picture of the author"
+                    className="rounded mt-4"
+                    width={200}
+                    height={200}
+                  />
+                )}
+              </div>
+            ) : (
+              <Loader />
+            )}
           </div>
           <div>
             <input
@@ -124,15 +138,19 @@ export default function CreateItem() {
           </div>
           <div className="input_wrapper">
             <label htmlFor="teamName">Team Name*</label>
-            <input
-              autoComplete="off"
-              placeholder="Team name...."
-              id="teamName"
-              type="text"
+            <select
               onChange={(e) =>
                 updateFormInput({ ...formInput, teamName: e.target.value })
               }
-            />
+              id="teamName"
+            >
+              <option value="">Team</option>
+              {teams?.map((team, index) => (
+                <option key={index} value={team}>
+                  {team}
+                </option>
+              ))}
+            </select>
           </div>
 
           <div className="input_wrapper">

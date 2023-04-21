@@ -1,6 +1,12 @@
 import { Controller } from "@hotwired/stimulus";
 import { showModal } from "./js/modal";
-import { metamaskIsInstalled, currentChainIsValid, requestAccounts, personalSign, getUuidByAccount } from "./js/ethUtils";
+import {
+  metamaskIsInstalled,
+  currentChainIsValid,
+  requestAccounts,
+  personalSign,
+  getUuidByAccount,
+} from "./js/ethUtils";
 import { notification } from "../react/src/components/alerts/notifications";
 // Connects to data-controller="sessions"
 export default class extends Controller {
@@ -18,29 +24,33 @@ export default class extends Controller {
 
     connectToEthereum();
     async function connectToEthereum() {
-      if (metamaskIsInstalled()) {
-        await currentChainIsValid();
-
+      if (await metamaskIsInstalled()) {
         // console.log(checkMetamask());
 
         buttonEthConnect.addEventListener("click", async () => {
           // buttonEthConnect.disabled = true;
+          if (!(await currentChainIsValid())) return;
 
           await currentChainIsValid();
-
-          let accounts
+          let accounts;
           try {
             accounts = await requestAccounts();
             // hacer algo con accounts
           } catch (error) {
-            notification.showWarningWithButton({ title: "Error", message: "You already have a request in progress, check your MetaMask inbox" })
+            notification.showWarningWithButton({
+              title: "Error",
+              message:
+                "You already have a request in progress, check your MetaMask inbox",
+            });
             throw error; // aquí se propaga la excepción
-
           }
           const etherbase = accounts[0];
           const nonce = await getUuidByAccount(etherbase);
           if (!nonce) {
-            notification.showWarningWithButton({ title: 'User no exist', message: 'Your user is not registered please register' })
+            notification.showWarningWithButton({
+              title: "User no exist",
+              message: "Your user is not registered please register",
+            });
             return;
           }
 
@@ -48,13 +58,16 @@ export default class extends Controller {
           const requestTime = new Date().getTime();
           const message = customTitle + "," + requestTime + "," + nonce;
 
-          let signature
+          let signature;
           try {
             signature = await personalSign(etherbase, message);
           } catch (error) {
-            notification.showWarningWithButton({ title: "Error", message: "An error occurred while obtaining your personal signature in metamask" })
+            notification.showWarningWithButton({
+              title: "Error",
+              message:
+                "An error occurred while obtaining your personal signature in metamask",
+            });
             throw error; // aquí se propaga la excepción
-
           }
           // if (!signature || !message) {
           //   notification.showWarningWithButton()
@@ -65,11 +78,9 @@ export default class extends Controller {
           formInputEthSignature.value = signature;
           console.log("Se envia");
           formNewSession.submit();
-
-
         });
       } else {
-        showModal(true)
+        showModal(true);
         installMetamaskLink.hidden = false;
         buttonEthConnect.innerHTML = "No Ethereum Context Available";
         buttonEthConnect.disabled = true;

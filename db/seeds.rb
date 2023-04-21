@@ -1,66 +1,11 @@
-Nft.create!({
-  price: '36',
-  tokenId: 10,
-  seller: 'dasdss',
-  owner: 'dlsajldjlads',
-  image: "https://sportex-staging.infura-ipfs.io/ipfs/QmRER9cv5UrDfEg73ypstzMj1CzquXDwVGbeJnZJ6sFn73",
-  name: 'Canaldo',
-  description: 'RANDOM',
-  meta: {
-    name: 'Si',
-  },
-  attack: '87',
-  strength: '21',
-  defense: '66',
-  teamName:'Mexico'
-})
-
-Nft.create!({
-  price: '37',
-  tokenId: 11,
-  seller: 'dasdss',
-  owner: 'dlsajldjlads',
-  image: "https://sportex-staging.infura-ipfs.io/ipfs/QmRER9cv5UrDfEg73ypstzMj1CzquXDwVGbeJnZJ6sFn73",
-  name: 'Ponaldo',
-  description: 'RANDOM',
-  meta: {
-    name: 'Si',
-  },
-  attack: '87',
-  strength: '21',
-  defense: '66',
-  teamName:'Italia'
-})
-Nft.create!({
-  price: '38',
-  tokenId: 13,
-  seller: 'dasdss',
-  owner: 'dlsajldjlads',
-  image: "https://sportex-staging.infura-ipfs.io/ipfs/QmRER9cv5UrDfEg73ypstzMj1CzquXDwVGbeJnZJ6sFn73",
-  name: 'Ponaldo',
-  description: 'RANDOM',
-  meta: {
-    name: 'Si',
-  },
-  attack: '87',
-  strength: '21',
-  defense: '66',
-  teamName:'Italia'
-})
-Nft.create!({
-  price: '39',
-  tokenId: 12,
-  seller: 'dasdss',
-  owner: 'dlsajldjlads',
-  image: "https://sportex-staging.infura-ipfs.io/ipfs/QmRER9cv5UrDfEg73ypstzMj1CzquXDwVGbeJnZJ6sFn73",
-  name: 'Ponaldo',
-  description: 'RANDOM',
-  meta: {
-    name: 'Si',
-  },
-  attack: '87',
-  strength: '21',
-  defense: '66',
-  teamName:'Italia'
-})
-AdminUser.create!(email: 'admin@sportex.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+Team.create(name: 'Portugal')
+Team.create(name: 'Falcao')
+Team.create(name: 'England')
+Team.create(name: 'Colombia')
+Team.create(name: 'Germany')
+Team.create(name: 'France')
+Team.create(name: 'Poland')
+Team.create(name: 'Croacia')
+Team.create(name: 'Senegal')
+Team.create(name: 'Brazil')
+Team.create(name: 'Eslovenia')

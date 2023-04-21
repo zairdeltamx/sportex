@@ -17,5 +17,18 @@ module Types
     field :defense, Float
     field :strength, Float
     field :teamName, String
+    field :presale_image_url, String, null: true
+
+    def asset_url(asset)
+      ActionController::Base.helpers.asset_path(asset)
+    end
+
+    def presale_image_url
+      if object.presale_image.attached?
+        object.presale_image.service_url
+      else
+        asset_url('profileDefault.png')
+      end
+    end
   end
 end

@@ -12,18 +12,14 @@ import { LoaderBlock } from "../components/LoaderBlock";
 import { useLoadingContext } from "../useContext/LoaderContext";
 
 export default function App() {
-  useEffect(() => {
-  }, []);
+  useEffect(() => {}, []);
 
-  const { isAllowed } = useMetamask()
-  const { transactionIsLoading } = useLoadingContext()
+  const { isAllowed } = useMetamask();
+  const { transactionIsLoading } = useLoadingContext();
 
   return (
     <div>
-      {
-        transactionIsLoading ?
-          <LoaderBlock /> : ''
-      }
+      {transactionIsLoading ? <LoaderBlock /> : ""}
 
       <BrowserRouter>
         <NavbarComponent />
@@ -35,7 +31,7 @@ export default function App() {
             <Route path="createitem" element={<CreateItem></CreateItem>} />
           ) : null}
           <Route path="myassets" element={<MyAssets></MyAssets>} />
-          <Route path="nftdetail/:id" element={<NftInfo></NftInfo>} />
+          <Route path="nftdetail/:tokenId" element={<NftInfo></NftInfo>} />
           <Route path="profile" element={<Profile></Profile>} />
           <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>

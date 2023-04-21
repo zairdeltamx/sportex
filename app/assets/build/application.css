@@ -13,77 +13,37 @@
   justify-content: space-between;
   padding: 0 2rem;
 }
-.navbar__container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.navbar__logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: white;
-  text-decoration: none;
-}
-.navbar__menu {
-  display: flex;
-  align-items: center;
-}
-.navbar__list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: row;
-}
-.navbar__item {
-  margin-left: 1rem;
-}
-.navbar__link {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-}
-.navbar__link:active {
-  color: blue;
-  border-bottom: 1px solid black;
-}
-.Button_play_sportex_navbar {
+.navbar_toggle {
   display: none;
 }
-.navbar__toggle {
-  width: 30px;
-  height: 20px;
-  position: relative;
-  cursor: pointer;
-  display: none;
+.navbar_toggle svg {
+  width: 40px;
+  height: 40px;
 }
-.navbar__icon {
-  position: absolute;
-  width: 100%;
-  height: 3px;
-  background-color: white;
-  border-radius: 3px;
-  transition: all 0.3s ease-in-out;
+.navbar_menu {
+  display: flex;
+  gap: 10px;
 }
-.navbar__icon:before {
-  top: -8px;
+.navbar_link {
+  letter-spacing: 1px;
+  color: white;
+  font-family: "GeneralSans", sans-serif;
+  font-weight: 500;
+  text-decoration: none;
 }
-.navbar__icon:after {
-  top: 8px;
-}
-@media only screen and (max-width: 768px) {
-  .Button_play_sportex_navbar {
+@media only screen and (max-width: 800px) {
+  .navbar_toggle {
     display: block;
   }
-  .navbar__menu {
+  .navbar_menu {
+    box-shadow: 5px 0 5px rgba(0, 0, 0, 0.5);
+    overflow: scroll;
     position: fixed;
+    gap: 40px;
     top: 80px;
     left: 0;
     bottom: 0;
-    right: 0;
+    right: 20%;
     background-color: #fff;
     display: flex;
     flex-direction: column;
@@ -94,56 +54,19 @@
     transform: translateX(-100%);
     transition: all 0.3s ease-in-out;
   }
-  .navbar__menu button {
-    background-color: #86FC73;
-    border-radius: 10px;
-    border: none;
-    padding: 5px 40px;
-    font-family: "GeneralSans", sans-serif;
+  .navbar_link {
+    font-size: 25px;
+    color: #4c4b58;
     font-weight: 600;
   }
-  .navbar__menu.active {
+  .navbar_link.active {
+    padding-bottom: 10px;
+    border-bottom: 2px solid#003399;
+    color: #003399;
+  }
+  .navbar_menu.active {
     transform: translateX(0%);
   }
-  .navbar__toggle {
-    display: block;
-  }
-  .navbar__link {
-    color: #4C4B58;
-    font-family: "GeneralSans", sans-serif;
-    font-weight: 600;
-  }
-  .navbar__list {
-    flex-direction: column;
-    width: 50%;
-  }
-  .navbar__item {
-    margin: 1rem 0;
-  }
-  .navbar__toggle:before,
-  .navbar__toggle:after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background-color: white;
-    transition: transform 0.3s ease-in-out;
-  }
-  .navbar__toggle:before {
-    top: 0;
-  }
-  .navbar__toggle:after {
-    bottom: 0;
-  }
-  .navbar__toggle.active:before {
-    transform: translateY(8px) rotate(45deg);
-  }
-  .navbar__toggle.active:after {
-    transform: translateY(-8px) rotate(-45deg);
-  }
-}
-.TEST {
-  color: red;
 }
 
 /* app/javascript/react/src/views/index/index/styles.css */
@@ -343,6 +266,11 @@ body {
   .containerBlur {
     width: 321px;
     height: 322px;
+  }
+  .imgBannerNft {
+    left: 25%;
+    width: 300px;
+    height: 300px;
   }
 }
 .container_footer {
@@ -547,7 +475,7 @@ body {
     background-color: #564848;
     position: absolute;
     left: -265px;
-    top: 50px;
+    top: 60px;
     transition: all 0.5s ease-in-out;
     z-index: 1;
   }
@@ -681,26 +609,26 @@ body {
   }
 }
 .container_wave {
-  width: 100%;
-  overflow: hidden;
-  height: 130px;
-  background-color: #001b4b;
-  background-image: url(assets/wavePc-A4Q3HALM.digested.png.png);
-  background-size: cover;
   position: relative;
-  bottom: -2px;
-  z-index: -1;
+  overflow: hidden;
+  bottom: -4px;
+  height: 100px;
 }
-@media only screen and (max-width: 1000px) {
-  .container_wave {
-    background-image: url(assets/wave_ipad-UV6QX6XK.digested.png.png);
-    height: 150px;
+.container_wave .container_image_wave {
+  height: 122px;
+  position: relative;
+}
+.container_wave .container_image_wave img {
+  position: absolute;
+}
+@media only screen and (min-width: 800px) {
+  .container_wave .container_image_wave {
+    height: 293px;
   }
 }
-@media only screen and (max-width: 700px) {
-  .container_wave {
-    background-image: url(assets/waveMobile-UJYWPVG6.digested.png.png);
-    height: 170px;
+@media only screen and (min-width: 1000px) {
+  .container_wave .container_image_wave {
+    height: 512px;
   }
 }
 .container_card {
@@ -1199,7 +1127,8 @@ body {
   gap: 15px;
 }
 .container_createitem .container_form_createitem .input_wrapper input,
-.container_createitem .container_form_createitem .input_wrapper textarea {
+.container_createitem .container_form_createitem .input_wrapper textarea,
+.container_createitem .container_form_createitem .input_wrapper select {
   width: 100%;
   background: #fafafa;
   border: 1px solid #d1d5db;
@@ -1235,6 +1164,3 @@ body {
 }
 
 /* app/javascript/controllers/styles.css */
-body {
-  background-color: #001b4b;
-}

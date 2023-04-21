@@ -1,23 +1,24 @@
 .container_wave {
-    width: 100%;
-    overflow: hidden;
-    height: 130px;
-    background-color: #001b4b;
-    background-image: url('../img/waves/wavePc.png');
-    background-size: cover;
     position: relative;
-    bottom: -2px;
-    z-index: -1;
+    overflow: hidden;
+    bottom: -4px;
 
-    @media only screen and (max-width: 1000px) {
-        background-image: url('../img/waves/wave_ipad.png');
-        height: 150px;
+    height: 100px;
 
-    }
+    .container_image_wave {
+        height: 122px;
+        position: relative;
 
-    @media only screen and (max-width: 700px) {
-        background-image: url('../img/waves/waveMobile.png');
-        height: 170px;
+        img {
+            position: absolute;
+        }
 
+        @media only screen and (min-width: 800px) {
+            height: 293px;
+        }
+
+        @media only screen and (min-width: 1000px) {
+            height: 512px;
+        }
     }
 }

@@ -83,7 +83,6 @@ export default function Index() {
             orderBy={orderBy}
             setName={setName}
             name={name}
-            teamName={teamName}
             setTeamName={setTeamName}
           />
 
