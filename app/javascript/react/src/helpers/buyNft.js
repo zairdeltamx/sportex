@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
 import Web3Modal from "web3modal";
 import Market from "../../hardhat/artifacts/contracts/NFTMarketplace.sol/NFTMarketplace.json";
-import { nftaddress, nftmarketaddress } from "../config";
+import { nftmarketaddress } from "../config";
 
 export default async function buyNFT(nft) {
   const web3Modal = new Web3Modal();
@@ -14,7 +14,7 @@ export default async function buyNFT(nft) {
   const price = ethers.utils.parseUnits(nft.price.toString(), "ether");
 
   // make the sale
-  const transaction = await contract.purchaseItem(nftaddress, nft.tokenId, {
+  const transaction = await contract.purchaseItem(nft.tokenId, {
     value: price,
   });
   await transaction.wait();

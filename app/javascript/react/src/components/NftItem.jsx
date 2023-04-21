@@ -6,7 +6,7 @@ import { ButtonDelistNft } from "./buttonDelistNft/ButtonDelistNft";
 import { ethers } from "ethers";
 import Web3Modal from "web3modal";
 import Market from "../../hardhat/artifacts/contracts/NFTMarketplace.sol/NFTMarketplace.json";
-import { nftaddress, nftmarketaddress } from "../config";
+import { nftmarketaddress } from "../config";
 
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -81,7 +81,6 @@ export const NftItem = ({ nft }) => {
       );
 
       const transaction = await contract.resellToken(
-        nftaddress,
         nft.tokenId,
         priceFormatted
       );

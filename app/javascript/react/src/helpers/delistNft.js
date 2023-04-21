@@ -1,7 +1,7 @@
 import { ethers } from "ethers";
 import Web3Modal from "web3modal";
 import Market from "../../hardhat/artifacts/contracts/NFTMarketplace.sol/NFTMarketplace.json";
-import { nftaddress, nftmarketaddress } from "../config";
+import { nftmarketaddress } from "../config";
 
 export default async function delistNft(nft) {
   const web3Modal = new Web3Modal();
@@ -12,6 +12,6 @@ export default async function delistNft(nft) {
   const contract = new ethers.Contract(nftmarketaddress, Market.abi, signer);
 
   // make the sale
-  const transaction = await contract.delistNFT(nftaddress, nft.tokenId);
+  const transaction = await contract.delistNFT(nft.tokenId);
   await transaction.wait();
 }

@@ -5,11 +5,11 @@ import Market from "../../hardhat/artifacts/contracts/NFTMarketplace.sol/NFTMark
 import NFT from "../../hardhat/artifacts/contracts/NFT.sol/NFT.json";
 import { notification } from "../components/alerts/notifications";
 import { allowance } from "./allowanceNft";
+
 export async function approve({
   setnftIsApproval,
   setTransactionIsLoading,
-  tokenId,
-  address,
+  tokenId
 }) {
   setTransactionIsLoading(true);
   try {
