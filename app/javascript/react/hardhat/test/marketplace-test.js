@@ -131,5 +131,19 @@ describe("NFTMarket", function () {
     const allmarket = await market.fetchAllMarketItems();
     const lastAddedItem = allmarket[allmarket.length - 1];
     expect(lastAddedItem.owner).to.equal(buyerAddress.address);
+
+
+    await nft.batchCreateTokens([
+      "https://axtrading.io/4",
+      "https://axtrading.io/5",
+      "https://axtrading.io/6",
+      "https://axtrading.io/7"
+    ], [
+      "{test:1}",
+      "{test:2}",
+      "{test:3}",
+      "{test:4}",
+      "{test:5}"
+    ]);
   });
 });

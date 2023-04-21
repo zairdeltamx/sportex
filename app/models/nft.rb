@@ -13,9 +13,6 @@ class Nft < ApplicationRecord
             :owner,
             :image,
             :name,
-            :strength,
-            :defense,
-            :attack,
             :description,
             :meta, presence: true
 

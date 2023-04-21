@@ -19,6 +19,24 @@ contract NFT is ERC721URIStorage {
     owner = payable(msg.sender);
   }
 
+  function batchCreateTokens(string[] memory tokenURIs, string[] memory metas) public returns (uint[] memory) {
+    require(owner == msg.sender, "Only contract owner can update Create game NFTs");
+
+    uint[] memory tokenIds = new uint[](tokenURIs.length);
+
+    for (uint i = 0; i < tokenURIs.length; i++) {
+      _tokenIds.increment();
+      uint256 newItemId = _tokenIds.current();
+
+      _mint(msg.sender, newItemId);
+      _setTokenURI(newItemId, tokenURIs[i]);
+      idToMeta[newItemId] = metas[i];
+      setApprovalForAll(contractAddress, true);
+      tokenIds[i] = newItemId;
+    }
+    return tokenIds;
+  }
+
   function createToken(string memory tokenURI, string memory meta) public returns (uint){
     require(owner == msg.sender, "Only contract owner can update Create game NFTs");
 

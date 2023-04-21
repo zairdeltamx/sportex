@@ -14,9 +14,10 @@ module Sportex
           requires :owner, type: String
           requires :image, type: String
           requires :name, type: String
-          requires :defense, type: Float
-          requires :attack, type: Float
-          requires :strength, type: Float
+          optional :defense, type: Float
+          optional :attack, type: Float
+          optional :strength, type: Float
+          optional :resistance, type: Float
           optional :description, type: String
           optional :sold, type: Boolean
           requires :meta, type: String
