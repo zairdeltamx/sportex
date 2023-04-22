@@ -64,8 +64,8 @@ const Papa = require('papaparse');
 const fs = require('fs');
 const playersCsv = fs.readFileSync('./players.csv').toString();
 
-const nftaddress = '0x25568a14b3aa74768d33aff237463435bec5429b';
-const nftmarketaddress = '0x46df1ae31cfa286553e2b519df03a70d98c2b100';
+const nftaddress = '0x552820268831298c5d4cfac7f9c1c9c7d4e0fb77';
+const nftmarketaddress = '0xb17b495c3c1c7bd069956ab8b1b1bae57d9c2cdc';
 
 async function submitPlayertoBlockchain(parseJson, url) {
   const stringJson = JSON.stringify(parseJson);
