@@ -23,6 +23,7 @@ import { Loader } from "./Loader";
 export const NftItem = ({ nft }) => {
   const [nftIsApproved, setnftIsApproval] = useState(false);
   const [askingPrice, setAskingPrice] = useState(0);
+  const [transferAddress, setTransferAddress] = useState('');
   const [loading, setLoading] = useState(false);
   const { addressMetamask } = useMetamask();
   const location = useLocation();
@@ -64,6 +65,45 @@ export const NftItem = ({ nft }) => {
     }
   }
 
+  async function transferToken({ nft, transferAddress }) {
+    try {
+      setTransactionIsLoading(true);
+      const web3Modal = new Web3Modal();
+      const connection = await web3Modal.connect();
+      const provider = new ethers.providers.Web3Provider(connection);
+
+      // sign the transaction
+      const signer = provider.getSigner();
+      const contract = new ethers.Contract(
+        nftmarketaddress,
+        Market.abi,
+        signer
+      );
+
+      console.log("TOKENID", nft.tokenId );
+      console.log("ADDRESS", transferAddress );
+      const transaction = await contract.transferTo(
+        transferAddress,
+        nft.tokenId
+      );
+
+      await transaction.wait();
+      notification.showSuccess({
+        title: "Success",
+        message: "The NFT will transfer in a few minutes",
+      });
+      window.location.replace("/");
+    } catch (error) {
+      console.log(error);
+      notification.showSuccess({
+        title: "Error",
+        message: "Failed to transfer NFT, please try again",
+      });
+    } finally {
+      setTransactionIsLoading(false);
+    }
+  };
+
   async function resellToken({ nft, askingPrice }) {
     try {
       setTransactionIsLoading(true);
@@ -92,6 +132,7 @@ export const NftItem = ({ nft }) => {
       });
       window.location.replace("/");
     } catch (error) {
+      console.log(error);
       notification.showSuccess({
         title: "Error",
         message: "Failed to resell NFT, please try again",
@@ -121,6 +162,7 @@ export const NftItem = ({ nft }) => {
         );
       } else {
         return (
+        <Fragment>
           <TogglableModal
             onConfirm={resellToken}
             params={{ nft, askingPrice }}
@@ -137,6 +179,23 @@ export const NftItem = ({ nft }) => {
               />
             </form>
           </TogglableModal>
+          <TogglableModal
+            onConfirm={transferToken}
+            params={{ nft, transferAddress }}
+            title="Enter Address to transfer"
+            buttonLabel="Transfer"
+          >
+            <form>
+              <label>Address to transfer:</label>
+              <input
+                type="text"
+                placeholder="ERC-20 Address to transfer"
+                onChange={(e) => setTransferAddress(e.target.value)}
+                autoFocus
+              />
+            </form>
+          </TogglableModal>
+          </Fragment>
         );
       }
     } else if (location.pathname === "/") {
@@ -167,8 +226,6 @@ export const NftItem = ({ nft }) => {
       }
     }
   };
-
-  console.log(nft, "NFTITEM");
 
   return (
     <div className="container_card">

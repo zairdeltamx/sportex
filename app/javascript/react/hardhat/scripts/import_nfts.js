@@ -15,6 +15,29 @@ const client = create({
   },
 });
 
+function chunkArray(array, chunkSize) {
+  const chunks = [];
+  for (let i = 0; i < array.length; i += chunkSize) {
+    chunks.push(array.slice(i, i + chunkSize));
+  }
+  return chunks;
+}
+
+async function processBatch(batch, tokenContract, marketContract) {
+  // Your processing logic here.
+  // For example: console.log(batch);
+  await batchCreate(batch, tokenContract, marketContract);
+}
+
+async function processLargeArray(largeArray, tokenContract, marketContract, batchSize) {
+  const batches = chunkArray(largeArray, batchSize);
+
+  for (const batch of batches) {
+    await processBatch(batch, tokenContract, marketContract);
+  }
+}
+
+
 const Papa = require('papaparse');
 const fs = require('fs');
 const playersCsv = fs.readFileSync('./players.csv').toString();
@@ -108,6 +131,9 @@ async function importNFTs() {
   }
 
   // await batchCreate(playerTokensAndMetas, tokenContract, marketContract);
+
+  //const batchSize = 20;
+  //await processLargeArray(playerTokensAndMetas, tokenContract, marketContract, batchSize);
 
   console.log("Done importing NFTs");
 };
