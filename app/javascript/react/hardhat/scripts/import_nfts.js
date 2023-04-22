@@ -1,4 +1,5 @@
 const hre = require("hardhat");
+const axios = require('axios');
 const nftContractAbi = require('../artifacts/contracts/NFT.sol/NFT.json').abi;
 const nftMarketContractAbi = require('../artifacts/contracts/NFTMarketplace.sol/NFTMarketplace.json').abi;
 const { from, catchError, tap, map, filter, lastValueFrom, mergeMap } = require('rxjs');
@@ -37,6 +38,27 @@ async function processLargeArray(largeArray, tokenContract, marketContract, batc
   }
 }
 
+const downloadImage = async (url, imagePath) => {
+  const response = await axios({
+    method: 'GET',
+    url,
+    responseType: 'arraybuffer',
+  });
+
+  fs.writeFileSync(imagePath, Buffer.from(response.data, 'binary'), 'binary');
+};
+
+// Function to add the image to IPFS
+const addToIPFS = async (imagePath) => {
+  const file = fs.readFileSync(imagePath);
+  const result = await client.add(file);
+
+  const url = `https://sportex-staging.infura-ipfs.io/ipfs/${result.path}`;
+
+  console.log('IPFS url:', url);
+
+  return url;
+};
 
 const Papa = require('papaparse');
 const fs = require('fs');
@@ -76,7 +98,12 @@ async function importPlayer(player) {
   parseJson.description = 'Hidden';
   parseJson.teamName = player.equipo;
   parseJson.playerName = 'Hidden';
-  parseJson.image = player.imagen_oscurecida_url;
+
+  await downloadImage(player.imagen_oscurecida_url, 'image.gif');
+
+  const imageipfs = await addToIPFS('image.gif');
+
+  parseJson.image = imageipfs;
 
   const data = JSON.stringify({
     name: parseJson.name,
