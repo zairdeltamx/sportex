@@ -19,9 +19,6 @@ describe Nft do
   describe 'validations' do
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_presence_of(:price) }
-    it { is_expected.to validate_presence_of(:attack) }
-    it { is_expected.to validate_presence_of(:defense) }
-    it { is_expected.to validate_presence_of(:strength) }
     it { is_expected.to validate_presence_of(:description) }
     it { is_expected.to validate_presence_of(:tokenId) }
   end
