@@ -91,6 +91,17 @@ async function submitPlayertoBlockchain(parseJson, url) {
   transaction = await contract.listMarketItem(nftaddress, tokenId, price);
 }
 
+function xorEncode(input, key) {
+  let output = '';
+  for (let i = 0; i < input.length; i++) {
+    const inputCharCode = input.charCodeAt(i);
+    const keyCharCode = key.charCodeAt(i % key.length);
+    const xorCharCode = inputCharCode ^ keyCharCode;
+    output += String.fromCharCode(xorCharCode);
+  }
+  return output;
+}
+
 async function importPlayer(player) {
   let parseJson = JSON.parse(player.json);
   parseJson.price = 100;
@@ -100,13 +111,13 @@ async function importPlayer(player) {
   parseJson.description = 'Hidden';
   parseJson.teamName = player.equipo;
   parseJson.playerName = 'Hidden';
-  parseJson.seed = player.nombre_jugador;
+  parseJson.authentication_signature = xorEncode(player.nombre_jugador, 'sportex-sync');
 
-  // await downloadImage(player.imagen_oscurecida_url, 'image.gif');
+  await downloadImage(player.imagen_oscurecida_url, 'image.gif');
 
-  // const imageipfs = await addToIPFS('image.gif');
+  const imageipfs = await addToIPFS('image.gif');
 
-  parseJson.image = player.imagen_oscurecida_url;
+  parseJson.image = imageipfs;
 
   const data = JSON.stringify({
     name: parseJson.name,
