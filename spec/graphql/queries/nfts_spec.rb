@@ -33,7 +33,6 @@ describe SportexSchema, elasticsearch: true, turnip_vcr: true do
             description
             tokenId
             strength
-            meta
           }
           metadata {
             totalPages
