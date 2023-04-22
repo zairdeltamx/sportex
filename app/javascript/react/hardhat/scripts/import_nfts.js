@@ -95,15 +95,18 @@ async function importPlayer(player) {
   let parseJson = JSON.parse(player.json);
   parseJson.price = 100;
   parseJson.name = 'Hidden';
+  parseJson.PlayerName = 'Hidden';
+  parseJson.playerName = 'Hidden';
   parseJson.description = 'Hidden';
   parseJson.teamName = player.equipo;
   parseJson.playerName = 'Hidden';
+  parseJson.seed = player.nombre_jugador;
 
-  await downloadImage(player.imagen_oscurecida_url, 'image.gif');
+  // await downloadImage(player.imagen_oscurecida_url, 'image.gif');
 
-  const imageipfs = await addToIPFS('image.gif');
+  // const imageipfs = await addToIPFS('image.gif');
 
-  parseJson.image = imageipfs;
+  parseJson.image = player.imagen_oscurecida_url;
 
   const data = JSON.stringify({
     name: parseJson.name,
