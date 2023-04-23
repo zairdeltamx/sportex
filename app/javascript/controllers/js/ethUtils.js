@@ -14,6 +14,7 @@ import { notification } from "../../react/src/components/alerts/notifications.js
 export async function currentChainIsValid() {
   try {
     const provider = await detectEthereumProvider();
+    console.log("SE VUELVE A METER");
     const currentChain = await provider.request({ method: "eth_chainId" });
     if (currentChain === chainId) {
       return true;
@@ -38,6 +39,7 @@ export async function switchChain(button) {
       method: "wallet_switchEthereumChain",
       params: [{ chainId: web3.utils.toHex(chainId) }],
     });
+    console.log("SE METE TRY");
   } catch (error) {
     await provider.request({
       method: "wallet_addEthereumChain",
