@@ -27,11 +27,7 @@ export default class extends Controller {
 
     connectToEthereum();
     async function connectToEthereum() {
-      buttonEthConnect.disabled = true;
-      // Check if Ethereum context is available
       if (await metamaskIsInstalled()) {
-
-        // Add event listener to the button
         buttonEthConnect.addEventListener("click", async () => {
           await currentChainIsValid()
 
