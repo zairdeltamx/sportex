@@ -30,21 +30,26 @@
   width: 100%;
 }
 
-.form_sign_up button {
-  margin-top: 20px;
-  padding: 6px;
-  padding: 10px;
+.ButtonEthConnect {
   border-radius: 10px;
-  border: 1px solid #1e1e1e;
+  background-color: #ffff;
   font-family: "GeneralSans", sans-serif;
   font-weight: 600;
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #1e1e1e;
+  font-size: 14px;
+  color: black;
+  line-height: 22px;
 }
 
-.form_sign_up button:hover {
+.ButtonEthConnect:hover {
   background-color: #a4a1af;
   border: 1px solid #727084;
 }
-
+.ButtonEthConnect:disabled {
+  color: gray;
+}
 .form_sign_up input {
   border: 1px solid #d1d5db;
   width: 100%;
@@ -87,22 +92,17 @@ form {
   text-decoration: none;
 }
 
-
 @media only screen and (max-width: 1000px) {
-  .container_sign_up{
+  .container_sign_up {
     width: 100%;
   }
   .form_sign_up p:first-of-type {
     font-size: 15px;
   }
   .container_content_sign_up {
-
     width: 350px;
-
-
   }
-  .other_options_sign_up{
+  .other_options_sign_up {
     font-size: 15px;
   }
-
 }

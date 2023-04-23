@@ -10,12 +10,14 @@ import { Wave } from "../../../components/Wave";
 import "./styles.css";
 import { Loader } from "../../../components/Loader";
 import ActionCable from "actioncable";
+import { useMetamask } from "../../../useContext/MetamaskContext";
 
 export default function Index() {
   const protocol = window.location.protocol === "https:" ? "wss:" : "ws:";
   const host = window.location.host;
   const cable = ActionCable.createConsumer(`${protocol}//${host}/cable`);
 
+  const { addressMetamask } = useMetamask();
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [name, setName] = useState("");
@@ -24,24 +26,16 @@ export default function Index() {
   const [teamName, setTeamName] = useState("");
   const [nfts, setNfts] = useState([]);
   const [getNFTs, { data, loading, error }] = useLazyQuery(GET_NFTS);
-
-  useEffect(() => {
-    const channel = cable.subscriptions.create("NftChannel", {
-      room: "13",
-      received: (data) => {
-        handleSubmit();
-      },
-    });
-
-    return () => {
-      channel.unsubscribe();
-    };
-  }, []);
-
+  const [unitDolar, setUnitDolar] = useState(0);
+  const [searchForSeller, setsearchForSeller] = useState(false);
   const handleSubmit = () => {
+    console.log("====================================");
+    console.log(addressMetamask);
+    console.log("====================================");
     getNFTs({
       variables: {
         page: currentPage,
+        seller: searchForSeller === true ? addressMetamask : "",
         limit: 10,
         name,
         orderBy,
@@ -54,7 +48,7 @@ export default function Index() {
 
   useEffect(() => {
     handleSubmit();
-  }, [currentPage, name]);
+  }, [currentPage, name, searchForSeller]);
 
   useEffect(() => {
     if (data) {
@@ -63,6 +57,28 @@ export default function Index() {
       setTotalPages(data.nfts.metadata.totalPages);
     }
   }, [data]);
+  useEffect(() => {
+    fetch(
+      "https://api.coingecko.com/api/v3/simple/price?ids=avalanche-2&vs_currencies=usd"
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        const avalanchePrice = data["avalanche-2"]["usd"];
+        setUnitDolar(avalanchePrice);
+      });
+  }, []);
+  useEffect(() => {
+    const channel = cable.subscriptions.create("NftChannel", {
+      room: "13",
+      received: (data) => {
+        handleSubmit();
+      },
+    });
+
+    return () => {
+      channel.unsubscribe();
+    };
+  }, []);
 
   return (
     <div>
@@ -83,17 +99,18 @@ export default function Index() {
             orderBy={orderBy}
             setName={setName}
             name={name}
+            setsearchForSeller={setsearchForSeller}
             setTeamName={setTeamName}
           />
 
-          {loading ? (
+          {loading || !unitDolar ? (
             <Loader />
           ) : nfts.length === 0 ? (
             <h1 style={{ textAlign: "center", paddingTop: "20px" }}>
               Not found NFTs
             </h1>
           ) : (
-            <ListNfts nfts={nfts} />
+            <ListNfts nfts={nfts} unitDolar={unitDolar} />
           )}
           <Pagination
             totalPages={totalPages}

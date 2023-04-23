@@ -25,12 +25,10 @@ export default class extends Controller {
     connectToEthereum();
     async function connectToEthereum() {
       if (await metamaskIsInstalled()) {
-        // console.log(checkMetamask());
-
         buttonEthConnect.addEventListener("click", async () => {
           // buttonEthConnect.disabled = true;
 
-          await currentChainIsValid();
+          await currentChainIsValid()
           let accounts;
           try {
             accounts = await requestAccounts();
@@ -84,6 +82,11 @@ export default class extends Controller {
         buttonEthConnect.innerHTML = "No Ethereum Context Available";
         buttonEthConnect.disabled = true;
       }
+    }
+    function disableButtonsChainInvalid() {
+      // Disable the button and change its text
+      buttonEthConnect.innerHTML = "Change chain valid";
+      buttonEthConnect.disabled = true;
     }
   }
 }

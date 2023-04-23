@@ -1,7 +1,7 @@
 .contentIndex {
   width: 80%;
   min-height: 500px;
-  overflow: hidden;
+  /* overflow: hidden; */
   margin-left: auto;
   margin-right: auto;
   display: block;
@@ -13,7 +13,7 @@
   height: 100%;
 }
 @media only screen and (max-width: 700px) {
-  .containerIndex{
+  .containerIndex {
     padding: 0;
   }
 }

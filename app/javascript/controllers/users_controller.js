@@ -27,27 +27,18 @@ export default class extends Controller {
 
     connectToEthereum();
     async function connectToEthereum() {
+      buttonEthConnect.disabled = true;
       // Check if Ethereum context is available
       if (await metamaskIsInstalled()) {
 
-        await currentChainIsValid();
         // Add event listener to the button
         buttonEthConnect.addEventListener("click", async () => {
-          // Disable the button
-          // buttonEthConnect.disabled = true;
+          await currentChainIsValid()
 
           let accounts;
-          try {
-            accounts = await requestAccounts();
-            // hacer algo con accounts
-          } catch (error) {
-            notification.showWarningWithButton({
-              title: "Error",
-              message:
-                "Ya tienes una solicitud en curso, revisa tu bandeja de MetaMask",
-            });
-            throw error; // aquí se propaga la excepción
-          }
+          accounts = await requestAccounts();
+          // hacer algo con accounts
+
           const etherbase = accounts[0];
 
           // Populate the form input and submit the form
@@ -55,14 +46,16 @@ export default class extends Controller {
           form.submit();
         });
       } else {
-        // Show the install Metamask link
         installMetamaskLink.hidden = false;
         showModal(true);
-
-        // Disable the button and change its text
         buttonEthConnect.innerHTML = "No Ethereum Context Available";
-        buttonEthConnect.disabled = true;
       }
+    }
+
+    function disableButtonsChainInvalid() {
+      // Disable the button and change its text
+      buttonEthConnect.innerHTML = "Change chain valid";
+      buttonEthConnect.disabled = true;
     }
   }
 }

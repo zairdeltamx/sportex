@@ -20,10 +20,10 @@ import { allowance } from "../helpers/allowanceNft";
 import { approve } from "../helpers/approveNft";
 import { Loader } from "./Loader";
 
-export const NftItem = ({ nft }) => {
+export const NftItem = ({ nft, unitDolar }) => {
   const [nftIsApproved, setnftIsApproval] = useState(false);
   const [askingPrice, setAskingPrice] = useState(0);
-  const [transferAddress, setTransferAddress] = useState('');
+  const [transferAddress, setTransferAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const { addressMetamask } = useMetamask();
   const location = useLocation();
@@ -80,8 +80,8 @@ export const NftItem = ({ nft }) => {
         signer
       );
 
-      console.log("TOKENID", nft.tokenId );
-      console.log("ADDRESS", transferAddress );
+      console.log("TOKENID", nft.tokenId);
+      console.log("ADDRESS", transferAddress);
       const transaction = await contract.transferTo(
         transferAddress,
         nft.tokenId
@@ -102,7 +102,7 @@ export const NftItem = ({ nft }) => {
     } finally {
       setTransactionIsLoading(false);
     }
-  };
+  }
 
   async function resellToken({ nft, askingPrice }) {
     try {
@@ -162,39 +162,39 @@ export const NftItem = ({ nft }) => {
         );
       } else {
         return (
-        <Fragment>
-          <TogglableModal
-            onConfirm={resellToken}
-            params={{ nft, askingPrice }}
-            title="Enter asking price for NFT"
-            buttonLabel="Resell"
-          >
-            <form>
-              <label>Asking Price:</label>
-              <input
-                type="number"
-                placeholder="2 PLS"
-                onChange={(e) => setAskingPrice(e.target.value)}
-                autoFocus
-              />
-            </form>
-          </TogglableModal>
-          <TogglableModal
-            onConfirm={transferToken}
-            params={{ nft, transferAddress }}
-            title="Enter Address to transfer"
-            buttonLabel="Transfer"
-          >
-            <form>
-              <label>Address to transfer:</label>
-              <input
-                type="text"
-                placeholder="ERC-20 Address to transfer"
-                onChange={(e) => setTransferAddress(e.target.value)}
-                autoFocus
-              />
-            </form>
-          </TogglableModal>
+          <Fragment>
+            <TogglableModal
+              onConfirm={resellToken}
+              params={{ nft, askingPrice }}
+              title="Enter asking price for NFT"
+              buttonLabel="Resell"
+            >
+              <form>
+                <label>Asking Price:</label>
+                <input
+                  type="number"
+                  placeholder="2 PLS"
+                  onChange={(e) => setAskingPrice(e.target.value)}
+                  autoFocus
+                />
+              </form>
+            </TogglableModal>
+            <TogglableModal
+              onConfirm={transferToken}
+              params={{ nft, transferAddress }}
+              title="Enter Address to transfer"
+              buttonLabel="Transfer"
+            >
+              <form>
+                <label>Address to transfer:</label>
+                <input
+                  type="text"
+                  placeholder="ERC-20 Address to transfer"
+                  onChange={(e) => setTransferAddress(e.target.value)}
+                  autoFocus
+                />
+              </form>
+            </TogglableModal>
           </Fragment>
         );
       }
@@ -244,7 +244,12 @@ export const NftItem = ({ nft }) => {
           <hr />
           <div className="container_price_card">
             <p>Current Price</p>
-            <p>{nft.price} PLS</p>
+            <div>
+              <span className="unitDolar" style={{ textAlign: "center" }}>
+                {(unitDolar * nft.price).toFixed(2)}USD
+              </span>{" "}
+              <span className="unitPLS">{nft.price} PLS</span>
+            </div>
           </div>
           <div className="buttons_nft_item">{renderButtons()}</div>
         </Fragment>

@@ -8,9 +8,11 @@ export const GET_NFTS = gql`
     $orderBy: String
     $order: String
     $teamName: String
+    $seller: String
   ) {
     nfts(
       page: $page
+      seller: $seller
       teamName: $teamName
       limit: $limit
       name: $name

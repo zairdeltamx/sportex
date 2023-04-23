@@ -19,6 +19,8 @@ class Nft < ApplicationRecord
   attribute :teamName, :string, default: 'default value'
   has_one_attached :presale_image
 
+  before_save :downcase_seller
+
   def presale_image_url
     presale_image.attached? ? url_for(presale_image) : nil
   end
@@ -27,6 +29,7 @@ class Nft < ApplicationRecord
     %w(
       price
       name
+      seller
       teamName
       attack
       defense
@@ -36,5 +39,11 @@ class Nft < ApplicationRecord
 
   def sold=(value)
     self.status = value ? 'sold' : 'available'
+  end
+
+  private
+
+  def downcase_seller
+    seller.downcase!
   end
 end

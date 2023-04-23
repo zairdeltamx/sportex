@@ -15,10 +15,11 @@ export const SorterNfts = ({
   name,
   setTeamName,
   setCurrentPage,
+  setsearchForSeller,
 }) => {
   const [active, setActive] = useState(false);
   const { teams } = useGetTeams();
-  console.log(teams, "TEAMS");
+
   const filter = () => {
     handleSubmit();
     setCurrentPage(1);
@@ -38,6 +39,17 @@ export const SorterNfts = ({
               onChange={(e) => setName(e.target.value)}
             />
             <IconSearch alt="" />
+          </label>
+          <label htmlFor="seller">
+            Filter your nfts
+            <input
+              type="checkbox"
+              name=""
+              onChange={(ev) => {
+                setsearchForSeller(ev.target.checked);
+              }}
+              id="seller"
+            />
           </label>
         </div>
         <div className="container_buttons_and_toggle">

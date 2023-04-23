@@ -8,6 +8,7 @@ describe Nft do
       expect(described_class.ransackable_attributes(nil)).to eq(%w[
                                                                   price
                                                                   name
+                                                                  seller
                                                                   teamName
                                                                   attack
                                                                   defense

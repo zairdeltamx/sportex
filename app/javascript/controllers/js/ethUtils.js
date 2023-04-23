@@ -9,6 +9,7 @@ import {
 import Web3 from "web3";
 import detectEthereumProvider from "@metamask/detect-provider";
 import { showLoader } from "./loader.js";
+import { notification } from "../../react/src/components/alerts/notifications.js";
 
 export async function currentChainIsValid() {
   try {
@@ -20,23 +21,24 @@ export async function currentChainIsValid() {
     await switchChain();
     return false;
   } catch (error) {
+    notification.showWarning({
+      title: "Error",
+      message:
+        "There was an error changing the network, check your metamask notifications and reload the page",
+    });
     console.log(error);
   }
 }
 
-export async function switchChain() {
+export async function switchChain(button) {
+  const provider = await detectEthereumProvider();
+  const web3 = new Web3("https://rpc.v3.testnet.pulsechain.com/");
   try {
-    const provider = await detectEthereumProvider();
-    const web3 = new Web3("https://rpc.v3.testnet.pulsechain.com/");
-
     await provider.request({
       method: "wallet_switchEthereumChain",
       params: [{ chainId: web3.utils.toHex(chainId) }],
     });
   } catch (error) {
-    const provider = await detectEthereumProvider();
-    const web3 = new Web3("https://rpc.v3.testnet.pulsechain.com/");
-
     await provider.request({
       method: "wallet_addEthereumChain",
       params: [
@@ -73,6 +75,12 @@ export async function requestAccounts() {
       method: "eth_requestAccounts",
     });
     return accounts;
+  } catch (err) {
+    notification.showWarningWithButton({
+      title: "Error",
+      message:
+        "Ya tienes una solicitud en curso, revisa tu bandeja de MetaMask",
+    });
   } finally {
     showLoader(false);
   }
