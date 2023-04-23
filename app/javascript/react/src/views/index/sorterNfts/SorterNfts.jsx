@@ -41,7 +41,7 @@ export const SorterNfts = ({
             <IconSearch alt="" />
           </label>
           <label htmlFor="seller">
-            Filter your nfts
+            Show my NFT listings
             <input
               type="checkbox"
               name=""

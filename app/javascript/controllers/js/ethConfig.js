@@ -1,7 +1,7 @@
 // ethConfig.js
-export const chainName = "Avalanche";
-export const chainId = "0xa86a";
-export const nativeCurrency = { name: "Avax", decimals: 18, symbol: "AVAX" };
-export const blockExplorerUrls = ["https://snowtrace.io"];
-export const rpcUrls = ["https://api.avax.network/ext/bc/C/rpc"];
+export const chainName = "Binance Smart Chain";
+export const chainId = "0x38";
+export const nativeCurrency = { name: "BNB", decimals: 18, symbol: "BNB" };
+export const blockExplorerUrls = ["https://bscscan.com/"];
+export const rpcUrls = ["https://bsc-dataseed.binance.org/"];
 export const CODE_INSUFFICIENT_GAS = -32603

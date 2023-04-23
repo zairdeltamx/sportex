@@ -59,11 +59,11 @@ export default function Index() {
   }, [data]);
   useEffect(() => {
     fetch(
-      "https://api.coingecko.com/api/v3/simple/price?ids=avalanche-2&vs_currencies=usd"
+      "https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=usd"
     )
       .then((res) => res.json())
       .then((data) => {
-        const avalanchePrice = data["avalanche-2"]["usd"];
+        const avalanchePrice = data["binancecoin"]["usd"];
         setUnitDolar(avalanchePrice);
       });
   }, []);

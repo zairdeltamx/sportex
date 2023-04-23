@@ -2,7 +2,6 @@ const hre = require("hardhat");
 const axios = require('axios');
 const nftContractAbi = require('../artifacts/contracts/NFT.sol/NFT.json').abi;
 const nftMarketContractAbi = require('../artifacts/contracts/NFTMarketplace.sol/NFTMarketplace.json').abi;
-const { from, catchError, tap, map, filter, lastValueFrom, mergeMap } = require('rxjs');
 
 const { create } = require('ipfs-http-client');
 
@@ -64,8 +63,8 @@ const Papa = require('papaparse');
 const fs = require('fs');
 const playersCsv = fs.readFileSync('./players.csv').toString();
 
-const nftaddress = '0x552820268831298c5d4cfac7f9c1c9c7d4e0fb77';
-const nftmarketaddress = '0xb17b495c3c1c7bd069956ab8b1b1bae57d9c2cdc';
+const nftaddress = '0xc221f8764bd2914b641162cc37d0d547ce894420';
+const nftmarketaddress = '0x6c9b971f7d727faebdbab5f95085223db35ee523';
 
 async function submitPlayertoBlockchain(parseJson, url) {
   const stringJson = JSON.stringify(parseJson);
@@ -85,7 +84,7 @@ async function submitPlayertoBlockchain(parseJson, url) {
   let tokenId = value.toNumber(); //we need to convert it a number
   console.log("Token ID: ", tokenId);
 
-  const price = ethers.utils.parseUnits('100', "ether");
+  const price = ethers.utils.parseUnits('0.3', "ether");
 
   contract = new ethers.Contract(nftmarketaddress, nftMarketContractAbi, signer);
   transaction = await contract.listMarketItem(nftaddress, tokenId, price);
@@ -174,12 +173,16 @@ async function comparison(allNfts, tokenContract, results) {
 
 async function importNFTs() {
   console.log("Importing NFTs...");
-  console.log("data", nftMarketContractAbi);
-  console.log('nftContractAbi', nftContractAbi);
 
   const [signer] = await ethers.getSigners();
+  console.log("signer", signer);
+  console.log('nftmarketaddress', nftmarketaddress);
+  console.log('nftaddress', nftaddress);
+  console.log('signer', signer);
   const marketContract = new hre.ethers.Contract(nftmarketaddress, nftMarketContractAbi, signer);
   const tokenContract = new hre.ethers.Contract(nftaddress, nftContractAbi, signer);
+
+  console.log("initialized market contracts");
 
   const allNfts = await marketContract.fetchAllMarketItems();
 

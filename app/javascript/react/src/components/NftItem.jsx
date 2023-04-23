@@ -248,7 +248,7 @@ export const NftItem = ({ nft, unitDolar }) => {
               <span className="unitDolar" style={{ textAlign: "center" }}>
                 {(unitDolar * nft.price).toFixed(2)}USD
               </span>{" "}
-              <span className="unitPLS">{nft.price} PLS</span>
+              <span className="unitPLS">{nft.price} BNB</span>
             </div>
           </div>
           <div className="buttons_nft_item">{renderButtons()}</div>
