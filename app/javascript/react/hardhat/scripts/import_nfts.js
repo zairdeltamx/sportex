@@ -134,6 +134,44 @@ async function importPlayer(player) {
   return { url, parseJson };
 };
 
+function diffArray(arr1, arr2) {
+  const result = [];
+
+  arr1.forEach(item => {
+    if (arr2.indexOf(item) === -1) {
+      result.push(item);
+    }
+  });
+
+  arr2.forEach(item => {
+    if (arr1.indexOf(item) === -1) {
+      result.push(item);
+    }
+  });
+
+  return result;
+}
+
+async function comparison(allNfts, tokenContract, results) {
+  const names = [];
+  for (const nft of allNfts) {
+    const jsonString = await tokenContract.getNFTmeta(nft.tokenId);
+    var metaJson = JSON.parse(jsonString);
+    names.push(xorEncode(metaJson.authentication_signature, 'sportex-sync'));
+  }
+
+  console.log(names, "names");
+  console.log(names.length, "names.length");
+
+  const resultados = results.data.map((player) => player.nombre_jugador);
+
+  console.log("resultados", resultados);
+  console.log('resultados.length', resultados.length);
+
+  console.log('diff', diffArray(names, resultados));
+
+}
+
 async function importNFTs() {
   console.log("Importing NFTs...");
   console.log("data", nftMarketContractAbi);
@@ -146,30 +184,30 @@ async function importNFTs() {
   const allNfts = await marketContract.fetchAllMarketItems();
 
   console.log("allNfts", allNfts);
+
   var results = Papa.parse(playersCsv, {
 	  header: true
   });
 
-  const resultados = results.data.map((player) => player.nombre_jugador);
-  console.log("resultados", resultados);
+  await comparison(allNfts, tokenContract, results);
 
   const playerTokensAndMetas = [];
 
-  for (const player of results.data) {
-    const nft = allNfts.find((nft) => nft.name === player.nombre_jugador);
-    if (!nft && player.nombre_jugador !== '') {
-      console.log("player", player);
-      try {
-        const match = await importPlayer(player, marketContract, tokenContract);
-        playerTokensAndMetas.push(match);
+  //for (const player of results.data) {
+    //const nft = allNfts.find((nft) => nft.name === player.nombre_jugador);
+    //if (!nft && player.nombre_jugador !== '') {
+      //console.log("player", player);
+      //try {
+        //const match = await importPlayer(player, marketContract, tokenContract);
+        //playerTokensAndMetas.push(match);
         //console.log("url", url);
-      } catch (error) {
-        console.log("error", error);
-      }
-    } else {
-      console.log(`NFT already exists: ${player.nombre_jugador}`);
-    }
-  }
+      //} catch (error) {
+        //console.log("error", error);
+      //}
+    //} else {
+      //console.log(`NFT already exists: ${player.nombre_jugador}`);
+    //}
+  //}
 
   // await batchCreate(playerTokensAndMetas, tokenContract, marketContract);
 
