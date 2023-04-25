@@ -1,5 +1,8 @@
 import { Controller } from "@hotwired/stimulus";
+import dayjs from "dayjs";
 // Connects to data-controller="sessions"
+let intervalReveal;
+let intervalRewards;
 export default class extends Controller {
   connect() {
     let menu = document.querySelector(".links_container_landing");
@@ -39,5 +42,51 @@ export default class extends Controller {
       buttonMenu.style.display = "none";
       menu.classList.add("active");
     });
+    function countdownReveal() {
+      const now = dayjs(); // fecha actual
+      const targetDate = dayjs("2023-05-29"); // fecha objetivo
+      const diffInSeconds = targetDate.diff(now, "second"); // diferencia en segundos
+
+      const days = Math.floor(diffInSeconds / (60 * 60 * 24));
+      const hours = Math.floor((diffInSeconds % (60 * 60 * 24)) / (60 * 60));
+      const minutes = Math.floor((diffInSeconds % (60 * 60)) / 60);
+      const seconds = diffInSeconds % 60;
+
+      document.getElementById("days-reveal").textContent = days;
+      document.getElementById("hours-reveal").textContent = hours;
+      document.getElementById("minutes-reveal").textContent = minutes;
+      document.getElementById("seconds-reveal").textContent = seconds;
+      console.log(
+        `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`
+      );
+    }
+    function countdownRewards() {
+      const now = dayjs(); // fecha actual
+      const targetDate = dayjs("2023-06-25"); // fecha objetivo
+      const diffInSeconds = targetDate.diff(now, "second"); // diferencia en segundos
+
+      const days = Math.floor(diffInSeconds / (60 * 60 * 24));
+      const hours = Math.floor((diffInSeconds % (60 * 60 * 24)) / (60 * 60));
+      const minutes = Math.floor((diffInSeconds % (60 * 60)) / 60);
+      const seconds = diffInSeconds % 60;
+
+      document.getElementById("days-rewards").textContent = days;
+      document.getElementById("hours-rewards").textContent = hours;
+      document.getElementById("minutes-rewards").textContent = minutes;
+      document.getElementById("seconds-rewards").textContent = seconds;
+      console.log(
+        `${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`
+      );
+    }
+    intervalReveal = setInterval(() => {
+      countdownReveal();
+    }, 1000);
+    intervalRewards = setInterval(() => {
+      countdownRewards();
+    }, 1000);
+  }
+  disconnect() {
+    clearInterval(intervalReveal);
+    clearInterval(intervalRewards);
   }
 }
