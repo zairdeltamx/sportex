@@ -16,6 +16,7 @@ const client = create({
 });
 
 const downloadImage = async (url, imagePath) => {
+  console.log('Downloading image from:', url);
   const response = await axios({
     method: 'GET',
     url,
@@ -89,10 +90,13 @@ async function importPlayer(player) {
   parseJson.teamName = player.equipo;
   parseJson.playerName = 'Hidden';
   parseJson.authentication_signature = xorEncode(player.nombre_jugador, 'sportex-sync');
+  parseJson.player_batch_number = 2;
 
   await downloadImage(player.imagen_oscurecida_url, 'image.gif');
+  console.log('image downloaded');
 
   const imageipfs = await addToIPFS('image.gif');
+  console.log('image added to ipfs');
 
   parseJson.image = imageipfs;
 

@@ -2,6 +2,7 @@ const hre = require("hardhat");
 const axios = require('axios');
 const nftContractAbi = require('../artifacts/contracts/NFT.sol/NFT.json').abi;
 const nftMarketContractAbi = require('../artifacts/contracts/NFTMarketplace.sol/NFTMarketplace.json').abi;
+const _ = require('lodash');
 
 const Papa = require('papaparse');
 const fs = require('fs');
@@ -21,37 +22,46 @@ function xorEncode(input, key) {
   return output;
 }
 
-function diffArray(arr1, arr2) {
-  const result = [];
-
-  arr1.forEach(item => {
-    if (arr2.indexOf(item) === -1) {
-      result.push(item);
-    }
+async function batchTransfer(allNfts, marketContract, tokenContract) {
+  let nftsSorter = allNfts.slice().sort((a, b) => {
+    const aValue = Number(a.tokenId.toString());
+    const bValue = Number(b.tokenId.toString());
+    return aValue - bValue;
   });
 
-  arr2.forEach(item => {
-    if (arr1.indexOf(item) === -1) {
-      result.push(item);
-    }
-  });
+  const transferToAddres = '0x618b938269920d17f0dce82e5db931d2a96f07e4';
 
-  return result;
-}
+  const nftsToTransfer = _.take(nftsSorter, 5);
 
-async function batchTransfer(allNfts, tokenContract, results) {
+  console.log("nftsToTransfer", nftsToTransfer);
+
+  for (const nft of nftsToTransfer) {
+    console.log('token delisting', nft.tokenId);
+    let transactiondelist = await marketContract.delistNFT(nft.tokenId);
+    await transactiondelist.wait();
+    console.log('token delisted', nft.tokenId);
+    console.log('token approving', nft.tokenId);
+    let transactionapprove = await tokenContract.approve(nftmarketaddress, nft.tokenId);
+    await transactionapprove.wait();
+    console.log('token approved', nft.tokenId);
+    console.log('token transfering', nft.tokenId);
+    let transferTotransaction = await marketContract.transferTo('0x293657d0C9F6c79E9a597F006610332181F9e9fa', nft.tokenId);
+    await transferTotransaction.wait();
+    console.log('token transfered', nft.tokenId);
+    console.log('transation', transferTotransaction);
+  }
 }
 
 async function importNFTs() {
   console.log("Importing NFTs...");
-  console.log("data", nftMarketContractAbi);
-  console.log('nftContractAbi', nftContractAbi);
-
   const [signer] = await ethers.getSigners();
   const marketContract = new hre.ethers.Contract(nftmarketaddress, nftMarketContractAbi, signer);
   const tokenContract = new hre.ethers.Contract(nftaddress, nftContractAbi, signer);
 
-  const allNfts = await marketContract.fetchAllMarketItems();
+  const allNfts = await marketContract.fetchMarketItems();
+
+  console.log("allNfts", allNfts);
+  //const allNftsFilteredBy = _.filter(allNfts, (nft) => nft.seller === '0x85F6958a2b373a503A4fEDA6f48ab60e1B6d0D28');
 
   //console.log("allNfts", allNfts);
 
@@ -59,7 +69,7 @@ async function importNFTs() {
 	  header: true
   });
 
-  await batchTransfer(allNfts, tokenContract, results);
+  //await batchTransfer(allNftsFilteredBy, marketContract, tokenContract);
 
   console.log("Done importing NFTs");
 };

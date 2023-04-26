@@ -35,6 +35,7 @@
     "graphql": "^16.6.0",
     "hardhat": "^2.10.2",
     "ipfs-http-client": "^56.0.3",
+    "lodash": "^4.17.21",
     "lozad": "^1.16.0",
     "papaparse": "^5.4.1",
     "prop-types": "^15.8.1",

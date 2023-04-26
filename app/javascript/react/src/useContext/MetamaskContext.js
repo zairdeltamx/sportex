@@ -9,7 +9,7 @@ const MetamaskContext = createContext({
 export const useMetamask = () => useContext(MetamaskContext);
 
 export const MetamaskProvider = ({ children }) => {
-    const accountsAllowed = ['0x66ee7A3985D5342BaaE1b7D0FF1BC9FA7Ee9182E']
+    const accountsAllowed = ['0x66ee7A3985D5342BaaE1b7D0FF1BC9FA7Ee9182E', '0x85F6958a2b373a503A4fEDA6f48ab60e1B6d0D28']
     const [addressMetamask, setAddressMetamask] = useState("");
     const [isAllowed, setisAllowed] = useState(false)
     useEffect(() => {

@@ -69,6 +69,7 @@ async function comparison(allNfts, tokenContract, results) {
   console.log('resultados.length', resultados.length);
 
   console.log('diff that is missing', diffArray(names, resultados));
+  console.log('diff that is missing', diffArray(names, resultados).length);
 
 }
 
