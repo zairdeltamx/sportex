@@ -39,37 +39,7 @@ function diffArray(arr1, arr2) {
   return result;
 }
 
-async function comparison(allNfts, tokenContract, results) {
-  const names = [];
-
-  let nftsSorter = allNfts.slice().sort((a, b) => {
-    const aValue = Number(a.tokenId.toString());
-    const bValue = Number(b.tokenId.toString());
-    return aValue - bValue;
-  });
-
-  console.log("nftsSorter", nftsSorter);
-
-  for (const nft of allNfts) {
-    const jsonString = await tokenContract.getNFTmeta(nft.tokenId);
-    var metaJson = JSON.parse(jsonString);
-    if (metaJson.player_batch_number == 2) {
-      const name = xorEncode(metaJson.authentication_signature, 'sportex-sync');
-      console.log("found:", name);
-      names.push(name);
-    }
-  }
-
-  console.log(names, "names");
-  console.log(names.length, "names.length");
-
-  const resultados = results.data.map((player) => player.nombre_jugador);
-
-  console.log("resultados", resultados);
-  console.log('resultados.length', resultados.length);
-
-  console.log('diff that is missing', diffArray(names, resultados));
-
+async function batchTransfer(allNfts, tokenContract, results) {
 }
 
 async function importNFTs() {
@@ -89,7 +59,7 @@ async function importNFTs() {
 	  header: true
   });
 
-  await comparison(allNfts, tokenContract, results);
+  await batchTransfer(allNfts, tokenContract, results);
 
   console.log("Done importing NFTs");
 };
