@@ -238,7 +238,9 @@ export const NftItem = ({ nft, unitDolar }) => {
             </Link>
           </div>
           <div className="container_name_card">
-            <h1>{nft.name}</h1>
+            <h1>
+              {nft.name} #{nft.tokenId}
+            </h1>
             <p>Soccer player</p>
           </div>
           <hr />

@@ -7,6 +7,7 @@ describe Nft do
     it 'returns the correct attributes' do
       expect(described_class.ransackable_attributes(nil)).to eq(%w[
                                                                   price
+                                                                  tokenId
                                                                   name
                                                                   seller
                                                                   teamName

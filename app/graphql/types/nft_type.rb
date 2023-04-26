@@ -4,7 +4,7 @@ module Types
   class NftType < Types::BaseObject
     field :id, ID, null: false
     field :price, Float
-    field :tokenId, Integer
+    field :tokenId, Float
     field :seller, String
     field :owner, String
     field :image, String

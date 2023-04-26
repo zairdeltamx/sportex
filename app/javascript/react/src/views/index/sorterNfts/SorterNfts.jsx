@@ -68,6 +68,7 @@ export const SorterNfts = ({
               >
                 <option value="">Category</option>
                 <option value="price">Price</option>
+                <option value="tokenId">TokenId</option>
                 <option value="defense">Defense</option>
                 <option value="attack">Attack</option>
                 <option value="strength">strength</option>

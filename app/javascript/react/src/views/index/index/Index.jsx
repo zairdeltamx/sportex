@@ -26,12 +26,9 @@ export default function Index() {
   const [teamName, setTeamName] = useState("");
   const [nfts, setNfts] = useState([]);
   const [getNFTs, { data, loading, error }] = useLazyQuery(GET_NFTS);
-  const [unitDolar, setUnitDolar] = useState(0);
+
   const [searchForSeller, setsearchForSeller] = useState(false);
   const handleSubmit = () => {
-    console.log("====================================");
-    console.log(addressMetamask);
-    console.log("====================================");
     getNFTs({
       variables: {
         page: currentPage,
@@ -57,16 +54,7 @@ export default function Index() {
       setTotalPages(data.nfts.metadata.totalPages);
     }
   }, [data]);
-  useEffect(() => {
-    fetch(
-      "https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=usd"
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        const avalanchePrice = data["binancecoin"]["usd"];
-        setUnitDolar(avalanchePrice);
-      });
-  }, []);
+
   useEffect(() => {
     const channel = cable.subscriptions.create("NftChannel", {
       room: "13",
@@ -103,14 +91,14 @@ export default function Index() {
             setTeamName={setTeamName}
           />
 
-          {loading || !unitDolar ? (
+          {loading ? (
             <Loader />
           ) : nfts.length === 0 ? (
             <h1 style={{ textAlign: "center", paddingTop: "20px" }}>
               Not found NFTs
             </h1>
           ) : (
-            <ListNfts nfts={nfts} unitDolar={unitDolar} />
+            <ListNfts nfts={nfts} />
           )}
           <Pagination
             totalPages={totalPages}
