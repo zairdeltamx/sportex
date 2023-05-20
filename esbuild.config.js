@@ -19,7 +19,7 @@ require("esbuild")
       ".jpg": "file",
       ".css": "css",
       ".svg": "dataurl",
-    },
+    }
     // watch: true,
   })
   .then(() => console.log("⚡ Doneeeee"))

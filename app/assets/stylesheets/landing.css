@@ -19,16 +19,29 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.logo-container_landing {
+.logo_container_landing {
   color: white;
   font-family: "Roboto", sans-serif;
-  margin-left: 40px;
+  overflow: hidden;
 }
-
-.logo-container_lading img {
-  height: 40px;
+.logo_container_landing img {
+  width: 200px;
+  object-fit: cover;
 }
-
+.live {
+  text-align: end;
+  margin: 0;
+  margin-top: -20px;
+}
+.live::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
+  margin-right: 5px;
+}
 .links_container_landing {
   display: flex;
   justify-content: flex-end;
@@ -378,6 +391,79 @@ h1 {
     width: 60px;
     height: 60px;
   }
+}
+
+/* live-pasion */
+
+.live_pasion {
+  height: 100%;
+  width: 100%;
+}
+.live_pasion img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* fisrt_collection */
+
+.web {
+  height: 100%;
+  width: 100%;
+}
+.web img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.fisrt_collection {
+  height: 100%;
+  width: 100%;
+}
+.fisrt_collection img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+/* whether_fan */
+.whether_fan {
+  height: 100%;
+  width: 100%;
+}
+.whether_fan img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+/* win_rewards */
+.win_rewards {
+  height: 100%;
+  width: 100%;
+}
+.win_rewards img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+/* get_nft */
+.get_nft {
+  height: 100%;
+  width: 100%;
+}
+.get_nft img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+/* time line */
+.time_line {
+  height: 100%;
+  width: 100%;
+}
+.time_line img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 /* ACQUIRE PLAYER */
 .acquire_player {

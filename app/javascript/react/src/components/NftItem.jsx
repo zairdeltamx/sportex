@@ -42,7 +42,10 @@ export const NftItem = ({ nft, unitDolar }) => {
       });
       setnftIsApproval(requestAllowance);
     }
-    handleAllowance();
+    if (location.pathname === "/myassets") {
+      console.log("ENTRA");
+      handleAllowance();
+    }
   }, []);
 
   async function changePriceProxy({ nft, price }) {

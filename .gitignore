@@ -39,8 +39,8 @@
 
 /node_modules
 
-/app/assets/builds/*
-!/app/assets/builds/.keep
+/app/assets/build/*
+!/app/assets/build/.keep
 
 /node_modules
 /public/packs
