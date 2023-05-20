@@ -30,10 +30,8 @@ export const NftItem = ({ nft, unitDolar }) => {
   const { setTransactionIsLoading } = useLoadingContext();
 
   useEffect(() => {
-    setTransactionIsLoading(true);
-    setLoading(true);
-
     async function handleAllowance() {
+      setLoading(true);
       const requestAllowance = await allowance({
         setTransactionIsLoading,
         tokenId: nft.tokenId,
