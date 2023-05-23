@@ -53,7 +53,7 @@ async function comparison(allNfts, tokenContract, results) {
   for (const nft of allNfts) {
     const jsonString = await tokenContract.getNFTmeta(nft.tokenId);
     var metaJson = JSON.parse(jsonString);
-    if (metaJson.player_batch_number == 2) {
+    if (metaJson.player_batch_number == 3) {
       const name = xorEncode(metaJson.authentication_signature, 'sportex-sync');
       console.log("found:", name);
       names.push(name);

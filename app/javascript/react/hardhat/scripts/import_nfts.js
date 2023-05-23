@@ -90,7 +90,7 @@ async function importPlayer(player) {
   parseJson.teamName = player.equipo;
   parseJson.playerName = 'Hidden';
   parseJson.authentication_signature = xorEncode(player.nombre_jugador, 'sportex-sync');
-  parseJson.player_batch_number = 2;
+  parseJson.player_batch_number = 3;
 
   await downloadImage(player.imagen_oscurecida_url, 'image.gif');
   console.log('image downloaded');

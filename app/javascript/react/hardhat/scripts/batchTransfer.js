@@ -29,7 +29,7 @@ async function batchTransfer(allNfts, marketContract, tokenContract) {
     return aValue - bValue;
   });
 
-  const transferToAddres = '0x618b938269920d17f0dce82e5db931d2a96f07e4';
+  const transferToAddress = '0x293657d0C9F6c79E9a597F006610332181F9e9fa';
 
   const nftsToTransfer = _.take(nftsSorter, 5);
 
@@ -45,7 +45,7 @@ async function batchTransfer(allNfts, marketContract, tokenContract) {
     await transactionapprove.wait();
     console.log('token approved', nft.tokenId);
     console.log('token transfering', nft.tokenId);
-    let transferTotransaction = await marketContract.transferTo('0x293657d0C9F6c79E9a597F006610332181F9e9fa', nft.tokenId);
+    let transferTotransaction = await marketContract.transferTo(transferToAddress, nft.tokenId);
     await transferTotransaction.wait();
     console.log('token transfered', nft.tokenId);
     console.log('transation', transferTotransaction);
@@ -61,7 +61,7 @@ async function importNFTs() {
   const allNfts = await marketContract.fetchMarketItems();
 
   console.log("allNfts", allNfts);
-  //const allNftsFilteredBy = _.filter(allNfts, (nft) => nft.seller === '0x85F6958a2b373a503A4fEDA6f48ab60e1B6d0D28');
+  const allNftsFilteredBy = _.filter(allNfts, (nft) => nft.seller === '0x85F6958a2b373a503A4fEDA6f48ab60e1B6d0D28');
 
   //console.log("allNfts", allNfts);
 
@@ -69,7 +69,7 @@ async function importNFTs() {
 	  header: true
   });
 
-  //await batchTransfer(allNftsFilteredBy, marketContract, tokenContract);
+  await batchTransfer(allNftsFilteredBy, marketContract, tokenContract);
 
   console.log("Done importing NFTs");
 };
