@@ -29,9 +29,10 @@ async function batchTransfer(allNfts, marketContract, tokenContract) {
     return aValue - bValue;
   });
 
-  const transferToAddress = '0x293657d0C9F6c79E9a597F006610332181F9e9fa';
+  //const transferToAddress = '0x7e19553a2c15c7410d2387344febc7a0b4eee903';
+  const transferToAddress = '0xa8efd8057c79eafc10cb1917d56c683df23dcaf8';
 
-  const nftsToTransfer = _.take(nftsSorter, 5);
+  const nftsToTransfer = _.take(nftsSorter, 10);
 
   console.log("nftsToTransfer", nftsToTransfer);
 
