@@ -45,7 +45,7 @@ const playersCsv = fs.readFileSync('./players.csv').toString();
 const nftaddress = '0xad35155c6e88273c6b91b8b93933945847813051';
 const nftmarketaddress = '0xe226b8ebfb4e329a9f3121b04e31b5f20de3c536';
 
-async function submitPlayertoBlockchain(parseJson, url) {
+async function submitPlayertoBlockchain(parseJson, url, bnbCost) {
   const stringJson = JSON.stringify(parseJson);
 
   const [signer] = await ethers.getSigners();
@@ -63,7 +63,7 @@ async function submitPlayertoBlockchain(parseJson, url) {
   let tokenId = value.toNumber(); //we need to convert it a number
   console.log("Token ID: ", tokenId);
 
-  const price = ethers.utils.parseUnits('0.3', "ether");
+  const price = ethers.utils.parseUnits(bnbCost.toString(), "ether");
 
   contract = new ethers.Contract(nftmarketaddress, nftMarketContractAbi, signer);
   transaction = await contract.listMarketItem(nftaddress, tokenId, price);
@@ -80,7 +80,15 @@ function xorEncode(input, key) {
   return output;
 }
 
-async function importPlayer(player) {
+function fetchBnbPrice() {
+  const url = 'https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=usd';
+
+  return axios.get(url).then((res) => {
+    return parseFloat(res.data.binancecoin.usd);
+  });
+};
+
+async function importPlayer(player, bnbPrice) {
   let parseJson = JSON.parse(player.json);
   parseJson.price = player.price;
   parseJson.name = player.nombre_jugador;
@@ -91,6 +99,11 @@ async function importPlayer(player) {
   parseJson.playerName = player.nombre_jugador;
   parseJson.authentication_signature = xorEncode(player.nombre_jugador, 'sportex-sync');
   parseJson.player_batch_number = 1;
+
+  let bnbCost = parseFloat(player.price) / bnbPrice;
+  let roundedBnbCost = Math.round(bnbCost * 10) / 10
+
+  console.log('bnbCost', roundedBnbCost);
 
   await downloadImage(player.imagen_url, 'image.gif');
   console.log('image downloaded');
@@ -110,7 +123,7 @@ async function importPlayer(player) {
   const added = await client.add(data);
   const url = `https://sportex-staging.infura-ipfs.io/ipfs/${added.path}`;
 
-  // await submitPlayertoBlockchain(parseJson, url);
+  await submitPlayertoBlockchain(parseJson, url, roundedBnbCost);
 
   return { url, parseJson };
 };
@@ -136,12 +149,16 @@ async function importNFTs() {
 	  header: true
   });
 
+  var bnbPrice = await fetchBnbPrice();
+
+  console.log("bnbPrice", bnbPrice);
+
   for (const player of results.data) {
     const nft = allNfts.find((nft) => nft.name === player.nombre_jugador);
     if (!nft && player.nombre_jugador !== '') {
       console.log("player", player);
       try {
-        const match = await importPlayer(player, marketContract, tokenContract);
+        const match = await importPlayer(player, bnbPrice);
         console.log("url", match.url);
       } catch (error) {
         console.log("error", error);

@@ -51,9 +51,19 @@ async function comparison(allNfts, tokenContract, results) {
   console.log("nftsSorter", nftsSorter);
 
   for (const nft of allNfts) {
+    console.log("nft", nft);
+    console.log("nft tokenId", nft.tokenId);
     const jsonString = await tokenContract.getNFTmeta(nft.tokenId);
+    console.log("jsonString", jsonString);
+    console.log("owner be like: ", nft.owner == '0x0000000000000000000000000000000000000000');
+
+    if (nft.owner == '0x0000000000000000000000000000000000000000') {
+      continue;
+    }
+
     var metaJson = JSON.parse(jsonString);
-    if (metaJson.player_batch_number == 3) {
+
+    if (metaJson.player_batch_number == 1 && nft.presale == false) {
       const name = xorEncode(metaJson.authentication_signature, 'sportex-sync');
       console.log("found:", name);
       names.push(name);
@@ -71,6 +81,8 @@ async function comparison(allNfts, tokenContract, results) {
   console.log('diff that is missing', diffArray(names, resultados));
   console.log('diff that is missing', diffArray(names, resultados).length);
 
+  console.log('diff that is present', names);
+  console.log('diff that is present', names.length);
 }
 
 async function importNFTs() {

@@ -30,7 +30,8 @@ function useNFTs() {
       signer
     );
     const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider);
-    const data = await marketContract.fetchMyNFTs();
+    const fetchedData = await marketContract.fetchMyNFTs();
+    const data = fetchedData.filter((i) => i.presale === false);
     const items = await Promise.all(
       data.map(async (i) => {
         const tokenUri = await tokenContract.tokenURI(i.tokenId);
