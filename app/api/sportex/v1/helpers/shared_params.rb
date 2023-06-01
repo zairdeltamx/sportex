@@ -20,6 +20,7 @@ module Sportex
           optional :resistance, type: Float
           optional :description, type: String
           optional :sold, type: Boolean
+          optional :presale, type: Boolean
           requires :meta, type: String
         end
 

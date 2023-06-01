@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_22_224756) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_01_015745) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -69,7 +69,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_22_224756) do
   end
 
   create_table "nfts", force: :cascade do |t|
-    t.float "price"
+    t.string "price"
     t.integer "tokenId"
     t.string "seller"
     t.string "owner"
@@ -85,12 +85,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_22_224756) do
     t.string "teamName"
     t.string "status", default: "available"
     t.float "resistance"
-  end
-
-  create_table "teams", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean "presale", default: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -100,10 +95,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_22_224756) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email"
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "token"
+    t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["eth_address"], name: "index_users_on_eth_address", unique: true
     t.index ["eth_nonce"], name: "index_users_on_eth_nonce", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 

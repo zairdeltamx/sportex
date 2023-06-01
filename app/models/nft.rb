@@ -7,6 +7,8 @@ class Nft < ApplicationRecord
 
   has_one_attached :presale_image
 
+  scope :non_presale, -> { where(presale: false) }
+
   validates :price,
             :tokenId,
             :seller,

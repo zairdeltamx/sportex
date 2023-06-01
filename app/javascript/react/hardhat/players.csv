@@ -1,5 +1,5 @@
-nombre_jugador,equipo,imagen_url,imagen_oscurecida_url,json
-Alisson,Liverpool,https://drive.google.com/uc?id=10uapp_SaLrmdGgsz9hRg7iPT0NnloyhN,https://drive.google.com/uc?id=1m5nFj8_zmMoDemqjVQCtDnvm1l4c8Uq1,"{
+nombre_jugador,equipo,imagen_url,imagen_oscurecida_url,json,price
+Alisson,Liverpool,https://drive.google.com/uc?id=1C3QAjE4eAAXDNB-AEnpL3F6uPPg0c9TG,https://drive.google.com/uc?id=1m5nFj8_zmMoDemqjVQCtDnvm1l4c8Uq1,"{
     ""PlayerName"" : ""Allison"",
     ""SoccerPlayer"" : 0,
     ""CardType"" : 2,
@@ -8,8 +8,8 @@ Alisson,Liverpool,https://drive.google.com/uc?id=10uapp_SaLrmdGgsz9hRg7iPT0Nnloy
     ""Defense"" : 89,
     ""UniformOriginal"" : 1,
     ""PlayerNumber"" : 1
-}"
-Buffon,Parma,https://drive.google.com/uc?id=1wQVHFIM9JXfL6mUdHtvGF4R7rLc_aLPV,https://drive.google.com/uc?id=1_Dvq1sgbRvJf7GLYM5ylMCIxO11hksZd,"{
+}",460
+Buffon,Parma,https://drive.google.com/uc?id=1DMYYNo1JCj8CO6KypXEtZPkmUAvL81pt,https://drive.google.com/uc?id=1_Dvq1sgbRvJf7GLYM5ylMCIxO11hksZd,"{
     ""PlayerName"" : ""Bufon"",
     ""SoccerPlayer"" : 1,
     ""CardType"" : 2,
@@ -18,8 +18,8 @@ Buffon,Parma,https://drive.google.com/uc?id=1wQVHFIM9JXfL6mUdHtvGF4R7rLc_aLPV,ht
     ""Defense"" : 87,
     ""UniformOriginal"" : 4,
     ""PlayerNumber"" : 1
-}"
-Cavani,Valencia,https://drive.google.com/uc?id=1sX6J6QGbJW_pYhB-Ak1WiWl2zHFF1xsN,https://drive.google.com/uc?id=14sSwipWTSQpZ-dMyi3mpKgwcFOKUXWMv,"{
+}",395
+Cavani,Valencia,https://drive.google.com/uc?id=1Iz7VtvSLTHrYlpABel70971gtR5tMv5y,https://drive.google.com/uc?id=14sSwipWTSQpZ-dMyi3mpKgwcFOKUXWMv,"{
     ""PlayerName"" : ""Cabani"",
     ""SoccerPlayer"" : 2,
     ""CardType"" : 2,
@@ -28,8 +28,8 @@ Cavani,Valencia,https://drive.google.com/uc?id=1sX6J6QGbJW_pYhB-Ak1WiWl2zHFF1xsN
     ""Defense"" : 45,
     ""UniformOriginal"" : 21,
     ""PlayerNumber"" : 7
-}"
-Chiellini,Los Angeles,https://drive.google.com/uc?id=1AplFvFaKLZGx2n6cLlMMbmCoRKHfR5FQ,https://drive.google.com/uc?id=1_H3SNTfBIdak2djpzc-hqM2v9bDYc0eb,"{
+}",440
+Chiellini,Los Angeles,https://drive.google.com/uc?id=1JkR5WaJnRtldumaLWKcHePaYHHHokPtU,https://drive.google.com/uc?id=1_H3SNTfBIdak2djpzc-hqM2v9bDYc0eb,"{
     ""PlayerName"" : ""Chielini"",
     ""SoccerPlayer"" : 3,
     ""CardType"" : 2,
@@ -38,8 +38,8 @@ Chiellini,Los Angeles,https://drive.google.com/uc?id=1AplFvFaKLZGx2n6cLlMMbmCoRK
     ""Defense"" : 88,
     ""UniformOriginal"" : 15,
     ""PlayerNumber"" : 3
-}"
-Cristiano Ronaldo,Al-Nassr,https://drive.google.com/uc?id=1dZbJpYLOkHe0NvmAGIkNaRLjerRvrgul,https://drive.google.com/uc?id=1nIcvEM2Sckg1RNYKztzDCwzf4XukmBOc,"{
+}",450
+Cristiano Ronaldo,Al-Nassr,https://drive.google.com/uc?id=1CpAxM1Pt32-STzGWPVS8kBKbPNuzFeUT,https://drive.google.com/uc?id=1nIcvEM2Sckg1RNYKztzDCwzf4XukmBOc,"{
     ""PlayerName"" : ""Cris R"",
     ""SoccerPlayer"" : 4,
     ""CardType"" : 2,
@@ -48,8 +48,8 @@ Cristiano Ronaldo,Al-Nassr,https://drive.google.com/uc?id=1dZbJpYLOkHe0NvmAGIkNa
     ""Defense"" : 55,
     ""UniformOriginal"" : 19,
     ""PlayerNumber"" : 7
-}"
-Higuita,Colombia(Epic),https://drive.google.com/uc?id=1c3ZPhhczHtRC6gesV6Jt4pBGaKdlK1Jx,https://drive.google.com/uc?id=17JgJg7gLWTPFHyHG-81IotC1bsQl-4Jf,"{
+}",480
+Higuita,Colombia(Epic),https://drive.google.com/uc?id=1D9bJjoOxsCOv_7zZ-YQrHcUajoDrujr0,https://drive.google.com/uc?id=17JgJg7gLWTPFHyHG-81IotC1bsQl-4Jf,"{
     ""PlayerName"" : ""René H"",
     ""SoccerPlayer"" : 5,
     ""CardType"" : 3,
@@ -58,8 +58,8 @@ Higuita,Colombia(Epic),https://drive.google.com/uc?id=1c3ZPhhczHtRC6gesV6Jt4pBGa
     ""Defense"" : 91,
     ""UniformOriginal"" : 3,
     ""PlayerNumber"" : 1
-}"
-Falcao,Rayo Vallecano,https://drive.google.com/uc?id=1DRgbUjhkqUuMqOZT4w5NY_gfoODMAvqK,https://drive.google.com/uc?id=10tD5_SA20W-Ym2U6EpT2OI3kdjW8mANm,"{
+}",300
+Falcao,Rayo Vallecano,https://drive.google.com/uc?id=1BIsELFCyurEzpuqSbGxxVobVM0xPx3Zw,https://drive.google.com/uc?id=10tD5_SA20W-Ym2U6EpT2OI3kdjW8mANm,"{
     ""PlayerName"" : ""Radam Falcao"",
     ""SoccerPlayer"" : 6,
     ""CardType"" : 2,
@@ -68,8 +68,8 @@ Falcao,Rayo Vallecano,https://drive.google.com/uc?id=1DRgbUjhkqUuMqOZT4w5NY_gfoO
     ""Defense"" : 55,
     ""UniformOriginal"" : 7,
     ""PlayerNumber"" : 9
-}"
-Kanté,Chelsea,https://drive.google.com/uc?id=16Q81iCBiWYVx26qrebd0lnNmxEKcJG3w,https://drive.google.com/uc?id=1Q43rogWoR7bGfwmvjNB5TLec8VUKdlsV,"{
+}",430
+Kanté,Chelsea,https://drive.google.com/uc?id=1J5S_F_8pFWuzqYEj13bmDxd3jN6yffdo,https://drive.google.com/uc?id=1Q43rogWoR7bGfwmvjNB5TLec8VUKdlsV,"{
     ""PlayerName"" : ""Kantee"",
     ""SoccerPlayer"" : 7,
     ""CardType"" : 2,
@@ -78,8 +78,8 @@ Kanté,Chelsea,https://drive.google.com/uc?id=16Q81iCBiWYVx26qrebd0lnNmxEKcJG3w,
     ""Defense"" : 90,
     ""UniformOriginal"" : 11,
     ""PlayerNumber"" : 7
-}"
-Kahn,Alemania(Epic),https://drive.google.com/uc?id=1hTZ8EBmbCiJL6E58WTg6_0YPR-dZApta,https://drive.google.com/uc?id=1kxMSy1Oy_-dMjKinRfka550TyAsrwh1O,"{
+}",460
+Kahn,Alemania(Epic),https://drive.google.com/uc?id=1C1htrUzQnPF5SHVAz7-EB4xR3_v9fhEl,https://drive.google.com/uc?id=1kxMSy1Oy_-dMjKinRfka550TyAsrwh1O,"{
     ""PlayerName"" : ""Khan"",
     ""SoccerPlayer"" : 8,
     ""CardType"" : 3,
@@ -88,8 +88,8 @@ Kahn,Alemania(Epic),https://drive.google.com/uc?id=1hTZ8EBmbCiJL6E58WTg6_0YPR-dZ
     ""Defense"" : 91,
     ""UniformOriginal"" : 1,
     ""PlayerNumber"" : 1
-}"
-Lewandowski,Barcelona,https://drive.google.com/uc?id=1zmuBkpBI8oN1bZyHM9IIcOs4lnF4TegK,https://drive.google.com/uc?id=1YgToV4SP4p_nBn6AF4B4z05_jyZ3eaHy,"{
+}",300
+Lewandowski,Barcelona,https://drive.google.com/uc?id=1IgDqbu5R5TX-ZXoQdYD76WvzA4byhNGt,https://drive.google.com/uc?id=1YgToV4SP4p_nBn6AF4B4z05_jyZ3eaHy,"{
     ""PlayerName"" : ""Lewwandowsky"",
     ""SoccerPlayer"" : 9,
     ""CardType"" : 2,
@@ -98,8 +98,8 @@ Lewandowski,Barcelona,https://drive.google.com/uc?id=1zmuBkpBI8oN1bZyHM9IIcOs4ln
     ""Defense"" : 50,
     ""UniformOriginal"" : 8,
     ""PlayerNumber"" : 9
-}"
-Modrić,Real Madrid,https://drive.google.com/uc?id=1Fz1gJVacR2_sMOPsBs8zbZ81uGXBJH05,https://drive.google.com/uc?id=1kPzvxcXtbMoc3aOEQlu46jOh8FX4cN6a,"{
+}",485
+Modrić,Real Madrid,https://drive.google.com/uc?id=1JRxcfQnd1eqT87MKN5rftt4fsyET05EC,https://drive.google.com/uc?id=1kPzvxcXtbMoc3aOEQlu46jOh8FX4cN6a,"{
     ""PlayerName"" : ""Lucka"",
     ""SoccerPlayer"" : 10,
     ""CardType"" : 2,
@@ -108,8 +108,8 @@ Modrić,Real Madrid,https://drive.google.com/uc?id=1Fz1gJVacR2_sMOPsBs8zbZ81uGXB
     ""Defense"" : 75,
     ""UniformOriginal"" : 19,
     ""PlayerNumber"" : 10
-}"
-Vidal,Flamengo,https://drive.google.com/uc?id=1eRiqnfdB0zPrekG2Jm7Gr87r9r6Ef8_p,https://drive.google.com/uc?id=1J0wd5BtDdsldVJnJZQRnZv1JIPmLEOcS,"{
+}",485
+Vidal,Flamengo,https://drive.google.com/uc?id=1IIli7JuC2aMhs0jNuT9ZmDda1Gq8ajld,https://drive.google.com/uc?id=1J0wd5BtDdsldVJnJZQRnZv1JIPmLEOcS,"{
     ""PlayerName"" : ""Viddal"",
     ""SoccerPlayer"" : 11,
     ""CardType"" : 2,
@@ -118,8 +118,8 @@ Vidal,Flamengo,https://drive.google.com/uc?id=1eRiqnfdB0zPrekG2Jm7Gr87r9r6Ef8_p,
     ""Defense"" : 80,
     ""UniformOriginal"" : 12,
     ""PlayerNumber"" : 8
-}"
-Hummels,Dortmund,https://drive.google.com/uc?id=1pKqtFdX39DDrAZCwwZ1V9Uy8C1_z560A,https://drive.google.com/uc?id=1LH7OEkHJB0q_4ssvsBFQ5VX5DUl0WhqU,"{
+}",420
+Hummels,Dortmund,https://drive.google.com/uc?id=1DGRlZTW2p83hi3iNlHGmJB61N_fcUDhc,https://drive.google.com/uc?id=1LH7OEkHJB0q_4ssvsBFQ5VX5DUl0WhqU,"{
     ""PlayerName"" : ""M Humels"",
     ""SoccerPlayer"" : 12,
     ""CardType"" : 2,
@@ -128,8 +128,8 @@ Hummels,Dortmund,https://drive.google.com/uc?id=1pKqtFdX39DDrAZCwwZ1V9Uy8C1_z560
     ""Defense"" : 85,
     ""UniformOriginal"" : 5,
     ""PlayerNumber"" : 5
-}"
-Mané,Bayern de Múnich,https://drive.google.com/uc?id=1gtP3SPQy5sf-f2DZsvCUPpJtQ57lZVCc,https://drive.google.com/uc?id=1XPshc3YBDIqg8ZjGWu_NQftKm0sQGH3y,"{
+}",450
+Mané,Bayern de Múnich,https://drive.google.com/uc?id=1BTa54VoD46fOZLSAMTung28AZzZreanj,https://drive.google.com/uc?id=1XPshc3YBDIqg8ZjGWu_NQftKm0sQGH3y,"{
     ""PlayerName"" : ""Manhe"",
     ""SoccerPlayer"" : 13,
     ""CardType"" : 2,
@@ -138,8 +138,8 @@ Mané,Bayern de Múnich,https://drive.google.com/uc?id=1gtP3SPQy5sf-f2DZsvCUPpJt
     ""Defense"" : 60,
     ""UniformOriginal"" : 9,
     ""PlayerNumber"" : 10
-}"
-Maradona,Argentina(Legend),https://drive.google.com/uc?id=1Lf7MDptU_k8NfZKDcVVlzIbuKhnvkNf-,https://drive.google.com/uc?id=1Rh1W4FVkzWLLz_we3O-cp2-VFZmF562q,"{
+}",475
+Maradona,Argentina(Legend),https://drive.google.com/uc?id=1ITnltq5aKSwiyF6PO5_90aPoGDTMulcq,https://drive.google.com/uc?id=1Rh1W4FVkzWLLz_we3O-cp2-VFZmF562q,"{
     ""PlayerName"" : ""Maradonna"",
     ""SoccerPlayer"" : 14,
     ""CardType"" : 4,
@@ -148,8 +148,8 @@ Maradona,Argentina(Legend),https://drive.google.com/uc?id=1Lf7MDptU_k8NfZKDcVVlz
     ""Defense"" : 60,
     ""UniformOriginal"" : 6,
     ""PlayerNumber"" : 10
-}"
-Marcelo,Fluminense,https://drive.google.com/uc?id=16TaGfV4UJI4e_n1ZE8nHxRHDYc9iFA4_,https://drive.google.com/uc?id=1QiMqeJ71i5-n8VHUFm15Fl-0f5vWj6uq,"{
+}",300
+Marcelo,Fluminense,https://drive.google.com/uc?id=1JETPfHwGXJnBmPtSmVmzu4yxZ-4kz-QL,https://drive.google.com/uc?id=1QiMqeJ71i5-n8VHUFm15Fl-0f5vWj6uq,"{
     ""PlayerName"" : ""Marceelo"",
     ""SoccerPlayer"" : 15,
     ""CardType"" : 2,
@@ -158,8 +158,8 @@ Marcelo,Fluminense,https://drive.google.com/uc?id=16TaGfV4UJI4e_n1ZE8nHxRHDYc9iF
     ""Defense"" : 83,
     ""UniformOriginal"" : 19,
     ""PlayerNumber"" : 12
-}"
-Mbappé,Psg,https://drive.google.com/uc?id=1LarWqEb2xUsNhQDC39QTpUz_tsGheMDg,https://drive.google.com/uc?id=1m1PX-dq22VEnT0WYkr0XzpKLXTpYdeOq,"{
+}",330
+Mbappé,Psg,https://drive.google.com/uc?id=1JXJXFFjFrJCTpFsb2cNa9DSXY3NiUfCG,https://drive.google.com/uc?id=1m1PX-dq22VEnT0WYkr0XzpKLXTpYdeOq,"{
     ""PlayerName"" : ""Mbapé"",
     ""SoccerPlayer"" : 16,
     ""CardType"" : 2,
@@ -168,8 +168,8 @@ Mbappé,Psg,https://drive.google.com/uc?id=1LarWqEb2xUsNhQDC39QTpUz_tsGheMDg,htt
     ""Defense"" : 65,
     ""UniformOriginal"" : 18,
     ""PlayerNumber"" : 7
-}"
-Messi,Psg,https://drive.google.com/uc?id=1i5BAsFrsHBdfpSf6Vz0dTEYb9RxyDZbH,https://drive.google.com/uc?id=1XPpwl_b5REFmFuAQCJB3-k8tfeoak23q,"{
+}",485
+Messi,Psg,https://drive.google.com/uc?id=1JphRmkksUTQ74PI6APkQDEoyTqgzx6Mp,https://drive.google.com/uc?id=1XPpwl_b5REFmFuAQCJB3-k8tfeoak23q,"{
     ""PlayerName"" : ""Mesi"",
     ""SoccerPlayer"" : 17,
     ""CardType"" : 2,
@@ -178,8 +178,8 @@ Messi,Psg,https://drive.google.com/uc?id=1i5BAsFrsHBdfpSf6Vz0dTEYb9RxyDZbH,https
     ""Defense"" : 55,
     ""UniformOriginal"" : 18,
     ""PlayerNumber"" : 30
-}"
-Neuer,Bayern de Múnich,https://drive.google.com/uc?id=1OEC7hYrZKhrfuYMXnSCeaSp6gcjWlWRG,https://drive.google.com/uc?id=19Fva1cLyuDTm1_BDHPFz-peOdMdrbMgM,"{
+}",490
+Neuer,Bayern de Múnich,https://drive.google.com/uc?id=1I_x2EwJI0q-ybOQ17wAyY6lxqUNxwEQo,https://drive.google.com/uc?id=19Fva1cLyuDTm1_BDHPFz-peOdMdrbMgM,"{
     ""PlayerName"" : ""M Nehuer"",
     ""SoccerPlayer"" : 18,
     ""CardType"" : 2,
@@ -188,8 +188,8 @@ Neuer,Bayern de Múnich,https://drive.google.com/uc?id=1OEC7hYrZKhrfuYMXnSCeaSp6
     ""Defense"" : 90,
     ""UniformOriginal"" : 0,
     ""PlayerNumber"" : 1
-}"
-Neymar,Psg,https://drive.google.com/uc?id=1CkC2QLkhaOQadr6F2ojZXSqZrmwBfVP0,https://drive.google.com/uc?id=1JSIeVS9lAQCM16O-6gNFpqsUgklBtwUx,"{
+}",450
+Neymar,Psg,https://drive.google.com/uc?id=1D57_BmhYnmScOgLcZ1F6AiriqkKEg64S,https://drive.google.com/uc?id=1JSIeVS9lAQCM16O-6gNFpqsUgklBtwUx,"{
     ""PlayerName"": ""Ney"",
     ""SoccerPlayer"" : 19,
     ""CardType"" : 2,
@@ -198,8 +198,8 @@ Neymar,Psg,https://drive.google.com/uc?id=1CkC2QLkhaOQadr6F2ojZXSqZrmwBfVP0,http
     ""Defense"" : 50,
     ""UniformOriginal"" : 18,
     ""PlayerNumber"" : 10
-}"
-Oblak,Atletico de Madrid,https://drive.google.com/uc?id=1JV4de26aCU1MFcoz7q0atDs_bO16CExB,https://drive.google.com/uc?id=1FJN1fF4tVHC4r5RTYYZnhUDnw0Zant83,"{
+}",480
+Oblak,Atletico de Madrid,https://drive.google.com/uc?id=1CkFem0KepZEnlecTJq75vUlhgbPU227B,https://drive.google.com/uc?id=1FJN1fF4tVHC4r5RTYYZnhUDnw0Zant83,"{
     ""PlayerName"": ""Oblack"",
     ""SoccerPlayer"" : 20,
     ""CardType"" : 2,
@@ -208,8 +208,8 @@ Oblak,Atletico de Madrid,https://drive.google.com/uc?id=1JV4de26aCU1MFcoz7q0atDs
     ""Defense"" : 91,
     ""UniformOriginal"" : 2,
     ""PlayerNumber"" : 13
-}"
-Pelé,Brasil(Legend),https://drive.google.com/uc?id=1O82wtIrTkPtTEITIwerV1TmR9GO0EDPW,https://drive.google.com/uc?id=1Uyf_nRy2DDe2hz3OewOs6n_elFar6v-x,"{
+}",445
+Pelé,Brasil(Legend),https://drive.google.com/uc?id=1BRZ-6DkCcZ_5c5ZzLLm9g3NM-mamNN0y,https://drive.google.com/uc?id=1Uyf_nRy2DDe2hz3OewOs6n_elFar6v-x,"{
     ""PlayerName"" : ""Phelé"",
     ""SoccerPlayer"" : 21,
     ""CardType"" : 4,
@@ -218,8 +218,8 @@ Pelé,Brasil(Legend),https://drive.google.com/uc?id=1O82wtIrTkPtTEITIwerV1TmR9GO
     ""Defense"" : 75,
     ""UniformOriginal"" : 10,
     ""PlayerNumber"" : 10
-}"
-Piqué,España(Epic),https://drive.google.com/uc?id=1rWHnVtGs9Lyacya4F_lENv9nYB1VE-Ed,https://drive.google.com/uc?id=19yIzDykxyyOku95nIoeXQunc3x6zie-m,"{
+}",300
+Piqué,España(Epic),https://drive.google.com/uc?id=1J-BorSuwcLW8nB9lsXY0GqHb5iVRVzf1,https://drive.google.com/uc?id=19yIzDykxyyOku95nIoeXQunc3x6zie-m,"{
     ""PlayerName"" : ""Piquhé"",
     ""SoccerPlayer"" : 22,
     ""CardType"" : 2,
@@ -228,8 +228,8 @@ Piqué,España(Epic),https://drive.google.com/uc?id=1rWHnVtGs9Lyacya4F_lENv9nYB1
     ""Defense"" : 87,
     ""UniformOriginal"" : 8,
     ""PlayerNumber"" : 3
-}"
-Pibe Valderrama,Colombia(Epic),https://drive.google.com/uc?id=1IbAVPW91VA0SgUiYK6GpluOefSuoCYjh,https://drive.google.com/uc?id=1Ms7-fXSaMI3JtYEIpFeSR9PHihh1ZACa,"{
+}",445
+Pibe Valderrama,Colombia(Epic),https://drive.google.com/uc?id=1J1V1KhpmUf21xdgbpxB39kNrw2NSQzjO,https://drive.google.com/uc?id=1Ms7-fXSaMI3JtYEIpFeSR9PHihh1ZACa,"{
     ""PlayerName"" : ""P. Vald"",
     ""SoccerPlayer"" : 23,
     ""CardType"" : 3,
@@ -238,8 +238,8 @@ Pibe Valderrama,Colombia(Epic),https://drive.google.com/uc?id=1IbAVPW91VA0SgUiYK
     ""Defense"" : 65,
     ""UniformOriginal"" : 13,
     ""PlayerNumber"" : 10
-}"
-Gerrard,Inglaterra(Epic),https://drive.google.com/uc?id=1pkVEOdr-mGzReS0YDM4FaYTpa3kU_f4X,https://drive.google.com/uc?id=1NBtZPdgbnoiiZnQjpIbYgFBVabWrcrlg,"{
+}",300
+Gerrard,Inglaterra(Epic),https://drive.google.com/uc?id=1BQTPaXKA_yPDfsbhqSm_7VxJdWv5s2Jo,https://drive.google.com/uc?id=1NBtZPdgbnoiiZnQjpIbYgFBVabWrcrlg,"{
     ""PlayerName"" : ""Gerard"",
     ""SoccerPlayer"" : 24,
     ""CardType"" : 3,
@@ -248,8 +248,8 @@ Gerrard,Inglaterra(Epic),https://drive.google.com/uc?id=1pkVEOdr-mGzReS0YDM4FaYT
     ""Defense"" : 83,
     ""UniformOriginal"" : 16,
     ""PlayerNumber"" : 8
-}"
-Pirlo,Italia(Epic),https://drive.google.com/uc?id=1J13Zs7uxg3h2CAbjXnKIjsrmnlcXHVxM,https://drive.google.com/uc?id=1MbFBTWsyCstpMPcwYjNuvct1CdgruinA,"{
+}",300
+Pirlo,Italia(Epic),https://drive.google.com/uc?id=1K0bUvDwAkEJ9Iv3dtSczVhhG2Vn4Vzy-,https://drive.google.com/uc?id=1MbFBTWsyCstpMPcwYjNuvct1CdgruinA,"{
     ""PlayerName"" : ""Phirlo"",
     ""SoccerPlayer"" : 25,
     ""CardType"" : 3,
@@ -258,8 +258,8 @@ Pirlo,Italia(Epic),https://drive.google.com/uc?id=1J13Zs7uxg3h2CAbjXnKIjsrmnlcXH
     ""Defense"" : 75,
     ""UniformOriginal"" : 15,
     ""PlayerNumber"" : 21
-}"
-Rafa Marquez,México(Epic),https://drive.google.com/uc?id=1ZgbZdYUPFVHjfbJG9Aqcn7UPR8_WROVJ,https://drive.google.com/uc?id=1y5YBymAND-tjysFBOvt0KW94GS8XNgiO,"{
+}",300
+Rafa Marquez,México(Epic),https://drive.google.com/uc?id=1IOoZ92nheNp5jSsRnmMMpc6qii6xMVkw,https://drive.google.com/uc?id=1y5YBymAND-tjysFBOvt0KW94GS8XNgiO,"{
     ""PlayerName"" : ""Rafa M"",
     ""SoccerPlayer"" : 26,
     ""CardType"" : 3,
@@ -268,8 +268,8 @@ Rafa Marquez,México(Epic),https://drive.google.com/uc?id=1ZgbZdYUPFVHjfbJG9Aqcn
     ""Defense"" : 89,
     ""UniformOriginal"" : 17,
     ""PlayerNumber"" : 4
-}"
-Ronaldinho,Brasil(Legend),https://drive.google.com/uc?id=17afIsALI6omk-1Nn-FJUDuZh4qTRJZ_E,https://drive.google.com/uc?id=1MEL5vxfyvz7MwG4TAxpBaG82RpvKDDI1,"{
+}",300
+Ronaldinho,Brasil(Legend),https://drive.google.com/uc?id=1JKD14yo3LuTykSsQQyaSy7ol49Gah5dv,https://drive.google.com/uc?id=1MEL5vxfyvz7MwG4TAxpBaG82RpvKDDI1,"{
     ""PlayerName"" : ""Ronaldinhio"",
     ""SoccerPlayer"" : 27,
     ""CardType"" : 4,
@@ -278,8 +278,8 @@ Ronaldinho,Brasil(Legend),https://drive.google.com/uc?id=17afIsALI6omk-1Nn-FJUDu
     ""Defense"" : 50,
     ""UniformOriginal"" : 10,
     ""PlayerNumber"" : 10
-}"
-Ronaldo,Brasil(Legend),https://drive.google.com/uc?id=1QFuv_xZc4UFImMllt76joxgc53JyEdPt,https://drive.google.com/uc?id=1FZ2iL2IRzNCzgSQGESlrXZF4UhL0osVU,"{
+}",300
+Ronaldo,Brasil(Legend),https://drive.google.com/uc?id=1JIr8bVyZFc59t_PZ0iLAJMFRFgQ73HsT,https://drive.google.com/uc?id=1FZ2iL2IRzNCzgSQGESlrXZF4UhL0osVU,"{
     ""PlayerName"" : ""Ronaldho"",
     ""SoccerPlayer"" : 28,
     ""CardType"" : 4,
@@ -288,8 +288,8 @@ Ronaldo,Brasil(Legend),https://drive.google.com/uc?id=1QFuv_xZc4UFImMllt76joxgc5
     ""Defense"" : 45,
     ""UniformOriginal"" : 10,
     ""PlayerNumber"" : 9
-}"
-Salah,Liverpool,https://drive.google.com/uc?id=1nvZVoO20XKxTkjyEZ3J3M8uSDQDTIK72,https://drive.google.com/uc?id=1I9ZK1uR7Nca55yeYrfDKir_VBsqIVtXY,"{
+}",300
+Salah,Liverpool,https://drive.google.com/uc?id=1JGCkU_2rO8q15-KIndzAW13ebiWdRDNb,https://drive.google.com/uc?id=1I9ZK1uR7Nca55yeYrfDKir_VBsqIVtXY,"{
     ""PlayerName"" : ""Salha"",
     ""SoccerPlayer"" : 29,
     ""CardType"" : 2,
@@ -298,8 +298,8 @@ Salah,Liverpool,https://drive.google.com/uc?id=1nvZVoO20XKxTkjyEZ3J3M8uSDQDTIK72
     ""Defense"" : 65,
     ""UniformOriginal"" : 16,
     ""PlayerNumber"" : 11
-}"
-Sergio Ramos,Psg,https://drive.google.com/uc?id=1rVg4FfcynUcyqPRdl8pWEM2qWNTZGvLt,https://drive.google.com/uc?id=1s2mQGqQrKWWFquN0h54zARLMBuipAYjP,"{
+}",480
+Sergio Ramos,Psg,https://drive.google.com/uc?id=1CPcV96hjTqabwU9PSRiCaKGC5XlUkXRA,https://drive.google.com/uc?id=1s2mQGqQrKWWFquN0h54zARLMBuipAYjP,"{
     ""PlayerName"" : ""S. Ramhos"",
     ""SoccerPlayer"" : 30,
     ""CardType"" : 2,
@@ -308,8 +308,8 @@ Sergio Ramos,Psg,https://drive.google.com/uc?id=1rVg4FfcynUcyqPRdl8pWEM2qWNTZGvL
     ""Defense"" : 90,
     ""UniformOriginal"" : 18,
     ""PlayerNumber"" : 4
-}"
-Son,Tottenham,https://drive.google.com/uc?id=14wQeQq7pFlJFK6JVT-JWxrxyWb-1weQk,https://drive.google.com/uc?id=1_WKxbQG5a45sKdhICy6fm-smcNiML6IF,"{
+}",455
+Son,Tottenham,https://drive.google.com/uc?id=1BN-pKdpg0hk3ZwiB8Du_QU5yVFVPROn7,https://drive.google.com/uc?id=1_WKxbQG5a45sKdhICy6fm-smcNiML6IF,"{
     ""PlayerName"" : ""Sion"",
     ""SoccerPlayer"" : 31,
     ""CardType"" : 2,
@@ -318,8 +318,8 @@ Son,Tottenham,https://drive.google.com/uc?id=14wQeQq7pFlJFK6JVT-JWxrxyWb-1weQk,h
     ""Defense"" : 60,
     ""UniformOriginal"" : 20,
     ""PlayerNumber"" : 7
-}"
-Suarez,Gremio,https://drive.google.com/uc?id=1mXqK-KirC_Kzse7RxHRonCKMJuQCTbKB,https://drive.google.com/uc?id=1byQtCzNcoUUIjhRoqDXeG5mJrY9YzLNN,"{
+}",470
+Suarez,Gremio,https://drive.google.com/uc?id=1DD6SAeDoDgVMEZJXL4vamduPhmZ1f4_L,https://drive.google.com/uc?id=1byQtCzNcoUUIjhRoqDXeG5mJrY9YzLNN,"{
     ""PlayerName"" : ""Suares"",
     ""SoccerPlayer"" : 32,
     ""CardType"" : 2,
@@ -328,8 +328,8 @@ Suarez,Gremio,https://drive.google.com/uc?id=1mXqK-KirC_Kzse7RxHRonCKMJuQCTbKB,h
     ""Defense"" : 60,
     ""UniformOriginal"" : 21,
     ""PlayerNumber"" : 9
-}"
-Virgil van Dijk,Liverpool,https://drive.google.com/uc?id=1iskFb7VEWMIameglnYgOUl3fbW8vwMok,https://drive.google.com/uc?id=1v5adUKscPZc0ukRWn6BJgSiyePnZwhWY,"{
+}",445
+Virgil van Dijk,Liverpool,https://drive.google.com/uc?id=1JGLSMvqfQfqk848Seb3Vuseis8Mh5XJy,https://drive.google.com/uc?id=1v5adUKscPZc0ukRWn6BJgSiyePnZwhWY,"{
     ""PlayerName"" : ""Virgyl"",
     ""SoccerPlayer"" : 33,
     ""CardType"" : 2,
@@ -338,8 +338,8 @@ Virgil van Dijk,Liverpool,https://drive.google.com/uc?id=1iskFb7VEWMIameglnYgOUl
     ""Defense"" : 92,
     ""UniformOriginal"" : 16,
     ""PlayerNumber"" : 4
-}"
-Xavi,España(Epic),https://drive.google.com/uc?id=1DO6KKSvvi-wPudkH6P-seolYRHMwAkyg,https://drive.google.com/uc?id=1m_Mij7Q9KkuGbp9Qh4YsiRjqz06g3kx2,"{
+}",480
+Xavi,España(Epic),https://drive.google.com/uc?id=1JxhVZysUK5EtATwMWu-J0K449NsCIQJk,https://drive.google.com/uc?id=1m_Mij7Q9KkuGbp9Qh4YsiRjqz06g3kx2,"{
     ""PlayerName"" : ""Xhavi"",
     ""SoccerPlayer"" : 34,
     ""CardType"" : 3,
@@ -348,8 +348,8 @@ Xavi,España(Epic),https://drive.google.com/uc?id=1DO6KKSvvi-wPudkH6P-seolYRHMwA
     ""Defense"" : 78,
     ""UniformOriginal"" : 14,
     ""PlayerNumber"" : 8
-}"
-Zidane,Francia(Legend),https://drive.google.com/uc?id=1AX9q79109FRJtpKMEjnfdMXQtSui7L9p,https://drive.google.com/uc?id=1CzhlPKUMjMXAgyH3uQ7EH9zrqqI_Yl8D,"{
+}",475
+Zidane,Francia(Legend),https://drive.google.com/uc?id=1Iigly4Xr5pLJJ0hQNlG9f9tpfq7hLOQn,https://drive.google.com/uc?id=1CzhlPKUMjMXAgyH3uQ7EH9zrqqI_Yl8D,"{
     ""PlayerName"" : ""Zizu"",
     ""SoccerPlayer"" : 35,
     ""CardType"" : 4,
@@ -358,8 +358,8 @@ Zidane,Francia(Legend),https://drive.google.com/uc?id=1AX9q79109FRJtpKMEjnfdMXQt
     ""Defense"" : 65,
     ""UniformOriginal"" : 19,
     ""PlayerNumber"" : 5
-}"
-Robson,MK Dons,https://drive.google.com/uc?id=1M-6nrYLYIOXp5lValvGCIkjcsAOoOHWd,https://drive.google.com/uc?id=1pXzHqoxb59r5pJCr72Miv7Y-ASn5kkQv,"{
+}",300
+Robson,MK Dons,https://drive.google.com/uc?id=1C1EnYznGFAeOjIXmPUo0zSf2PUOLYgX9,https://drive.google.com/uc?id=1pXzHqoxb59r5pJCr72Miv7Y-ASn5kkQv,"{
     ""PlayerName"" : ""Robsson"",
     ""SoccerPlayer"" : 36,
     ""CardType"" : 0,
@@ -368,8 +368,8 @@ Robson,MK Dons,https://drive.google.com/uc?id=1M-6nrYLYIOXp5lValvGCIkjcsAOoOHWd,
     ""Defense"" : 60,
     ""UniformOriginal"" : 22,
     ""PlayerNumber"" : 8
-}"
-Lankford,Viktoria Köln,https://drive.google.com/uc?id=1KcrWbYfoRc03CGOnGKoWlByeH9hRzLgE,https://drive.google.com/uc?id=1Zkvfw63rEcSYjzWu_FjTLLGvcfdwYJSk,"{
+}",224
+Lankford,Viktoria Köln,https://drive.google.com/uc?id=1CxLSmqk2Qj9XEe16nqD2GN_AqkUKylpK,https://drive.google.com/uc?id=1Zkvfw63rEcSYjzWu_FjTLLGvcfdwYJSk,"{
     ""PlayerName"" : ""Lankfoord"",
     ""SoccerPlayer"" : 37,
     ""CardType"" : 0,
@@ -378,8 +378,8 @@ Lankford,Viktoria Köln,https://drive.google.com/uc?id=1KcrWbYfoRc03CGOnGKoWlBye
     ""Defense"" : 25,
     ""UniformOriginal"" : 22,
     ""PlayerNumber"" : 10
-}"
-Austin,Tottenham,https://drive.google.com/uc?id=1dBh_ecpZXxHEpYe0zuShQzflfpzWl8FS,https://drive.google.com/uc?id=1bAni9SeEzkVagk7mtF9IuNBSoa81kiS4,"{
+}",224
+Austin,Tottenham,https://drive.google.com/uc?id=1Bio3lfHwTgR8BY50Xx6mttxITGN0ERV0,https://drive.google.com/uc?id=1bAni9SeEzkVagk7mtF9IuNBSoa81kiS4,"{
     ""PlayerName"" : ""Austinn"",
     ""SoccerPlayer"" : 38,
     ""CardType"" : 0,
@@ -388,8 +388,8 @@ Austin,Tottenham,https://drive.google.com/uc?id=1dBh_ecpZXxHEpYe0zuShQzflfpzWl8F
     ""Defense"" : 65,
     ""UniformOriginal"" : 1,
     ""PlayerNumber"" : 1
-}"
-Gbelle,Quevilly Rouen Métropole,https://drive.google.com/uc?id=1Y3rPCHti1kPHqb-OXR22UTfADd168AsN,https://drive.google.com/uc?id=15EBfR5c8oFAP4lgGQa7tViFY9Zm6LgiI,"{
+}",224
+Gbelle,Quevilly Rouen Métropole,https://drive.google.com/uc?id=1JJPMJKCxpVZ6L5xctJn9Fd3K5Yu7wh2T,https://drive.google.com/uc?id=15EBfR5c8oFAP4lgGQa7tViFY9Zm6LgiI,"{
     ""PlayerName"" : ""Gbele"",
     ""SoccerPlayer"" : 39,
     ""CardType"" : 0,
@@ -398,8 +398,8 @@ Gbelle,Quevilly Rouen Métropole,https://drive.google.com/uc?id=1Y3rPCHti1kPHqb-
     ""Defense"" : 61,
     ""UniformOriginal"" : 22,
     ""PlayerNumber"" : 7
-}"
-Van Kaam,Groningen,https://drive.google.com/uc?id=13PuxJb0AV7Q2NOkQE1QimYA42tD8kO8n,https://drive.google.com/uc?id=18aGZ8E0ucZ59AJxE72igTTQhy6ri2h-D,"{
+}",224
+Van Kaam,Groningen,https://drive.google.com/uc?id=1BUBr94EpZKp6uLj64QuaaHODNQFBpLqP,https://drive.google.com/uc?id=18aGZ8E0ucZ59AJxE72igTTQhy6ri2h-D,"{
     ""PlayerName"" : ""Vaan Kaam"",
     ""SoccerPlayer"" : 40,
     ""CardType"" : 0,
@@ -408,8 +408,8 @@ Van Kaam,Groningen,https://drive.google.com/uc?id=13PuxJb0AV7Q2NOkQE1QimYA42tD8k
     ""Defense"" : 64,
     ""UniformOriginal"" : 22,
     ""PlayerNumber"" : 3
-}"
-Ibsen Rossi,Cambridge Utd,https://drive.google.com/uc?id=1IkO3-A1MQ_Qn8P518wZN5KSxaJvxD2ql,https://drive.google.com/uc?id=1JNoYD1xqaYa14m6P-kbYr9d_QJn1kHE_,"{
+}",217
+Ibsen Rossi,Cambridge Utd,https://drive.google.com/uc?id=1K0UpQGJ0_UhyYO18BA0UmC8HyzuuY0xH,https://drive.google.com/uc?id=1JNoYD1xqaYa14m6P-kbYr9d_QJn1kHE_,"{
     ""PlayerName"" : ""Ibsen Rosi"",
     ""SoccerPlayer"" : 41,
     ""CardType"" : 0,
@@ -418,8 +418,8 @@ Ibsen Rossi,Cambridge Utd,https://drive.google.com/uc?id=1IkO3-A1MQ_Qn8P518wZN5K
     ""Defense"" : 65,
     ""UniformOriginal"" : 22,
     ""PlayerNumber"" : 6
-}"
-Jordi Sanchez,Widzew Łódź,https://drive.google.com/uc?id=1AI8gnMKRENelNg7V5iewrVAY851nIWnO,https://drive.google.com/uc?id=1uVxdITE5FLukl0_guUqeXlmHkG4v2qYg,"{
+}","220,5"
+Jordi Sanchez,Widzew Łódź,https://drive.google.com/uc?id=1CB8I-W14ehDgcdqlYT5-91SGMdjrgCgW,https://drive.google.com/uc?id=1uVxdITE5FLukl0_guUqeXlmHkG4v2qYg,"{
     ""PlayerName"" : ""Jordy Sanchez"",
     ""SoccerPlayer"" : 42,
     ""CardType"" : 0,
@@ -428,8 +428,8 @@ Jordi Sanchez,Widzew Łódź,https://drive.google.com/uc?id=1AI8gnMKRENelNg7V5ie
     ""Defense"" : 27,
     ""UniformOriginal"" : 22,
     ""PlayerNumber"" : 11
-}"
-Sung Joon Jo,Jeju United,https://drive.google.com/uc?id=1Wu77kEEFlAdBGhbUKWoY0CsyXTf6h0je,https://drive.google.com/uc?id=1u-KcJj2oG8XRaRE_7N_o9ssJEINzFdrr,"{
+}",224
+Sung Joon Jo,Jeju United,https://drive.google.com/uc?id=1BurADP3lDTZW9Rw6QbNgKDHAVG1EzGiZ,https://drive.google.com/uc?id=1u-KcJj2oG8XRaRE_7N_o9ssJEINzFdrr,"{
     ""PlayerName"" : ""Joo Sung Joon"",
     ""SoccerPlayer"" : 43,
     ""CardType"" : 0,
@@ -438,8 +438,8 @@ Sung Joon Jo,Jeju United,https://drive.google.com/uc?id=1Wu77kEEFlAdBGhbUKWoY0Cs
     ""Defense"" : 31,
     ""UniformOriginal"" : 22,
     ""PlayerNumber"" : 8
-}"
-Delgadillo,Platense,https://drive.google.com/uc?id=1z7zviC2Fp1NBEb7E59XJNh_efIHMKnVF,https://drive.google.com/uc?id=1hYd5DGdDd8jt7k-Ya1U9qSWCT350Qwmj,"{
+}",224
+Delgadillo,Platense,https://drive.google.com/uc?id=1BXu7K7eiJsvESJ7DSOYzBgn0K7dR153L,https://drive.google.com/uc?id=1hYd5DGdDd8jt7k-Ya1U9qSWCT350Qwmj,"{
     ""PlayerName"" : ""Delgadilo"",
     ""SoccerPlayer"" : 44,
     ""CardType"" : 0,
@@ -448,8 +448,8 @@ Delgadillo,Platense,https://drive.google.com/uc?id=1z7zviC2Fp1NBEb7E59XJNh_efIHM
     ""Defense"" : 32,
     ""UniformOriginal"" : 22,
     ""PlayerNumber"" : 10
-}"
-McWilliams,Northampton,https://drive.google.com/uc?id=1MwS2KCbAPgtyQrEK8wF1TWg5tvI7gayg,https://drive.google.com/uc?id=1PsV4ill-zi4YCEATUO5abSjhsLiG7rfl,"{
+}",224
+McWilliams,Northampton,https://drive.google.com/uc?id=1BzTDvJM72yLEjw891lxmzxGaagCKLv1q,https://drive.google.com/uc?id=1PsV4ill-zi4YCEATUO5abSjhsLiG7rfl,"{
     ""PlayerName"" : ""McWiliams"",
     ""SoccerPlayer"" : 45,
     ""CardType"" : 0,
@@ -458,8 +458,8 @@ McWilliams,Northampton,https://drive.google.com/uc?id=1MwS2KCbAPgtyQrEK8wF1TWg5t
     ""Defense"" : 65,
     ""UniformOriginal"" : 22,
     ""PlayerNumber"" : 5
-}"
-Óscar Valentín,Rayo Vallecano,https://drive.google.com/uc?id=10JKfMHR-4W_N0rHxZQ2kr9RjtkG_wJg7/view?usp=sharing,https://drive.google.com/uc?id=1JFlMZ0-INg2DyOSo0BHLt3KETCexIVYa,"{
+}",224
+Óscar Valentín,Rayo Vallecano,https://drive.google.com/uc?id=1CA_6TtU46cL1N7xgVcyyOH8KqpdnlDAL,https://drive.google.com/uc?id=1JFlMZ0-INg2DyOSo0BHLt3KETCexIVYa,"{
     ""PlayerName"" : ""Oscar Valen"",
     ""SoccerPlayer"" : 46,
     ""CardType"" : 1,
@@ -468,8 +468,8 @@ McWilliams,Northampton,https://drive.google.com/uc?id=1MwS2KCbAPgtyQrEK8wF1TWg5t
     ""Defense"" : 73,
     ""UniformOriginal"" : 23,
     ""PlayerNumber"" : 8
-}"
-Galano,Bari,https://drive.google.com/uc?id=1WSp0Hbs0knXp_DolPyXQAl9eBSzwzVNg,https://drive.google.com/uc?id=15A0jV4N6sGE3oTRb5ExTMs1yPfTzWgYf,"{
+}",296
+Galano,Bari,https://drive.google.com/uc?id=1Ifw3GmJr6Jdws0Mt7zF2oLYZaVrLRCbo,https://drive.google.com/uc?id=15A0jV4N6sGE3oTRb5ExTMs1yPfTzWgYf,"{
     ""PlayerName"" : ""Galanho"",
     ""SoccerPlayer"" : 47,
     ""CardType"" : 1,
@@ -478,8 +478,8 @@ Galano,Bari,https://drive.google.com/uc?id=1WSp0Hbs0knXp_DolPyXQAl9eBSzwzVNg,htt
     ""Defense"" : 22,
     ""UniformOriginal"" : 23,
     ""PlayerNumber"" : 19
-}"
-Krovinovic,HNK Hajduk Split,https://drive.google.com/uc?id=10UsxiYL0V8W3lAbFsMOxcb4Alv7g8iju,https://drive.google.com/uc?id=1bxlUKNH957-esI3lKlyXa-ueES9PWJMc,"{
+}",268
+Krovinovic,HNK Hajduk Split,https://drive.google.com/uc?id=1JKal9vpkL-N7raQSNak0s_05gWyQjOtG,https://drive.google.com/uc?id=1bxlUKNH957-esI3lKlyXa-ueES9PWJMc,"{
     ""PlayerName"" : ""Krovinovich"",
     ""SoccerPlayer"" : 48,
     ""CardType"" : 1,
@@ -488,8 +488,8 @@ Krovinovic,HNK Hajduk Split,https://drive.google.com/uc?id=10UsxiYL0V8W3lAbFsMOx
     ""Defense"" : 61,
     ""UniformOriginal"" : 23,
     ""PlayerNumber"" : 18
-}"
-Dupé,Toulouse,https://drive.google.com/uc?id=1K8IKAR7H4jVxE-M5j7krgYaKz8FwTiUt,https://drive.google.com/uc?id=1paTti31o53FxN4KCKiK2-j3hwSpoYD9z,"{
+}",292
+Dupé,Toulouse,https://drive.google.com/uc?id=1CaNIWDOC8NcRgccc2HcfE-178Uiaj4PX,https://drive.google.com/uc?id=1paTti31o53FxN4KCKiK2-j3hwSpoYD9z,"{
     ""PlayerName"" : ""Dupe"",
     ""SoccerPlayer"" : 49,
     ""CardType"" : 1,
@@ -498,8 +498,8 @@ Dupé,Toulouse,https://drive.google.com/uc?id=1K8IKAR7H4jVxE-M5j7krgYaKz8FwTiUt,
     ""Defense"" : 74,
     ""UniformOriginal"" : 3,
     ""PlayerNumber"" : 12
-}"
-Vinicius Souza,Espanyol,https://drive.google.com/uc?id=15F6vkY_zP-R0p7OeIk0fPxFGGEKMU5Kg,https://drive.google.com/uc?id=1HncnH2xztkhMkl3vTIctHO1oXZibTjWI,"{
+}",292
+Vinicius Souza,Espanyol,https://drive.google.com/uc?id=1BJkME7wtKVWxqenxK8mV-eEyItMV90Uv,https://drive.google.com/uc?id=1HncnH2xztkhMkl3vTIctHO1oXZibTjWI,"{
     ""PlayerName"" : ""Vini Sousa"",
     ""SoccerPlayer"" : 50,
     ""CardType"" : 1,
@@ -508,8 +508,8 @@ Vinicius Souza,Espanyol,https://drive.google.com/uc?id=15F6vkY_zP-R0p7OeIk0fPxFG
     ""Defense"" : 74,
     ""UniformOriginal"" : 23,
     ""PlayerNumber"" : 20
-}"
-Sergio Leon,Valladolid,https://drive.google.com/uc?id=1xvikAq3iDDVR5hSdzClyOM88y0ueNwCG,https://drive.google.com/uc?id=1NDIzGuNInRSE-69vUnpiL42H3EI8Ys6z,"{
+}",348
+Sergio Leon,Valladolid,https://drive.google.com/uc?id=1BN2XVl7mFUre1gJuT1gVXF3VYX_XT-NP,https://drive.google.com/uc?id=1NDIzGuNInRSE-69vUnpiL42H3EI8Ys6z,"{
     ""PlayerName"" : ""S. Leon"",
     ""SoccerPlayer"" : 51,
     ""CardType"" : 1,
@@ -518,8 +518,8 @@ Sergio Leon,Valladolid,https://drive.google.com/uc?id=1xvikAq3iDDVR5hSdzClyOM88y
     ""Defense"" : 38,
     ""UniformOriginal"" : 23,
     ""PlayerNumber"" : 18
-}"
-Machado,Lens,https://drive.google.com/uc?id=1Pe1pENaHoRtjzsKLkB-BZn25LWthzIrV,https://drive.google.com/uc?id=1PfSe1l0t5GQK27oieE3Y9dEir5SABd-C,"{
+}",292
+Machado,Lens,https://drive.google.com/uc?id=1Bj_yprkUvjv4x_RLAJKXOkIZtxPU4xMD,https://drive.google.com/uc?id=1PfSe1l0t5GQK27oieE3Y9dEir5SABd-C,"{
     ""PlayerName"" : ""D. Macha"",
     ""SoccerPlayer"" : 52,
     ""CardType"" : 1,
@@ -528,8 +528,8 @@ Machado,Lens,https://drive.google.com/uc?id=1Pe1pENaHoRtjzsKLkB-BZn25LWthzIrV,ht
     ""Defense"" : 65,
     ""UniformOriginal"" : 23,
     ""PlayerNumber"" : 99
-}"
-Papadopoulos,Dortmund,https://drive.google.com/uc?id=16o-DBeog2QAygrW-jpZPWJ7eomlgZ9ei,https://drive.google.com/uc?id=1t3c_bhNSsgHnkvPTqnDAPHuSW-Lx6nXE,"{
+}",288
+Papadopoulos,Dortmund,https://drive.google.com/uc?id=1IuGUgWhynwzlVLtkpJs8qDguHmeSgrK-,https://drive.google.com/uc?id=1t3c_bhNSsgHnkvPTqnDAPHuSW-Lx6nXE,"{
     ""PlayerName"" : ""Papadopouloos"",
     ""SoccerPlayer"" : 53,
     ""CardType"" : 1,
@@ -538,8 +538,8 @@ Papadopoulos,Dortmund,https://drive.google.com/uc?id=16o-DBeog2QAygrW-jpZPWJ7eom
     ""Defense"" : 75,
     ""UniformOriginal"" : 23,
     ""PlayerNumber"" : 69
-}"
-Dener,Al-Tai,https://drive.google.com/uc?id=1xndqWD8aPngf0eEvHQgxRNm0mEooyJus,https://drive.google.com/uc?id=1L4wFsWu18CKceWN_tKEVSTpUV4jwI1qL,"{
+}",264
+Dener,Al-Tai,https://drive.google.com/uc?id=1CAsixxafd6WFJpx_6HPxACm0TW5mKD-P,https://drive.google.com/uc?id=1L4wFsWu18CKceWN_tKEVSTpUV4jwI1qL,"{
     ""PlayerName"" : ""Denher"",
     ""SoccerPlayer"" : 54,
     ""CardType"" : 1,
@@ -548,8 +548,8 @@ Dener,Al-Tai,https://drive.google.com/uc?id=1xndqWD8aPngf0eEvHQgxRNm0mEooyJus,ht
     ""Defense"" : 74,
     ""UniformOriginal"" : 23,
     ""PlayerNumber"" : 50
-}"
-Alex Baena,Villareal,https://drive.google.com/uc?id=15KxKtfjQ6u4ZLTctpEnzMqXd0OtmnPm_,https://drive.google.com/uc?id=1ulz3QpGd-By3hKpEhfX0Tjk9hVsTFtqG,"{
+}",288
+Alex Baena,Villareal,https://drive.google.com/uc?id=1In85Wd5XCtggUgkrBio23ykzitshIAh4,https://drive.google.com/uc?id=1ulz3QpGd-By3hKpEhfX0Tjk9hVsTFtqG,"{
     ""PlayerName"" : ""Alex Bahena"",
     ""SoccerPlayer"" : 55,
     ""CardType"" : 1,
@@ -558,8 +558,8 @@ Alex Baena,Villareal,https://drive.google.com/uc?id=15KxKtfjQ6u4ZLTctpEnzMqXd0Ot
     ""Defense"" : 62,
     ""UniformOriginal"" : 23,
     ""PlayerNumber"" : 28
-}"
-Pedri,Barcelona,https://drive.google.com/uc?id=1J3EpVjZqKIr1XuVT5PSjSIeKxAn3GLYm,https://drive.google.com/uc?id=1mPT6bTyhXDiUTJoAbGirRCdNLfR0HYaj,"{
+}",296
+Pedri,Barcelona,https://drive.google.com/uc?id=1DIkU8A4PzC-XJ0Tu3_Yiw5FVS2llCUHQ,https://drive.google.com/uc?id=1mPT6bTyhXDiUTJoAbGirRCdNLfR0HYaj,"{
     ""PlayerName"" : ""Pedry"",
     ""SoccerPlayer"" : 56,
     ""CardType"" : 2,
@@ -568,8 +568,8 @@ Pedri,Barcelona,https://drive.google.com/uc?id=1J3EpVjZqKIr1XuVT5PSjSIeKxAn3GLYm
     ""Defense"" : 80,
     ""UniformOriginal"" : 8,
     ""PlayerNumber"" : 8
-}"
-Harry Kane,Tottenham,https://drive.google.com/uc?id=1tW4Nx2y-TAgD6rhyPXmEYWAGosCOgLbA,https://drive.google.com/uc?id=1-we0ucu7HH4bGGyU5eZukFeH322DEKAP,"{
+}",425
+Harry Kane,Tottenham,https://drive.google.com/uc?id=1K2WsU3OIq1hmlPDz43gcKWhSPEmiouw7,https://drive.google.com/uc?id=1-we0ucu7HH4bGGyU5eZukFeH322DEKAP,"{
     ""PlayerName"" : ""Harri Khane"",
     ""SoccerPlayer"" : 57,
     ""CardType"" : 2,
@@ -578,8 +578,8 @@ Harry Kane,Tottenham,https://drive.google.com/uc?id=1tW4Nx2y-TAgD6rhyPXmEYWAGosC
     ""Defense"" : 65,
     ""UniformOriginal"" : 20,
     ""PlayerNumber"" : 10
-}"
-Musiala,Bayern de Múnich,https://drive.google.com/uc?id=1nEOupelZZ85_oVcWA-rz2Xubd1OvcTWe,https://drive.google.com/uc?id=1EYNYObIkz2_V8VkYPVQ7kRowFU3nwyq4,"{
+}",475
+Musiala,Bayern de Múnich,https://drive.google.com/uc?id=1BVXS5L06iCB_tKuPMzNsqF21kONrLpKN,https://drive.google.com/uc?id=1EYNYObIkz2_V8VkYPVQ7kRowFU3nwyq4,"{
     ""PlayerName"" : ""Mhusiala"",
     ""SoccerPlayer"" : 58,
     ""CardType"" : 2,
@@ -588,8 +588,8 @@ Musiala,Bayern de Múnich,https://drive.google.com/uc?id=1nEOupelZZ85_oVcWA-rz2X
     ""Defense"" : 65,
     ""UniformOriginal"" : 9,
     ""PlayerNumber"" : 42
-}"
-Ter Stegen,Barcelona,https://drive.google.com/uc?id=1cZAZJ9Fw1iVlfeE9Bxwq3oCN3XvqHZ7B,https://drive.google.com/uc?id=1kar7UP3xjEU6qlrhbTxLFda0Tg1WwXyB,"{
+}",460
+Ter Stegen,Barcelona,https://drive.google.com/uc?id=1CVe8KtbocPVCSLjukjJyPq1Y8lFiEsq4,https://drive.google.com/uc?id=1kar7UP3xjEU6qlrhbTxLFda0Tg1WwXyB,"{
     ""PlayerName"" : ""Tert Steguen"",
     ""SoccerPlayer"" : 59,
     ""CardType"" : 2,
@@ -598,8 +598,8 @@ Ter Stegen,Barcelona,https://drive.google.com/uc?id=1cZAZJ9Fw1iVlfeE9Bxwq3oCN3Xv
     ""Defense"" : 90,
     ""UniformOriginal"" : 1,
     ""PlayerNumber"" : 1
-}"
-Cuadrado,Juventus,https://drive.google.com/uc?id=1pTD9chv0tZ42AOLnxyf1WETrgIHVlskV,https://drive.google.com/uc?id=1CAGGMhDn3kd8bOD6OHwos1SkMACEXRff,"{
+}",470
+Cuadrado,Juventus,https://drive.google.com/uc?id=1BW1nr8DnHo3lmd6CRGYJ_CA6inANzgjc,https://drive.google.com/uc?id=1CAGGMhDn3kd8bOD6OHwos1SkMACEXRff,"{
     ""PlayerName"" : ""Juan G.C"",
     ""SoccerPlayer"" : 60,
     ""CardType"" : 2,
@@ -608,8 +608,8 @@ Cuadrado,Juventus,https://drive.google.com/uc?id=1pTD9chv0tZ42AOLnxyf1WETrgIHVls
     ""Defense"" : 83,
     ""UniformOriginal"" : 15,
     ""PlayerNumber"" : 7
-}"
-De Bruyne,Manchester City,https://drive.google.com/uc?id=1NpyvV9y8BzOgWnKehKiyExM2mGpFYkuB,https://drive.google.com/uc?id=1BrcRmeLxtZ5cfF7-42xgfC80gSa--5wj,"{
+}",435
+De Bruyne,Manchester City,https://drive.google.com/uc?id=1J1BUKvZSf_OUCnxTeloP18H2I-phTi2Q,https://drive.google.com/uc?id=1BrcRmeLxtZ5cfF7-42xgfC80gSa--5wj,"{
     ""PlayerName"" : ""Kev Bruine"",
     ""SoccerPlayer"" : 61,
     ""CardType"" : 2,
@@ -618,8 +618,8 @@ De Bruyne,Manchester City,https://drive.google.com/uc?id=1NpyvV9y8BzOgWnKehKiyEx
     ""Defense"" : 80,
     ""UniformOriginal"" : 24,
     ""PlayerNumber"" : 17
-}"
-Julián Álvarez,Manchester City,https://drive.google.com/uc?id=18TBvpzbx-5ahI_UO9gTthcD5E0TxyN7F,https://drive.google.com/uc?id=1osrKgIxDRHgcacISuB3Ehy870DPavjXx,"{
+}",485
+Julián Álvarez,Manchester City,https://drive.google.com/uc?id=1K0YNY-vP2r2ttZLBOrzzqaq59Fafqia8,https://drive.google.com/uc?id=1osrKgIxDRHgcacISuB3Ehy870DPavjXx,"{
     ""PlayerName"" : ""J. Alvares"",
     ""SoccerPlayer"" : 62,
     ""CardType"" : 2,
@@ -628,8 +628,8 @@ Julián Álvarez,Manchester City,https://drive.google.com/uc?id=18TBvpzbx-5ahI_U
     ""Defense"" : 50,
     ""UniformOriginal"" : 6,
     ""PlayerNumber"" : 19
-}"
-Benzema,Real Madrid,https://drive.google.com/uc?id=1NO1lnU9jloNQbngGlygKh3NuSEDqCDVN,https://drive.google.com/uc?id=1OV2UHTUnzel-u9Yd1g-kzZ546I0NFVdt,"{
+}",460
+Benzema,Real Madrid,https://drive.google.com/uc?id=1DMBlLOlhS2j_43VztyUZLP0BAteERnOq,https://drive.google.com/uc?id=1OV2UHTUnzel-u9Yd1g-kzZ546I0NFVdt,"{
     ""PlayerName"" : ""K. Bensema"",
     ""SoccerPlayer"" : 63,
     ""CardType"" : 2,
@@ -638,8 +638,8 @@ Benzema,Real Madrid,https://drive.google.com/uc?id=1NO1lnU9jloNQbngGlygKh3NuSEDq
     ""Defense"" : 55,
     ""UniformOriginal"" : 19,
     ""PlayerNumber"" : 9
-}"
-Koulibaly,Chelsea,https://drive.google.com/uc?id=1EsJiNdIsz1K0XMucXtv6ET-kmlPst_G6,https://drive.google.com/uc?id=120Ivm3YFDH1BLN3Rfx9iCKhX4AXNnYeL,"{
+}",485
+Koulibaly,Chelsea,https://drive.google.com/uc?id=1J-JKdkywAlOCl6jEK0txWnIyHbcR_ylh,https://drive.google.com/uc?id=120Ivm3YFDH1BLN3Rfx9iCKhX4AXNnYeL,"{
     ""PlayerName"" : ""Koulibali"",
     ""SoccerPlayer"" : 64,
     ""CardType"" : 2,
@@ -648,8 +648,8 @@ Koulibaly,Chelsea,https://drive.google.com/uc?id=1EsJiNdIsz1K0XMucXtv6ET-kmlPst_
     ""Defense"" : 88,
     ""UniformOriginal"" : 11,
     ""PlayerNumber"" : 26
-}"
-Vinícius Júnior,Real Madrid,https://drive.google.com/uc?id=1ePv3uhpQUgTQ7eeVHNRsTkINy04GvStY,https://drive.google.com/uc?id=1nJKJxce3jwkXom5kXXwkr27aHMbsqWW7,"{
+}",450
+Vinícius Júnior,Real Madrid,https://drive.google.com/uc?id=1Bb9ukptKHAll_T3QJ4CmJlboBg_y7f4r,https://drive.google.com/uc?id=1nJKJxce3jwkXom5kXXwkr27aHMbsqWW7,"{
     ""PlayerName"": ""Viniciuz jr"",
     ""SoccerPlayer"": 65,
     ""CardType"" : 2,
@@ -658,4 +658,4 @@ Vinícius Júnior,Real Madrid,https://drive.google.com/uc?id=1ePv3uhpQUgTQ7eeVHN
     ""Defense"" : 50,
     ""UniformOriginal"" : 19,
     ""PlayerNumber"" : 22
-}"
+}",460

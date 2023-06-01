@@ -47,6 +47,7 @@ module Queries
       nfts = Nft.with_status(:available)
         .ransack(search_params)
         .result
+        .non_presale
         .page(page)
         .per(limit)
     end

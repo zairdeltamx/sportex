@@ -15,7 +15,7 @@ describe SportexSchema, elasticsearch: true, turnip_vcr: true do
   end
 
   describe 'querying for states index' do
-    let!(:nfts) { create_list(:nft, 3) }
+    let!(:nfts) { create_list(:nft, 3, presale: false) }
 
     let(:query_string) do
       %|

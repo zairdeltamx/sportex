@@ -82,17 +82,17 @@ function xorEncode(input, key) {
 
 async function importPlayer(player) {
   let parseJson = JSON.parse(player.json);
-  parseJson.price = 100;
-  parseJson.name = 'Hidden';
-  parseJson.PlayerName = 'Hidden';
-  parseJson.playerName = 'Hidden';
-  parseJson.description = 'Hidden';
+  parseJson.price = player.price;
+  parseJson.name = player.nombre_jugador;
+  parseJson.PlayerName = player.nombre_jugador;
+  parseJson.playerName = player.nombre_jugador;
+  parseJson.description = player.equipo;
   parseJson.teamName = player.equipo;
-  parseJson.playerName = 'Hidden';
+  parseJson.playerName = player.nombre_jugador;
   parseJson.authentication_signature = xorEncode(player.nombre_jugador, 'sportex-sync');
-  parseJson.player_batch_number = 3;
+  parseJson.player_batch_number = 1;
 
-  await downloadImage(player.imagen_oscurecida_url, 'image.gif');
+  await downloadImage(player.imagen_url, 'image.gif');
   console.log('image downloaded');
 
   const imageipfs = await addToIPFS('image.gif');
@@ -110,7 +110,7 @@ async function importPlayer(player) {
   const added = await client.add(data);
   const url = `https://sportex-staging.infura-ipfs.io/ipfs/${added.path}`;
 
-  await submitPlayertoBlockchain(parseJson, url);
+  // await submitPlayertoBlockchain(parseJson, url);
 
   return { url, parseJson };
 };
