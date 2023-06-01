@@ -98,7 +98,7 @@ async function importPlayer(player, bnbPrice) {
   parseJson.teamName = player.equipo;
   parseJson.playerName = player.nombre_jugador;
   parseJson.authentication_signature = xorEncode(player.nombre_jugador, 'sportex-sync');
-  parseJson.player_batch_number = 1;
+  parseJson.player_batch_number = 4;
 
   let bnbCost = parseFloat(player.price) / bnbPrice;
   let roundedBnbCost = Math.round(bnbCost * 10) / 10

@@ -152,6 +152,7 @@ async function nftMetaMatcher(tokenContract, nfts) {
     const playerName = xorEncode(metaJson.authentication_signature, 'sportex-sync');
 
     newNfts.push({
+      id: nft.tokenId,
       playerName: playerName,
       batch_number: metaJson.player_batch_number,
       owner: nft.owner
