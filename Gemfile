@@ -41,6 +41,8 @@ gem 'database_cleaner'
 
 gem 'rollbar'
 
+gem 'solargraph'
+
 gem 'rack-test'
 
 gem 'activeadmin'
