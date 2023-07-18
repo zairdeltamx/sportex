@@ -63,7 +63,7 @@ async function comparison(allNfts, tokenContract, results) {
 
     var metaJson = JSON.parse(jsonString);
 
-    if (metaJson.player_batch_number == 5 && nft.presale == false) {
+    if (metaJson.player_batch_number == 6 && nft.presale == false) {
       const name = xorEncode(metaJson.authentication_signature, 'sportex-sync');
       console.log("found:", name);
       names.push(name);
@@ -94,7 +94,7 @@ async function importNFTs() {
   const marketContract = new hre.ethers.Contract(nftmarketaddress, nftMarketContractAbi, signer);
   const tokenContract = new hre.ethers.Contract(nftaddress, nftContractAbi, signer);
 
-  const allNfts = await marketContract.fetchAllMarketItems();
+  const allNfts = await marketContract.fetchMarketItems();
 
   //console.log("allNfts", allNfts);
 

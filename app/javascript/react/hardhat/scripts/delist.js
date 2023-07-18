@@ -18,13 +18,17 @@ async function delist() {
   console.log('signer', signer);
   const marketContract = new hre.ethers.Contract(nftmarketaddress, nftMarketContractAbi, signer);
 
-  const allNfts = await marketContract.fetchAllMarketItems();
+  const allNfts = await marketContract.fetchMarketItems();
 
-  const nonPresale = _.filter(allNfts, (nft) => nft.presale === false);
+  console.log("allNfts", allNfts);
+  const compareValue = ethers.BigNumber.from("652");
 
-  console.log("nonPresale", nonPresale);
+  //561, 562, 563, 564, 565, 566, 567
+  const toDelist = _.filter(allNfts, (nft) => nft.tokenId.eq(compareValue));
 
-  for (const nft of nonPresale) {
+  console.log("toDelist", toDelist);
+
+  for (const nft of toDelist) {
     if (nft.owner == '0x0000000000000000000000000000000000000000') {
       continue;
     }

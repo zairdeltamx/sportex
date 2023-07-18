@@ -12,6 +12,8 @@ const nftmarketaddress = '0xe226b8ebfb4e329a9f3121b04e31b5f20de3c536';
 
 const { create } = require('ipfs-http-client');
 
+const batch_number_dealing = 6;
+
 const client = create({
   host: "ipfs.infura.io",
   port: 5001,
@@ -109,7 +111,15 @@ async function importPlayer(player, bnbPrice) {
   parseJson.teamName = player.equipo;
   parseJson.playerName = player.nombre_jugador;
   parseJson.authentication_signature = xorEncode(player.nombre_jugador, 'sportex-sync');
-  parseJson.player_batch_number = 5;
+  parseJson.player_batch_number = batch_number_dealing;
+
+  parseJson.PlayerName = player.nombre_jugador.replace("\"", "") ;
+  parseJson.name = player.nombre_jugador.replace("\"", "") ;
+  parseJson.playerName = player.nombre_jugador.replace("\"", "") ;
+  parseJson.price = player.price;
+  parseJson.grade = player.grade;
+  parseJson.range = player.type;
+  parseJson.value = player.value;
 
   let bnbCost = parseFloat(player.price) / bnbPrice;
   let roundedBnbCost = Math.round(bnbCost * 10) / 10
@@ -173,12 +183,11 @@ async function comparison(allNfts, tokenContract, results) {
 
     var metaJson = JSON.parse(jsonString);
 
-    if (metaJson.player_batch_number == 5 && nft.presale == false) {
+    if (metaJson.player_batch_number == batch_number_dealing && nft.presale == false) {
       const name = xorEncode(metaJson.authentication_signature, 'sportex-sync');
       console.log("found:", name);
       names.push(name);
     }
-
   }
 
   console.log(names, "names");
@@ -232,7 +241,7 @@ async function importNFTs() {
 
   console.log("fetching market items");
 
-  const allNfts = await marketContract.fetchAllMarketItems();
+  const allNfts = await marketContract.fetchMarketItems();
 
   console.log("fetched market items");
 

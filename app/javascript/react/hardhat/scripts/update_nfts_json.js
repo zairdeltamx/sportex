@@ -2,6 +2,7 @@ const hre = require("hardhat");
 const axios = require('axios');
 const nftContractAbi = require('../artifacts/contracts/NFT.sol/NFT.json').abi;
 const nftMarketContractAbi = require('../artifacts/contracts/NFTMarketplace.sol/NFTMarketplace.json').abi;
+const _ = require('lodash');
 
 const Papa = require('papaparse');
 const fs = require('fs');
@@ -42,7 +43,7 @@ async function updateNftsPrice() {
 
   console.log("initialized market contracts");
 
-  const allNfts = await marketContract.fetchAllMarketItems();
+  const allNfts = await marketContract.fetchMarketItems();
 
   console.log("allNfts", allNfts);
 
@@ -74,6 +75,9 @@ async function updateNftsPrice() {
 
       console.log("playerName", playerName);
 
+      metaJson.PlayerName = player_nft.nombre_jugador.replace("\"", "") ;
+      metaJson.name = player_nft.nombre_jugador.replace("\"", "") ;
+      metaJson.playerName = player_nft.nombre_jugador.replace("\"", "") ;
       metaJson.price = player_nft.price;
       metaJson.grade = player_nft.grade;
       metaJson.range = player_nft.type;
@@ -82,16 +86,18 @@ async function updateNftsPrice() {
       if (metaJson.PlayerName == "Hidden") {
         console.log("Ignored player");
       } else {
-        //console.log("new metajson", metaJson);
-        //console.log("player_nft", player_nft);
 
-        //const stringJson = JSON.stringify(metaJson);
-        //let transaction = await tokenContract.updateMeta(nft.tokenId, stringJson);
-        //let tx = await transaction.wait();
+        if (metaJson.player_batch_number == 6) {
+          console.log("new metajson", metaJson);
 
-        //console.log(tx, "TX");
-        //console.log("Transaction: ", tx);
-        //console.log("Transaction events: ", tx.events[0]);
+          //const stringJson = JSON.stringify(metaJson);
+          //let transaction = await tokenContract.updateMeta(nft.tokenId, stringJson);
+          //let tx = await transaction.wait();
+
+          //console.log(tx, "TX");
+          //console.log("Transaction: ", tx);
+          //console.log("Transaction events: ", tx.events[0]);
+        }
       }
     }
   }
