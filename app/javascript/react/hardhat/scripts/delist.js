@@ -17,26 +17,30 @@ async function delist() {
   console.log('nftaddress', nftaddress);
   console.log('signer', signer);
   const marketContract = new hre.ethers.Contract(nftmarketaddress, nftMarketContractAbi, signer);
+  const tokenContract = new hre.ethers.Contract(nftaddress, nftContractAbi, signer);
 
   const allNfts = await marketContract.fetchMarketItems();
 
   console.log("allNfts", allNfts);
-  const compareValue = ethers.BigNumber.from("652");
+  const delistNfts = [];
+  for (const nftId of delistNfts) {
+    const compareValue = ethers.BigNumber.from(nftId.toString());
 
-  //561, 562, 563, 564, 565, 566, 567
-  const toDelist = _.filter(allNfts, (nft) => nft.tokenId.eq(compareValue));
+    //561, 562, 563, 564, 565, 566, 567
+    const toDelist = _.filter(allNfts, (nft) => nft.tokenId.eq(compareValue));
 
-  console.log("toDelist", toDelist);
+    console.log("toDelist", toDelist);
 
-  for (const nft of toDelist) {
-    if (nft.owner == '0x0000000000000000000000000000000000000000') {
-      continue;
+    for (const nft of toDelist) {
+      if (nft.owner == '0x0000000000000000000000000000000000000000') {
+        continue;
+      }
+
+      console.log('token delisting', nft);
+      let transactiondelist = await marketContract.delistNFT(nft.tokenId);
+      console.log('token delisted', nft.tokenId);
+      console.log('transation', transactiondelist);
     }
-
-    console.log('token delisting', nft);
-    let transactiondelist = await marketContract.delistNFT(nft.tokenId);
-    console.log('token delisted', nft.tokenId);
-    console.log('transation', transactiondelist);
   }
 
   console.log("initialized market contracts");

@@ -63,7 +63,7 @@ async function comparison(allNfts, tokenContract, results) {
 
     var metaJson = JSON.parse(jsonString);
 
-    if (metaJson.player_batch_number == 6 && nft.presale == false) {
+    if (metaJson.player_batch_number == 14 && nft.presale == false) {
       const name = xorEncode(metaJson.authentication_signature, 'sportex-sync');
       console.log("found:", name);
       names.push(name);

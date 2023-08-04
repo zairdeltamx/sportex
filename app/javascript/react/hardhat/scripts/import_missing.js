@@ -12,7 +12,7 @@ const nftmarketaddress = '0xe226b8ebfb4e329a9f3121b04e31b5f20de3c536';
 
 const { create } = require('ipfs-http-client');
 
-const batch_number_dealing = 6;
+const batch_number_dealing = 14;
 
 const client = create({
   host: "ipfs.infura.io",
