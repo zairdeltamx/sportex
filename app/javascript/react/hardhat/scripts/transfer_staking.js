@@ -7,7 +7,7 @@ const _ = require('lodash');
 const Papa = require('papaparse');
 const fs = require('fs');
 const playersCsv = fs.readFileSync('./players.csv').toString();
-const assignationNftsCsv = fs.readFileSync('./stacking-july29.csv').toString();
+const assignationNftsCsv = fs.readFileSync('./staking-august.csv').toString();
 
 const nftaddress = '0xad35155c6e88273c6b91b8b93933945847813051';
 const nftmarketaddress = '0xe226b8ebfb4e329a9f3121b04e31b5f20de3c536';
@@ -220,30 +220,6 @@ async function updateNftsPrice() {
     console.log("gold_nfts left", gold_nfts.length);
     console.log("legend_nfts left", legend_nfts.length);
     console.log("epic_nfts left", epic_nfts.length);
-
-
-    //const nftsToTransfer = _.take(bronce_nfts, amount_to_transfer);
-
-    //console.log('address_to_transfer_to', address_to_transfer_to);
-
-    //for (const nft of nftsToTransfer) {
-      //console.log('token to transfer', nft);
-      //console.log('token delisting', nft.tokenId);
-      //let transactiondelist = await marketContract.delistNFT(nft.tokenId);
-      //await transactiondelist.wait();
-      //console.log('token delisted', nft.tokenId);
-      //console.log('token approving', nft.tokenId);
-      //let transactionapprove = await tokenContract.approve(nftmarketaddress, nft.tokenId);
-      //await transactionapprove.wait();
-      //console.log('token approved', nft.tokenId);
-      //console.log('token transfering', nft.tokenId);
-      //let transferTotransaction = await marketContract.transferTo(address_to_transfer_to, nft.tokenId);
-      //await transferTotransaction.wait();
-      //console.log('token transfered', nft.tokenId);
-      //console.log('transation', transferTotransaction);
-    //}
-
-    //bronce_nfts = _.drop(bronce_nfts, amount_to_transfer);
   }
 
 
