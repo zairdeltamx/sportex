@@ -14,12 +14,13 @@ Rails.application.routes.draw do
   get '/createitem', to: 'dashboard#index'
   get '/profile', to: 'dashboard#index'
   get '/dashboard', to: 'dashboard#index', as: :dashboard
+  get '/terms', to: 'terms#index', as: :terms
 
   # authentication logic routes
   devise_for :users, controllers: {
-            registrations: 'users/registrations',
-            sessions: 'users/sessions',
-          }
+    registrations: 'users/registrations',
+    sessions: 'users/sessions',
+  }
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 

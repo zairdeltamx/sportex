@@ -33,7 +33,7 @@ export async function currentChainIsValid() {
 
 export async function switchChain(button) {
   const provider = await detectEthereumProvider();
-  const web3 = new Web3("https://rpc.v3.testnet.pulsechain.com/");
+  const web3 = new Web3(rpcUrls[0]);
   try {
     await provider.request({
       method: "wallet_switchEthereumChain",
@@ -81,7 +81,7 @@ export async function requestAccounts() {
     notification.showWarningWithButton({
       title: "Error",
       message:
-        "Ya tienes una solicitud en curso, revisa tu bandeja de MetaMask",
+        "You already have a request in progress, check your MetaMask inbox",
     });
   } finally {
     showLoader(false);

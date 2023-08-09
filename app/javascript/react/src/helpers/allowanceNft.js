@@ -25,8 +25,9 @@ export async function allowance({ setTransactionIsLoading, tokenId }) {
     // );
     // await approve.wait();
     const allowance = await nftContract.getApproved(tokenId);
-    console.log(allowance, "ALLOWANCE");
-    if (allowance.toLowerCase() == nftmarketaddress) {
+    console.log(allowance.toLowerCase(), "ALLOWANCE");
+    console.log(nftmarketaddress,"NFTMARKET");
+    if (allowance.toLowerCase() === nftmarketaddress.toLowerCase()) {
       return true;
     } else {
       return false;

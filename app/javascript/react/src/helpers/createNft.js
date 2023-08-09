@@ -18,6 +18,14 @@ const client = ipfsHttpClient({
 });
 //1. create item (image/video) and upload to ipfs
 export async function createItem({ name, description, price, fileUrl, meta, teamName }) {
+  console.log('------------------');
+  console.log(name)
+  console.log(description)
+  console.log(price,"PRICE")
+  console.log(fileUrl,"DILE")
+  console.log(meta,"META")
+  console.log(teamName,"TEAMNAME")
+  console.log('------------------');
   //form validation
   if (!name || !description || !price || !fileUrl || !meta || !teamName) {
     return;

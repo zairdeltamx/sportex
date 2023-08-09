@@ -1,9 +1,25 @@
-// .buttonBuyNft {
-//     background-color: #003399;
-//     border-radius: 10px;
-//     border: none;
-//     font-family: "Roboto", sans-serif;
-//     padding: 5px;
-//     color: white;
-//     width: 100%;
-//   }
+.button_confirm_buy_index {
+  background-color: #003399;
+
+  border-radius: 10px;
+  border: none;
+  font-family: "Roboto", sans-serif;
+  padding: 10px 20px;
+  color: white;
+  width: 100%;
+  &:disabled {
+    background-color: red;
+  }
+}
+.button_confirm_buy_nftinfo {
+  width: 100%;
+  background-color: #86fc73;
+  border: none;
+  color: black;
+  padding: 10px;
+  border-radius: 10px;
+
+  &:disabled {
+    background-color: red;
+  }
+}

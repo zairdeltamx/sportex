@@ -16,10 +16,10 @@ function useNFTs() {
 
   async function loadNFTs() {
     const web3Modal = new Web3Modal({
-      network: "bsc",
+      network: "mumbai",
       cacheProvider: true,
     });
-
+    
     const connection = await web3Modal.connect();
     const provider = new ethers.providers.Web3Provider(connection);
     const signer = provider.getSigner();

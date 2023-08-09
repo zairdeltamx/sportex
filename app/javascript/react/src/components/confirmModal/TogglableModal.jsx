@@ -12,7 +12,9 @@ export const TogglableModal = ({
   const [visible, setVisible] = useState(false);
   return (
     <Fragment>
-      <button onClick={() => setVisible(true)}>{buttonLabel}</button>
+      <button className="toogle_button" onClick={() => setVisible(true)}>
+        {buttonLabel}
+      </button>
       <Modal show={visible}>
         <Modal.Header>
           <Modal.Title>{title}</Modal.Title>

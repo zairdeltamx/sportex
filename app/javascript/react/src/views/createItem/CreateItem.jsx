@@ -26,7 +26,7 @@ export default function CreateItem() {
     price: "",
     name: "",
     description: "",
-    teamName: "",
+    teamName: "Mexico",
     meta: "",
   });
   const { teams } = useGetTeams();
@@ -41,11 +41,12 @@ export default function CreateItem() {
       name: formInput.name,
       teamName: formInput.teamName,
     })
-      .then(() => {
-        notification.showSuccess({
-          title: "Success",
-          message: "The item has been created successfully",
-        });
+      .then((res) => {
+        console.log(res,"res");
+        // notification.showSuccess({
+        //   title: "Success",
+        //   message: "The item has been created successfully",
+        // });
       })
       .catch((e) => {
         console.log(e);

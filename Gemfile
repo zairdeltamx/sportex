@@ -23,6 +23,10 @@ gem 'yard'
 
 gem 'simplecov'
 
+gem 'simplecov-rcov'
+
+gem 'simplecov-summary'
+
 gem 'sidekiq'
 
 gem 'rspec-its'

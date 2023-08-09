@@ -19,6 +19,7 @@ import { notification } from "./alerts/notifications";
 import { allowance } from "../helpers/allowanceNft";
 import { approve } from "../helpers/approveNft";
 import { Loader } from "./Loader";
+import { ConfirmBuy } from "./ConfirmBuy";
 
 export const NftItem = ({ nft, unitDolar }) => {
   const [nftIsApproved, setnftIsApproval] = useState(false);
@@ -37,15 +38,29 @@ export const NftItem = ({ nft, unitDolar }) => {
         tokenId: nft.tokenId,
       }).finally(() => {
         setLoading(false);
+        setTransactionIsLoading(false);
       });
+      console.log(requestAllowance, "ALLOSW");
       setnftIsApproval(requestAllowance);
     }
+    console.log(location.pathname);
     if (location.pathname === "/myassets") {
       console.log("ENTRA");
       handleAllowance();
     }
   }, []);
+  const handleBuyClick = () => {
+    setShowConfirmBuy(true);
+  };
 
+  const handleAcceptTerms = () => {
+    console.log();
+    setTermsAccepted(true);
+  };
+
+  const handleCloseConfirmBuy = () => {
+    setShowConfirmBuy(false);
+  };
   async function changePriceProxy({ nft, price }) {
     try {
       setTransactionIsLoading(true);
@@ -149,6 +164,7 @@ export const NftItem = ({ nft, unitDolar }) => {
         console.log(nftIsApproved, "ISAPPROVED");
         return (
           <button
+            className="approve_nft"
             onClick={() =>
               approve({
                 address: addressMetamask,
@@ -204,6 +220,7 @@ export const NftItem = ({ nft, unitDolar }) => {
         return (
           <Fragment>
             <TogglableModal
+              className="toogle_button"
               onConfirm={changePriceProxy}
               params={{ nft, price: askingPrice }}
               title="Enter asking price for NFT"
@@ -223,7 +240,11 @@ export const NftItem = ({ nft, unitDolar }) => {
           </Fragment>
         );
       } else {
-        return <ButtonBuyNft nft={nft} />;
+        return (
+          <Fragment>
+            <ButtonBuyNft className={"button_confirm_buy_index"} nft={nft} />
+          </Fragment>
+        );
       }
     }
   };

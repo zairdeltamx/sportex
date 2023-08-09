@@ -3,10 +3,13 @@ import { useLazyQuery } from "@apollo/client";
 import { GET_NFT } from "../../querys/getOneNft";
 import { useParams } from "react-router-dom";
 import { ButtonBuyNft } from "../../components/buttonBuyNft/ButtonBuyNft";
+import handleBuyNft from "../../helpers/buyNft";
+import { useLoadingContext } from "../../useContext/LoaderContext";
 const NftInfo = () => {
   const [nft, setNft] = useState(null);
   const [getNft, { data, loading }] = useLazyQuery(GET_NFT);
   const { tokenId } = useParams();
+  const { setTransactionIsLoading } = useLoadingContext();
   useEffect(() => {
     if (tokenId) {
       console.log(
@@ -88,9 +91,7 @@ const NftInfo = () => {
               <div className="table_nft_cell value">{nft?.teamName}</div>
             </div>
           </div>
-          <div className="button_buy_nft_info">
-            <ButtonBuyNft nft={nft} />
-          </div>
+          <ButtonBuyNft className={"button_confirm_buy_nftinfo"} nft={nft} />
         </div>
         <div className="grid_item offers">
           <h1>Offers</h1>

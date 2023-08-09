@@ -7,39 +7,38 @@ import { CODE_INSUFFICIENT_GAS } from "../../../../controllers/js/ethConfig";
 import { useLoadingContext } from "../../useContext/LoaderContext";
 
 export const ButtonDelistNft = ({ nft }) => {
-  const { setTransactionIsLoading } = useLoadingContext()
+  const { setTransactionIsLoading } = useLoadingContext();
 
   async function handleDelistNft(nft) {
     try {
-      setTransactionIsLoading(true)
+      setTransactionIsLoading(true);
       await delistNft(nft);
       await deleteNft({ id: nft.id });
-      setTransactionIsLoading(false)
+      setTransactionIsLoading(false);
 
       notification.showSuccess({
         title: "Successful purchase",
         message: "Your NFT will be found in the My Assets section",
       });
     } catch (error) {
-      setTransactionIsLoading(false)
+      setTransactionIsLoading(false);
       if (error.code === CODE_INSUFFICIENT_GAS) {
         notification.showWarning({
           title: "Failed to buy",
           message: "You don't have enough gas for this purchase",
         });
-        return
+        return;
       }
       notification.showError({
         title: "Failed to buy",
         message: "An error has occurred in the purchase, please try again",
       });
     } finally {
-      setTransactionIsLoading(false)
+      setTransactionIsLoading(false);
     }
   }
   return (
-
-    <button onClick={() => handleDelistNft(nft)} >
+    <button className="button_delist" onClick={() => handleDelistNft(nft)}>
       Delist
     </button>
   );
