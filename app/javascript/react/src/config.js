@@ -1,10 +1,10 @@
 // Binance Smart Chain
-export const nftaddress = '0xad35155c6e88273c6b91b8b93933945847813051';
-export const nftmarketaddress = '0xe226b8ebfb4e329a9f3121b04e31b5f20de3c536';
+//export const nftaddress = "0xB2eF2448CD1b5BDA9211ccA103be801c1E2E08B4";
+//export const nftmarketaddress = "0xcB2788f8D46C1f6f2C22D3A6b455D2E62EFcC69a";
 
-//Avalanche
-//export const nftaddress = '0x552820268831298c5d4cfac7f9c1c9c7d4e0fb77';
-//export const nftmarketaddress = '0xb17b495c3c1c7bd069956ab8b1b1bae57d9c2cdc';
+//Pulsechain
+export const nftaddress = '0x9f62F80bAEf514182205bCdF79aBcDa430b7901c';
+export const nftmarketaddress = '0x999D61cBcE75dAe46dB1DC046901A72a981567B0';
 // export const getApiUrl = path => `http://localhost:3000/v1/${path}`;
 
 export const getApiUrl = (path) => `/api/v1/${path}`;

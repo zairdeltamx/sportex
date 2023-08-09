@@ -1,7 +1,7 @@
 // ethConfig.js
-export const chainName = "Binance Smart Chain";
-export const chainId = "0x38";
-export const nativeCurrency = { name: "BNB", decimals: 18, symbol: "BNB" };
-export const blockExplorerUrls = ["https://bscscan.com/"];
-export const rpcUrls = ["https://bsc-dataseed.binance.org/"];
+export const chainName = "Pulsechain Testnet";
+export const chainId = "0x3af";
+export const nativeCurrency = { name: "tPulse", decimals: 18, symbol: "tPLS" };
+export const blockExplorerUrls = ["https://scan.v4.testnet.pulsechain.com"];
+export const rpcUrls = ["https://rpc.v4.testnet.pulsechain.com"];
 export const CODE_INSUFFICIENT_GAS = -32603

@@ -5,17 +5,12 @@ const privateKey = fs.readFileSync(".secret").toString().slice(0, -1);
 
 module.exports = {
 	networks: {
-    avalanche: {
-      url: 'https://api.avax.network/ext/bc/C/rpc',
-      chainId: 43114,
-			accounts: [privateKey],
-    },
-		pulsechain: {
-			url: 'https://rpc.v3.testnet.pulsechain.com',
-			chainId: 942,
+    pulsechain_testnet: {
+			url: 'https://rpc.v4.testnet.pulsechain.com',
+			chainId: 943,
 			accounts: [privateKey],
 		},
-		mumbai: {
+    mumbai: {
 			url: 'https://polygon-mumbai.g.alchemy.com/v2/hc0Wpe0cRRlRswUdab9-D9WE7olqo_yK',
 			accounts: [privateKey],
 		},
