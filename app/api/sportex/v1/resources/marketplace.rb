@@ -3,7 +3,7 @@
 module Sportex
   module V1
     module Resources
-      class Marketplace < Grape::API
+      class Marketplace < BaseApi
         desc 'Get all marketplace items'
         # fetch a URL and return the response body
         get :marketplace do

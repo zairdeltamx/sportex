@@ -47,7 +47,7 @@ module Sportex
         hide_format: true,
         info: {
           title: 'Sportex API v1.0',
-          description: 'Mobile API for Sportex Fitness Planner'
+          description: 'Mobile API for Sportex'
         }
       )
     end

@@ -1,12 +1,18 @@
 import axios from "axios";
 import { getApiUrl } from "../config";
+import { useLazyQuery } from "@apollo/client";
+import { MARK_AS_SOLD } from "../../querys/getAllNfts";
 
 export const deleteNft = async ({ id }) => {
+  const [markAsSold, { data, loading, error }] = useLazyQuery(MARK_AS_SOLD);
   console.log(id, "ID");
   console.log(typeof id);
 
-  const apiUrl = getApiUrl(`nfts/${id}`);
-  await axios.delete(apiUrl);
+  await markAsSold({
+    variables: {
+      tokenId: id,
+    }
+  });
 };
 
 export const checkStatusNft = async ({ id }) => {
