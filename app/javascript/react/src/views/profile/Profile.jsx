@@ -5,11 +5,11 @@ import PencelIcon from '../../img/pencelIcon.svg';
 import { updateUser } from '../../services/users';
 import { useMetamask } from '../../useContext/MetamaskContext';
 import { useLazyQuery } from '@apollo/client';
-import { GET_USER } from '../../querys/getUser';
 import ClipboardJS from 'clipboard';
 import { notification } from '../../components/alerts/notifications';
 
 import styles from './Profile.module.css';
+import { GET_USER } from '../../graphql/user/graphql-queries';
 export default function Profile() {
   const [form, setForm] = useState(null);
   const [get_user, { data, loading, error }] = useLazyQuery(GET_USER, {

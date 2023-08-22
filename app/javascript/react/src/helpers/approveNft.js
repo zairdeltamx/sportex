@@ -12,7 +12,7 @@ export async function approve({ setnftIsApproval, tokenId }) {
     const nftContract = new ethers.Contract(nftaddress, NFT.abi, signer);
 
     const approveTx = await nftContract.approve(nftmarketaddress, tokenId);
-    // await approveTx.wait();
+    await approveTx.wait();
 
     notification.showSuccess({
       title: 'success',

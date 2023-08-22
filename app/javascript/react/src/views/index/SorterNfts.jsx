@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
-import IconSearch from "../../img/iconSearch.svg";
-import Menu from "../../img/navbar/menu.svg";
-import CloseMenu from "../../img/navbar/closeMenu.svg";
-import styles from "./SorterNfts.module.css";
-import { useGetTeams } from "../../hooks/useGetTeams";
+import React, { useEffect, useState } from 'react';
+import IconSearch from '../../img/iconSearch.svg';
+import Menu from '../../img/navbar/menu.svg';
+import CloseMenu from '../../img/navbar/closeMenu.svg';
+import styles from './SorterNfts.module.css';
+import { useGetTeams } from '../../graphql/teams/custom-hooks';
 export const SorterNfts = ({
   handleSubmit,
   orderBy,
   order,
+  fetchNFTsData,
   setOrder,
   setOrderBy,
   setName,
@@ -20,7 +21,7 @@ export const SorterNfts = ({
   const { teams } = useGetTeams();
 
   const filter = () => {
-    handleSubmit();
+    fetchNFTsData();
     setCurrentPage(1);
   };
   const toggleSort = () => {
@@ -61,7 +62,7 @@ export const SorterNfts = ({
           </div>
           <div
             className={`${styles.containerButtons} ${
-              active ? styles.active : ""
+              active ? styles.active : ''
             }`}
           >
             <div className={styles.buttons}>

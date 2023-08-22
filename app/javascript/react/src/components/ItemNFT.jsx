@@ -16,6 +16,7 @@ import { allowance } from '../helpers/allowanceNft';
 import { approve } from '../helpers/approveNft';
 import { resellToken } from '../helpers/resellToken';
 import { transferToken } from '../helpers/transferToken';
+import { ModalChangePriceNft } from './modalChangePriceNft/ModalChangePriceNft';
 export const ItemNFT = ({ nft, isMarketplace }) => {
   const [nftIsApproved, setnftIsApproval] = useState(false);
   const [askingPrice, setAskingPrice] = useState(0);
@@ -80,27 +81,28 @@ export const ItemNFT = ({ nft, isMarketplace }) => {
       if (nft.seller.toLowerCase() === addressMetamask) {
         return (
           <Fragment>
-            <button
+            {/* <button
               className={styles.changePriceNft}
               onClick={openModalChangePrice}
             >
               Change price
-            </button>
-            <Modal
-              isOpen={isOpenModalChangePrice}
-              onClose={closeModalChangePrice}
+            </button> */}
+            <ModalChangePriceNft
+              onConfirm={handleChangePrice}
+              title="Enter asking price for NFT"
+              buttonLabel="Change Price"
+              askingPrice={askingPrice}
             >
-              <h1>Enter asking price for NFT</h1>
-              <InputLabel htmlFor="input-price">Asking Price:</InputLabel>
-              <Input
-                type="number"
-                id="input-price"
-                placeholder="2 PLS"
-                onChange={(e) => setAskingPrice(e.target.value)}
-                autoFocus
-              />
-              <Button onClick={() => handleChangePrice()}>Change Price</Button>
-            </Modal>
+              <form>
+                <label>Asking Price:</label>
+                <input
+                  type="number"
+                  placeholder="2 PLS"
+                  onChange={(e) => setAskingPrice(e.target.value)}
+                  autoFocus
+                />
+              </form>
+            </ModalChangePriceNft>
             <ButtonDelistNft nft={nft} />
           </Fragment>
         );

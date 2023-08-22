@@ -18,6 +18,7 @@ export const Modal = ({ children, isOpen, onClose }) => {
 
         <br />
         <br />
+        <hr />
         <button className={styles.buttonClose} onClick={onClose}>
           Close
         </button>

@@ -1,64 +1,43 @@
-import React, { useState, useEffect } from "react";
-import { Pagination } from "../../components";
-
-import { Banner } from "../../layouts/banner/Banner";
-import { ListNfts } from "../../components/ListNfts";
-import { useLazyQuery } from "@apollo/client";
-import { GET_NFTS } from "../../querys/getAllNfts";
-import { Wave } from "../../components/Wave";
-import styles from "./index.module.css";
-import { Loader } from "../../components/Loader";
-import { useMetamask } from "../../useContext/MetamaskContext";
-import { SorterNfts } from "./SorterNfts";
+import React, { useState, useEffect } from 'react';
+import { Pagination } from '../../components';
+import { Banner } from '../../layouts/banner/Banner';
+import { ListNfts } from '../../components/ListNfts';
+import { Wave } from '../../components/Wave';
+import styles from './index.module.css';
+import { Loader } from '../../components/Loader';
+import { useMetamask } from '../../useContext/MetamaskContext';
+import { SorterNfts } from './SorterNfts';
+import { useGetNfts } from '../../graphql/nft/custom-hooks';
 
 export default function Index() {
   const { addressMetamask } = useMetamask();
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [name, setName] = useState("");
-  const [orderBy, setOrderBy] = useState("");
-  const [order, setOrder] = useState("");
-  const [teamName, setTeamName] = useState("");
-  const [nfts, setNFTs] = useState([]);
+  const [name, setName] = useState('');
+  const [orderBy, setOrderBy] = useState('');
+  const [order, setOrder] = useState('');
+  const [teamName, setTeamName] = useState('');
   const [cryptoPrice, setCryptoPrice] = useState(null);
-  const [getNFTs, { data, loading, error }] = useLazyQuery(GET_NFTS);
   const [searchForSeller, setsearchForSeller] = useState(false);
-  const handleSubmit = () => {
-    getNFTs({
+  const [getNfts, { loading, data, error, refetch }] = useGetNfts();
+
+  const fetchNFTsData = () => {
+    getNfts({
       variables: {
         page: currentPage,
-        seller: searchForSeller === true ? addressMetamask : "",
-        limit: 10,
         name,
-        orderBy,
+        seller: searchForSeller === true ? addressMetamask : '',
+        limit: 2,
         order,
+        orderBy,
         teamName,
       },
-      fetchPolicy: "no-cache",
     });
   };
 
   useEffect(() => {
-    handleSubmit();
+    fetchNFTsData();
   }, [currentPage, name, searchForSeller]);
-
-  useEffect(() => {
-    if (data) {
-      setNFTs(data.nfts.collection);
-      const nfts = data.nfts.collection;
-      if (cryptoPrice) {
-        const updatedNFTs = nfts.map((nft) => ({
-          ...nft,
-          priceInUSD: Number((cryptoPrice * nft.price).toFixed(2)),
-        }));
-        console.log(updatedNFTs, "SKDJAKLDJALDJSLKDAJKLDS");
-        setNFTs(updatedNFTs);
-      }
-
-      console.log(data.nfts);
-      setTotalPages(data.nfts.metadata.totalPages);
-    }
-  }, [data, cryptoPrice]);
 
   useEffect(() => {
     fetch(
@@ -66,10 +45,20 @@ export default function Index() {
     )
       .then((res) => res.json())
       .then((data) => {
-        const bnbPrice = data["binancecoin"]["usd"];
+        const bnbPrice = data['binancecoin']['usd'];
         setCryptoPrice(bnbPrice);
       });
   }, []);
+
+  const nfts = data?.nfts.collection || []; // Access nfts collection from data
+
+  // Calculate priceInUSD for each NFT and add it to the NFT objects
+  const nftsWithPriceInUSD = nfts.map((nft) => ({
+    ...nft,
+    priceInUSD: cryptoPrice
+      ? Number((cryptoPrice * nft.price).toFixed(2))
+      : null,
+  }));
 
   return (
     <div>
@@ -83,28 +72,26 @@ export default function Index() {
           <br />
           <SorterNfts
             setCurrentPage={setCurrentPage}
-            handleSubmit={handleSubmit}
-            order={order}
             setOrder={setOrder}
-            setOrderBy={setOrderBy}
-            orderBy={orderBy}
-            setName={setName}
-            name={name}
+            fetchNFTsData={fetchNFTsData}
+            searchForSeller={searchForSeller}
             setsearchForSeller={setsearchForSeller}
+            setName={setName}
+            setOrderBy={setOrderBy}
             setTeamName={setTeamName}
           />
 
           {loading ? (
             <Loader />
           ) : nfts.length === 0 ? (
-            <h1 style={{ textAlign: "center", paddingTop: "20px" }}>
+            <h1 style={{ textAlign: 'center', paddingTop: '20px' }}>
               Not found NFTs
             </h1>
           ) : (
-            <ListNfts isMarketplace={true} nfts={nfts} />
+            <ListNfts isMarketplace={true} nfts={nftsWithPriceInUSD} />
           )}
           <Pagination
-            totalPages={totalPages}
+            totalPages={data?.nfts.metadata.totalPages || 1}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
           ></Pagination>

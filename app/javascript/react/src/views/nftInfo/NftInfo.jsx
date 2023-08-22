@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useLazyQuery } from '@apollo/client';
-import { GET_NFT } from '../../querys/getOneNft';
 import { useParams } from 'react-router-dom';
 import { useLoadingContext } from '../../useContext/LoaderContext';
 
 import styles from './NftInfo.module.css';
 import { PurchaseButton } from '../../components/PurchaseButton';
+import { GET_NFT } from '../../graphql/nft/graphql-queries';
 const NftInfo = () => {
   const [nft, setNft] = useState(null);
   const [getNft, { data, loading }] = useLazyQuery(GET_NFT);
@@ -32,7 +32,7 @@ const NftInfo = () => {
       );
       const data = await response.json();
       console.log(data, 'DATA');
-      const bnbPrice = data["binancecoin"]["usd"];
+      const bnbPrice = data['binancecoin']['usd'];
 
       setCryptoPrice(bnbPrice);
     };

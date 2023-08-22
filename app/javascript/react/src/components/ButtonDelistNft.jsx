@@ -1,37 +1,29 @@
-import React from "react";
-import delistNft from "../helpers/delistNft";
-import { notification } from "./alerts/notifications";
-import { deleteNft } from "../services/nft";
-import styles from "./ButtonDelistNft.module.css";
-import { useLoadingContext } from "../useContext/LoaderContext";
+import React from 'react';
+import delistNft from '../helpers/delistNft';
+import { notification } from './alerts/notifications';
+import styles from './ButtonDelistNft.module.css';
+import { useLoadingContext } from '../useContext/LoaderContext';
+
+import { useMarkAsSold } from '../graphql/nft/custom-hooks';
 
 export const ButtonDelistNft = ({ nft }) => {
   const { setTransactionIsLoading } = useLoadingContext();
-  const CODE_INSUFFICIENT_GAS = -32603;
-
+  const [markNftAsSold] = useMarkAsSold();
   async function handleDelistNft(nft) {
     try {
       setTransactionIsLoading(true);
+      console.log('ENTRA AQUI LIST');
       await delistNft(nft);
-      await deleteNft({ id: nft.id });
-      setTransactionIsLoading(false);
-
+      markNftAsSold({ variables: { tokenId: nft.tokenId } });
       notification.showSuccess({
-        title: "Successful purchase",
-        message: "Your NFT will be found in the My Assets section",
+        title: 'Unlisted successfully',
+        message: 'Your NFT will be found in the My Assets section',
       });
     } catch (error) {
-      setTransactionIsLoading(false);
-      if (error.code === CODE_INSUFFICIENT_GAS) {
-        notification.showWarning({
-          title: "Failed to buy",
-          message: "You don't have enough gas for this purchase",
-        });
-        return;
-      }
+      console.log('ERROROR', error);
       notification.showError({
-        title: "Failed to buy",
-        message: "An error has occurred in the purchase, please try again",
+        title: 'Failed to unlist',
+        message: 'There was an error unlisting NFT, please try again later',
       });
     } finally {
       setTransactionIsLoading(false);

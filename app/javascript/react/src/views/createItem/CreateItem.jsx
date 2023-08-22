@@ -1,21 +1,20 @@
-import { create as ipfsHttpClient } from "ipfs-http-client";
-import React, { useEffect, useState } from "react";
-import Polaroid from "../../img/polaroid.svg";
-import { Loader } from "../../components/Loader";
-import { createItem } from "../../helpers/createNft";
-import { useLoadingContext } from "../../useContext/LoaderContext";
-import { notification } from "../../components/alerts/notifications";
-import { GET_TEAMS } from "../../querys/getTeams";
-import { useLazyQuery } from "@apollo/client";
-import { useGetTeams } from "../../hooks/useGetTeams";
-import styles from "./CreateItem.module.css";
+import { create as ipfsHttpClient } from 'ipfs-http-client';
+import React, { useEffect, useState } from 'react';
+import Polaroid from '../../img/polaroid.svg';
+import { Loader } from '../../components/Loader';
+import { createItem } from '../../helpers/createNft';
+import { useLoadingContext } from '../../useContext/LoaderContext';
+import { notification } from '../../components/alerts/notifications';
+import { useLazyQuery } from '@apollo/client';
+import styles from './CreateItem.module.css';
+import { useGetTeams } from '../../graphql/teams/custom-hooks';
 const client = ipfsHttpClient({
-  host: "ipfs.infura.io",
+  host: 'ipfs.infura.io',
   port: 5001,
-  protocol: "https",
+  protocol: 'https',
   headers: {
     authorization:
-      "Basic MkRnRGNzc0pHaGdxbEZKUUYzOHZ3U0RqRHBEOjQ0NGNhMWFjMTAwOWQxODljODU0ZGEyZmNhYmUwZGYy",
+      'Basic MkRnRGNzc0pHaGdxbEZKUUYzOHZ3U0RqRHBEOjQ0NGNhMWFjMTAwOWQxODljODU0ZGEyZmNhYmUwZGYy',
   },
 });
 
@@ -24,11 +23,11 @@ export default function CreateItem() {
   const [loadingImage, setLoadingImage] = useState(false);
   const { transactionIsLoading, setTransactionIsLoading } = useLoadingContext();
   const [formInput, updateFormInput] = useState({
-    price: "",
-    name: "",
-    description: "",
-    teamName: "Mexico",
-    meta: "",
+    price: '',
+    name: '',
+    description: '',
+    teamName: 'Mexico',
+    meta: '',
   });
   const { teams } = useGetTeams();
 
@@ -43,17 +42,17 @@ export default function CreateItem() {
       teamName: formInput.teamName,
     })
       .then((res) => {
-        console.log(res, "res");
+        console.log(res, 'res');
         notification.showSuccess({
-          title: "Success",
-          message: "The item has been created successfully",
+          title: 'Success',
+          message: 'The item has been created successfully',
         });
       })
       .catch((e) => {
         console.log(e);
         notification.showErrorWithButton({
-          title: "Error",
-          message: "There was an error creating the item",
+          title: 'Error',
+          message: 'There was an error creating the item',
         });
       })
       .finally(() => {
@@ -74,7 +73,7 @@ export default function CreateItem() {
       setFileUrl(url);
       setLoadingImage(false);
     } catch (e) {
-      console.log("Error uploading file: ", e);
+      console.log('Error uploading file: ', e);
     }
   }
 

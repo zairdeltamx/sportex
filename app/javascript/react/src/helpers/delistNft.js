@@ -17,7 +17,7 @@ export default async function delistNft(nft) {
       message: 'The NFT has been successfully unlisted',
     });
   } catch (error) {
-    console.log(error);
+    console.log('Errorrrororo', error);
     notification.showErrorWithButton({
       title: 'Error',
       message: 'Failed to unlist NFT, please try again later',
