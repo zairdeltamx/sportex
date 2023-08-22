@@ -1,0 +1,10 @@
+.listNfts {
+  margin-top: 50px;
+  /* background-color: aqua; */
+  /* // margin: 0 auto; */
+  display: grid;
+  /* padding: 50px; */
+  gap: 50px 20px;
+  /* // grid-auto-rows: 22rem; */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}

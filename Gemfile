@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.2'
 
+gem 'jwt'
+
 gem 'enumerize'
 
 gem 'faker'
@@ -67,7 +69,6 @@ gem 'sqlite3', '~> 1.4'
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '~> 5.0'
 
-
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
 gem 'jsbundling-rails'
 
@@ -102,7 +103,7 @@ gem 'sassc-rails'
 # gem "image_processing", "~> 1.2"
 
 group :development, :test do
-  gem "rails_live_reload"
+  gem 'rails_live_reload'
 
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[ mri mingw x64_mingw ]
@@ -160,6 +161,8 @@ gem 'grape-swagger-rails', github: 'ruby-grape/grape-swagger-rails'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'hashie-forbidden_attributes'
 
+gem 'stripe'
+
 gem 'graphql'
 gem 'rack-cors'
 
@@ -176,4 +179,6 @@ gem 'devise', '~> 4.2'
 
 gem 'rails_12factor', group: :production
 
-gem "foreman", "~> 0.87.2"
+gem 'foreman', '~> 0.87.2'
+
+gem 'dotenv', '~> 2.8'

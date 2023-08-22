@@ -6,17 +6,6 @@ module Sportex
       class Nfts < BaseApi
         # this function returns all nfts
 
-        helpers do
-          def notify_all_users_nft_destroy
-            ActionCable.server.broadcast(
-              'nftdeleted',
-              {
-                action: 'Updated NFTS DESDE RAILS'
-              }
-            )
-          end
-        end
-
         resource :nfts do
           params do
             use :nft_params
@@ -40,7 +29,6 @@ module Sportex
               @nft = Nft.find(params[:id])
 
               if @nft.update status: 'sold'
-                notify_all_users_nft_destroy
                 render json: {
                   message: 'NFT deleted'
                 }, status: :no_content

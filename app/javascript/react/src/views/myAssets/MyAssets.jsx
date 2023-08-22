@@ -5,15 +5,15 @@ import { ListNfts } from "../../components/ListNfts";
 import { Wave } from "../../components/Wave";
 import { Loader } from "../../components/Loader";
 import useNFTs from "../../helpers/loadNfts";
-
+import styles from "./MyAssets.module.css";
 export default function MyAssets() {
   const [nfts, loadingState] = useNFTs();
-
+  console.log(nfts, "NFTSSS");
   return (
     <div style={{ marginTop: "80px" }}>
       <Wave />
-      <div className="container_my_assets">
-        <div className="content_my_assets">
+      <div className={styles.container}>
+        <div className={styles.content}>
           <h1>My assets</h1>
           {loadingState ? (
             <Loader />
@@ -22,7 +22,7 @@ export default function MyAssets() {
               Not found NFTs
             </h1>
           ) : (
-            <ListNfts nfts={nfts} />
+            <ListNfts nfts={nfts} isMarketplace={false} />
           )}
         </div>
       </div>

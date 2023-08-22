@@ -1,36 +1,36 @@
 import { ethers } from 'ethers';
 import { useNavigate } from 'react-router-dom';
-import Web3Modal from 'web3modal';
-import { create as ipfsHttpClient } from "ipfs-http-client";
+import { create as ipfsHttpClient } from 'ipfs-http-client';
 
 import NFT from '../../hardhat/artifacts/contracts/NFT.sol/NFT.json';
-import Market from "../../hardhat/artifacts/contracts/NFTMarketplace.sol/NFTMarketplace.json";
+import Market from '../../hardhat/artifacts/contracts/NFTMarketplace.sol/NFTMarketplace.json';
 
 import { nftaddress, nftmarketaddress } from '../config';
 const client = ipfsHttpClient({
-  host: "ipfs.infura.io",
+  host: 'ipfs.infura.io',
   port: 5001,
-  protocol: "https",
+  protocol: 'https',
   headers: {
     authorization:
-      "Basic MkRnRGNzc0pHaGdxbEZKUUYzOHZ3U0RqRHBEOjQ0NGNhMWFjMTAwOWQxODljODU0ZGEyZmNhYmUwZGYy",
+      'Basic MkRnRGNzc0pHaGdxbEZKUUYzOHZ3U0RqRHBEOjQ0NGNhMWFjMTAwOWQxODljODU0ZGEyZmNhYmUwZGYy',
   },
 });
-//1. create item (image/video) and upload to ipfs
-export async function createItem({ name, description, price, fileUrl, meta, teamName }) {
-  console.log('------------------');
-  console.log(name)
-  console.log(description)
-  console.log(price,"PRICE")
-  console.log(fileUrl,"DILE")
-  console.log(meta,"META")
-  console.log(teamName,"TEAMNAME")
-  console.log('------------------');
-  //form validation
+
+// 1. Crear un ítem (imagen/video) y subirlo a IPFS
+export async function createItem({
+  name,
+  description,
+  price,
+  fileUrl,
+  meta,
+  teamName,
+}) {
+  // Validación del formulario
   if (!name || !description || !price || !fileUrl || !meta || !teamName) {
     return;
   }
-  let parseJson = JSON.parse(meta);
+
+  const parseJson = JSON.parse(meta);
   parseJson.cardBasicInfo.price = price;
   parseJson.name = name;
   parseJson.description = description;
@@ -38,9 +38,8 @@ export async function createItem({ name, description, price, fileUrl, meta, team
   parseJson.soccerPlayerInfo.image = fileUrl;
   parseJson.soccerPlayerInfo.playerName = name;
   parseJson.soccerPlayerInfo.playerStats.find((stat) =>
-    stat.hasOwnProperty("image")
+    stat.hasOwnProperty('image')
   ).image = fileUrl;
-
 
   const data = JSON.stringify({
     name,
@@ -51,39 +50,33 @@ export async function createItem({ name, description, price, fileUrl, meta, team
 
   const added = await client.add(data);
   const url = `https://sportex-staging.infura-ipfs.io/ipfs/${added.path}`;
-  //pass the url to sav eit on Polygon adter it has been uploaded to IPFS
+
+  // Pasar la URL para guardarla en Polygon después de haber sido subida a IPFS
   await createSale(url, price, parseJson);
 }
 
-//2. List item for sale
+// 2. Listar el ítem para la venta
 async function createSale(url, nftPrice, metaJson) {
-  const web3Modal = new Web3Modal();
-  const connection = await web3Modal.connect();
-  const provider = new ethers.providers.Web3Provider(connection);
-
-  const stringJson = JSON.stringify(metaJson);
-  //sign the transaction
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
   const signer = provider.getSigner();
+  const stringJson = JSON.stringify(metaJson);
+
+  // Firmar la transacción
   let contract = new ethers.Contract(nftaddress, NFT.abi, signer);
   let transaction = await contract.createToken(url, stringJson);
   let tx = await transaction.wait();
-  console.log(tx, "TX");
-  //get the tokenId from the transaction that occured above
-  //there events array that is returned, the first item from that event
-  //is the event, third item is the token id.
-  console.log("Transaction: ", tx);
-  console.log("Transaction events: ", tx.events[0]);
-  let event = tx.events[0];
-  let value = event.args[2];
-  let tokenId = value.toNumber(); //we need to convert it a number
-  console.log("Token ID: ", tokenId);
 
-  //get a reference to the price entered in the form
-  const price = ethers.utils.parseUnits(nftPrice, "ether");
+  // Obtener el tokenId de la transacción
+  // let event = tx.events[0];
+  let value = event.args[2];
+  let tokenId = value.toNumber();
+
+  // Obtener el precio ingresado en el formulario
+  const price = ethers.utils.parseUnits(nftPrice, 'ether');
 
   contract = new ethers.Contract(nftmarketaddress, Market.abi, signer);
   transaction = await contract.listMarketItem(nftaddress, tokenId, price);
 
   await transaction.wait();
-  window.location.replace("/");
+  window.location.replace('/');
 }

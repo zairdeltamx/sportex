@@ -1,16 +1,15 @@
-import React from 'react'
+import React from "react";
+import styles from "./Loader.module.css";
 
 export const Loader = () => {
-    return (
-
-        <div id="container">
-            <label className="loading-title">Loading ...</label>
-            <span className="loading-circle sp1">
-                <span className="loading-circle sp2">
-                    <span className="loading-circle sp3"></span>
-                </span>
-            </span>
-        </div>
-
-    )
-}
+  return (
+    <div className={styles.container}>
+      <label className={styles.loadingTitle}>Loading ...</label>
+      <span className={styles.loadingCircle + " " + styles.sp1}>
+        <span className={styles.loadingCircle + " " + styles.sp2}>
+          <span className={styles.loadingCircle + " " + styles.sp3}></span>
+        </span>
+      </span>
+    </div>
+  );
+};

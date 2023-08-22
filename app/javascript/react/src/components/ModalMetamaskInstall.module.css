@@ -1,0 +1,38 @@
+.container {
+  width: 660px;
+  padding: 20px;
+  height: 412px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 20px;
+}
+
+.container .closeModalMetamask {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.container .contentModal {
+  width: 100%;
+  height: 100%;
+  gap: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container .contentModal button {
+  background-color: #003399;
+  border-radius: 10px;
+  border: none;
+  padding: 10px 30px;
+  color: white;
+}
+
+.container .activeModal {
+  display: none;
+}

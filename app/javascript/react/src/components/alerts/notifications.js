@@ -1,4 +1,4 @@
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2';
 
 export const notification = {
   showSuccessWithButton: ({ title, message, footer }) => {
@@ -6,29 +6,29 @@ export const notification = {
       icon: 'success',
       title: title,
       text: message,
-      footer: footer ?? '<span>Sportx</span>'
-    })
+      footer: footer ?? '<span>Sportx</span>',
+    });
   },
   showErrorWithButton: ({ title, message, footer }) => {
     Swal.fire({
       icon: 'error',
       title: title,
       text: message,
-      footer: footer ?? '<span>Sportx</span>'
-    })
+      footer: footer ?? '<span>Sportx</span>',
+    });
   },
   showWarningWithButton: ({ title, message, footer }) => {
     Swal.fire({
       icon: 'warning',
       title: title,
       text: message,
-      footer: footer ?? '<span>Sportx</span>'
-    })
+      footer: footer ?? '<span>Sportx</span>',
+    });
   },
   showSuccess: ({ title, message }) => {
     Swal.fire({
-      position: "top-end",
-      icon: "success",
+      position: 'top-end',
+      icon: 'success',
       title: title,
       text: message,
       showConfirmButton: false,
@@ -38,8 +38,8 @@ export const notification = {
 
   showError: ({ title, message }) => {
     Swal.fire({
-      position: "top-end",
-      icon: "error",
+      position: 'top-end',
+      icon: 'error',
       title: title,
       text: message,
       showConfirmButton: true,
@@ -48,8 +48,8 @@ export const notification = {
 
   showWarning: ({ title, message }) => {
     Swal.fire({
-      position: "top-end",
-      icon: "warning",
+      position: 'top-end',
+      icon: 'warning',
       title: title,
       text: message,
       showConfirmButton: true,

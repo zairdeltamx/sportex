@@ -15,7 +15,7 @@ export const getUser = async ({ addressMetamask }) => {
 export function logout() {
   fetch("/users/sign_out", {
     // fetch("https://sportex-staging.herokuapp.com/users/sign_out", {
-    method: "GET",
+    method: "DELETE",
   })
     .then(() => {
       window.location.href = "/users/sign_in";

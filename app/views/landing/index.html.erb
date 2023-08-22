@@ -1,12 +1,12 @@
- <%= stylesheet_link_tag 'landing.css', media: 'all', 'data-turbolinks-track': 'reload' %>
+ <%= stylesheet_link_tag "landing.css", media: "all", 'data-turbolinks-track': "reload" %>
 <nav class="nav_landing">
   <div class="logo_container_landing">
-      <%= image_tag('landing/SportexLogo.png', :alt => 'SPORTEX') %>
+      <%= image_tag("landing/SportexLogo.png", :alt => "SPORTEX") %>
   <p class="live">LIVE</p>
   </div>
   <div class="container_menu">
-    <%= image_tag('landing/menu.svg', :width => '30px', :alt => 'rss feed', :id => 'menu_hamburger') %>
-    <%= image_tag('landing/closeMenu.svg', :width => '30px', :alt => 'rss feed', :id => 'close_menu') %>
+    <%= image_tag("landing/menu.svg", :width => "30px", :alt => "rss feed", :id => "menu_hamburger") %>
+    <%= image_tag("landing/closeMenu.svg", :width => "30px", :alt => "rss feed", :id => "close_menu") %>
   </div>
   <div class="links_container_landing">
     <a href="#">Home</a>
@@ -15,11 +15,11 @@
     <a href="#training">Training</a>
     <a href="#power_cards">Power Cards</a>
     <a href="#">Road map</a>
-    <%= link_to 'Login', dashboard_path, class: 'btn-menu' %>
+    <%= link_to "Login", dashboard_path, class: "btn-menu" %>
   </div>
 </nav>
 <div class="container_banner_landing">
-  <%= image_tag('landing/NFT.svg', :alt => 'rss feed', :class => 'image_nft_landing') %>
+  <%= image_tag("landing/NFT.svg", :alt => "rss feed", :class => "image_nft_landing") %>
   <div class="container_content_banner_landing">
     <div class="container_title_landing">
       <h1 class="title_banner_landing">Discover,and collect Digital Players NFTs </h1>
@@ -40,7 +40,7 @@
         </div>
       </div>
       <div class="comingson_landing">
-        <%= image_tag('landing/comingsoon.svg', :alt => 'rss feed', :class => 'image_comingsoon_banner_landing') %>
+        <%= image_tag("landing/comingsoon.svg", :alt => "rss feed", :class => "image_comingsoon_banner_landing") %>
       </div>
     </div>
   </div>
@@ -52,8 +52,8 @@
       <p>Create teams with the best players and enter a battle to achieve greatnessk</p>
     </div>
     <div class="container_video_landing">
-      <%= image_tag('landing/NFT.svg', :alt => 'rss feed', :class => 'nft_image_video') %>
-      <%= image_tag('landing/playIcon.svg', :alt => 'rss feed', :class => 'open_modal') %>
+      <%= image_tag("landing/NFT.svg", :alt => "rss feed", :class => "nft_image_video") %>
+      <%= image_tag("landing/playIcon.svg", :alt => "rss feed", :class => "open_modal") %>
       <div class="video_modal_landing">
         <div class="video_player_landing">
           <video class="video_landing_control" controls>
@@ -65,14 +65,20 @@
     </div>
   </div>
 </div>
+
 <section class="web">
-      <%= image_tag('landing/WEB1.jpg', :alt => 'rss feed', :class => 'img_live') %>
-      <%= image_tag('landing/WEB2.jpg', :alt => 'rss feed', :class => 'img_live') %>
-      <%= image_tag('landing/WEB3.jpg', :alt => 'rss feed', :class => 'img_live') %>
-      <%= image_tag('landing/WEB4.jpg', :alt => 'rss feed', :class => 'img_live') %>
-      <%= image_tag('landing/WEB5.jpg', :alt => 'rss feed', :class => 'img_live') %>
-      <%= image_tag('landing/WEB6.jpg', :alt => 'rss feed', :class => 'img_live') %>
+      <%= image_tag("landing/WEB1.jpg", :alt => "rss feed", :class => "img_live") %>
+      <%= image_tag("landing/WEB2.jpg", :alt => "rss feed", :class => "img_live") %>
+      <%= image_tag("landing/WEB3.jpg", :alt => "rss feed", :class => "img_live") %>
+      <%= image_tag("landing/WEB4.jpg", :alt => "rss feed", :class => "img_live") %>
+      <%= image_tag("landing/WEB5.jpg", :alt => "rss feed", :class => "img_live") %>
+      <%= image_tag("landing/WEB6.jpg", :alt => "rss feed", :class => "img_live") %>
+
+
+
+
 </section>
+
 <div id="power_cards" class="build_team">
   <div class="blob_1_build_team"></div>
   <div class="blob_2_build_team"></div>
@@ -82,7 +88,7 @@
   <div class="container_content_build_team">
     <div class="build_team_left">
       <div class="container_image">
-        <%= image_tag('landing/player.png', :alt => 'rss feed') %>
+        <%= image_tag("landing/player.png", :alt => "rss feed") %>
       </div>
       <div class="container_info">
         <div class="name">
@@ -102,7 +108,7 @@
           <span>Buffon</span>
         </div>
         <div class="container_image">
-          <%= image_tag('landing/player.png', :alt => 'rss feed') %>
+          <%= image_tag("landing/player.png", :alt => "rss feed") %>
         </div>
         <div class="price">
           <span>Current BID</span>
@@ -114,7 +120,7 @@
           <span>Buffon</span>
         </div>
         <div class="container_image">
-          <%= image_tag('landing/player.png', :alt => 'rss feed') %>
+          <%= image_tag("landing/player.png", :alt => "rss feed") %>
         </div>
         <div class="price">
           <span>Current BID</span>
@@ -126,7 +132,7 @@
           <span>Buffon</span>
         </div>
         <div class="container_image">
-          <%= image_tag('landing/player.png', :alt => 'rss feed') %>
+          <%= image_tag("landing/player.png", :alt => "rss feed") %>
         </div>
         <div class="price">
           <span>Current BID</span>
@@ -138,7 +144,7 @@
           <div class="buffon_container">
             <span>Buffon</span>
           </div>
-          <%= image_tag('landing/player.png', :alt => 'rss feed') %>
+          <%= image_tag("landing/player.png", :alt => "rss feed") %>
         </div>
         <div class="price">
           <span>Current BID</span>
@@ -178,4 +184,6 @@
     </div>
   </div>
 </div>
-<%= content_tag(:div, '', data: { controller: 'landing', }) %>
+<%= content_tag(:div, "", data: {
+                            controller: "landing",
+                          }) %>

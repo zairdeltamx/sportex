@@ -1,17 +1,25 @@
-import { ethers } from "ethers";
-import Web3Modal from "web3modal";
-import Market from "../../hardhat/artifacts/contracts/NFTMarketplace.sol/NFTMarketplace.json";
-import { nftmarketaddress } from "../config";
+import { ethers } from 'ethers';
+import Market from '../../hardhat/artifacts/contracts/NFTMarketplace.sol/NFTMarketplace.json';
+import { nftmarketaddress } from '../config';
 
 export default async function delistNft(nft) {
-  const web3Modal = new Web3Modal();
-  const connection = await web3Modal.connect();
-  const provider = new ethers.providers.Web3Provider(connection);
-  // sign the transaction
-  const signer = provider.getSigner();
-  const contract = new ethers.Contract(nftmarketaddress, Market.abi, signer);
+  try {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    const contract = new ethers.Contract(nftmarketaddress, Market.abi, signer);
 
-  // make the sale
-  const transaction = await contract.delistNFT(nft.tokenId);
-  await transaction.wait();
+    // Hacer la venta
+    const transaction = await contract.delistNFT(nft.tokenId);
+    await transaction.wait();
+    notification.showSuccess({
+      title: 'success',
+      message: 'The NFT has been successfully unlisted',
+    });
+  } catch (error) {
+    console.log(error);
+    notification.showErrorWithButton({
+      title: 'Error',
+      message: 'Failed to unlist NFT, please try again later',
+    });
+  }
 }

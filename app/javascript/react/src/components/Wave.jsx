@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import wavePc from "../img/waves/wavePc.png";
 import wavePad from "../img/waves/wave_ipad.png";
 import waveMovil from "../img/waves/waveMobile.png";
-
+import styles from "./Wave.module.css";
 export const Wave = () => {
   const [wave, setWave] = useState(null);
 
@@ -25,8 +25,8 @@ export const Wave = () => {
   }, []);
 
   return (
-    <div className="container_wave">
-      <div className="container_image_wave">
+    <div className={styles.container}>
+      <div className={styles.containerImage}>
         <img width="100%" height="100%" src={wave} alt="" />
       </div>
     </div>

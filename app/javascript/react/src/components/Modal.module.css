@@ -1,0 +1,45 @@
+.overlayModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  /* overflow: hidden; */
+}
+
+.containerModal {
+  z-index: 20;
+  width: 700px;
+  height: 500px;
+  overflow: scroll;
+  background-color: white;
+  padding: 20px;
+  border-radius: 6px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.content {
+  margin-bottom: 40px;
+}
+
+.containerModal .buttonClose {
+  background-color: #003399;
+  border-radius: 5px;
+  border: none;
+  font-family: "Roboto", sans-serif;
+  padding: 5px 10px;
+  color: white;
+  /* width: 100%; */
+}
+@media (max-width: 800px) {
+  .containerModal {
+    width: 90%;
+  }
+}

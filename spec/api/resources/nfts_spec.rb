@@ -30,12 +30,12 @@ describe Sportex::V1::Resources::Nfts do
 
       it 'updates the nft if there are changes' do
         expect do
-          post '/api/v1/nfts', attributes_for(:nft, price: '10')
+          post '/api/v1/nfts', attributes_for(:nft, price: 10.0) # Cambio aquí
         end.not_to change(Nft, :count)
 
         expect(last_response.status).to eq(201)
         expect(json_response.dig('json', 'message')).to eq('NFT updated')
-        expect(nft.reload.price).to eq('10')
+        expect(nft.reload.price).to eq(10.0) # Cambio aquí
       end
     end
   end

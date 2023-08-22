@@ -1,0 +1,26 @@
+.buttonIndex {
+  background-color: #003399;
+  border-radius: 10px;
+  border: none;
+  font-family: "Roboto", sans-serif;
+  padding: 10px 20px;
+  color: white;
+  width: 100%;
+}
+
+.buttonIndex:disabled {
+  background-color: red;
+}
+
+.buttonNftInfo {
+  width: 100%;
+  background-color: #86fc73;
+  border: none;
+  color: black;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.buttonNftInfo:disabled {
+  background-color: red;
+}

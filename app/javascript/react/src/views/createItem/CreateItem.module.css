@@ -1,0 +1,58 @@
+.containerCreateitem {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.containerCreateitem .containerFormCreateitem {
+  width: 100%;
+  background-color: white;
+  width: 50%;
+  display: flex;
+  margin-top: 100px;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px;
+}
+
+.containerCreateitem .containerFormCreateitem button {
+  width: 100%;
+  background-color: #003399;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-family: "GeneralSans", sans-serif;
+  font-weight: 500;
+}
+
+.containerCreateitem .containerFormCreateitem .input_wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 15px;
+}
+
+.containerCreateitem .containerFormCreateitem input,
+.containerCreateitem .containerFormCreateitem textarea,
+.containerCreateitem .containerFormCreateitem select {
+  width: 100%;
+  background: #fafafa;
+  border: 1px solid #d1d5db;
+  padding: 9px 13px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+}
+
+.containerCreateitem .containerFormCreateitem textarea {
+  max-height: 240px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .containerCreateitem .containerFormCreateitem {
+    width: 90%;
+  }
+}

@@ -8,6 +8,7 @@ import { notification } from "../../components/alerts/notifications";
 import { GET_TEAMS } from "../../querys/getTeams";
 import { useLazyQuery } from "@apollo/client";
 import { useGetTeams } from "../../hooks/useGetTeams";
+import styles from "./CreateItem.module.css";
 const client = ipfsHttpClient({
   host: "ipfs.infura.io",
   port: 5001,
@@ -42,11 +43,11 @@ export default function CreateItem() {
       teamName: formInput.teamName,
     })
       .then((res) => {
-        console.log(res,"res");
-        // notification.showSuccess({
-        //   title: "Success",
-        //   message: "The item has been created successfully",
-        // });
+        console.log(res, "res");
+        notification.showSuccess({
+          title: "Success",
+          message: "The item has been created successfully",
+        });
       })
       .catch((e) => {
         console.log(e);
@@ -79,8 +80,8 @@ export default function CreateItem() {
 
   return (
     <div>
-      <div className="container_createitem">
-        <div className="container_form_createitem">
+      <div className={styles.containerCreateitem}>
+        <div className={styles.containerFormCreateitem}>
           <div>
             {!loadingImage ? (
               <div>
@@ -90,7 +91,7 @@ export default function CreateItem() {
                   <img
                     src={fileUrl}
                     alt="Picture of the author"
-                    className="rounded mt-4"
+                    className={`rounded mt-4 ${styles.avatar}`}
                     width={200}
                     height={200}
                   />
@@ -109,11 +110,11 @@ export default function CreateItem() {
               onChange={onChange}
             />
 
-            <label className="labelAvatar" htmlFor="myFileInput">
+            <label className={styles.labelAvatar} htmlFor="myFileInput">
               Upload image
             </label>
           </div>
-          <div className="input_wrapper">
+          <div className={styles.input_wrapper}>
             <label htmlFor="name">Name*</label>
             <input
               autoComplete="off"
@@ -125,7 +126,7 @@ export default function CreateItem() {
               }
             />
           </div>
-          <div className="input_wrapper">
+          <div className={styles.input_wrapper}>
             <label htmlFor="description">Description*</label>
             <input
               autoComplete="off"
@@ -137,7 +138,7 @@ export default function CreateItem() {
               }
             />
           </div>
-          <div className="input_wrapper">
+          <div className={styles.input_wrapper}>
             <label htmlFor="teamName">Team Name*</label>
             <select
               onChange={(e) =>
@@ -154,7 +155,7 @@ export default function CreateItem() {
             </select>
           </div>
 
-          <div className="input_wrapper">
+          <div className={styles.input_wrapper}>
             <label htmlFor="price">Price*</label>
             <input
               autoComplete="off"
@@ -166,7 +167,7 @@ export default function CreateItem() {
               }
             />
           </div>
-          <div className="input_wrapper">
+          <div className={styles.input_wrapper}>
             <label htmlFor="meta">Meta_json*</label>
             <textarea
               autoComplete="off"
@@ -178,7 +179,10 @@ export default function CreateItem() {
               }
             />
           </div>
-          <button onClick={async () => handleCreateItem()} className="">
+          <button
+            onClick={async () => handleCreateItem()}
+            className={styles.createButton}
+          >
             Create NFT
           </button>
         </div>

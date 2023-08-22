@@ -48,6 +48,7 @@ const nftaddress = '0xad35155c6e88273c6b91b8b93933945847813051';
 const nftmarketaddress = '0xe226b8ebfb4e329a9f3121b04e31b5f20de3c536';
 
 async function submitPlayertoBlockchain(parseJson, url, bnbCost) {
+async function submitPlayertoBlockchain(parseJson, url, bnbCost) {
   const stringJson = JSON.stringify(parseJson);
 
   const [signer] = await ethers.getSigners();
@@ -65,6 +66,7 @@ async function submitPlayertoBlockchain(parseJson, url, bnbCost) {
   let tokenId = value.toNumber(); //we need to convert it a number
   console.log("Token ID: ", tokenId);
 
+  const price = ethers.utils.parseUnits(bnbCost.toString(), "ether");
   const price = ethers.utils.parseUnits(bnbCost.toString(), "ether");
 
   contract = new ethers.Contract(nftmarketaddress, nftMarketContractAbi, signer);
@@ -91,13 +93,28 @@ function fetchBnbPrice() {
 };
 
 async function importPlayer(player, bnbPrice) {
+function fetchBnbPrice() {
+  const url = 'https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=usd';
+
+  return axios.get(url).then((res) => {
+    return parseFloat(res.data.binancecoin.usd);
+  });
+};
+
+async function importPlayer(player, bnbPrice) {
   let parseJson = JSON.parse(player.json);
   parseJson.price = player.price;
   parseJson.name = player.nombre_jugador;
   parseJson.PlayerName = player.nombre_jugador;
   parseJson.playerName = player.nombre_jugador;
   parseJson.description = player.equipo;
+  parseJson.price = player.price;
+  parseJson.name = player.nombre_jugador;
+  parseJson.PlayerName = player.nombre_jugador;
+  parseJson.playerName = player.nombre_jugador;
+  parseJson.description = player.equipo;
   parseJson.teamName = player.equipo;
+  parseJson.playerName = player.nombre_jugador;
   parseJson.playerName = player.nombre_jugador;
   parseJson.authentication_signature = xorEncode(player.nombre_jugador, 'sportex-sync');
   parseJson.player_batch_number = batch_number_dealing;
@@ -117,6 +134,8 @@ async function importPlayer(player, bnbPrice) {
 
   await downloadImage(player.imagen_url, 'image.gif');
   console.log('image downloaded');
+  await downloadImage(player.imagen_url, 'image.gif');
+  console.log('image downloaded');
 
   const imageipfs = await addToIPFS('image.gif');
   console.log('image added to ipfs');
@@ -133,6 +152,7 @@ async function importPlayer(player, bnbPrice) {
   const added = await client.add(data);
   const url = `https://sportex-staging.infura-ipfs.io/ipfs/${added.path}`;
 
+  await submitPlayertoBlockchain(parseJson, url, roundedBnbCost);
   await submitPlayertoBlockchain(parseJson, url, roundedBnbCost);
 
   return { url, parseJson };
@@ -159,7 +179,9 @@ async function importNFTs() {
   });
 
   var bnbPrice = await fetchBnbPrice();
+  var bnbPrice = await fetchBnbPrice();
 
+  console.log("bnbPrice", bnbPrice);
   console.log("bnbPrice", bnbPrice);
 
   for (const player of results.data) {
