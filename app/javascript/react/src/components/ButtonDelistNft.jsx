@@ -5,20 +5,29 @@ import styles from './ButtonDelistNft.module.css';
 import { useLoadingContext } from '../useContext/LoaderContext';
 
 import { useMarkAsSold } from '../graphql/nft/custom-hooks';
+import { GET_NFTS } from '../graphql/nft/graphql-queries';
 
 export const ButtonDelistNft = ({ nft }) => {
   const { setTransactionIsLoading } = useLoadingContext();
-  const [markNftAsSold] = useMarkAsSold();
+  const { markNftAsSold, loading, error, data } = useMarkAsSold();
   async function handleDelistNft(nft) {
     try {
       setTransactionIsLoading(true);
-      console.log('ENTRA AQUI LIST');
+      // console.log('ENTRA AQUI LIST');
       await delistNft(nft);
-      markNftAsSold({ variables: { tokenId: nft.tokenId } });
-      notification.showSuccess({
-        title: 'Unlisted successfully',
-        message: 'Your NFT will be found in the My Assets section',
+      const { data } = await markNftAsSold({
+        variables: { token_id: nft.tokenId },
+        refetchQueries: [{ query: GET_NFTS }],
       });
+
+      // console.log(data, 'DATA');
+
+      if (data && data.markAsSold) {
+        notification.showSuccess({
+          title: 'Unlisted successfully',
+          message: `The NFT with the name ${data.markAsSold.name} has been successfully delisted.`,
+        });
+      }
     } catch (error) {
       console.log('ERROROR', error);
       notification.showError({

@@ -5,40 +5,16 @@ import { ListNfts } from '../../components/ListNfts';
 import { Wave } from '../../components/Wave';
 import styles from './index.module.css';
 import { Loader } from '../../components/Loader';
-import { useMetamask } from '../../useContext/MetamaskContext';
 import { SorterNfts } from './SorterNfts';
+
 import { useGetNfts } from '../../graphql/nft/custom-hooks';
 
 export default function Index() {
-  const { addressMetamask } = useMetamask();
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
-  const [name, setName] = useState('');
-  const [orderBy, setOrderBy] = useState('');
-  const [order, setOrder] = useState('');
-  const [teamName, setTeamName] = useState('');
+
   const [cryptoPrice, setCryptoPrice] = useState(null);
-  const [searchForSeller, setsearchForSeller] = useState(false);
-  const [getNfts, { loading, data, error, refetch }] = useGetNfts();
 
-  const fetchNFTsData = () => {
-    getNfts({
-      variables: {
-        page: currentPage,
-        name,
-        seller: searchForSeller === true ? addressMetamask : '',
-        limit: 2,
-        order,
-        orderBy,
-        teamName,
-      },
-    });
-  };
-
-  useEffect(() => {
-    fetchNFTsData();
-  }, [currentPage, name, searchForSeller]);
-
+  const { loading, data, error, refetch } = useGetNfts();
   useEffect(() => {
     fetch(
       'https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=usd'
@@ -51,6 +27,12 @@ export default function Index() {
   }, []);
 
   const nfts = data?.nfts.collection || []; // Access nfts collection from data
+
+  useEffect(() => {
+    refetch({
+      page: currentPage,
+    });
+  }, [currentPage]);
 
   // Calculate priceInUSD for each NFT and add it to the NFT objects
   const nftsWithPriceInUSD = nfts.map((nft) => ({
@@ -70,15 +52,11 @@ export default function Index() {
           <br />
           <br />
           <br />
+          <button onClick={() => refetchfunction()}>REFETCH</button>
           <SorterNfts
-            setCurrentPage={setCurrentPage}
-            setOrder={setOrder}
-            fetchNFTsData={fetchNFTsData}
-            searchForSeller={searchForSeller}
-            setsearchForSeller={setsearchForSeller}
-            setName={setName}
-            setOrderBy={setOrderBy}
-            setTeamName={setTeamName}
+            // setCurrentPage={setCurrentPage}
+            refetch={refetch}
+            currentPage={currentPage}
           />
 
           {loading ? (

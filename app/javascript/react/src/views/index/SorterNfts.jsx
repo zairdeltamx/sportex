@@ -4,26 +4,17 @@ import Menu from '../../img/navbar/menu.svg';
 import CloseMenu from '../../img/navbar/closeMenu.svg';
 import styles from './SorterNfts.module.css';
 import { useGetTeams } from '../../graphql/teams/custom-hooks';
-export const SorterNfts = ({
-  handleSubmit,
-  orderBy,
-  order,
-  fetchNFTsData,
-  setOrder,
-  setOrderBy,
-  setName,
-  name,
-  setTeamName,
-  setCurrentPage,
-  setsearchForSeller,
-}) => {
+import { useMetamask } from '../../useContext/MetamaskContext';
+export const SorterNfts = ({ refetch }) => {
+  const { addressMetamask } = useMetamask();
+  const [name, setName] = useState('');
+  const [orderBy, setOrderBy] = useState('');
+  const [order, setOrder] = useState('');
+  const [teamName, setTeamName] = useState('');
+  const [searchForSeller, setsearchForSeller] = useState(false);
   const [active, setActive] = useState(false);
   const { teams } = useGetTeams();
 
-  const filter = () => {
-    fetchNFTsData();
-    setCurrentPage(1);
-  };
   const toggleSort = () => {
     setActive(!active);
   };
@@ -98,7 +89,19 @@ export const SorterNfts = ({
               >
                 Cancelar
               </button>
-              <button className={styles.buttonFilter} onClick={filter}>
+              <button
+                className={styles.buttonFilter}
+                onClick={() =>
+                  refetch({
+                    page: 1,
+                    seller: searchForSeller === true ? addressMetamask : '',
+                    name,
+                    orderBy,
+                    order,
+                    teamName,
+                  })
+                }
+              >
                 FILTER
               </button>
             </div>
