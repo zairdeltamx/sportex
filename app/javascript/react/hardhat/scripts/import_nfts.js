@@ -5,7 +5,7 @@ const nftMarketContractAbi = require('../artifacts/contracts/NFTMarketplace.sol/
 
 const { create } = require('ipfs-http-client');
 
-const batch_number_dealing = 14;
+const batch_number_dealing = 16;
 
 const client = create({
   host: "ipfs.infura.io",

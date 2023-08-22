@@ -7,7 +7,7 @@ const _ = require('lodash');
 const Papa = require('papaparse');
 const fs = require('fs');
 const playersCsv = fs.readFileSync('./players.csv').toString();
-const assignationNftsCsv = fs.readFileSync('./staking-august.csv').toString();
+const assignationNftsCsv = fs.readFileSync('./staking-august-18.csv').toString();
 
 const nftaddress = '0xad35155c6e88273c6b91b8b93933945847813051';
 const nftmarketaddress = '0xe226b8ebfb4e329a9f3121b04e31b5f20de3c536';
