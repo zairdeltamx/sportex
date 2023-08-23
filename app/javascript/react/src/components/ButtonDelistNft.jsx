@@ -11,7 +11,7 @@ import { useGraphqlContext } from '../useContext/GraphqlContext';
 export const ButtonDelistNft = ({ nft }) => {
   const { setTransactionIsLoading } = useLoadingContext();
   const { markNftAsSold, loading, error, data } = useMarkAsSold();
-  const { variables, currentPage } = useGraphqlContext();
+  const { variables, currentPage, setCurrentPage } = useGraphqlContext();
   async function handleDelistNft(nft) {
     try {
       setTransactionIsLoading(true);
@@ -29,7 +29,7 @@ export const ButtonDelistNft = ({ nft }) => {
           },
         ],
       });
-
+      setCurrentPage(1);
       // console.log(data, 'DATA');
 
       if (data && data.markAsSold) {
