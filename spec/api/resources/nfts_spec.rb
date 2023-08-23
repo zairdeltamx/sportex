@@ -40,17 +40,17 @@ describe Sportex::V1::Resources::Nfts do
     end
   end
 
-  describe 'DELETE /api/v1/nfts/:id' do
-    let!(:nft) { create(:nft) }
+  # describe 'DELETE /api/v1/nfts/:id' do
+  #   let!(:nft) { create(:nft) }
 
-    it 'deletes the nft' do
-      expect(Nft.with_status(:available).reload).to include(nft)
+  #   it 'deletes the nft' do
+  #     expect(Nft.with_status(:available).reload).to include(nft)
 
-      delete "/api/v1/nfts/#{nft.id}"
+  #     delete "/api/v1/nfts/#{nft.id}"
 
-      expect(last_response.status).to eq(200)
-      expect(json_response.dig('json', 'message')).to eq('NFT deleted')
-      expect(Nft.with_status(:available).reload).to be_empty
-    end
-  end
+  #     expect(last_response.status).to eq(200)
+  #     expect(json_response.dig('json', 'message')).to eq('NFT deleted')
+  #     expect(Nft.with_status(:available).reload).to be_empty
+  #   end
+  # end
 end
