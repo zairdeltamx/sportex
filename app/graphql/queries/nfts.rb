@@ -34,7 +34,7 @@ module Queries
                               description: 'Obtener todos los equipos únicos de NFTs disponibles'
     end
 
-    def nfts(limit: 10, page: nil, name: nil, teamName: nil, attack: nil, defense: nil,
+    def nfts(limit: 4, page: 1, name: nil, teamName: nil, attack: nil, defense: nil,
              strength: nil, orderBy: nil, order: nil, seller: nil)
       search_params = {}
       search_params[:name_cont] = name.downcase if name.present?

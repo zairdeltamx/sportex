@@ -14,7 +14,7 @@ export const ButtonDelistNft = ({ nft }) => {
     try {
       setTransactionIsLoading(true);
       // console.log('ENTRA AQUI LIST');
-      await delistNft(nft);
+      // await delistNft(nft);
       const { data } = await markNftAsSold({
         variables: { token_id: nft.tokenId },
         refetchQueries: [{ query: GET_NFTS }],
