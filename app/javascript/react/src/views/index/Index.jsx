@@ -63,13 +63,14 @@ export default function Index() {
             <h1 style={{ textAlign: 'center', paddingTop: '20px' }}>
               Not found NFTs
             </h1>
-          ) : cryptoPrice === null ? (
-            <h1 style={{ textAlign: 'center', paddingTop: '20px' }}>
-              Loading Crypto Price...
-            </h1>
-          ) : (
+          ) : !nftsWithPriceInUSD.some((nft) => nft.priceInUSD === null) ? (
             <ListNfts isMarketplace={true} nfts={nftsWithPriceInUSD} />
+          ) : (
+            <h1 style={{ textAlign: 'center', paddingTop: '20px' }}>
+              NFTs not ready, please wait
+            </h1>
           )}
+
           <Pagination
             totalPages={data?.nfts.metadata.totalPages || 1}
             currentPage={currentPage}
