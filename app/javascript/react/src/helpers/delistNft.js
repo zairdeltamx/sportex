@@ -4,23 +4,11 @@ import { nftmarketaddress } from '../config';
 import { notification } from '../components/alerts/notifications';
 
 export default async function delistNft(nft) {
-  try {
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const signer = provider.getSigner();
-    const contract = new ethers.Contract(nftmarketaddress, Market.abi, signer);
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  const signer = provider.getSigner();
+  const contract = new ethers.Contract(nftmarketaddress, Market.abi, signer);
 
-    // Hacer la venta
-    const transaction = await contract.delistNFT(nft.tokenId);
-    await transaction.wait();
-    notification.showSuccess({
-      title: 'success',
-      message: 'The NFT has been successfully unlisted',
-    });
-  } catch (error) {
-    console.log('Errorrrororo', error);
-    notification.showErrorWithButton({
-      title: 'Error',
-      message: 'Failed to unlist NFT, please try again later',
-    });
-  }
+  // Hacer la venta
+  const transaction = await contract.delistNFT(nft.tokenId);
+  await transaction.wait();
 }

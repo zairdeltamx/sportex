@@ -11,14 +11,13 @@ import { useGetNfts } from '../../graphql/nft/custom-hooks';
 import { useLazyQuery, useMutation, useQuery } from '@apollo/client';
 import { MARK_AS_SOLD } from '../../graphql/nft/graphql-mutations';
 import { GET_NFTS } from '../../graphql/nft/graphql-queries';
+import { useGraphqlContext } from '../../useContext/GraphqlContext';
 
 export default function Index() {
-  const [currentPage, setCurrentPage] = useState(1);
-
   const [cryptoPrice, setCryptoPrice] = useState(null);
-
-  const [markSold, { loading, data, error, refetch }] = useLazyQuery(GET_NFTS);
-  const [markNftAsSold] = useMutation(MARK_AS_SOLD);
+  const [currentPage, setCurrentPage] = useState(1);
+  const { setVariables } = useGraphqlContext();
+  const { loading, data, error, refetch } = useGetNfts({ page: currentPage });
   useEffect(() => {
     fetch(
       'https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=usd'
@@ -30,41 +29,14 @@ export default function Index() {
       });
   }, []);
 
-  const nfts = data?.nfts.collection || []; // Access nfts collection from data
   useEffect(() => {
-    console.log('REFET');
-    markSold({
-      variables: {
-        page: currentPage,
-      },
-    });
+    setVariables({ page: currentPage });
   }, [currentPage]);
 
-  // useEffect(() => {
-  //   refetch({
-  //     page: currentPage,
-  //   });
-  // }, [currentPage, refetch]);
+  console.log(data, 'DATA');
 
-  const mark = () => {
-    console.log('papapes');
-    markNftAsSold({
-      ignoreResults: true,
-      variables: {
-        token_id: 34,
-      },
-      refetchQueries: [
-        {
-          query: GET_NFTS,
-          variables: {
-            page: currentPage,
-          },
-        },
-      ],
-      onError: (err) => console.log(err),
-    });
-  };
-  // Calculate priceInUSD for each NFT and add it to the NFT objects
+  const nfts = data?.nfts.collection || []; // Access nfts collection from data
+
   const nftsWithPriceInUSD = nfts.map((nft) => ({
     ...nft,
     priceInUSD: cryptoPrice
@@ -82,7 +54,6 @@ export default function Index() {
           <br />
           <br />
           <br />
-          <button onClick={() => mark()}>REFETCH </button>
           <SorterNfts
             // setCurrentPage={setCurrentPage}
             refetch={refetch}

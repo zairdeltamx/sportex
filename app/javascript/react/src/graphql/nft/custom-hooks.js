@@ -2,9 +2,11 @@ import { useLazyQuery, useMutation, useQuery } from '@apollo/client';
 import { MARK_AS_SOLD } from './graphql-mutations';
 import { GET_NFTS } from './graphql-queries';
 
-export const useGetNfts = () => {
+export const useGetNfts = (variables) => {
   console.log('ENTRA AQUI----------------------------');
-  const result = useQuery(GET_NFTS);
+  const result = useQuery(GET_NFTS, {
+    variables: variables,
+  });
   return result;
 };
 

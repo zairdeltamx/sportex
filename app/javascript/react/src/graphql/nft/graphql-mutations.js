@@ -5,6 +5,16 @@ export const MARK_AS_SOLD = gql`
     markAsSold(tokenId: $token_id) {
       id
       name
+      price
+      defense
+      attack
+      teamName
+      seller
+      owner
+      image
+      description
+      tokenId
+      strength
     }
   }
 `;

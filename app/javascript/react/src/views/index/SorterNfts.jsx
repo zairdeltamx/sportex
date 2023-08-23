@@ -5,7 +5,9 @@ import CloseMenu from '../../img/navbar/closeMenu.svg';
 import styles from './SorterNfts.module.css';
 import { useGetTeams } from '../../graphql/teams/custom-hooks';
 import { useMetamask } from '../../useContext/MetamaskContext';
+import { useGraphqlContext } from '../../useContext/GraphqlContext';
 export const SorterNfts = ({ refetch }) => {
+  const { setVariables, variables } = useGraphqlContext();
   const { addressMetamask } = useMetamask();
   const [name, setName] = useState('');
   const [orderBy, setOrderBy] = useState('');
@@ -18,6 +20,24 @@ export const SorterNfts = ({ refetch }) => {
   const toggleSort = () => {
     setActive(!active);
   };
+
+  const refetchData = () => {
+    const variablesJSON = {
+      ...variables,
+      page: 1,
+      seller: searchForSeller === true ? addressMetamask : '',
+      name,
+      orderBy,
+      order,
+      teamName,
+    };
+    refetch(variablesJSON);
+    setVariables(variablesJSON);
+  };
+  useEffect(() => {
+    refetchData();
+  }, [name, searchForSeller]);
+
   return (
     <div>
       <div className={styles.containerSorter}>
@@ -91,16 +111,7 @@ export const SorterNfts = ({ refetch }) => {
               </button>
               <button
                 className={styles.buttonFilter}
-                onClick={() =>
-                  refetch({
-                    page: 1,
-                    seller: searchForSeller === true ? addressMetamask : '',
-                    name,
-                    orderBy,
-                    order,
-                    teamName,
-                  })
-                }
+                onClick={() => refetchData()}
               >
                 FILTER
               </button>
