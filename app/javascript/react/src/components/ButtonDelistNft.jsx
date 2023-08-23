@@ -7,13 +7,11 @@ import { useLoadingContext } from '../useContext/LoaderContext';
 import { useMarkAsSold } from '../graphql/nft/custom-hooks';
 import { GET_NFTS } from '../graphql/nft/graphql-queries';
 import { useGraphqlContext } from '../useContext/GraphqlContext';
-import { useApolloClient } from '@apollo/client';
 
 export const ButtonDelistNft = ({ nft }) => {
   const { setTransactionIsLoading } = useLoadingContext();
   const { markNftAsSold, loading, error, data } = useMarkAsSold();
   const { variables, currentPage } = useGraphqlContext();
-  const client = useApolloClient();
   async function handleDelistNft(nft) {
     try {
       setTransactionIsLoading(true);
