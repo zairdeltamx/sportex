@@ -24,8 +24,7 @@ export const ButtonDelistNft = ({ nft }) => {
         refetchQueries: [
           {
             query: GET_NFTS,
-            variables: { ...variables },
-            //  variables: { page: currentPage, ...variables }
+            variables: { page: currentPage, ...variables }
           },
         ],
       });
