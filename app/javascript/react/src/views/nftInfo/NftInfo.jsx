@@ -1,63 +1,48 @@
 import React, { useEffect, useState } from 'react';
-import { useLazyQuery } from '@apollo/client';
+import { useLazyQuery, useQuery } from '@apollo/client';
 import { useParams } from 'react-router-dom';
 import { useLoadingContext } from '../../useContext/LoaderContext';
-
 import styles from './NftInfo.module.css';
 import { PurchaseButton } from '../../components/PurchaseButton';
 import { GET_NFT } from '../../graphql/nft/graphql-queries';
+
 const NftInfo = () => {
   const [nft, setNft] = useState(null);
-  const [getNft, { data, loading }] = useLazyQuery(GET_NFT);
-  const { tokenId } = useParams();
   const [cryptoPrice, setCryptoPrice] = useState(null);
-  useEffect(() => {
-    if (tokenId) {
-      console.log(
-        tokenId,
-        'ESTE ES TOKEN y este su tipo',
-        typeof Number(tokenId)
-      );
-      getNft({
-        variables: {
-          tokenId: Number(tokenId),
-        },
-      });
-    }
-  }, [tokenId]);
+  const { id } = useParams();
+  const { loading } = useQuery(GET_NFT, {
+    variables: { id: Number(id) },
+    onCompleted: (data) => {
+      const updatedNft = {
+        ...data.getNFT,
+        priceInUSD: (cryptoPrice * data.getNFT.price).toFixed(2),
+      };
+      console.log(updatedNft, 'UPDATED');
+      setNft(updatedNft);
+    },
+    onError: (err) => console.log(err),
+  });
+
   useEffect(() => {
     const getCryptoPrice = async () => {
       const response = await fetch(
         'https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=usd'
       );
       const data = await response.json();
-      console.log(data, 'DATA');
       const bnbPrice = data['binancecoin']['usd'];
-
       setCryptoPrice(bnbPrice);
     };
     getCryptoPrice();
   }, []);
 
-  useEffect(() => {
-    if (data) {
-      const nft = data.nft;
-      console.log(nft, 'NFDSDKSLFK');
-      console.log(cryptoPrice, 'CRYPRICE');
-      const updateNFT = {
-        ...nft,
-        priceInUSD: (cryptoPrice * data.nft.price).toFixed(2),
-      };
-      setNft(updateNFT);
-    }
-  }, [data, cryptoPrice]);
-
-  if (loading === true)
-    return <p style={{ marginTop: '90px', color: 'white' }}>Loading...</p>;
-
-  if (!data || !nft) {
-    return <p style={{ marginTop: '90px', color: 'white' }}>Not found...</p>;
+  if (loading) {
+    return <p className={styles.loadingText}>Loading...</p>;
   }
+
+  if (!nft) {
+    return <p className={styles.loadingText}>Not found...</p>;
+  }
+
   return (
     <div className={styles.containerNftInfo}>
       <div className={styles.contentNftInfo}>

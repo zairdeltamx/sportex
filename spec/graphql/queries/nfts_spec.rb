@@ -19,34 +19,49 @@ describe SportexSchema, elasticsearch: true, turnip_vcr: true do
 
     let(:query_string) do
       %|
-      query {
-        nfts {
-          collection {
+      query allNfts(
+        $page: Int
+        $name: String
+        $orderBy: String
+        $perPage: Int
+        $order: String
+        $teamName: String
+        $seller: String
+      ) {
+        allNFTs(
+          page: $page
+          perPage: $perPage
+          seller: $seller
+          teamName: $teamName
+          name: $name
+          orderBy: $orderBy
+          order: $order
+        ) {
+          nfts {
             id
             name
             price
             defense
             attack
+            status
             teamName
+            seller
             owner
             image
             description
             tokenId
             strength
           }
-          metadata {
-            totalPages
-            totalCount
-          }
+          totalPages
         }
       }
       |
     end
 
-    subject { result['data']['nfts'] }
+    subject { result['data']['allNFTs'] }
 
     it 'returns a list of states with a cities count' do
-      expect(subject['collection'].size).to eq Nft.count
+      expect(subject['nfts'].size).to eq Nft.count
     end
   end
 end

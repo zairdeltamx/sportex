@@ -1,30 +1,31 @@
 import { gql } from '@apollo/client';
 
 export const GET_NFTS = gql`
-  query nfts(
+  query allNfts(
     $page: Int
-    $limit: Int
     $name: String
     $orderBy: String
+    $perPage: Int
     $order: String
     $teamName: String
     $seller: String
   ) {
-    nfts(
+    allNFTs(
       page: $page
+      perPage: $perPage
       seller: $seller
       teamName: $teamName
-      limit: $limit
       name: $name
       orderBy: $orderBy
       order: $order
     ) {
-      collection {
+      nfts {
         id
         name
         price
         defense
         attack
+        status
         teamName
         seller
         owner
@@ -33,17 +34,14 @@ export const GET_NFTS = gql`
         tokenId
         strength
       }
-      metadata {
-        totalPages
-        totalCount
-      }
+      totalPages
     }
   }
 `;
 
 export const GET_NFT = gql`
-  query getNft($tokenId: Int!) {
-    nft(tokenId: $tokenId) {
+  query getNft($id: Int!) {
+    getNFT(id: $id) {
       id
       name
       price

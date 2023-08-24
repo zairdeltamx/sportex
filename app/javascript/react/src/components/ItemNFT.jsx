@@ -186,7 +186,7 @@ export const ItemNFT = ({ nft, isMarketplace }) => {
     <div className={styles.containerCard}>
       <Fragment>
         <div className={styles.containerImageCard}>
-          <Link to={`/nftdetail/${nft.tokenId}`}>
+          <Link to={`/nftdetail/${nft.id}`}>
             <img src={nft.image} alt="" />
           </Link>
         </div>
