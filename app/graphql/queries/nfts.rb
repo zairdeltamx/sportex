@@ -19,7 +19,7 @@ module Queries
         argument :seller, String, required: false
         argument :teamName, String, required: false 
         argument :page, GraphQL::Types::Int, required: false, default_value: 1
-        argument :per_page, GraphQL::Types::Int, required: false, default_value: 4
+        argument :per_page, GraphQL::Types::Int, required: false, default_value: 10
       end
 
       field :getNFT, Types::NftType, null: false,
