@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { ItemNFT } from './ItemNFT';
+
 import styles from './ListNfts.module.css';
+import NFTCard from './NFTCard';
 export const ListNfts = ({ nfts, isMarketplace }) => {
   return (
     <div className={styles.listNfts}>
       {nfts.map((nft) => (
         <div key={nft.tokenId}>
-          <ItemNFT isMarketplace={isMarketplace} nft={nft} />
+          <NFTCard
+            name={nft.name}
+            token_id={nft.tokenId}
+            isMarketplace={isMarketplace}
+            nft={nft}
+          />
         </div>
       ))}
     </div>
