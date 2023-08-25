@@ -20,7 +20,7 @@ describe SportexSchema, elasticsearch: true, turnip_vcr: true do
     let(:query_string) do
       %|
       query allNfts(
-        $page: Int
+        $currentPage: Int
         $name: String
         $orderBy: String
         $perPage: Int
@@ -29,7 +29,7 @@ describe SportexSchema, elasticsearch: true, turnip_vcr: true do
         $seller: String
       ) {
         allNFTs(
-          page: $page
+          currentPage: $currentPage
           perPage: $perPage
           seller: $seller
           teamName: $teamName

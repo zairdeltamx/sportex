@@ -11,20 +11,6 @@ export const useGetNfts = (variables) => {
 };
 
 export const useMarkAsSold = () => {
-  const [markAsSoldMutation, { loading, error, data }] = useMutation(
-    MARK_AS_SOLD,
-    {
-      refetchQueries: [{ query: GET_NFTS }],
-      onError: (err) => {
-        console.log(err, 'ERROR ACA');
-      },
-    }
-  );
-
-  return {
-    markNftAsSold: markAsSoldMutation,
-    loading,
-    error,
-    data,
-  };
+  const result = useMutation(MARK_AS_SOLD);
+  return result;
 };

@@ -30,10 +30,7 @@ module Queries
                               description: "Obtener todos los equipos únicos de NFTs disponibles"
     end
     def allNFTs(name: nil, order: nil, orderBy: nil, seller: nil, teamName: nil, status: nil, current_page: nil, per_page: nil)
-      puts "---------------------------------------------------------"
-      puts current_page
-      puts "---------------------------------------------------------"
-      
+ 
       ransack_args = {}
       ransack_args[:name_cont] = name.downcase if name.present?
       ransack_args[:seller_eq] = seller.downcase if seller.present?

@@ -22,7 +22,9 @@ import fetchCryptoPrice from '../../services/cryptoPrice';
 export default function Index() {
   const [cryptoPrice, setCryptoPrice] = useState(null);
   const { currentPage, setCurrentPage } = useGraphqlContext();
-  const { loading, data, error, refetch } = useGetNfts({ page: currentPage });
+  const { loading, data, error, refetch } = useGetNfts({
+    currentPage: currentPage,
+  });
 
   useEffect(() => {
     const fetchBnbPrice = async () => {

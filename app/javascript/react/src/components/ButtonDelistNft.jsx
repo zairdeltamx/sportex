@@ -20,11 +20,11 @@ export const ButtonDelistNft = ({ nft }) => {
 
       // console.log(variables, 'VARIABLES');
       const { data } = await markNftAsSold({
-        variables: { token_id: nft.tokenId },
+        variables: { token_id: Number(nft.id) },
         refetchQueries: [
           {
             query: GET_NFTS,
-            variables: { page: currentPage, ...variables }
+            variables: { page: currentPage, ...variables },
           },
         ],
       });

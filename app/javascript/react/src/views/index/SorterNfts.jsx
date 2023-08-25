@@ -7,7 +7,7 @@ import { useGetTeams } from '../../graphql/teams/custom-hooks';
 import { useMetamask } from '../../useContext/MetamaskContext';
 import { useGraphqlContext } from '../../useContext/GraphqlContext';
 export const SorterNfts = ({ refetch }) => {
-  const { setVariables, variables } = useGraphqlContext();
+  const { setVariables, variables, setCurrentPage } = useGraphqlContext();
   const { addressMetamask } = useMetamask();
   const [name, setName] = useState('');
   const [orderBy, setOrderBy] = useState('');
@@ -32,7 +32,16 @@ export const SorterNfts = ({ refetch }) => {
       teamName,
     };
     refetch(variablesJSON);
-    setVariables(variablesJSON);
+    setCurrentPage(1);
+    // setVariables(variablesJSON);
+  };
+  const cleanFilter = () => {
+    setName('');
+    setOrderBy('');
+    setOrder('');
+    setTeamName('');
+    setsearchForSeller(false);
+    refetchData();
   };
   useEffect(() => {
     refetchData();
@@ -108,6 +117,12 @@ export const SorterNfts = ({ refetch }) => {
                 onClick={() => setActive(false)}
               >
                 Cancelar
+              </button>
+              <button
+                className={styles.buttonCleanFilter}
+                onClick={() => cleanFilter()}
+              >
+                Clean
               </button>
               <button
                 className={styles.buttonFilter}
