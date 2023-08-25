@@ -22,7 +22,7 @@ export const SorterNfts = ({
 
   const filter = () => {
     handleSubmit();
-    setCurrentPage(1);
+    // setCurrentPage(1);
   };
   const toggleSort = () => {
     setActive(!active);

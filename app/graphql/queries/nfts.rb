@@ -42,7 +42,7 @@ module Queries
       {
         nfts: nfts,
         totalPages: nfts.total_pages,
-        # currentPage: current_page,
+        currentPage: current_page,
       }
     end
     

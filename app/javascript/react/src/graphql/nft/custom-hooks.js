@@ -3,7 +3,7 @@ import { MARK_AS_SOLD } from './graphql-mutations';
 import { GET_NFTS } from './graphql-queries';
 
 export const useGetNfts = (variables) => {
-  console.log('ENTRA AQUI----------------------------');
+  // console.log('ENTRA AQUI----------------------------');
   const result = useQuery(GET_NFTS, {
     variables: variables,
   });

@@ -13,10 +13,10 @@ export function useGraphqlContext() {
 
 export function GraphqlProvider({ children }) {
   const [variables, setVariables] = useState({});
-  const [currentPage, setCurrentPage] = useState(1);
-  // useEffect(() => {
-  //   console.log(currentPage);
-  // }, [currentPage]);
+  const [currentPage, setCurrentPage] = useState(2);
+  useEffect(() => {
+    console.log(currentPage, 'CURRENT PAGE');
+  }, [currentPage]);
 
   const contextValue = {
     currentPage,

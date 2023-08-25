@@ -7,7 +7,8 @@ import { useGetTeams } from '../../graphql/teams/custom-hooks';
 import { useMetamask } from '../../useContext/MetamaskContext';
 import { useGraphqlContext } from '../../useContext/GraphqlContext';
 export const SorterNfts = ({ refetch }) => {
-  const { setVariables, variables, setCurrentPage } = useGraphqlContext();
+  const { setVariables, variables, setCurrentPage, currentPage } =
+    useGraphqlContext();
   const { addressMetamask } = useMetamask();
   const [name, setName] = useState('');
   const [orderBy, setOrderBy] = useState('');
@@ -32,7 +33,9 @@ export const SorterNfts = ({ refetch }) => {
       teamName,
     };
     refetch(variablesJSON);
-    setCurrentPage(1);
+    if (currentPage !== 1) {
+      setCurrentPage(1);
+    }
     // setVariables(variablesJSON);
   };
   const cleanFilter = () => {
@@ -44,6 +47,7 @@ export const SorterNfts = ({ refetch }) => {
     refetchData();
   };
   useEffect(() => {
+    console.log('SE METE ACA');
     refetchData();
   }, [name, searchForSeller]);
 

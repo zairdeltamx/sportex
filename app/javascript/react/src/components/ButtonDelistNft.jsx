@@ -28,7 +28,7 @@ export const ButtonDelistNft = ({ nft }) => {
           },
         ],
       });
-      setCurrentPage(1);
+      // setCurrentPage(1);
       // console.log(data, 'DATA');
 
       if (data && data.markAsSold) {

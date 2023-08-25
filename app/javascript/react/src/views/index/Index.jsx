@@ -33,10 +33,7 @@ export default function Index() {
     fetchBnbPrice();
   }, []);
 
-  console.log(data, 'DATA');
-
   const nfts = data?.allNFTs.nfts || []; // Access nfts collection from data
-  console.log(data?.allNFTs, 'PAGES');
   const nftsWithPriceInUSD = nfts.map((nft) => ({
     ...nft,
     priceInUSD: cryptoPrice
