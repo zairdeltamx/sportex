@@ -6,15 +6,7 @@ import { Wave } from '../../components/Wave';
 import styles from './index.module.css';
 import { Loader } from '../../components/Loader';
 import { SorterNfts } from './SorterNfts';
-
 import { useGetNfts } from '../../graphql/nft/custom-hooks';
-import {
-  useApolloClient,
-  useLazyQuery,
-  useMutation,
-  useQuery,
-} from '@apollo/client';
-import { MARK_AS_SOLD } from '../../graphql/nft/graphql-mutations';
 import { GET_NFTS } from '../../graphql/nft/graphql-queries';
 import { useGraphqlContext } from '../../useContext/GraphqlContext';
 import fetchCryptoPrice from '../../services/cryptoPrice';
@@ -44,7 +36,6 @@ export default function Index() {
   const mark = () => {
     markSold({
       variables: { id: 30 },
-      // Realizar refetch manualmente sin proporcionar las variables
       refetchQueries: [{ query: GET_NFTS }],
     });
   };

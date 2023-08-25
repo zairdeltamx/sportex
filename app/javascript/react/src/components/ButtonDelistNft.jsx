@@ -12,10 +12,10 @@ export const ButtonDelistNft = ({ nft }) => {
   const { setTransactionIsLoading } = useLoadingContext();
   const [markNftAsSold, { loading, error, data }] = useMarkAsSold();
   const { variables, currentPage, setCurrentPage } = useGraphqlContext();
+
   async function handleDelistNft(nft) {
     try {
       setTransactionIsLoading(true);
-      // console.log('ENTRA AQUI LIST');
       await delistNft(nft);
 
       // console.log(variables, 'VARIABLES');
