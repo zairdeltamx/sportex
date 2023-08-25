@@ -33,6 +33,6 @@ let ctx = await esbuild.context({
   },
 });
 
-await ctx.watch();
-// await ctx.dispose();
+// await ctx.watch();
+await ctx.dispose(k);
 console.log('watching.............');
