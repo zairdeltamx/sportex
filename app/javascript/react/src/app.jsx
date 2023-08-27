@@ -28,12 +28,21 @@ export default function App() {
   });
   const customTheme = extendTheme({
     styles: {
-      global: (props) => ({
+      global: {
         body: {
-          color: 'default',
-          bg: '#001b4b',
+          backgroundColor: '#001b4b',
+          maxWidth: '1650px',
+          height: '100vh',
+          // width: '100vw',
+          // maWidth: '920px',
+          margin: '0 auto',
+          overflowX: 'hidden', // Ocultar la barra de desplazamiento horizontal
         },
-      }),
+        button: {
+          fontFamily: 'Roboto, sans-serif',
+          color: '#000000',
+        },
+      },
     },
   });
 

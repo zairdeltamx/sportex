@@ -3,6 +3,8 @@
   background-color: #00091a;
   position: fixed;
   color: white;
+  max-width: 1650px;
+  margin: 0 auto;
   top: 0;
   left: 0;
   right: 0;

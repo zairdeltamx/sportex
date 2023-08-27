@@ -38,7 +38,6 @@ module Queries
       ransack_args[:s] = "#{orderBy} #{order}" if orderBy.present? && order.present?
     
       nfts = Nft.with_status(:available).ransack(ransack_args).result.non_presale.page(current_page).per(per_page)
-    
       {
         nfts: nfts,
         totalPages: nfts.total_pages,

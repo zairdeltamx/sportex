@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import NavbarComponent from '../layouts/navbar/NavbarComponent';
 import CreateItem from '../views/createItem/CreateItem';
-import Index from '../views/index/Index';
+import Welcome from '../views/Welcome/Welcome';
 import MyAssets from '../views/myAssets/MyAssets';
 import Profile from '../views/profile/Profile';
 import NftInfo from '../views/nftInfo/NftInfo';
@@ -25,8 +25,8 @@ export default function App() {
         <NavbarComponent />
 
         <Routes>
-          <Route path="/" element={<Index></Index>} />
-          <Route index element={<Index></Index>} />
+          <Route path="/" element={<Welcome></Welcome>} />
+          <Route index element={<Welcome></Welcome>} />
           {isAllowed ? (
             <Route path="createitem" element={<CreateItem></CreateItem>} />
           ) : null}

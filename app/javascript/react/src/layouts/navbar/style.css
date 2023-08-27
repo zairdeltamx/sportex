@@ -2,6 +2,9 @@
   background-color: #00091a;
   position: fixed;
   color: white;
+  max-width: 1650px;
+  /* width: 100svh; */
+  margin: 0 auto;
   top: 0;
   left: 0;
   right: 0;
@@ -27,7 +30,7 @@
 .navbar_link {
   letter-spacing: 1px;
   color: white;
-  font-family: "GeneralSans", sans-serif;
+  font-family: 'GeneralSans', sans-serif;
   font-weight: 500;
   text-decoration: none;
 }

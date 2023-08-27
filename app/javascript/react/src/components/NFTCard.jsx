@@ -1,15 +1,25 @@
 import React, { useState } from 'react';
 // import Modal from 'react-modal';
 import styles from './NFTCard.module.css';
-import { Tooltip } from '@chakra-ui/react';
-
+import {
+  Box,
+  Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverCloseButton,
+  PopoverContent,
+  PopoverTrigger,
+  Text,
+  Tooltip,
+} from '@chakra-ui/react';
+import { useMetamask } from '../useContext/MetamaskContext';
 const NFTCard = ({
-  context = 'marketplace',
+  context,
   image = 'https://sportex-staging.infura-ipfs.io/ipfs/Qmazprg4puRaFd9gosz8bojCcqgFog1BZGMf8L8auGyXSm',
   name = 'Nombre de la carta',
   price = '20',
   priceCrypto = '2',
-  isOwnedByCurrentUser = false,
+  nft,
   isApproved = false,
   token_id = '',
   onBuy,
@@ -19,32 +29,47 @@ const NFTCard = ({
   onResell,
   onTransfer,
 }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { addressMetamask } = useMetamask();
 
-  const handleBuyClick = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
+  if (!addressMetamask) {
+    return null;
+  }
+  const isOwnedByCurrentUser =
+    nft.owner?.toLowerCase() === addressMetamask.toLowerCase();
 
   return (
     <div className={styles.nftCard}>
       <div className={styles.imageContainer}>
         <img src={image} alt={name} className={styles.image} />
       </div>
-      <h3 className={styles.cardTitle} title={name}>
-        {/* <Tooltip
-          label="I am open by default"
-          placement="left"
-          // defaultIsOpen
-        ></Tooltip> */}
-      </h3>
+      <Popover>
+        <PopoverTrigger>
+          <Text
+            as="span"
+            width="100%"
+            fontWeight="bold"
+            fontSize="20px"
+            textAlign="center"
+            display="inline-block"
+            whiteSpace="nowrap"
+            overflow="hidden"
+            textOverflow="ellipsis"
+            cursor="pointer"
+            // _hover={{ textDecoration: 'underline' }}
+          >
+            {name + '#' + token_id}
+          </Text>
+        </PopoverTrigger>
+        <PopoverContent>
+          <PopoverArrow />
+          <PopoverCloseButton />
+          <PopoverBody> {name + ' #' + token_id}</PopoverBody>
+        </PopoverContent>
+      </Popover>
       <p>
         <span>Current Price</span>
         <span>
-          {price} USD ({priceCrypto} PLS)
+          {price}USD ({priceCrypto} PLS)
         </span>
       </p>
 
@@ -57,7 +82,7 @@ const NFTCard = ({
             </div>
           ) : (
             <button onClick={handleBuyClick} className={styles.fullWidthButton}>
-              Buy NFT
+              BUY IT
             </button>
           )}
         </>

@@ -1,16 +1,16 @@
-import React from "react";
+import React from 'react';
 
-import { ListNfts } from "../../components/ListNfts";
+import NFTList from '../../components/NFTList';
 
-import { Wave } from "../../components/Wave";
-import { Loader } from "../../components/Loader";
-import useNFTs from "../../helpers/loadNfts";
-import styles from "./MyAssets.module.css";
+import { Wave } from '../../components/Wave';
+import { Loader } from '../../components/Loader';
+import useNFTs from '../../helpers/loadNfts';
+import styles from './MyAssets.module.css';
 export default function MyAssets() {
   const [nfts, loadingState] = useNFTs();
-  console.log(nfts, "NFTSSS");
+  console.log(nfts, 'NFTSSS');
   return (
-    <div style={{ marginTop: "80px" }}>
+    <div style={{ marginTop: '80px' }}>
       <Wave />
       <div className={styles.container}>
         <div className={styles.content}>
@@ -18,11 +18,11 @@ export default function MyAssets() {
           {loadingState ? (
             <Loader />
           ) : nfts.length === 0 ? (
-            <h1 style={{ textAlign: "center", paddingTop: "20px" }}>
+            <h1 style={{ textAlign: 'center', paddingTop: '20px' }}>
               Not found NFTs
             </h1>
           ) : (
-            <ListNfts nfts={nfts} isMarketplace={false} />
+            <NFTList nfts={nfts} isMarketplace={false} />
           )}
         </div>
       </div>
