@@ -182,3 +182,7 @@ gem 'rails_12factor', group: :production
 gem 'foreman', '~> 0.87.2'
 
 gem 'dotenv', '~> 2.8'
+
+gem "shakapacker", "= 7.0"
+
+gem "react_on_rails", "= 13.4"

@@ -16,6 +16,7 @@
     <%= stylesheet_link_tag "application", rel_options: { preload: true, as: "style" }, "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "main", rel_options: { preload: true, as: "style" }, "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <%= javascript_pack_tag "application" %>
   </head>
   <body>
     <% flash.each do |type, msg| %>
