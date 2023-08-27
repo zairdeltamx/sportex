@@ -12,6 +12,7 @@ class DashboardController < ApplicationController
   end
 
   def index
+    @hello_world_props = { name: 'Stranger' }
   end
 
   private

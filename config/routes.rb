@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'hello_world', to: 'landing#index'
   get 'terms/index'
   ActiveAdmin.routes(self)
   # mount ActionCable.server => '/cable'
